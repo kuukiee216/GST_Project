@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(90deg, rgb(234, 112, 68) 0%, rgb(14, 58, 154) 35%, rgb(47, 209, 117) 100%); /*waiting sa design ni rein hihi*/
+    font-family: 'Poppins', sans-serif;
+}
