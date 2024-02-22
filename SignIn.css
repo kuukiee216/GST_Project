@@ -27,6 +27,11 @@ form{
     background: blue; /*waiting sa design ni rein hihi*/
 }
 
+.btn-primary-socials{
+    border-radius: 100px;
+    align-items: center;
+}
+
 .form-control{
     color: rgba(0, 0, 0, .87);
     border-bottom-color: rgba(0, 0, 0, .42);
@@ -51,3 +56,4 @@ h1{
     }
 }
 
+/*to add pa yung ibang design*/
