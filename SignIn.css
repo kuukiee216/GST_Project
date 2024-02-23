@@ -24,12 +24,14 @@ form{
     width: 100%;
     border: none;
     border-radius: 50px;
-    background: blue; /*waiting sa design ni rein hihi*/
+    background: rgb(101, 101, 239); /*waiting sa design ni rein hihi*/
 }
 
-.btn-primary-socials{
-    border-radius: 100px;
-    align-items: center;
+.btn-white{
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    background:none; /*waiting sa design ni rein hihi*/
 }
 
 .form-control{
@@ -48,6 +50,10 @@ h1{
 
 .form-label{
     font-weight: 800 !important;
+}
+
+.nav-link:hover{
+    text-decoration: underline;
 }
 
 @media only screen and (max-width: 1000px){
