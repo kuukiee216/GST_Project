@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
 
-
 *{
     padding: 0;
     margin: 0;
@@ -13,31 +12,3 @@ body{
     background-color:rgb(239, 231, 231);
     font-family: 'Roboto', sans-serif;
 }
-
-.navbar{
-    background-color: #36AE7C;
-}
-
-.font-RR{
-    font-family: Road Rage;
-    font-size:xxx-large;
-}
-
-.nav-link:hover{
-    text-decoration: underline ;
-}
-
-.form-label{
-    font-weight: 800 !important;
-}
-
-.button-padding{
-    padding-top: 100px;
-}
-
-.form-outline i{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }

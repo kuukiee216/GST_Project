@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
 
 *{
     padding: 0;
@@ -7,17 +9,22 @@
 }
 
 body{
-    background: linear-gradient(90deg, rgb(234, 112, 68) 0%, rgb(14, 58, 154) 35%, rgb(47, 209, 117) 100%); /*waiting sa design ni rein hihi*/
-    font-family: 'Poppins', sans-serif;
+    background-color:rgb(239, 231, 231);
+    font-family: 'Roboto', sans-serif;
 }
 
 form{
     border-radius: 20px;
     margin-top: 150px !important;
     margin-bottom: 150px !important;
-    width: 24% !important;
+    width: 25% !important;
     background-color: white !important;
     padding: 50px;
+}
+
+.font-RR{
+    font-family: Road Rage;
+    font-size:xxx-large;
 }
 
 .btn-primary{
