@@ -7,10 +7,13 @@
     padding: 0;
     margin: 0;
     box-sizing:border-box;
-}
+}   
 
 body{
-    background-color:rgb(239, 231, 231);
+    background-image: url(header_bg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -32,7 +35,7 @@ body{
 }
 
 .button-padding{
-    padding-top: 100px;
+    padding-top: 110px;
 }
 
 .form-outline i{
