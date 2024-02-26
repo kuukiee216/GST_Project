@@ -10,7 +10,7 @@
 }   
 
 body{
-    background-image: url(header_bg.png);
+    background-image: url(/PICTURES/header_bg.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
@@ -43,4 +43,8 @@ body{
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-  }
+}
+
+.test{
+    
+}
