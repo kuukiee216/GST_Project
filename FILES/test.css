@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400|PT+Sans:400,700");
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+body {
+    height: 100vh;
+    background: #4b00ff;
+}
+.form-outer {
+    max-width: 300px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    width: 90%;
+    max-width: 1160px;
+    margin: auto;
+}
+h1 {
+    text-align: center;
+    color: #fff;
+    padding: 50px 0;
+}
+.form-input {
+    margin: 10px auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+input {
+    border: 2px solid #eee;
+    padding: 5px 10px 5px 50px;
+    font-size: 18px;
+    line-height: 30px;
+    outline: 0;
+    display: block;
+    width: 100%;
+}
+.icon {
+    position: absolute;
+    left: 0px;
+    top: 0;
+    font-size: 25px;
+    color: #4b00ff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
