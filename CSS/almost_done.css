@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Road+Rage&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:rgb(239, 231, 231);
+    font-family: 'Roboto', sans-serif;
+}
+
+.navbar{
+    background-color: #36AE7C;
+}
+
+.font-RR{
+    font-family: Road Rage;
+    font-size:xxx-large;
+}
+
+form{
+    border-radius: 20px;
+    margin-top: 150px !important;
+    margin-bottom: 150px !important;
+    width: 45% !important;
+    background-color: white !important;
+    padding: 50px;
+}
+
+.font-RR{
+    font-family: Road Rage;
+    font-size:xxx-large;
+}
+
+.btn-danger{
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+}
+
+.btn-white{
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    background:none; /*waiting sa design ni rein hihi*/
+}
+
+.form-control{
+    color: rgba(0, 0, 0, .87);
+    border-bottom-color: rgba(0, 0, 0, .42);
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: 4px 4px 0 0;
+}
+
+h1{
+    font-size: 2rem !important;
+    font-weight: 700;
+}
+
+.form-label{
+    font-weight: 800 !important;
+}
+
+.nav-link:hover{
+    text-decoration: underline;
+}
+
+.required::before {
+    content: "*";
+    color: red;
+    float: right;
+  }
+
+@media only screen and (max-width: 1000px){
+    form {
+        width: 100% !important;
+    }
+}
+
+/*to add pa yung ibang design*/

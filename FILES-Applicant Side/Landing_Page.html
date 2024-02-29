@@ -9,10 +9,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="/CSS/landing.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../assets/css/atlantis.css">
+    <link href="/CSS/landing.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Japan Jobs Home Page</title>
@@ -50,43 +51,46 @@
         </div>
       </nav>
 
-<div class="button-padding d-flex justify-content-center mb-5">
-  <div class="button-padding d-flex justify-content-center gap-3">
-
-      <div class="form-outline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50">
-          <path d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z">
-            </path>
-          </svg>
-        <input type="text" class="form-control ps-5" placeholder="Job Title" />
-      </div>
-
-      <div class="form-outline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
-          <path d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z"/>
+      <div class="button-padding d-flex justify-content-center">
+        <div class="button-padding d-flex justify-content-center gap-3">
+      
+          <div class="form-group">
+            <div class="input-icon">
+              <span class="input-icon-addon">
+                <i class="fa fa-search"></i>
+              </span>
+              <input type="text" class="form-control" placeholder="Job Title">
+            </div>
+          </div>
+      
+            <div class="form-group">
+              <div class="input-icon">
+                <span class="input-icon-addon"> 
+                  <i class="fa fa-suitcase"></i>
+              </span>
+              <input type="text" class="form-control ps-5" placeholder="Classification" />
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <div class="input-icon">
+            <span class="input-icon-addon"> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
             </svg>
-          <input type="text" class="form-control ps-5" placeholder="Classification" />
-        <i class="bi bi-suitcase-lg-fill ms-3"></i>
-      </div>
-
-      <div class="form-outline">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-            </svg>
-          <input type="text" class="form-control ps-5" placeholder="Location"/>
-        <i class="bi bi-geo-alt-fill"></i>
-      </div>
-
-    <button class="btn btn-danger" type="button">Search</button>
-
-    <button class="btn btn-danger" type="button">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
-        <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/>
-          </svg>
-      <i class="bi bi-funnel-fill"></i>
-    </button>
-  </div>
-</div> 
+            </span>
+            <input type="text" class="form-control ps-5" placeholder="Location" />
+          </div>
+        </div>
+      
+          <button class="btn btn-danger" type="button">Search</button>
+      
+          <button class="btn btn-danger" type="button">
+            <i class="fa fa-filter"></i>
+          </button>
+      
+        </div>
+      </div> 
 
 <div class="card mt-3 mb-5" style="width: auto;">
 	<img src="/PICTURES/six_people.png" alt="Card image cap">
