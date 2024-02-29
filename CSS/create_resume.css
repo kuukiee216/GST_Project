@@ -34,8 +34,10 @@ body{
     font-weight: 800 !important;
 }
 
-.button-padding{
-    padding-top: 110px;
+.btn-danger{
+    width: 100%;
+    border: none;
+    border-radius: 50px;
 }
 
 .form-outline i{

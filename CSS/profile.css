@@ -10,8 +10,7 @@
 }   
 
 body{
-    background-image: url();
-    background-repeat: no-repeat;
+    background-color: white;
     background-attachment: fixed;
     background-size: 100%;
     font-family: 'Roboto', sans-serif;
@@ -45,10 +44,6 @@ body{
     pointer-events: none;
 }
 
-.card-left{
-    margin-left: 269px;
-}
-
-.card-right{
-    margin-right: 259px;
+.table{
+    table-layout: auto;
 }
