@@ -76,7 +76,6 @@
 										</li>
 									</ul>
 									<div class="tab-content" id="pills-tabContent">
-
 										<div class="tab-pane fade show active" id="pills-signin-nobd" role="tabpanel" aria-labelledby="pills-signin-tab-nobd">
 											<h1 class="font-weight-bold text-dark">Sign In</h1>
 
