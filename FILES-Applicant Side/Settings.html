@@ -99,49 +99,103 @@
       
 
       <div class="container-fluid" style="width: 80%;">
+
         <h1>Settings</h1>
             <hr>
                 <div>
                     <label for="Cemail">Email</label>
                     <p>genesismarvinmanale12@gmail.com</p>
                 </div>
-            <!-- Button trigger modal -->
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-            Launch demo modal
-          </button>
-        <hr>
 
-        <div>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+            Change Email
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalChangeEmail">Change Email</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="">
+                  <label ></label>
+                  <input type="password" class="form-control" id="email" placeholder="email">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save email</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+
             <label for="password">password</label>
-                <button class="btn btn-outline-danger">Change Password</button>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter1">
+              Change Password
+            </button>
+    
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalChangePassword">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                    <div class="">
+                      <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="password">
+                    
+                      <label for="REpass">Re-Enter Password</label>
+                    <input type="password" class="form-control" id="REpass" placeholder="Re-enter password">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save password</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 <hr>
-        </div>
 
         <div>
             <label for="Dacc">Delete Account</label>
-                <button class="btn btn-outline-danger">Delete Account</button>
-                <hr>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+              <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter2">
+                Delete Account
               </button>
-            </div>
-            <div class="modal-body">
-              Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalDeleteAccount">Delete Account?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="btn btn-primary">Yes, Delete my Account</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
         </div>
       </div>
 
