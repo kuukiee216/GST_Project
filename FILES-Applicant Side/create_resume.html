@@ -15,43 +15,186 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <title>Profile</title>
+    <title>Create Resume</title>
 </head>
 <body>
      <!-- Japan job posting icon href-->
      <nav class="navbar navbar-expand-sm">
-        <div class="container-fluid">
-          <form class="">
-            <a class="navbar-brand font-RR text-white" href="#">
-              <img src="/PICTURES/japanLogo.png" alt="logo" style="width:80px;"> Japan jobs</a>
-                </form>
+      <div class="container-fluid">
+        <form class="">
+          <a class="navbar-brand font-RR text-white" href="#">
+            <img src="/PICTURES/japanLogo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+          </form>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Home</a>
+                      </li>
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Home</a>
-                  </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Pofile</a>
+                      </li>
+                        
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Company Profile</a>
+                      </li>
+                    </ul>
 
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Pofile</a>
-                  </li>
-                    
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Company Profile</a>
-                  </li>
-                </ul>
+                  <form class="d-flex">
+                      <div>
+                        <button class="btn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-bell-fill" viewBox="0 0 16 16">
+                            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+                          </svg>
+                            <i class="bi bi-bell-fill"></i>
+                        </button>
+                      </div>
 
-                <form class="d-flex">
-                  <button class="btn btn-danger" type="submit">Register/Login</button>
-                  <a class="text-white nav-link" href="#">Recruiter Site</a>
+                      <div>
+                        <button class="btn">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-person-fill" viewBox="0 0 16 16">
+                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                            <i class="bi bi-person-fill"></i>
+                        </button>
+                      </div>
+
+                      <div>
+                        <a class="text-white nav-link" href="#">Recruiter Site</a>
+                      </div>
+
+                </div>
               </form>
-            </div>
+          </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid pt-5" style="width: 75%">
+      <h2>Create a Resume</h2>
+      <span>
+        <a class="text-end" href="#"">Return to Profile</a>
+      </span>
+      <hr>
+
+      <h4>Personal Information</h4> 
+      <p>Name</p>
+      <p>Phone Number</p>
+      <p>Email</p>
+      <p>Location</p>
+
+      <button type="button" class="btn btn-danger mt-3 mb-5" valie="submit">Edit</button>
+      <hr>
+
+      <h4>Personal Summary</h4>
+      <p>Tell us about yourself</p>
+      <input type="text" class="form-control pb-5" id="about" placeholder="Your personal summary will appear here.">
+      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Summary</button>
+      <hr>
+
+      <h4>Work Summary</h4>
+      <p>Let the recruiters know your career history. Tip: It is better to use the most recent experience.</p>
+      <input type="text" class="form-control pb-5" id="about" placeholder="Your personal summary will appear here.">
+      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Role</button>
+      <hr>
+
+      <h4>Education</h4>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-3">Bachelor of Science in Computer Science
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
+          </h5>
+          <p class="card-text mb-2">Laguna University - Sta. Cruz, Laguna</p>
+          <p class="card-text">August 2020 - Present</p>
         </div>
-      </nav>
+      </div>
+      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Education</button>
+      <hr>
 
+      <h4>Skills</h4>
+      <p>Showcase what kind of skills you attained.</p>
 
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>Leadership
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
+          </h5>
+        </div>
+      </div> 
 
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>Microsoft Office
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
+          </h5>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5>Organizational Skills
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
+          </h5>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Skills</button>
+
+      <h4>Licenses and Certifications</h4>
+      <p>Add your legitimate certifications, licenses, and accreditations here.</p>
+      <input type="text" class="form-control pb-5" id="about" placeholder="Your licenses and certifications will appear here.">
+      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Certification / License</button>
+
+      <h4>Languages</h4>
+      <p>Showcase what kind of skills you attained.</p>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>Filipino
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
+          </h5>
+        </div>
+      </div>
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>English
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
+          </h5>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5>Japanese
+            <i class="fas fa-edit"></i>
+            <i class="fas fa-edit"></i>
+          </h5>
+        </div>
+      </div>
+      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Language</button>
+      <hr>
+
+      <div class="dropdown mb-5">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Add more details
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">detail 1</a>
+          <a class="dropdown-item" href="#">detail 2</a>
+          <a class="dropdown-item" href="#">detail 3</a>
+        </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-danger mb-5" value="submit">Create Resume</button>
+        <button type="button" class="btn btn-outline-danger mb-5" value="submit">Cancel</button>
+      </div>
+    </div>
 
     <!--bottom navbar-->
     <footer class="p-2 navbar">
