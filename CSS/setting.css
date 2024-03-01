@@ -10,7 +10,7 @@
 }   
 
 body{
-    background-image: url();
+    background-image: url( );
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
@@ -34,10 +34,8 @@ body{
     font-weight: 800 !important;
 }
 
-.btn-danger{
-    width: 100%;
-    border: none;
-    border-radius: 50px;
+.button-padding{
+    padding-top: 110px;
 }
 
 .form-outline i{
@@ -45,4 +43,12 @@ body{
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
+}
+
+.card-left{
+    margin-left: 269px;
+}
+
+.card-right{
+    margin-right: 259px;
 }
