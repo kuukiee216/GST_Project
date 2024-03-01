@@ -67,63 +67,146 @@
                         <div class="col-md-12 d-flex justify-content-center align-items-center">
                             <div class="col-md-4 py-4 px-2">
                                 <div class="card p-5">
-                                    <h1 class="font-weight-bold text-dark">Sign In</h1>
+									<ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3 d-none d-sm-none" id="pills-tab" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" id="pills-signin-tab-nobd" data-toggle="pill" href="#pills-signin-nobd" role="tab" aria-controls="pills-signin-nobd" aria-selected="true">Sign In</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" id="pills-signup-tab-nobd" data-toggle="pill" href="#pills-signup-nobd" role="tab" aria-controls="pills-signup-nobd" aria-selected="false">Sign Up</a>
+										</li>
+									</ul>
+									<div class="tab-content" id="pills-tabContent">
 
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <form id="formLogin">
-                                                <div class="form-group">
-                                                    <div class="input-icon">
-                                                        <span class="input-icon-addon">
-                                                            <i class="fa fa-envelope"></i>
-                                                        </span>
-                                                        <input type="email" id="txtUserID" class="form-control" placeholder="Email Address" maxlength="9">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="input-icon">
-                                                        <span class="input-icon-addon">
-                                                            <i class="fa fa-key"></i>
-                                                        </span>
-                                                        <input type="password" name="txtPassword" id="txtPassword" class="form-control" placeholder="Password" maxlength="30">
-                                                        <span class="input-icon-addon">
-                                                            <button type="button" id="btnTogglePassword" class="btn btn-icon btn-default btn-link pl-3" onclick="togglePasswordVisibility();">
-                                                                <i class="fa fa-eye " id="btnTogglePasswordIcon"></i>
-                                                            </button>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
+										<div class="tab-pane fade show active" id="pills-signin-nobd" role="tabpanel" aria-labelledby="pills-signin-tab-nobd">
+											<h1 class="font-weight-bold text-dark">Sign In</h1>
 
-                                        <div class="row">
-                                            <div class="col-md-12 d-flex justify-content-end">
-                                                <a href="forgotpassword.php">Forgot Password?</a>
-                                            </div>
+											<div class="card-body">
+												<div class="row">
+													<form id="formLogin">
+														<div class="form-group">
+															<div class="input-icon">
+																<span class="input-icon-addon">
+																	<i class="fa fa-envelope"></i>
+																</span>
+																<input type="email" id="txtUserID" class="form-control" placeholder="Email Address" maxlength="9">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="input-icon">
+																<span class="input-icon-addon">
+																	<i class="fa fa-key"></i>
+																</span>
+																<input type="password" name="txtPassword" id="txtPassword" class="form-control" placeholder="Password" maxlength="30">
+																<span class="input-icon-addon">
+																	<button type="button" id="btnTogglePassword" class="btn btn-icon btn-default btn-link pl-3" onclick="togglePasswordVisibility();">
+																		<i class="fa fa-eye " id="btnTogglePasswordIcon"></i>
+																	</button>
+																</span>
+															</div>
+														</div>
+													</form>
+												</div>
 
-                                            <button type="button" class="btn btn-danger btn-round btn-block mt-4" id="btnLogin" onclick="">Sign In</button>
-                                        </div>
+												<div class="row">
+													<div class="col-md-12 d-flex justify-content-end">
+														<a href="forgotpassword.php">Forgot Password?</a>
+													</div>
 
-                                        <div class="row mt-3 mb-2 d-flex justify-content-center align-items-center">
-                                            <h3>OR</h3>
-                                        </div>
+													<button type="button" class="btn btn-danger btn-round btn-block mt-4" id="btnLogin" onclick="">Sign In</button>
+												</div>
 
-                                        <div class="row">
-                                            <button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
-                                                <i class="fab fa-google fa-lg mr-auto"></i> 
-                                                <span class="flex-grow-1">Connect with Google</span>
-                                            </button>
-                                            <button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
-                                                <i class="fab fa-facebook fa-lg mr-auto"></i> 
-                                                <span class="flex-grow-1">Connect with Facebook</span>
-                                            </button>
-                                            <button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
-                                                <i class="fab fa-apple fa-lg mr-auto"></i> 
-                                                <span class="flex-grow-1">Connect with Apple</span>
-                                            </button>
-                                            <a class="btn btn-link btn-block">Don't have an account? <span class="text-primary">Sign Up</span></a>
-                                        </div>
-                                    </div>
+												<div class="row mt-3 mb-2 d-flex justify-content-center align-items-center">
+													<h3>OR</h3>
+												</div>
+
+												<div class="row">
+													<button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
+														<i class="fab fa-google fa-lg mr-auto"></i> 
+														<span class="flex-grow-1">Connect with Google</span>
+													</button>
+													<button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
+														<i class="fab fa-facebook fa-lg mr-auto"></i> 
+														<span class="flex-grow-1">Connect with Facebook</span>
+													</button>
+													<button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
+														<i class="fab fa-apple fa-lg mr-auto"></i> 
+														<span class="flex-grow-1">Connect with Apple</span>
+													</button>
+													<button class="btn btn-block btn-link" onclick="$('#pills-signup-tab-nobd').click();">Don't have an account? <span class="text-primary">Sign Up</span></button>
+												</div>
+											</div>
+										</div>
+
+										<div class="tab-pane fade" id="pills-signup-nobd" role="tabpanel" aria-labelledby="pills-signup-tab-nobd">
+											<h1 class="font-weight-bold text-dark">Sign Up</h1>
+											<div class="card-body">
+												<div class="row">
+													<form id="formSignUp">
+														<div class="form-group">
+															<div class="input-icon">
+																<span class="input-icon-addon">
+																	<i class="fa fa-envelope"></i>
+																</span>
+																<input type="email" id="txtEmailAddressSignUp" class="form-control" placeholder="Email Address" maxlength="9">
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="input-icon">
+																<span class="input-icon-addon">
+																	<i class="fa fa-key"></i>
+																</span>
+																<input type="password" name="txtPassword" id="txtPassword" class="form-control" placeholder="Password" maxlength="30">
+																<span class="input-icon-addon">
+																	<button type="button" id="btnTogglePasswordSignUp" class="btn btn-icon btn-default btn-link pl-3" onclick="togglePasswordVisibility();">
+																		<i class="fa fa-eye " id="btnTogglePasswordIconSignUp"></i>
+																	</button>
+																</span>
+															</div>
+														</div>
+														<div class="form-group">
+															<div class="input-icon">
+																<span class="input-icon-addon">
+																	<i class="fa fa-key"></i>
+																</span>
+																<input type="password" name="txtConfirmPasswordSignUp" id="txtPassword" class="form-control" placeholder="Confirm Password" maxlength="30">
+																<span class="input-icon-addon">
+																	<button type="button" id="btnToggleConfirmPassword" class="btn btn-icon btn-default btn-link pl-3" onclick="togglePasswordVisibility();">
+																		<i class="fa fa-eye " id="btnToggleConfirmPasswordIconSignUp"></i>
+																	</button>
+																</span>
+															</div>
+														</div>
+													</form>
+												</div>
+
+												<div class="row">
+													<h6 class="text-muted text-center">By creating an account or signing in, you understand and agree to Japan Jobs <a href="" class="text-primary">Terms and Agreement</a>.</h6>
+
+													<button type="button" class="btn btn-danger btn-round btn-block mt-4" id="btnLogin" onclick="">Register</button>
+												</div>
+
+												<div class="row mt-3 mb-2 d-flex justify-content-center align-items-center">
+													<h3>OR</h3>
+												</div>
+
+												<div class="row">
+													<button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
+														<i class="fab fa-google fa-lg mr-auto"></i> 
+														<span class="flex-grow-1">Connect with Google</span>
+													</button>
+													<button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
+														<i class="fab fa-facebook fa-lg mr-auto"></i> 
+														<span class="flex-grow-1">Connect with Facebook</span>
+													</button>
+													<button type="button" class="btn btn-default btn-round btn-border btn-block d-flex align-items-center justify-content-start" id="" onclick="">
+														<i class="fab fa-apple fa-lg mr-auto"></i> 
+														<span class="flex-grow-1">Connect with Apple</span>
+													</button>
+													<button class="btn btn-block btn-link" onclick="$('#pills-signin-tab-nobd').click();">Already on JAPAN JOBS? <span class="text-primary">Sign In</span></button>
+												</div>
+											</div>
+										</div>
+									</div>
                                 </div>
                             </div>
                         </div>
