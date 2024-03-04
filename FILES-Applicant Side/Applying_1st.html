@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../assets/css/atlantis.css">
+    <link href="../CSS/applying.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <title>Applying Page</title>
+</head>
+    <body>
+     <!-- Japan job posting icon href-->
+     <nav class="navbar navbar-expand-sm">
+        <div class="container-fluid">
+          <form class="">
+            <a class="navbar-brand font-RR text-white" href="#">
+              <img src="../assets/img/japanLogo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+                </form>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Home</a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Pofile</a>
+                  </li>
+                    
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Company Profile</a>
+                  </li>
+                </ul>
+
+                <form class="d-flex">
+                  <button class="btn btn-danger" type="submit">Register/Login</button>
+                  <a class="text-white nav-link" href="#">Recruiter Site</a>
+              </form>
+            </div>
+        </div>
+      </nav>
+
+      <div class="container text-center pt-5">
+        <div class="row">
+          <div class="col" id="myDIV">
+            <div class="progress-card">
+                <div class="progress-status">
+                    <a href="#" class="text-danger fw-bold"> Cancel</a>
+                </div>
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="33%"></div>
+                </div>
+            </div>
+            <h4 class="text-start">Select a resume for the recruiter</h4>
+
+            <div class="card">
+                <div class="card-body">
+                    <input type="checkbox" id="resume" name="resume" value="exsisting">
+                    <label for="resume">Select from your exsisting resume.</label>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">test</a>
+                            <a class="dropdown-item" href="#">test</a>
+                            <a class="dropdown-item" href="#">test</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <input type="checkbox" id="resume" name="resume" value="exsisting">
+                    <label for="resume">Upload a resume.</label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <input type="checkbox" id="resume" name="resume" value="exsisting">
+                    <label for="resume">Upload a resume.</label>
+                </div>
+            </div>
+
+            <h4>Select a cover letter for the recruiter</h4>
+
+            <div class="card">
+                <div class="card-body">
+                    <input type="checkbox" id="resume" name="resume" value="exsisting">
+                    <label for="resume">Upload a cover letter.</label>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <input type="checkbox" id="resume" name="resume" value="exsisting">
+                    <label for="resume">Write a cover letter.</label>
+                    <p class="card-subtitle text-muted">Introduce yourself briefly. 
+                        Explain why you're a good fit for this role by highlighting your relevant skills, 
+                        qualifications, and experience.</p>
+                    <textarea class="form-control" placeholder="Introduce Yourself." id="floatingTextarea"></textarea>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <input type="checkbox" id="resume" name="resume" value="exsisting">
+                    <label for="resume">Apply without a cover letter.</label>
+                </div>
+            </div>
+
+            <button onclick="myFunction()" class="btn btn-danger">Continue<i class="fa fa-angle-right"></i></button>
+        </div>
+          <div class="col">
+                <h2>You are applying for...</h2>
+
+                    <div class="container-fluid card text-start">
+                        <div class="card-body">
+                            <h3 class="card-title text-start">Software Engineer</h3>
+                            <div class="container mt-4">
+                              <p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                </svg>
+                                <span><i class="bi bi-geo-alt-fill"></i></span>Osaka, Japan
+                              </p>
+                            </div>
+                            <hr>
+                            <h6>Job Summary</h6>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium tempore accusamus iste dicta sit. Eveniet sed cupiditate aut earum eaque aliquam ullam, iusto adipisci pariatur, ipsam facilis. Autem, dolor natus.</p>
+                            <h6>Qualifications</h6>
+                            <ul>
+                                <li>
+                                  <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                                </li>
+                                <li>
+                                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                                </li>
+                                <li>
+                                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <!--bottom navbar-->
+    <footer class=" container p-2 navbar navbar-expand-sm">
+
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="form-label nav-link text-white" href="#">Privacy</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="form-label nav-link text-white" href="#">Terms & Condition</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="form-label nav-link text-white" href="#">Protect yourself online</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="form-label nav-link text-white" href="#">Contact</a>
+          </li>
+          
+          <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
+        </ul>
+
+    </footer>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Option 1: Bootstrap scripts -->
+    <script src="../.../assets/js/atlantis.js"></script>
+    <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="../assets/vendor/aos/aos.js"></script>
+    <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+
+    <!-- Chart JS -->
+    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+    <script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Atlantis JS -->
+    <script src="../assets/js/atlantis.min.js"></script>
+
+    <script>
+        function myFunction() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }</script>
+
+    </body>
+</html>
