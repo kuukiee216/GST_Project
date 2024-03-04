@@ -30,18 +30,18 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Home</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Pofile</a>
-                  </li>
-                    
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Company Profile</a>
-                  </li>
-                </ul>
+                    <li class="nav-item">
+                      <a class="nav-link text-white" href="/FILES-Applicant Side/Landing_Page.html">Home</a>
+                    </li>
+  
+                    <li class="nav-item">
+                      <a class="nav-link text-white" href="/FILES-Applicant Side/profile.html">Pofile</a>
+                    </li>
+                      
+                    <li class="nav-item">
+                      <a class="nav-link text-white" href="/FILES-Applicant Side/about_us.html">About Us</a>
+                    </li>
+                  </ul>
 
                 <form class="d-flex">
                   <button class="btn btn-danger" type="submit">Register/Login</button>
@@ -222,22 +222,8 @@
                 </div>
             </div>
 
-            <button onclick="swal()" class="btn btn-danger">Continue<i class="fa fa-angle-right"></i></button>
+            <button onclick="swal()" type="submit" class="btn btn-danger">Continue<i class="fa fa-angle-right"></i></button>
 
-            <script>swal({
-                title: "Good job!",
-                text: "Application Complete!",
-                icon: "success",
-                buttons: {
-                    confirm: {
-                        text: "Confirm Me",
-                        value: true,
-                        visible: true,
-                        className: "btn btn-danger",
-                        closeModal: true
-                    }
-                }
-            });</script>
         </div>
           <div class="col">
                 <h2>You are applying for...</h2>
@@ -351,19 +337,10 @@
 
     <!-- Sweet Alert -->
     <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <script src="../JAVASCRIPT/SCRIPTS.js"></script>
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
-
-    <script>
-        function myFunction() {
-        var x = document.getElementById("myDIV");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
-      }</script>
 
     </body>
 </html>
