@@ -10,7 +10,7 @@
 }   
 
 body{
-    background-color: rgb(253, 245, 245);
+    background-color: white;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
@@ -18,7 +18,7 @@ body{
 }
 
 .navbar{
-    background-color: #36AE7C;
+    background-color: #187498;
 }
 
 .font-RR{
@@ -43,4 +43,6 @@ body{
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-  }
+}
+
+
