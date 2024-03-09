@@ -230,11 +230,7 @@
     </div>
   </div>
     
-  <div class="card">
-    <div class="card-header">
-      <h4 class="card-title">Nav Pills Without Border (Horizontal Tabs)</h4>
-    </div>
-    <div class="card-body">
+    <div class="container d-flex justify-content-center">
       <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border" role="tablist">
         <li class="nav-item submenu">
           <a class="nav-link active show" id="pills-open-tab-nobd" data-toggle="pill" href="#pills-open-nobd" role="tab" aria-controls="pills-open-nobd" aria-selected="false">Open</a>
@@ -243,12 +239,13 @@
           <a class="nav-link" id="pills-expired-tab-nobd" data-toggle="pill" href="#pills-expired-nobd" role="tab" aria-controls="pills-expried-nobd" aria-selected="false">Expired</a>
         </li>
         <li class="nav-item submenu">
-          <a class="nav-link" id="pills-draft-tab-nobd" data-toggle="pill" href="#pills-draft-nobd" role="tab" aria-controls="pills-draft-nobd" aria-selected="true">Draft</a>
+          <a class="nav-link" id="pills-draft-tab-nobd" data-toggle="pill" href="#pills-draft-nobd" role="tab" aria-controls="pills-draft-nobd" aria-selected="false">Draft</a>
         </li>
         <li class="nav-item submenu">
-          <a class="nav-link" id="pills-candidates-tab-nobd" data-toggle="pill" href="#pills-candidates-nobd" role="tab" aria-controls="pills-candidates-nobd" aria-selected="true">Your Candidates</a>
+          <a class="nav-link" id="pills-candidates-tab-nobd" data-toggle="pill" href="#pills-candidates-nobd" role="tab" aria-controls="pills-candidates-nobd" aria-selected="false">Your Candidates</a>
         </li>
       </ul>
+    </div>
 
       <div class="tab-content mt-2 mb-3" id="pills-without-border-tabContent">
         <div class="tab-pane fade active show" id="pills-open-nobd" role="tabpanel" aria-labelledby="pills-open-tab-nobd">
@@ -292,8 +289,8 @@
 
         <div class="tab-pane fade" id="pills-expired-nobd" role="tabpanel" aria-labelledby="pills-expired-tab-nobd">
           <div class="container" style="width: 80%;">
+            <h2 class="pt-3">Expired</h2>
             <div class="card">
-              <h2 class="pt-3">Expired</h2>
             <div class="card-body">
               <div class="row row-cols-6 text-start">
 
@@ -328,12 +325,11 @@
                 </div>
               </div>
             </div>
-          </div>
 
         <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
           <div class="container" style="width: 80%;">
+            <h2 class="pt-3">Draft</h2>
             <div class="card">
-              <h2 class="pt-3">Draft</h2>
             <div class="card-body">
               <div class="row row-cols-6 text-start">
         
@@ -368,12 +364,11 @@
                 </div>
               </div>
             </div>
-          </div>
-        
+
         <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel" aria-labelledby="pills-candidates-tab-nobd">
           <div class="container" style="width: 80%;">
-          <div class="card">
             <h2 class="pt-3">Your Candidates</h2>
+          <div class="card">
           <div class="card-body">
               <div class="row row-cols-5 text-start">
         
@@ -400,10 +395,7 @@
             </div>
           </div>
         </div>
-        </div>
       </div>
-    </div>
-  </div>
 
     <!--bottom navbar-->
     <footer class="p-2 navbar">
