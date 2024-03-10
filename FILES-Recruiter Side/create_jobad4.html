@@ -16,7 +16,7 @@
     <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <title>Dashboard My Billing</title>
+    <title>Create Job Ad Page 4</title>
 </head>
 <body>
      <!-- Japan job posting icon href-->
@@ -38,15 +38,15 @@
                     <a class="nav-link text-white" href="#">Job Ads</a>
                   </li>
                 </ul>
-
+ 
                 <form class="d-flex">
                     <div class="dropdown">
-                      <button class="btn btn-outline-danger dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar">
                           <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
                         </div>
                         gen.test
-                      </button>
+                    </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="/FILES-Recruiter Side/dashboard_myaccount.html">My Account</a>
                         <a class="dropdown-item" href="/FILES-Recruiter Side/dashboard_billing.html">My Billing</a>
@@ -58,60 +58,145 @@
         </div>
       </nav>
 
-      <div class="container pt-5 pb-5">
-        <h2 class="pb-5 pt-5">Account Details</h2>
+      
+
+    <div class="container flex justify-content-center mt-5" style="width: 60%;">
+
+        <div class="progress-card">
+            <div class="progress-status">
+                <a href="/FILES-Recruiter Side/create_jobad2.html">
+                  <button type="button" class="btn btn-icon btn-round btn-primary">
+                    <i class="fa fa-arrow-circle-left"></i>
+                  </button>
+                </a>
+                <span class="text-muted fw-bold">100%</span>
+            </div>
+            <div class="progress" style="height: 6px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="100%"></div>
+            </div>
+        </div>
+
+        <div class="container" style="width: 90%;">
+        <h4>Manage candidate applications</h4>
+        <div class="text-muted">(optional)</div>
+        <div class="fw-bold">Questions for candidates</div>
+        <p>Include up to 8 easy-to-answer questions in your job ad. 
+            When reviewing candidates, you will be able to easily filter 
+            candidates who match your preferred answers. 
+        </p>
+
+        <p class="text-muted">1/8 Questions selected</p>
+
+        <div class="input-icon">
+            <span class="input-icon-addon">
+                <i class="fa fa-search"></i>
+            </span>
+            <input type="tel" class="form-control" placeholder="find a question">
+        </div>
+
+        <h4>Recommended questions</h4>
         <div class="card">
             <div class="card-body">
-              <div class="row row-cols-3 text-start">
-        
-                <div class="col">
-                    <img src="/assets/img/image7.png" style="height: 60px;">
+                <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="">
+                      <span class="form-check-sign">What is your expected salary?
+                        I will accept this range:</span>
+                    </label>
                 </div>
-                <div class="col">
-                    <h3 class="pb-5">Billing Details</h3>
-                  <div class="row">
-                    <div>Billing Address</div>
-                    <div class="text-muted pb-5">same as company address</div>
-                    <hr>
-                    <div class="fw-bold">Billing Email</div>
-                    <div class="text-primary">vanessatatel.lu@gmail.com</div>
-                    <div class="text-muted">ALL JAPAN JOBS  invoices for your company will be sent to your billing email.</div>
-                  </div>
-                </div>
-                <div class="row">
-                    <a class="text-primary float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Billing Address</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-
-                            <div class="modal-body">
-                            <label>Billing Address</label>
-                            <input type="text" class="form-control" id="place" placeholder="address">
-                            <label>Billing Email</label>
-                            <input type="text" class="form-control" id="Bemail" placeholder="email">
-                            </div>
-
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
+                <div class="form-group">
+                    <div class="row row-col-3">
+                    
+                        <div class="col">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Minimum</button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item" href="#">test</a>
+                                    <a class="dropdown-item" href="#">test2</a>
+                                    <a class="dropdown-item" href="#">test3</a>
+                                    <a class="dropdown-item" href="#">test4</a>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col">
+                            To
+                        </div>
+
+                        <div class="col">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maximum</button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item" href="#">test</a>
+                                    <a class="dropdown-item" href="#">test2</a>
+                                    <a class="dropdown-item" href="#">test3</a>
+                                    <a class="dropdown-item" href="#">test4</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                  </div>
-              </div>
+                </div>
+                <hr>
             </div>
-          </div>
+        </div>
 
-      </div>
+            <div class="form-check row">
+
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                <span class="form-check-sign">Which of the programming languanges are you experienced in?</span>
+                </label>
+            
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                <span class="form-check-sign">Which of the following Relational Database Management System (RDBMS) are you experienced with?</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <button class="btn btn-primary text-uppercase">Add Questions</button>
+
+            </div>
+
+            <div>
+                <span class="input-icon-addon">
+                    <i class="fa fa-info-circle"></i>
+                </span>
+                Your question and answers can't be changed after you post your job ad. 
+            </div>
+
+            <h4>Internal Job Reference</h4><div class="text-muted">optional</div>
+            <input type="tel" class="form-control" placeholder="">
+
+            <div class="form-group mt-3 mb-5">   
+                <a href="/FILES-Recruiter Side/create_jobad4.html" class="btn btn-danger" type="button">Continue</a>
+                <a href="#" class="btn btn-outline-danger" type="button">Preview</a>
+                <button class="btn btn-outline-danger" type="submit">Save Draft</button>
+              </div>
+
+        </div>
+
+    </div>
+
 
     <!--bottom navbar-->
     <footer class="p-2 navbar">
@@ -133,7 +218,7 @@
             <a class="form-label nav-link text-white" href="#">Contact</a>
           </li>
           
-          <a class="form-label text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
+          <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
         </ul>
 
     </footer>
