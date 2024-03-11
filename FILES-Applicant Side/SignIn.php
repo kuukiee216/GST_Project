@@ -1,3 +1,5 @@
+<?php include "../fb-login/fbconfig.php"; ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -29,16 +31,16 @@
     </nav>
         
         <div class="container-fluid">
-            <form class="mx-auto">
+            <form class="mx-auto" action ="" method="POST">
                 <h1 class="text-center">Sign in</h1>
                     <div class="mb-3 mt-5">
                 <label for="InputEmail" class="form-label">Email Address</label>
-            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailhelp">
+            <input type="email" name="si_email" class="form-control" id="InputEmail" aria-describedby="emailhelp">
         </div>
 
         <div class="mb-3">
             <label for="InputPassword" class="form-label">Password</label>
-                <input type="password" class="form-control mb-3" id="InputPassword">
+                <input type="password" name="si_password" class="form-control mb-3" id="InputPassword">
                     <a href="/FILES-Applicant Side/forgot_password.html" id="emailhelp" class="form-label">Forgot Password ?</a>
                 <button type="submit" class="btn btn-danger mt-4" value="Login">Login</button>
             <hr>    
@@ -55,7 +57,7 @@
                     <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"></path>
                     </svg>Continue with google</button>
 
-                <button class="text-start btn btn-white mt-4 border border-secondary" type="submit">
+                <button class="text-start btn btn-white mt-4 border border-secondary" type="button" onClick="window.location = '<?php echo $login_url; ?>'">
                   <!--svd of facebook-->
                   <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0,0,256,256">
                     <g fill="#0866ff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
