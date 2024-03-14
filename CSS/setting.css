@@ -44,11 +44,3 @@ body{
     transform: translateY(-50%);
     pointer-events: none;
 }
-
-.card-left{
-    margin-left: 269px;
-}
-
-.card-right{
-    margin-right: 259px;
-}

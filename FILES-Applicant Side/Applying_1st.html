@@ -13,23 +13,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../assets/css/atlantis.css">
+    <link href="../assets/css/atlantis.css" rel="stylesheet">
     <link href="../CSS/applying.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Applying Page</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
     <body>
      <!-- Japan job posting icon href-->
      <nav class="navbar navbar-expand-sm">
         <div class="container-fluid">
           <form class="">
-            <a class="navbar-brand font-RR text-white" href="#">
-              <img src="../assets/img/japanLogo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+            <a class="navbar-brand font-RR text-white" href="/FILES-Applicant Side/Landing_Page.html">
+              <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
                 </form>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
                     <a class="nav-link text-white" href="/FILES-Applicant Side/Landing_Page.html">Home</a>
                   </li>
@@ -44,14 +46,33 @@
                 </ul>
 
                 <form class="d-flex">
-                  <button class="btn btn-danger" type="submit">Register/Login</button>
-                  <a class="text-white nav-link" href="#">Recruiter Site</a>
+                  <div class="dropdown">
+                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <div class="avatar">
+                        <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
+                      </div>
+                      gen.test
+                    </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/FILES-Applicant Side/Settings.html">Settings</a>
+                    <a class="dropdown-item" href="/FILES-Applicant Side/Saved_jobs.html">Saved Jobs</a>
+                    <a class="dropdown-item" href="/FILES-Applicant Side/recommended_jobs.html">recommended Jobs</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                  </div>
+                  </div>
+                </form>
+
+                <form class="d-flex">
+                  <div>
+                    <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
+                  </div>
               </form>
+
             </div>
         </div>
       </nav>
 
-      <div class="container text-center pt-5">
+      <div class="container-fluid flex justify-content-center pt-5" style="width: 80%;">
         <div class="row">
           <div class="col" id="myDIV">
             <div class="progress-card">
@@ -66,11 +87,15 @@
 
             <div class="card">
                 <div class="card-body">
-                    <input type="checkbox" id="resume" name="resume" value="exsisting">
-                    <label for="resume">Select from your exsisting resume.</label>
+                  <div class="form-check row">
+                    <label class="form-radio-label col">
+                      <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                      <span class="form-radio-sign">Select from your existing resume</span>
+                    </label>
+                  </div>
                     <div class="dropdown">
                         <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
+                          Resume List
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">test</a>
@@ -83,15 +108,26 @@
 
             <div class="card">
                 <div class="card-body">
-                    <input type="checkbox" id="resume" name="resume" value="exsisting">
-                    <label for="resume">Upload a resume.</label>
+                  <div class="form-check row">
+                    <label class="form-radio-label col">
+                      <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                      <span class="form-radio-sign">Upload a Resume</span>
+                      <div class="form-group">
+                        <input type="file" class="form-control-file" id="upload_Resume">
+                      </div>
+                    </label>
+                  </div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-body">
-                    <input type="checkbox" id="resume" name="resume" value="exsisting">
-                    <label for="resume">Upload a resume.</label>
+                  <div class="form-check row">
+                    <label class="form-radio-label col">
+                      <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                      <span class="form-radio-sign">Apply without a Resume</span>
+                    </label>
+                  </div>
                 </div>
             </div>
 
@@ -99,48 +135,59 @@
 
             <div class="card">
                 <div class="card-body">
-                    <input type="checkbox" id="resume" name="resume" value="exsisting">
-                    <label for="resume">Upload a cover letter.</label>
+                  <div class="form-check row">
+                    <label class="form-radio-label col">
+                      <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                      <span class="form-radio-sign">Upload a cover letter</span>
+                      <div class="form-group">
+                        <input type="file" class="form-control-file" id="upload_CoverLetter">
+                      </div>
+                    </label>
+                  </div>
                 </div>
             </div>
 
             <div class="card">
                 <div class="card-body">
-                    <input type="checkbox" id="resume" name="resume" value="exsisting">
-                    <label for="resume">Write a cover letter.</label>
-                    <p class="card-subtitle text-muted">Introduce yourself briefly. 
-                        Explain why you're a good fit for this role by highlighting your relevant skills, 
-                        qualifications, and experience.</p>
-                    <textarea class="form-control" placeholder="Introduce Yourself." id="floatingTextarea"></textarea>
+                  <div class="form-check row">
+                    <label class="form-radio-label col">
+                      <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                      <span class="form-radio-sign">Write a cover letter</span>
+                    </label>
+                  </div>
+                    <p class="card-subtitle text-muted mb-3">
+                      Introduce yourself briefly. 
+                      Explain why you're a good fit for this role by highlighting your relevant skills, 
+                      qualifications, and experience.</p>
+                    <input type="text" class="form-control pb-5" id="summary" placeholder="text here">
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-body">
-                    <input type="checkbox" id="resume" name="resume" value="exsisting">
-                    <label for="resume">Apply without a cover letter.</label>
-                </div>
+              <div class="form-check row">
+                <label class="form-radio-label col">
+                  <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                  <span class="form-radio-sign">Apply without a cover letter</span>
+                </label>
+              </div>
             </div>
 
-            <button onclick="myFunction()" class="btn btn-danger">Continue<i class="fa fa-angle-right"></i></button>
+            <a href="/FILES-Applicant Side/Applying_2nd.html" onclick="" class="btn btn-danger mb-5">Continue <i class="fa fa-angle-right"></i></a>
         </div>
           <div class="col">
                 <h2>You are applying for...</h2>
 
-                    <div class="container-fluid card text-start">
+                    <div class="container-fluid card justify-content-start">
                         <div class="card-body">
                             <h3 class="card-title text-start">Software Engineer</h3>
                             <div class="container mt-4">
                               <p>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                                </svg>
-                                <span><i class="bi bi-geo-alt-fill"></i></span>Osaka, Japan
+                                <span><i class="fa fa-map-marker"></i></span> Osaka, Japan
                               </p>
                             </div>
                             <hr>
                             <h6>Job Summary</h6>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium tempore accusamus iste dicta sit. Eveniet sed cupiditate aut earum eaque aliquam ullam, iusto adipisci pariatur, ipsam facilis. Autem, dolor natus.</p>
+                            <p class="container flex justify-content-start card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium tempore accusamus iste dicta sit. Eveniet sed cupiditate aut earum eaque aliquam ullam, iusto adipisci pariatur, ipsam facilis. Autem, dolor natus.</p>
                             <h6>Qualifications</h6>
                             <ul>
                                 <li>
@@ -157,9 +204,10 @@
                     </div>
                 </div>
             </div>
+          </div>
 
     <!--bottom navbar-->
-    <footer class=" container p-2 navbar navbar-expand-sm">
+    <footer class=" container-fluid p-2 navbar navbar-expand-sm">
 
         <ul class="nav">
           <li class="nav-item">

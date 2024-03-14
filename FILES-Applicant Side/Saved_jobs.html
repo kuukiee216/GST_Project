@@ -9,25 +9,27 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="/CSS/saved_jobs.css" rel="stylesheet" >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="/assets/css/atlantis.css" rel="stylesheet">
+    <link href="/CSS/saved_jobs.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Saved Jobs</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
      <!-- Japan job posting icon href-->
      <nav class="navbar navbar-expand-sm">
       <div class="container-fluid">
         <form class="">
-          <a class="navbar-brand font-RR text-white" href="#">
-            <img src="/assets/img/japanLogo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+          <a class="navbar-brand font-RR text-white" href="/FILES-Applicant Side/Landing_Page.html">
+            <img src="/assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
           </form>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
                         <a class="nav-link text-white" href="/FILES-Applicant Side/Landing_Page.html">Home</a>
                       </li>
@@ -41,15 +43,14 @@
                       </li>
                     </ul>
 
-                  <form class="d-flex">
-                    <div>
-                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <i class="bi bi-person-fill"></i>
-                        </button>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="white" class="bi bi-person-fill" viewBox="0 0 16 16">
-                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-                            </svg>
-                        </button>
+                    <form class="d-flex">
+                        <div class="dropdown">
+                          <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar">
+                              <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
+                            </div>
+                            gen.test
+                          </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                           <a class="dropdown-item" href="/FILES-Applicant Side/Settings.html">Settings</a>
                           <a class="dropdown-item" href="/FILES-Applicant Side/Saved_jobs.html">Saved Jobs</a>
@@ -57,151 +58,429 @@
                           <a class="dropdown-item" href="#">Logout</a>
                         </div>
                       </div>
-
+                    </form>
+  
+                    <form class="d-flex">
                       <div>
-                        <a class="text-white nav-link" href="#">Recruiter Site</a>
+                        <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
                       </div>
+                  </form>
 
                 </div>
-              </form>
           </div>
       </div>
     </nav>
 
-    <div class="container" style="width: 70%;">
-        <h2>My Jobs</h2>
-        <span><i class="fa fa-bookmark"></i> Saved</span>
-        <hr style="height:5px;">
-        <div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <a href="/FILES-Applicant Side/Applying_1st.html" class="btn btn-danger m-3">Apply Now</a>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+    <div class="container flex justify-content-center">
+        <h2 class="mt-5">My Jobs</h2>
+        <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="pills-saved-tab-nobd" data-toggle="pill" href="#pills-saved-nobd" role="tab" aria-controls="pills-saved-nobd" aria-selected="true">
+                    <i class="fa fa-bookmark"></i> Saved</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pills-applied-tab-nobd" data-toggle="pill" href="#pills-applied-nobd" role="tab" aria-controls="pills-applied-nobd" aria-selected="false">
+                    <i class="fa fa-bookmark"></i> Applied</a>
+            </li>
+        </ul>
+        <div class="tab-content mb-3" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-saved-nobd" role="tabpanel" aria-labelledby="pills-home-tab-nobd">
+                <td>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Software Engineer</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 2 hours ago</p>
+                            </div>
+
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
+                    </th>
 
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <buttton class="btn btn-danger m-3">Apply Now</buttton>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Civil Engineer</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 9 hours ago</p>
+                            </div>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand2"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
+                    </th>
 
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <buttton class="btn btn-danger m-3">Apply Now</buttton>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Computer Engineer</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 8 hours ago</p>
+                            </div>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand3"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
+                    </th>
 
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <buttton class="btn btn-danger m-3">Apply Now</buttton>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Developer </h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 2 days ago</p>
+                            </div>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand4"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
+                    </th>
 
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <buttton class="btn btn-danger m-3">Apply Now</buttton>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Software Developer</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 2 days ago</p>
+                            </div>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand5"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
+                    </th>
+                </td>
+            </div>
+            <div class="tab-pane fade" id="pills-applied-nobd" role="tabpanel" aria-labelledby="pills-profile-tab-nobd">
+                <td>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Teacher</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 2 hours ago</p>
+                            </div>
 
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <buttton class="btn btn-danger m-3">Apply Now</buttton>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand6"><i class="fa fa-ellipsis-v"></i></a>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
+                    </th>
 
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <buttton class="btn btn-danger m-3">Apply Now</buttton>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Food Tech</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 10 hours ago</p>
+                            </div>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand7"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand7" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
+                    </th>
 
-                <li class="list-group-item">Software Engineer
-                    <p>Osaka, Japan</p>
-                    <p style="opacity: 50%; font-size:x-small">Posted 2 hours ago</p>
-                    <buttton class="btn btn-danger m-3">Apply Now</buttton>
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Engineer</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 53 secs ago</p>
+                            </div>
 
-                        <div class="dropdown">
-                            <button style="border:none;" type="button" data-toggle="dropdown" id="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Report Job</a>
-                                <a class="dropdown-item" href="#">Delete Job</a>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand8"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand8" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
-                </li>
-              </ul>
+                    </th>
+
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Baby mo Yiie</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 2 hours ago</p>
+                            </div>
+
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand9"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand9" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </th>
+
+                    <th>
+                        <div class="row">
+                            <div class="col">
+                                <h5>Full-Stack Developer</h5>
+                                <p>Osaka, Japan</p>
+                                <p class="text-muted">Posted 10 days ago</p>
+                            </div>
+
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            <div class="col"></div>
+                            
+                            <div class="col ">
+                                <a href="#" class="btn btn-danger">Apply Now</a>
+                                <!-- Button trigger modal -->
+                                <a class="m-3" type="button" data-toggle="modal" data-target="#expand10"><i class="fa fa-ellipsis-v"></i></a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="expand10" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Delete Job</button>
+                                                <button type="button" class="btn btn-outline-danger">Report Job</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </th>
+                </td>
+            </div>
         </div>
     </div>
 

@@ -17,19 +17,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Applying Page 3</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
     <body>
      <!-- Japan job posting icon href-->
      <nav class="navbar navbar-expand-sm">
         <div class="container-fluid">
           <form class="">
-            <a class="navbar-brand font-RR text-white" href="#">
-              <img src="../assets/img/japanLogo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+            <a class="navbar-brand font-RR text-white" href="/FILES-Applicant Side/Landing_Page.html">
+              <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
                 </form>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                       <a class="nav-link text-white" href="/FILES-Applicant Side/Landing_Page.html">Home</a>
                     </li>
@@ -43,20 +44,40 @@
                     </li>
                   </ul>
 
-                <form class="d-flex">
-                  <button class="btn btn-danger" type="submit">Register/Login</button>
-                  <a class="text-white nav-link" href="#">Recruiter Site</a>
-              </form>
+                  <form class="d-flex">
+                    <div class="dropdown">
+                      <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="avatar">
+                          <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
+                        </div>
+                        gen.test
+                      </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="/FILES-Applicant Side/Settings.html">Settings</a>
+                      <a class="dropdown-item" href="/FILES-Applicant Side/Saved_jobs.html">Saved Jobs</a>
+                      <a class="dropdown-item" href="/FILES-Applicant Side/recommended_jobs.html">recommended Jobs</a>
+                      <a class="dropdown-item" href="#">Logout</a>
+                    </div>
+                    </div>
+                  </form>
+
+                  <form class="d-flex">
+                    <div>
+                      <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
+                    </div>
+                </form>
+
             </div>
         </div>
       </nav>
 
-      <div class="container text-center pt-5">
+      <div class="container-fluid flex justify-content-center pt-5">
         <div class="row">
+
           <div class="col" id="myDIV">
             <div class="progress-card">
                 <div class="progress-status">
-                    <a href="#" class="text-danger fw-bold"> Cancel</a>
+                    <a href="/FILES-Applicant Side/Applying_2nd.html" class="text-danger fw-bold"> Back</a>
                 </div>
                 <div class="progress" style="height: 6px;">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="100%"></div>
@@ -69,14 +90,20 @@
                 <div class="card-body">
                   <div class="row row-cols-2 text-start">
             
-                    <div class="col">Name</div>
-                    <div class="col">Genesis P. Mañale Jr</div>
-                    <div class="col">Email Address</div>
-                    <div class="col">genesismarvinmanale12@gmail.com</div>
-                    <div class="col">Loction</div>
-                    <div class="col">Pagsanjan</div>
-                    <div class="col">Phone Number</div>
-                    <div class="col">09084746563</div>
+                    <div class="col">
+                        <div>Name</div>
+                        <div>Email Address</div>
+                        <div>Location</div>
+                        <div>Phone Number</div>
+                    </div>
+
+                    <div class="col">
+                        <div id="name">Genesis P. Mañale</div>
+                        <div id="email">genesismarvinmanale12@gmail.com</div>
+                        <div id="loc">Pagsanjan, Laguna</div>
+                        <div id="Pnum">+639084746563</div>
+                    </div>
+                    
 
                      <!-- Button trigger modal -->
                     <div class="mt-3">
@@ -120,7 +147,7 @@
                 <h6 class="text-start">Resume</h6>
             <div class="card">
                 <div class="card-body">
-                    <div class="col text-start">Manale_Resume.pdf</div>
+                    <div class="text-start">Manale_Resume.pdf</div>
 
                     <!-- Button trigger modal -->
                     <div class="mt-3">
@@ -139,7 +166,7 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <label>Name</label>
+                                    <label>Edit Resume</label>
                                   </div>
                                 
                                 <div class="modal-footer">
@@ -155,7 +182,7 @@
             <h6 class="text-start">Cover Letter</h6>
             <div class="card">
                 <div class="card-body">
-                    <div class="col text-start">You wrote a cover letter for this application</div>
+                    <div class="text-start">You wrote a cover letter for this application</div>
 
                     <!-- Button trigger modal -->
                     <div class="mt-3">
@@ -174,7 +201,8 @@
                                 </div>
 
                                 <div class="modal-body">
-                                    <label>Name</label>
+                                    <label>Edit Cover Letter</label>
+                                    <input type="text" class="form-control pb-5" id="summary" placeholder="text here">
                                   </div>
                                 
                                 <div class="modal-footer">
@@ -190,7 +218,7 @@
             <h6 class="text-start">Employer's Question</h6>
             <div class="card">
                 <div class="card-body">
-                    <div class="col text-start">You answered 5 out of 5 questions</div>
+                    <div class="text-start">You answered 5 out of 5 questions</div>
 
                     <!-- Button trigger modal -->
                     <div class="mt-3">
@@ -222,9 +250,9 @@
                 </div>
             </div>
 
-            <button onclick="swal()" type="submit" class="btn btn-danger">Continue<i class="fa fa-angle-right"></i></button>
-
+            <button onclick="swal()" type="submit" class="btn btn-danger mb-5">Continue <i class="fa fa-angle-right"></i></button>
         </div>
+
           <div class="col">
                 <h2>You are applying for...</h2>
 
@@ -258,9 +286,10 @@
                     </div>
                 </div>
             </div>
+        </div>
 
     <!--bottom navbar-->
-    <footer class=" container p-2 navbar navbar-expand-sm">
+    <footer class=" container-fluid p-2 navbar navbar-expand-sm">
 
         <ul class="nav">
           <li class="nav-item">
