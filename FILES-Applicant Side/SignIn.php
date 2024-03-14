@@ -31,7 +31,7 @@
     </nav>
         
         <div class="container-fluid">
-            <form class="mx-auto" action ="" method="POST">
+            <form class="mx-auto" action ="../log-in/SignIn_handler.php" method="POST">
                 <h1 class="text-center">Sign in</h1>
                     <div class="mb-3 mt-5">
                 <label for="InputEmail" class="form-label">Email Address</label>
