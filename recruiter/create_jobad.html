@@ -17,50 +17,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Create Job Ad</title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
      <!-- Japan job posting icon href-->
      <nav class="navbar navbar-expand-sm">
-        <div class="container-fluid">
-          <form class="">
-            <a class="navbar-brand font-RR text-white" href="/FILES-Applicant Side/Landing_Page.html">
-              <img src="../assets/img/japanLogo.png" alt="logo" style="width:80px;"> Japan jobs</a>
-                </form>
+      <div class="container-fluid">
+        <form class="">
+          <a class="navbar-brand font-RR text-white" href="/FILES-Recruiter Side/dashboard_recruiter.html">
+            <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+              </form>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="/FILES-Applicant Side/Landing_Page.html">Home</a>
-                  </li>
+              <ul class="navbar nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="/FILES-Recruiter Side/dashboard_recruiter.html">Home</a>
+                </li>
 
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Job Ads</a>
-                  </li>
-                </ul>
- 
-                <form class="d-flex">
-                    <div class="dropdown">
-                      <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <div class="avatar">
-                          <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
-                        </div>
-                        gen.test
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/FILES-Recruiter Side/dashboard_myaccount.html">My Account</a>
-                        <a class="dropdown-item" href="/FILES-Recruiter Side/dashboard_billing.html">My Billing</a>
-                        <a class="dropdown-item" href="#">Logout</a>
-                      </div>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Job Ads</a>
+                </li>
+              </ul>
+
+              <form class="d-flex">
+                <div class="dropdown">
+                  <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar">
+                      <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
                     </div>
-                </form>
-            </div>
-        </div>
-      </nav>
+                    gen.test
+                </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/FILES-Recruiter Side/dashboard_myaccount.html">My Account</a>
+                    <a class="dropdown-item" href="/FILES-Recruiter Side/dashboard_billing.html">My Billing</a>
+                    <a class="dropdown-item" href="#">Logout</a>
+                  </div>
+                </div>
+              </form>
+          </div>
+      </div>
+    </nav>
 
       
 
-    <div class="container flex justify-content-center mt-5">
+    <div class="container flex justify-content-center mt-5" style="width: 50%;">
 
         <div class="progress-card">
             <div class="progress-status">
@@ -77,34 +78,30 @@
         </div>
 
         <form>
+          <h2>Pay Details</h2>
+          <h4>Pay type</h4>
+          <div class="form-check row cols-4" aria-required="true">
 
-            <div class="form-group">
-                <h4 class="pb-3">Clasify your Roles</h4>
-                <h4>Role Information</h4>
-                <label for="exampleLocation" class="fw-bold">Location</label>
-                <div class="text-muted pb-3">enter a subsurb, city or region(e.g. Malate Manila)</div> 
-                <input type="text" class="form-control" id="exampleLocation" aria-describedby="nameHelp" placeholder=""> 
-                <h4 class="mt-3">Pay Details</h4>
-                <label for="exampleGivenName1" class="pt-3">Pay Type</label>
-                <div class="form-check row">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">Hourly Rate</span>
-                  </label>
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">Monthly Salary</span>
-                  </label>
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">Annual Salary</span>
-                  </label>
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">Annual plus commisson</span>
-                  </label>
-                </div>
-            </div>
+            <label class="form-radio-label col">
+                <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                <span class="form-radio-sign">Hourly Rate</span>
+            </label>
+
+            <label class="form-radio-label ml-3 col">
+                <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                <span class="form-radio-sign">Monthly Salary</span>
+            </label>
+
+            <label class="form-radio-label ml-3 col">
+                <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                <span class="form-radio-sign">Annual Salary</span>
+            </label>
+
+            <label class="form-radio-label ml-3 col">
+              <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+              <span class="form-radio-sign">Annual plus commission</span>
+          </label>
+          </div>
 
             <div class="form-group">
                 <label for="exampleFamilyName">Pay Range</label>
@@ -147,8 +144,8 @@
               </label>
             </div>
 
-            <div class="form-group mt-3">   
-              <a href="/FILES-Recruiter Side/create_jobad2.html"><button class="btn btn-danger" type="button">Continue</button></a>
+            <div class="form-group mt-3 mb-5">   
+              <a href="/FILES-Recruiter Side/create_jobad2.html"class="btn btn-danger" type="button">Continue</a>
               <button class="btn btn-outline-danger">Save Draft</button>
             </div>
             
