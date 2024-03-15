@@ -1,0 +1,73 @@
+<?php
+require_once 'db_config.php';
+$clsConnect = new dbConnection();
+$connection = $clsConnect->dbConnect();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
+function validate($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+if (isset($_POST['UserID']) && isset($_POST['Password'])) {
+    $Email = validate($_POST['UserID']);
+    $Password = validate($_POST['Password']);
+
+    if (empty($Email)) {
+        echo "2";
+        die();
+    } else if (empty($Password)) {
+        echo "3";
+        die();
+    }
+
+    try {
+        $sQryValidateAccount = "SELECT
+                    acc.AccountID,
+                    acc.Role,
+                    acc.UserID,
+                    acc.Password,
+                    acc.Status,
+                    ai.LastName,
+                    ai.FirstName
+                FROM
+                    tbl_account as acc
+                LEFT JOIN
+                    tbl_applicantinfo AS ai ON ai.AccountID = acc.AccountID
+                WHERE
+                    UserID = ?";
+        $stmtValidateAccount = $connection->prepare($sQryValidateAccount);
+        $stmtValidateAccount->bindValue(1, $Email, PDO::PARAM_STR);
+        $stmtValidateAccount->execute();
+
+        if ($stmtValidateAccount->rowCount() == 1) {
+            $rowAccount = $stmtValidateAccount->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($Password, $rowAccount['Password'])) {
+                $_SESSION['AccountID'] = $rowAccount['AccountID'];
+                $_SESSION['Role'] = $rowAccount['Role'];
+
+                if ($rowAccount['Role'] == 0) {
+                    echo "4";
+                } else if ($rowAccount['Role'] == 1 || $rowAccount['Role'] == 2) {
+                    echo "5";
+                } else {
+                    echo "6";
+                }
+            } else {
+                echo "9";
+            }
+        } else {
+            echo "7";
+        }
+    } catch (PDOException $err) {
+        echo "8";
+    }
+} else {
+    echo "1";
+}
