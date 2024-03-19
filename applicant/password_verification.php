@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['code'])) {
+    header("Location: login.php");
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,16 +38,16 @@
     </nav>
 
         <div class="container-fluid">
-            <form class="mx-auto">
+            <form class="mx-auto" id="verificationForm">
                 <h1 class="text-center">Forgot Password</h1>
                     <div class="mb-3 mt-5">
-                        <div for="InputOTP" class="form-label">Enter the Verification Code</div>
-                            <input type="text" class="form-control" id="InputEmail" aria-describedby="emailhelp">
+                        <div for="code" class="form-label">Enter the Verification Code</div>
+                            <input type="text" class="form-control" id="code" name="code" aria-describedby="emailhelp">
                                 <a href="#" id="emailhelp" class="text-secondary">Resend Verification Code</a>
 
         <div class="mb-3">
-                        <a href="/FILES-Applicant Side/Password_Reset.html"><button type="button" class="btn btn-danger mt-4">Confirm</button></a>
-                        <a href="/FILES-Applicant Side/forgot_password.html"><button type="button" class="btn btn-outline-danger mt-4">Back</button></a>
+                        <button type="button" class="btn btn-danger mt-4" id="btnVerify" onclick="Verification('verificationForm');">Confirm</button>
+                        <a href="forgot_password.php"><button type="button" class="btn btn-outline-danger mt-4">Back</button></a>
         </div>
         </div>
         </form>
@@ -67,7 +74,6 @@
           </li>
           <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
         </ul>
-      </div>
     </footer>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -131,5 +137,219 @@
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+
+    <script>
+    /*
+     * Preloader
+     */
+    const preloader = document.querySelector('#preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.remove();
+        });
+    }
+
+    function Verification(formID) {
+
+        $('#btnVerify').addClass('is-loading');
+        $('#btnVerify').prop('disabled', true);
+        disableForm(formID);
+
+        var code = $("input[name=code]").val();
+
+        console.log('code',code);
+        $.ajax({
+            type: "POST",
+            dataType: "html",
+            data: {
+                code: code,
+            },
+            url: "../PHPFiles/passResetCode.php",
+            success: function (data) {
+                if (data == "0") {
+                    swal({
+                        title: 'Success!',
+                        text: "You can now reset your password",
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        window.location.href = "Password_Reset.php";
+                    });
+                } else if (data == "1") {
+                    swal({
+                        title: 'Expired Code!',
+                        text: "Please don`t exit while verifying your reset code",
+                        icon: 'error',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnVerify').removeClass('is-loading');
+                        $('#btnVerify').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                } else if (data == "2") {
+                    swal({
+                        title: 'Mismatch code!',
+                        text: "Please enter the code sent to your email.",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnVerify').removeClass('is-loading');
+                        $('#btnVerify').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                } else if (data == "3") {
+                    swal({
+                        title: 'Invalid code!',
+                        text: "Please enter the code sent to your email.",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnVerify').removeClass('is-loading');
+                        $('#btnVerify').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                } else if (data == "4") {
+                    swal({
+                        title: 'Failed to Send Email!',
+                        text: "Connection error on database. Please try again!",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnVerify').removeClass('is-loading');
+                        $('#btnVerify').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                }else if (data == "5") {
+                    swal({
+                        title: 'Failed to Send Email!',
+                        text: "Failed to send code. Please try again!",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnVerify').removeClass('is-loading');
+                        $('#btnVerify').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                } else if (data == "6") {
+                    swal({
+                        title: 'Error Finding Email!',
+                        text: "Email doesn`t exist!",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnVerify').removeClass('is-loading');
+                        $('#btnVerify').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                }
+
+                else {
+                    swal({
+                        title: 'An Error Occurred!',
+                        text: "Something went wrong while trying to send the verification email. Please try again.",
+                        icon: 'error',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnVerify').removeClass('is-loading');
+                        $('#btnVerify').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
+                    icon: 'error',
+                    buttons: {
+                        confirm: {
+                            text: 'Okay',
+                            className: 'btn btn-success'
+                        }
+                    }
+                }).then(function () {
+                    $('#btnVerify').removeClass('is-loading');
+                    $('#btnVerify').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+        });
+    }
+
+    $("#InputEmail").keypress(function (event) {
+        if (event.keyCode === 13) {
+            $('#btnVerify').click();
+        }
+    });
+
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+    function disableForm(formID) {
+        var form = document.getElementById(formID);
+        var elements = form.elements;
+        for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
+                elements[elementCounter].disabled = true;
+            } else {
+                continue;
+            }
+        }
+    }
+
+    function enableForm(formID) {
+        var form = document.getElementById(formID);
+        var elements = form.elements;
+        for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
+                elements[elementCounter].disabled = false;
+            } else {
+                continue;
+            }
+        }
+    }
+</script>
   </body>
 </html>
