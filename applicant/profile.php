@@ -167,19 +167,6 @@
               <!-- Button trigger modal -->
               <a href="../applicant/create_resume.html" class="btn btn-danger mt-1">Create Resume</a>
 
-              <!-- Large modal data-toggle="modal" data-target="#CreateResume"
-              <div class="modal fade bd-example-modal-lg" id="CreateResume" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </div>
-              </div> -->
-
             </div>
           </div>
         </div>

@@ -33,6 +33,7 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
                     acc.Role,
                     acc.UserID,
                     acc.Password,
+                    acc.Token,
                     acc.Status,
                     acc.Token,
                     ai.LastName,

@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <!-- Bootstrap CSS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900" media="all">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -53,13 +53,15 @@
         <div class="mb-3">
             <div for="lname">Last Name</div>
                 <input type="text" class="form-control" id="lname" placeholder="lastname" name="lname" required>
-                  <div class="invalid-feedback">Please fill out this field.</div>  
+                  <div class="invalid-feedback">Please fill out this field.</div>
         </div>
 
         <div for="phone">Phone Number:</div><br>
         <input type="tel" class="form-control" id="phone" name="phone" required><br>
+        <input type="tel" class="form-control" id="phone" name="phone" required><br>
         <div for="country">Country:</div><br>
         <div class="dropdown">
+          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"name="country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"name="country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Select Country
           </button>
@@ -69,7 +71,7 @@
             <a class="dropdown-item" href="#">test test test</a>
           </div>
         </div>
-  
+
         <div class="container">
           <button class="btn btn-danger mt-4" type="submit" onclick="AccountSubmit('formAccountDetails');"> Create Account </button>
         </div>
@@ -79,7 +81,7 @@
 
     <!--bottom navbar-->
     <footer class="p-2 navbar">
-      
+
       <ul class="nav">
           <li class="nav-item">
             <a class="form-label nav-link text-white" href="#">Privacy</a>
