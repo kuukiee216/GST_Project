@@ -16,6 +16,19 @@
     <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+      WebFont.load({
+        google: {"families":["Lato:300,400,700,900"]},
+        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+        active: function() {
+          sessionStorage.fonts = true;
+        }
+      });
+    </script>
+
     <title>Create Job Ad Page 2</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
   </head>
@@ -76,52 +89,81 @@
                 <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="50%"></div>
             </div>
         </div>
+    </div>
 
         <form>
 
-            <div class="row mt-5">
-                <div class="col">
-                    <div class="card pb-5">
-                        <h5 class="card-header">Basic</h5>
-                        <div class="card-body">
-                            <h5 class="card-title">7,000</h5>
-                            <h6 class="card-subtitle text-muted mb-4">Including VAT</h6>
-                            <p class="card-text pb-4">Find greatcandidate with our basic ad.</p>
-                            <ul>
-                                <li>30 days listing</li>
-                                <li>Good visibility to candidates</li>
-                                <li>Get candidates fast</li>
-                                <li>Credit to access our talent candidates</li>
-                                <li>Access to analytics and reporting</li>
-                                <li>Include your company logo</li>
-                            </ul>
-                            <button class="btn btn-danger container d-flex justify-content-center" type="submit">Select</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card">
-                        <h5 class="card-header">Basic</h5>
-                        <div class="card-body">
-                            <h5 class="card-title">7,000</h5>
-                            <h6 class="card-subtitle text-muted mb-3">Including VAT</h6>
-                            <p class="card-text mb-4">Find greatcandidate with our basic ad.</p>
-                            <ul>
-                                <li>30 days listing</li>
-                                <li>Good visibility to candidates</li>
-                                <li>Get candidates fast</li>
-                                <li>Credit to access our talent candidates</li>
-                                <li>Add company image to promote your brand</li>
-                                <li>Include 3 key selling points to attract candidates</li>
-                                <li>Priority listing in search</li>
-                            </ul>
-                            <button class="btn btn-danger container d-flex justify-content-center" type="submit">Select</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+          <div class="row justify-content-center align-items-center mb-5">
+						<div class="col-md-3 pl-md-0">
+							<div class="card-pricing2 card-success">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Standard</h3>
+									<span class="sub-title">Lorem ipsum</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">10.<span>99</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>50GB Disk Space</li>
+									<li>50 Email Accounts</li>
+									<li>50GB Monthly Bandwidth</li>
+									<li class="disable">10 Subdomains</li>
+									<li class="disable">15 Domains</li>
+								</ul>
+								<a href="#" class="btn btn-success btn-border btn-lg w-75 fw-bold mb-3">Select</a>
+							</div>
+						</div>
+						<div class="col-md-3 pl-md-0 pr-md-0">
+							<div class="card-pricing2 card-primary">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Business</h3>
+									<span class="sub-title">Lorem ipsum</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">20.<span>99</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>60GB Disk Space</li>
+									<li>60 Email Accounts</li>
+									<li>60GB Monthly Bandwidth</li>
+									<li>15 Subdomains</li>
+									<li class="disable">20 Domains</li>
+								</ul>
+								<a href="#" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Select</a>
+							</div>
+						</div>
+						<div class="col-md-3 pr-md-0">
+							<div class="card-pricing2 card-secondary">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Premium</h3>
+									<span class="sub-title">Lorem ipsum</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">30.<span>99</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>70GB Disk Space</li>
+									<li>70 Email Accounts</li>
+									<li>70GB Monthly Bandwidth</li>
+									<li>20 Subdomains</li>
+									<li>25 Domains</li>
+								</ul>
+								<a href="#" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Select</a>
+							</div>
+						</div>
+					</div>
 
             <div class="card container justify-content-center" style="width: 85%;">
                 <div class="card-body">
