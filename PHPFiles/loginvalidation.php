@@ -33,6 +33,7 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
                     acc.Role,
                     acc.UserID,
                     acc.Password,
+                    acc.Token,
                     acc.Status,
                     ai.LastName,
                     ai.FirstName
@@ -49,10 +50,10 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
         if ($stmtValidateAccount->rowCount() == 1) {
             $rowAccount = $stmtValidateAccount->fetch(PDO::FETCH_ASSOC);
             if (password_verify($Password, $rowAccount['Password'])) {
-                $_SESSION['AccountID'] = $rowAccount['AccountID'];
-                $_SESSION['Role'] = $rowAccount['Role'];
-
                 if ($rowAccount['Role'] == 0) {
+                    $_SESSION['AccountID'] = $rowAccount['AccountID'];
+                    $_SESSION['UserID'] = $rowAccount['UserID'];
+                    $_SESSION['Token'] = $rowAccount['Token'];
                     echo "4";
                 } else if ($rowAccount['Role'] == 1 || $rowAccount['Role'] == 2) {
                     echo "5";

@@ -301,7 +301,7 @@
                                 }
                             }
                         }).then(function(){
-                            window.location.href = "login.php";
+                            window.location.href = "thank_you.html";
                         });
                     }
 					else if(data == "1"){

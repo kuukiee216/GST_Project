@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <!-- Bootstrap CSS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900" media="all">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,9 +28,9 @@
         <img src="/assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan Jobs</a>
       </div>
     </nav>
-        
+
+    <form class="mx-auto was-validated" name="formAccountDetails" id="formAccountDetails">
         <div class="container flex justify-content-center">
-            <form class="mx-auto was-validated">
               <h2 class="mb-3">Your Details</h2>
                 <div for="email">Email Address:</div><br>
                     <div class="mb-3">
@@ -45,14 +45,14 @@
         <div class="mb-3">
             <div for="lname">Last Name</div>
                 <input type="text" class="form-control" id="lname" placeholder="lastname" name="lname" required>
-                  <div class="invalid-feedback">Please fill out this field.</div>  
+                  <div class="invalid-feedback">Please fill out this field.</div>
         </div>
 
         <div for="phone">Phone Number:</div><br>
-        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]+" value="+63" required><br>
+        <input type="tel" class="form-control" id="phone" name="phone" required><br>
         <div for="country">Country:</div><br>
         <div class="dropdown">
-          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"name="country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Select Country
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -61,16 +61,17 @@
             <a class="dropdown-item" href="#">test test test</a>
           </div>
         </div>
-  
+
         <div class="container">
-          <button class="btn btn-danger mt-4" type="submit">Create Account</button>
+          <button class="btn btn-danger mt-4" type="button" id="btnDone" onclick="AccountSubmit('formAccountDetails');"> Create Account </button>
         </div>
 
-    </div>
+      </div>
+    </form>
 
     <!--bottom navbar-->
     <footer class="p-2 navbar">
-      
+
       <ul class="nav">
           <li class="nav-item">
             <a class="form-label nav-link text-white" href="#">Privacy</a>
@@ -145,5 +146,193 @@
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+
+    <!-- php functions -->
+    <script>
+      function AccountSubmit(formID){
+
+        var UserEmail = $("input[name=email]").val();
+        var UserFname = $("input[name=fname]").val();
+        var UserLname = $("input[name=lname]").val();
+        var UserPhone = $("input[name=phone]").val();
+        var UserCountry = "test";
+
+        $.ajax({
+          type: "POST",
+          dataType: "html",
+          data: {
+            UserEmail: UserEmail,
+            UserFname: UserFname,
+            UserLname: UserLname,
+            UserPhone: UserPhone,
+            UserCountry: UserCountry
+          },
+          url: "../PHPFiles/applicant_info_save.php",
+          success: function(data){
+            alert("test : " + data);
+            if(data == "0"){
+              $('#btnDone').removeClass('is-loading');
+              $('#btnDone').prop('disabled', false);
+              enableForm(formID);
+              location.href = "applicant_profile.html";
+            }
+            else if(data == "1"){
+              swal({
+                title: 'An Error Occurred!',
+                text: "Something went wrong while trying to login. Please try again.",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "2"){
+              swal({
+                title: 'Email Missing!',
+                text: "Please Enter Email",
+                icon: 'warning',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "3"){
+              swal({
+                title: 'First Name Missing!',
+                text: "Please Enter your First Name.",
+                icon: 'warning',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }else if(data == "4"){
+              swal({
+                title: 'Last Name Missing!',
+                text: "Please Enter your Last Name",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "5"){
+              swal({
+                title: 'Phone Number Missing!',
+                text: "Please Enter your Phone Number",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "6"){
+              swal({
+                title: 'What Country is this?',
+                text: "What Country is this?",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "7"){
+              swal({
+                title: 'PDO Exception',
+                text: "PDO Exception",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else{
+              swal({
+                title: 'An Error Occurred!',
+                text: "Something went wrong while trying to login. Please try again.",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+          },
+          error: function(xhr, status, error){
+            swal({
+              title: 'Failed to Connect to Server!',
+              text: "Something went wrong while trying to connect to the server. Please",
+              icon: 'error',
+              buttons : {
+                confirm: {
+                  text : 'Okay',
+                  className : 'btn btn-success'
+                }
+              }
+            }).then(function(){
+              $('#btnDone').removeClass('is-loading');
+                $('#btnDone').prop('disabled', false);
+                enableForm(formID);
+            });
+          }
+        });
+      }
+
+    </script>
+
   </body>
 </html>

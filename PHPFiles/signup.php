@@ -4,8 +4,6 @@ $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 SESSION_START();
 ERROR_REPORTING(0);
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 require_once 'SMTP.php';
 $sendEmail = new SMTPMail();
@@ -82,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $recipient = $Email;
         $subject = "Email Verification";
-        $verificationLink = "http://localhost/GST_Project/applicant/thank_you.php?Token=$Token";
+        $verificationLink = "http://localhost/GST_Project/applicant/almost_done.php?Token=$Token";
         $body = "Click <a href='$verificationLink' id='verificationLink'>here</a> to verify your account.";
         if ($sendEmail->sendMail($recipient, $subject, $body)) {
             echo "0";

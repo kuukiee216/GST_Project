@@ -1,7 +1,7 @@
 <?PHP
-    SESSION_START();
-    SESSION_UNSET();
-    SESSION_DESTROY();
-    header ("Location: accounts.php");
-    exit();
-?>
+SESSION_START();
+SESSION_UNSET();
+SESSION_DESTROY();
+header("Location: login.php");
+
+exit();
