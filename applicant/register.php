@@ -289,6 +289,7 @@
 				},
 				url: "../PHPFiles/signup.php",
 				success: function(data){
+					alert(data);
                     if(data == "0"){
                         swal({
                             title: 'Success!',
@@ -301,7 +302,7 @@
                                 }
                             }
                         }).then(function(){
-                            window.location.href = "login.php";
+                            window.location.href = "thank_you.html";
                         });
                     }
 					else if(data == "1"){
@@ -342,6 +343,22 @@
 						swal({
 							title: 'Empty Password!',
 							text: "Please enter your password and try again.",
+							icon: 'warning',
+							buttons : {
+								confirm: {
+									text : 'Okay',
+									className : 'btn btn-success'
+								}
+							}
+						}).then(function(){
+							$('#btnRegister').removeClass('is-loading');
+							$('#btnRegister').prop('disabled', false);
+							enableForm(formID);
+						});
+					}else if(data == "5"){
+						swal({
+							title: 'Failed to Send Email!',
+							text: "Something went wrong while trying to send the confirmation email. Please try again.",
 							icon: 'warning',
 							buttons : {
 								confirm: {

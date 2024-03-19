@@ -1,3 +1,11 @@
+<!-- Sessions -->
+<?php
+    // SESSION_START();
+
+    // if($_SESSION['Token'] == NULL){
+    //   header("Location: applicant_profile.php");
+    // }
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,9 +36,9 @@
         <img src="/assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan Jobs</a>
       </div>
     </nav>
-        
+
+    <form class="mx-auto was-validated" name="formAccountDetails" id="formAccoutnDetails">
         <div class="container flex justify-content-center">
-            <form class="mx-auto was-validated">
               <h2 class="mb-3">Your Details</h2>
                 <div for="email">Email Address:</div><br>
                     <div class="mb-3">
@@ -49,10 +57,10 @@
         </div>
 
         <div for="phone">Phone Number:</div><br>
-        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]+" value="+63" required><br>
+        <input type="tel" class="form-control" id="phone" name="phone" required><br>
         <div for="country">Country:</div><br>
         <div class="dropdown">
-          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"name="country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Select Country
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -63,10 +71,11 @@
         </div>
   
         <div class="container">
-          <button class="btn btn-danger mt-4" type="submit">Create Account</button>
+          <button class="btn btn-danger mt-4" type="submit" onclick="AccountSubmit('formAccountDetails');"> Create Account </button>
         </div>
-
-    </div>
+    
+      </div>
+    </form>
 
     <!--bottom navbar-->
     <footer class="p-2 navbar">
@@ -145,5 +154,225 @@
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+
+    <!-- php functions -->
+    <script>
+      function AccountSubmit(formID){
+
+        /* - email
+          - fname
+          - lname
+          - phone*/
+
+        var UserEmail = $("input[name=email]").val();
+        var UserFname = $("input[name=fname]").val();
+        var UserLname = $("input[name=lname]").val();
+        var UserPhone = $("input[name=phone]").val();
+        var UserCountry = "test";
+
+        
+        $.ajax({
+          type: "POST",
+          dataType: "html",
+          data: {
+            UserEmail: UserEmail,
+            UserFname: UserFname,
+            UserLname: UserLname,
+            UserPhone: UserPhone,
+            UserCountry: UserCountry 
+          },
+          url: "../PHPFiles/applicant_info_save.php",
+          success: function(data){
+            alert("test : " + data);
+            if(data == "0"){
+              // $('#btnLogin').removeClass('is-loading');
+              // $('#btnLogin').prop('disabled', false);
+              // enableForm(formID);
+              location.href = "applicant_profile.php";
+            }
+            else if(data == "1"){
+              swal({
+                title: 'An Error Occurred!',
+                text: "Something went wrong while trying to login. Please try again.",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "2"){
+              swal({
+                title: 'Email Missing!',
+                text: "Please Enter Email",
+                icon: 'warning',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "3"){
+              swal({
+                title: 'First Name Missing!',
+                text: "Please Enter your First Name.",
+                icon: 'warning',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }else if(data == "4"){
+              swal({
+                title: 'Last Name Missing!',
+                text: "Please Enter your Last Name",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "5"){
+              swal({
+                title: 'Phone Number Missing!',
+                text: "Please Enter your Phone Number",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "6"){
+              swal({
+                title: 'What Country is this?',
+                text: "What Country is this?",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else if(data == "7"){
+              swal({
+                title: 'PDO Exception',
+                text: "PDO Exception",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+            else{
+              swal({
+                title: 'An Error Occurred!',
+                text: "Something went wrong while trying to login. Please try again.",
+                icon: 'error',
+                buttons : {
+                  confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                  }
+                }
+              }).then(function(){
+                $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+              });
+            }
+          },
+          error: function(xhr, status, error){
+            swal({
+              title: 'Failed to Connect to Server!',
+              text: "Something went wrong while trying to connect to the server. Please",
+              icon: 'error',
+              buttons : {
+                confirm: {
+                  text : 'Okay',
+                  className : 'btn btn-success'
+                }
+              }
+            }).then(function(){
+              $('#btnLogin').removeClass('is-loading');
+                $('#btnLogin').prop('disabled', false);
+                enableForm(formID);
+            });
+          }
+        }); 
+      }
+
+      function disableForm(formID){
+			var form = document.getElementById(formID);
+			var elements = form.elements;
+			for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+				if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+					elements[elementCounter].disabled = true;
+				}
+				else{
+					continue;
+				}
+			}
+		}
+		function enableForm(formID){
+			var form = document.getElementById(formID);
+			var elements = form.elements;
+			for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+
+				if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+					elements[elementCounter].disabled = false;
+				}
+				else{
+					continue;
+				}
+			}
+		}
+
+    </script>
+
   </body>
 </html>

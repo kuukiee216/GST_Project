@@ -1,3 +1,12 @@
+<!-- Sessions -->
+<?php
+    SESSION_START();
+
+    if(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0){
+      header("Location: applicant_profile.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -229,7 +238,7 @@
                         $('#btnLogin').prop('disabled', false);
                         enableForm(formID);
 
-                        location.href = "almost_done.php";
+                        location.href = "applicant_profile.php";
 					}
 					else if(data == "1"){
 						swal({
@@ -283,7 +292,7 @@
 						});
 					}
 					else if(data == "4"){
-						location.href = 'almost_done.php';
+						location.href = "applicant_profile.php";
 					}
 					else if(data == "5"){
 						location.href = './admin/Dashoard.php';

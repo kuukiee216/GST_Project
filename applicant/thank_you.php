@@ -24,7 +24,7 @@ if ($connection) {
             }
 
             if (time() <= $expirationTime) {
-                $stmt = $connection->prepare("UPDATE tbl_account SET Status = 1, Token = NULL WHERE Token = ?");
+                $stmt = $connection->prepare("UPDATE tbl_account SET Status = 1 WHERE Token = ?");
                 $stmt->bindValue(1, $token, PDO::PARAM_STR);
                 $stmt->execute();
 
