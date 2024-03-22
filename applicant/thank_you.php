@@ -55,7 +55,7 @@ if ($connection) {
                       <nav class="navbar navbar-expand-sm">
                         <div class="container-fluid">
                           <a class="navbar-brand font-RR text-white" href="#">
-                          <img src="/assets/img/japanLogo.png" alt="logo" style="width:80px;"> Japan Jobs</a>
+                          <img src="../assets/img/japanLogo.png" alt="logo" style="width:80px;"> Japan Jobs</a>
                         </div>
                       </nav>
 

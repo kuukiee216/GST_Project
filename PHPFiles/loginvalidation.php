@@ -56,7 +56,6 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
                     $_SESSION['Role'] = $rowAccount['Role'];
                     $_SESSION['UserID'] = $rowAccount['UserID'];
                     $_SESSION['Token'] = $rowAccount['Token'];  
-
                     echo "0";
 
                 } else if ($rowAccount['Role'] == 1 || $rowAccount['Role'] == 2) {

@@ -1,14 +1,20 @@
 <!-- Sessions -->
 <?php
-    SESSION_START();
+ SESSION_START();
 
-    if(!(isset($_SESSION['AccountID']) && isset($_SESSION['Role']))){
-        if(!$_SESSION['Token'] == NULL){
-          header("Location: almost_done.php");
-        }else{
-          header ("Location: ../PHPFiles/Applicant/logout.php");
-      }
-    }
+$landing_page = "../applicant/Landing_Page.html";
+
+ if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0)){
+
+     header ("Location: ../PHPFiles/Applicant/logout.php");
+ }else{
+     if($_SESSION['Token'] != NULL){
+       $Token = $_SESSION['Token'];
+       header("Location: almost_done.php?Token=$Token");
+     }else{
+      $landing_page = "../applicant/applicant_profile.php";
+     }
+ }
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +53,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="../applicant/Landing_Page.html">Home</a>
+                        <a class="nav-link text-white" href=<?php  echo $landing_page?>>Home</a>
                       </li>
 
                       <li class="nav-item">
@@ -555,7 +561,7 @@
       $(document).ready(function(){ 
 
         fillProfileInfo();
-fa
+
       });
    </script>
    

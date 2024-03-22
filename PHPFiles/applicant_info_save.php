@@ -12,6 +12,18 @@ function validate($data)
     return $data;
 }
 
+function validatePhoneNumber($phoneNumber) {
+
+    $pattern = '/^\+?\d{1,3}?[- .]?\(?\d{1,4}?\)?[- .]?\d{1,4}[- .]?\d{1,4}$/';
+
+    if (preg_match($pattern, $phoneNumber)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 if (isset($_POST['UserEmail']) && isset($_POST['UserFname']) && isset($_POST['UserLname']) && isset($_POST['UserPhone']) && isset($_POST['UserCountry'])) {
 
         $Email = validate($_POST['UserEmail']);
@@ -30,7 +42,7 @@ if (isset($_POST['UserEmail']) && isset($_POST['UserFname']) && isset($_POST['Us
             echo "4";
             die();
         } else if (empty($Phone)) {
-            echo "5";
+            echo "5";   
             die();
         } else if (empty($Country)) {
             echo "6";
@@ -52,10 +64,11 @@ if (isset($_POST['UserEmail']) && isset($_POST['UserFname']) && isset($_POST['Us
             $stmtApplicantInfo->execute();
 
         $sQryUpdateToken = "UPDATE tbl_account SET Token = NULL WHERE UserID = :email;";
-                $stmtUpdateToken = $connection->prepare($sQryApplicantInfo);
+                $stmtUpdateToken = $connection->prepare($sQryUpdateToken);
                 $stmtUpdateToken->bindParam(":email", $Email, PDO::PARAM_STR);
         
                 $stmtUpdateToken->execute();
+                // echo "gumana dito";
 
         $sQryGetSessionInfo = "SELECT
                     acc.AccountID,
@@ -65,7 +78,7 @@ if (isset($_POST['UserEmail']) && isset($_POST['UserFname']) && isset($_POST['Us
                     tbl_account as acc
                 WHERE
                     UserID = ?";
-        $stmtSetSessionInfo = $connection->prepare(GetSessionInfo);
+        $stmtSetSessionInfo = $connection->prepare($sQryGetSessionInfo);
         $stmtSetSessionInfo->bindValue(1, $Email, PDO::PARAM_STR);
         $stmtSetSessionInfo->execute();
         
@@ -74,8 +87,10 @@ if (isset($_POST['UserEmail']) && isset($_POST['UserFname']) && isset($_POST['Us
                     $_SESSION['AccountID'] = $rowAccount['AccountID'];
                     $_SESSION['Role'] = $rowAccount['Role'];
                     $_SESSION['Token'] = $rowAccount['Token'];
+                    echo $_SESSION['AccountID']. $_SESSION['Role']. $_SESSION['Token'] ;
         }
-        echo "0";
+        
+        
 
         $connection->commit();
         

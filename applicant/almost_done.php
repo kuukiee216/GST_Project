@@ -1,10 +1,10 @@
 <!-- Sessions -->
 <?php
     // SESSION_START();
-
-    // if($_SESSION['Token'] == NULL){
-    //   header("Location: applicant_profile.php");
-    // }
+  
+    if (isset($_GET['Token'])) 
+      $token_value = $_GET['Token'];
+    
 ?>
 <!doctype html>
 <html lang="en">
@@ -20,20 +20,20 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="/assets/css/atlantis.css" rel="stylesheet">
+   <link href="../assets/css/atlantis.css" rel="stylesheet">
    <link href="/CSS/almost_done.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Almost Done</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
   </head>
 
   <body>
     <!-- Japan job posting icon href-->
     <nav class="navbar navbar-expand-sm">
       <div class="container-fluid">
-        <a class="navbar-brand font-RR text-white" href="/FILES-Applicant Side/Landing_Page.html">
-        <img src="/assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan Jobs</a>
+        <a class="navbar-brand font-RR text-white" href="../applicant/Landing_Page.html">
+        <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan Jobs</a>
       </div>
     </nav>
 
@@ -53,27 +53,23 @@
         <div class="mb-3">
             <div for="lname">Last Name</div>
                 <input type="text" class="form-control" id="lname" placeholder="lastname" name="lname" required>
-                  <div class="invalid-feedback">Please fill out this field.</div>
+              <div class="invalid-feedback">Please fill out this field.</div>
         </div>
 
         <div for="phone">Phone Number:</div><br>
-        <input type="tel" class="form-control" id="phone" name="phone" required><br>
-        <input type="tel" class="form-control" id="phone" name="phone" required><br>
+          <input type="tel" class="form-control" id="phone" name="phone" required><br>
         <div for="country">Country:</div><br>
+
         <div class="dropdown">
-          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"name="country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"name="country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Select Country
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">test</a>
-            <a class="dropdown-item" href="#">test test</a>
-            <a class="dropdown-item" href="#">test test test</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
           </div>
         </div>
 
         <div class="container">
-          <button class="btn btn-danger mt-4" type="submit" onclick="AccountSubmit('formAccountDetails');"> Create Account </button>
+          <button class="btn btn-danger mt-4" id="btnSubmit" type="button"> Create Account </button>
         </div>
     
       </div>
@@ -158,222 +154,25 @@
     <script src="../assets/js/atlantis.min.js"></script>
 
     <!-- php functions -->
+    <script src="../src/RegistrationHandler.js"></script>
+    
     <script>
-      function AccountSubmit(formID){
-
-        /* - email
-          - fname
-          - lname
-          - phone*/
-
-        var UserEmail = $("input[name=email]").val();
-        var UserFname = $("input[name=fname]").val();
-        var UserLname = $("input[name=lname]").val();
-        var UserPhone = $("input[name=phone]").val();
-        var UserCountry = "test";
-
+      $(document).ready(function(){ 
+        getCountries();
         
-        $.ajax({
-          type: "POST",
-          dataType: "html",
-          data: {
-            UserEmail: UserEmail,
-            UserFname: UserFname,
-            UserLname: UserLname,
-            UserPhone: UserPhone,
-            UserCountry: UserCountry 
-          },
-          url: "../PHPFiles/applicant_info_save.php",
-          success: function(data){
-            alert("test : " + data);
-            if(data == "0"){
-              // $('#btnLogin').removeClass('is-loading');
-              // $('#btnLogin').prop('disabled', false);
-              // enableForm(formID);
-              location.href = "applicant_profile.php";
-            }
-            else if(data == "1"){
-              swal({
-                title: 'An Error Occurred!',
-                text: "Something went wrong while trying to login. Please try again.",
-                icon: 'error',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }
-            else if(data == "2"){
-              swal({
-                title: 'Email Missing!',
-                text: "Please Enter Email",
-                icon: 'warning',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }
-            else if(data == "3"){
-              swal({
-                title: 'First Name Missing!',
-                text: "Please Enter your First Name.",
-                icon: 'warning',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }else if(data == "4"){
-              swal({
-                title: 'Last Name Missing!',
-                text: "Please Enter your Last Name",
-                icon: 'error',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }
-            else if(data == "5"){
-              swal({
-                title: 'Phone Number Missing!',
-                text: "Please Enter your Phone Number",
-                icon: 'error',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }
-            else if(data == "6"){
-              swal({
-                title: 'What Country is this?',
-                text: "What Country is this?",
-                icon: 'error',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }
-            else if(data == "7"){
-              swal({
-                title: 'PDO Exception',
-                text: "PDO Exception",
-                icon: 'error',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }
-            else{
-              swal({
-                title: 'An Error Occurred!',
-                text: "Something went wrong while trying to login. Please try again.",
-                icon: 'error',
-                buttons : {
-                  confirm: {
-                    text : 'Okay',
-                    className : 'btn btn-success'
-                  }
-                }
-              }).then(function(){
-                $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-              });
-            }
-          },
-          error: function(xhr, status, error){
-            swal({
-              title: 'Failed to Connect to Server!',
-              text: "Something went wrong while trying to connect to the server. Please",
-              icon: 'error',
-              buttons : {
-                confirm: {
-                  text : 'Okay',
-                  className : 'btn btn-success'
-                }
-              }
-            }).then(function(){
-              $('#btnLogin').removeClass('is-loading');
-                $('#btnLogin').prop('disabled', false);
-                enableForm(formID);
-            });
-          }
-        }); 
-      }
+        <?php
+            echo "
+            var token_value = '$token_value';
+            readyFillUpForm(token_value);
+            ";
+        ?>
 
-      function disableForm(formID){
-			var form = document.getElementById(formID);
-			var elements = form.elements;
-			for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
-				if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
-					elements[elementCounter].disabled = true;
-				}
-				else{
-					continue;
-				}
-			}
-		}
-		function enableForm(formID){
-			var form = document.getElementById(formID);
-			var elements = form.elements;
-			for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+      });
 
-				if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
-					elements[elementCounter].disabled = false;
-				}
-				else{
-					continue;
-				}
-			}
-		}
-
+      $('#btnSubmit').click(function(){
+        
+          AccountSubmit('formAccountDetails');
+      });
     </script>
 
   </body>

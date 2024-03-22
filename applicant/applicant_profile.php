@@ -2,13 +2,16 @@
 <?php
   SESSION_START();
 
-  if(!(isset($_SESSION['AccountID']) && isset($_SESSION['Role']))){
-      if(!$_SESSION['Token'] == NULL){
-        header("Location: almost_done.php");
-      }else{
-        header ("Location: ../PHPFiles/Applicant/logout.php");
-    }
+  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0)){
+
+      header ("Location: ../PHPFiles/Applicant/logout.php");
+  }else{
+      if($_SESSION['Token'] != NULL){
+        $Token = $_SESSION['Token'];
+        header("Location: almost_done.php?Token=$Token");
+      }
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,14 +71,14 @@
                           <a class="dropdown-item" href="../applicant/Settings.html">Settings</a>
                           <a class="dropdown-item" href="../applicant/Saved_jobs.html">Saved Jobs</a>
                           <a class="dropdown-item" href="../applicant/recommended_jobs.html">recommended Jobs</a>
-                          <a class="dropdown-item" href="#">Logout</a>
+                          <a class="dropdown-item" href="../PHPFiles/Applicant/logout.php">Logout</a>
                         </div>
                       </div>
                     </form>
   
                     <form class="d-flex">
                       <div>
-                        <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
+                        <a class="text-white nav-link" href="../applicant/dashboard_recruiter.html">Recruiter Site</a>
                       </div>
                     </form>
 
@@ -163,111 +166,222 @@
         </div>
       </div>
 
+      <!-- WIP right here -->
       <div class="row pt-5">
-        <div class="col card-left">
-          <div class="card" style="width: 25rem;">
-              <div class="card-body">
-                  <h8 class="card-title">Software Engineer</h8>
+        <div class="col card-left" id="jobspace">
+          <div class="col pt-3 pb-5" id="job_1">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        <h8 class="card-title">Software Engineer</h8>
 
-                  <div class="container mt-4">
+                        <div class="container mt-4">
+                          <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            </svg>
+                            <span class="mr-2"><i class="bi bi-geo-alt-fill"></i></span>Osaka, Japan
+                          </p>
+                        </div>
+
+                        <div class="container mt-4">
+                          <p>
+                            <span class="mr-2"><i class="fa fa-clone"></i></span>Information and Communication Technology
+                          </p>
+                        </div>
+
+                        <div class="container mt-4">
+                          <p>
+                            <span><i class="fa fa-database"></i></span>60,000 Yen-100,000 Yen
+                          </p>
+                        </div>
+
+                        <div class="container mt-4">
+                          <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                            </svg>
+                            <i class="bi bi-clock-fill"></i>Full Time</p>
+                        </div>
+
+                        <div>
+                            <ul>
+                                <li>
+                                    <p>Description 1</p>
+                                </li>
+
+                                <li>
+                                    <p>Description 2</p>
+                                </li>
+
+                                <li>
+                                    <p>Description 3</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+          <!-- <div class="col pt-3 pb-5">
+                <div class="card" style="width: 25rem;">
+                    <div class="card-body">
+                        <h8 class="card-title">Software Engineer</h8>
+
+                        <div class="container mt-4">
+                          <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                            </svg>
+                            <span class="mr-2"><i class="bi bi-geo-alt-fill"></i></span>Osaka, Japan
+                          </p>
+                        </div>
+
+                        <div class="container mt-4">
+                          <p>
+                            <span class="mr-2"><i class="fa fa-clone"></i></span>Information and Communication Technology
+                          </p>
+                        </div>
+
+                        <div class="container mt-4">
+                          <p>
+                            <span><i class="fa fa-database"></i></span>60,000 Yen-100,000 Yen
+                          </p>
+                        </div>
+
+                        <div class="container mt-4">
+                          <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                            </svg>
+                            <i class="bi bi-clock-fill"></i>Full Time</p>
+                        </div>
+
+                        <div>
+                            <ul>
+                                <li>
+                                    <p>Description 1</p>
+                                </li>
+
+                                <li>
+                                    <p>Description 2</p>
+                                </li>
+
+                                <li>
+                                    <p>Description 3</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+          
+    
+          <div class="col pt-3 pb-5">
+              <div class="card" style="width: 25rem;">
+                  <div class="card-body">
+                      <h8 class="card-title">Software Engineer</h8>
+
+                      <div class="container mt-4">
                         <p>
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                             <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
                           </svg>
                           <span class="mr-2"><i class="bi bi-geo-alt-fill"></i></span>Osaka, Japan
                         </p>
-                  </div>
+                      </div>
 
-                  <div class="container mt-4">
+                      <div class="container mt-4">
                         <p>
                           <span class="mr-2"><i class="fa fa-clone"></i></span>Information and Communication Technology
                         </p>
-                  </div>
+                      </div>
 
-                  <div class="container mt-4">
+                      <div class="container mt-4">
                         <p>
                           <span><i class="fa fa-database"></i></span>60,000 Yen-100,000 Yen
                         </p>
-                  </div>
+                      </div>
 
-                  <div class="container mt-4">
+                      <div class="container mt-4">
                         <p>
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
                           </svg>
                           <i class="bi bi-clock-fill"></i>Full Time</p>
-                  </div>
+                      </div>
 
-                  <div>
-                      <ul>
-                          <li>
-                              <p>Description 1</p>
-                          </li>
+                      <div>
+                          <ul>
+                              <li>
+                                  <p>Description 1</p>
+                              </li>
 
-                          <li>
-                              <p>Description 2</p>
-                          </li>
+                              <li>
+                                  <p>Description 2</p>
+                              </li>
 
-                          <li>
-                              <p>Description 3</p>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-
-      <div class="col pt-3 pb-5">
-          <div class="card" style="width: 25rem;">
-              <div class="card-body">
-                  <h8 class="card-title">Software Engineer</h8>
-
-                  <div class="container mt-4">
-                    <p>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-                        <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-                      </svg>
-                      <span class="mr-2"><i class="bi bi-geo-alt-fill"></i></span>Osaka, Japan
-                    </p>
-                  </div>
-
-                  <div class="container mt-4">
-                    <p>
-                      <span class="mr-2"><i class="fa fa-clone"></i></span>Information and Communication Technology
-                    </p>
-                  </div>
-
-                  <div class="container mt-4">
-                    <p>
-                      <span><i class="fa fa-database"></i></span>60,000 Yen-100,000 Yen
-                    </p>
-                  </div>
-
-                  <div class="container mt-4">
-                    <p>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-                      </svg>
-                      <i class="bi bi-clock-fill"></i>Full Time</p>
-                  </div>
-
-                  <div>
-                      <ul>
-                          <li>
-                              <p>Description 1</p>
-                          </li>
-
-                          <li>
-                              <p>Description 2</p>
-                          </li>
-
-                          <li>
-                              <p>Description 3</p>
-                          </li>
-                      </ul>
+                              <li>
+                                  <p>Description 3</p>
+                              </li>
+                          </ul>
+                      </div>
                   </div>
               </div>
-          </div>
-        </div>
+            </div>
+
+            <div class="col pt-3 pb-5">
+              <div class="card" style="width: 25rem;">
+                  <div class="card-body">
+                      <h8 class="card-title">Software Engineer</h8>
+
+                      <div class="container mt-4">
+                        <p>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                          </svg>
+                          <span class="mr-2"><i class="bi bi-geo-alt-fill"></i></span>Osaka, Japan
+                        </p>
+                      </div>
+
+                      <div class="container mt-4">
+                        <p>
+                          <span class="mr-2"><i class="fa fa-clone"></i></span>Information and Communication Technology
+                        </p>
+                      </div>
+
+                      <div class="container mt-4">
+                        <p>
+                          <span><i class="fa fa-database"></i></span>60,000 Yen-100,000 Yen
+                        </p>
+                      </div>
+
+                      <div class="container mt-4">
+                        <p>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                          </svg>
+                          <i class="bi bi-clock-fill"></i>Full Time</p>
+                      </div>
+
+                      <div>
+                          <ul>
+                              <li>
+                                  <p>Description 1</p>
+                              </li>
+
+                              <li>
+                                  <p>Description 2</p>
+                              </li>
+
+                              <li>
+                                  <p>Description 3</p>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+            </div> -->
       </div>
 
       <div class="col card-right">
@@ -398,12 +512,14 @@
     <script src="../assets/js/atlantis.min.js"></script>
 
     <!-- php Scripts -->
+    <script src="../ajax/ApplicantProfileHandler.js"></script>
+
     <script>
       
-      function change_ApplicantDashboard(){
-
+      $(document).ready(function(){
+        getListOfJobs();
         
-      }
+      });
 
 
     </script>

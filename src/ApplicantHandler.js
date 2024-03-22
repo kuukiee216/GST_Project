@@ -8,8 +8,6 @@ function fillProfileInfo(){
         dataType: "html",
         url: "../PHPFiles/profile_data_retrieve.php",
         success: function(data){
-            alert(data);
-
             var decodedData = JSON.parse(data);
             $('#applicantName').text(decodedData['FullName']);
             $('#pf-email span').text(decodedData['EmailAddress']);

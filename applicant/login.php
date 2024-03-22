@@ -3,7 +3,12 @@
     SESSION_START();
 
     if(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0){
-      header("Location: applicant_profile.php");
+		if($_SESSION['Token'] != NULL){
+			// $Token = $_SESSION['Token'];
+			// header("Location: almost_done.php?Token=$Token");
+		}
+		else
+     		header("Location: applicant_profile.php");
     }
 ?>
 
