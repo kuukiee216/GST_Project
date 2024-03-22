@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['Token'] == null)) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +33,7 @@
     </script>
 
     <title>Japan Jobs Dashboard Page</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
       <!--Navbar Header-->
@@ -102,7 +111,7 @@
             <hr>
                 <div>
                     <label for="Cemail">Email</label>
-                    <p>genesismarvinmanale12@gmail.com</p>
+                    <p id="displayEmail"></p>
                 </div>
 
           <!-- Button trigger modal -->
@@ -114,37 +123,42 @@
           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalChangeEmail">Change Email</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
+                <form id="changeEmailForm">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalChangeEmail">Change Email</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
 
-                <div class="modal-body">
-                  <label>Email</label>
-                  <input type="text" class="form-control" id="email" placeholder="email">
-                </div>
+                  <div class="modal-body">
+                    <input type="hidden" name="userID" value="<?php echo $_SESSION['UserID']; ?>">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email">
+                  </div>
 
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save email</button>
-                </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="btnChangeEmail">Save email</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
           <hr>
 
             <label for="password">password</label>
+            <p id="displayPassword"></p>
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModalCenter1">
               Change Password
             </button>
-    
+
             <!-- Modal -->
             <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter1" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
+                <form id="changePassForm">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalChangePassword">Change Password</h5>
@@ -154,17 +168,18 @@
                   </div>
 
                     <div class="">
-                      <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="password">
-                    
-                      <label for="REpass">Re-Enter Password</label>
-                    <input type="password" class="form-control" id="REpass" placeholder="Re-enter password">
+                      <label for="pass">Password</label>
+                    <input type="password" class="form-control" id="password" name="pass" placeholder="password">
+
+                      <label for="rpass">Re-Enter Password</label>
+                    <input type="password" class="form-control" id="rpass" name="rpass" placeholder="Re-enter password">
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save password</button>
+                      <button type="submit" class="btn btn-primary" id="btnChangePass">Save password</button>
                     </div>
                   </div>
+                </form>
                 </div>
               </div>
                 <hr>
@@ -231,8 +246,8 @@
     </footer>
 
         <!-- Option 1: Bootstrap scripts -->
-        <script src="../.../assets/js/atlantis.js"></script>
-        <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+        <script src="../assets/js/atlantis.js"></script>
+        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -282,5 +297,23 @@
 
         <!-- Atlantis JS -->
         <script src="../assets/js/atlantis.min.js"></script>
+
+        <!-- Applicant Settings -->
+        <script src="../ajax/SettingHandler.js"></script>
+        <script src="../ajax/SettingPassHandler.js"></script>
+        <script src="../ajax/SettingsGetEmail.js"></script>
+
+        <script>
+          $(document).ready(function() {
+            $('#btnChangeEmail').click(function() {
+              ChangeEmail('changeEmailForm');
+            });
+
+            $('#btnChangePass').click(function() {
+              ChangePass('changePassForm');
+            })
+            GetEmail();
+          });
+        </script>
   </body>
 </html>

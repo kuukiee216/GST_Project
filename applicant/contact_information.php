@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['Token'] == null)) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +33,7 @@
     </script>
 
     <title>Edite Profile</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
     <!-- Navbar Header -->
@@ -108,18 +117,18 @@
 
         <div class="form-group mb-5">
           <label for="Fname">First Name</label>
-          <input type="text" class="form-control" id="Fname" aria-describedby="" placeholder="first name">
+          <input type="text" class="form-control" id="Fname" name="Fname" aria-describedby="">
         </div>
 
         <div class="form-group mb-5">
           <label for="Lname">Last Name</label>
-          <input type="text" class="form-control" id="Lname" aria-describedby="" placeholder="last name">
+          <input type="text" class="form-control" id="Lname" name="Lname" aria-describedby="">
         </div>
 
         <div class="form-group mb-5">
           <label for="Pnum">Phone Number</label>
           <div class="input-group">
-            <input type="tel" class="form-control" aria-label="Text input with dropdown button">
+            <input type="tel" class="form-control" id="Pnum" name="Pnum" aria-label="Text input with dropdown button">
             <div class="input-group-append">
               <button class="btn btn-outline-dark btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">+63</button>
               <div class="dropdown-menu">
@@ -144,21 +153,21 @@
 
         <h2>Home Location</h2>
         <Label for="country">Country</Label>
-        <input type="text" class="form-control mb-5" aria-label="text input">
+        <input type="text" class="form-control mb-5" name="country" id="country" aria-label="text input">
 
-        <Label for="Saddress">Street Address</Label>
-        <input type="text" class="form-control mb-5" aria-label="text input">
-    
+        <Label for="street">Street Address</Label>
+        <input type="text" class="form-control mb-5" id="street" name="street" aria-label="text input">
+
         <div class="form-group ">
             <Label for="city">City</Label>
-            <input type="text" class=" form-control mb-5" aria-label="text input">
+            <input type="text" class=" form-control mb-5" id="city" name="city" aria-label="text input">
 
             <Label for="state">State</Label>
-            <input type="text" class=" form-control mb-5" aria-label="text input">
+            <input type="text" class=" form-control mb-5" id="state" name="state" aria-label="text input">
         </div>
 
         <label for="Pcode">Postal Code</label>
-        <input type="text" class="form-control mb-5" aria-label="text input">
+        <input type="text" class="form-control mb-5" id="postal" name="postal" aria-label="text input">
 
         <div>
           <button type="button" class="btn btn-danger mb-5" value="submit">Save</button>

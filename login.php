@@ -76,7 +76,7 @@
 													<span class="input-icon-addon">
 														<i class="fa fa-envelope"></i>
 													</span>
-													<input type="email" id="txtUserID" class="form-control" placeholder="Email Address">
+													<input type="email" id="txtUserID" name="txtUserID" class="form-control" placeholder="Email Address">
 												</div>
 											</div>
 											<div class="form-group">
@@ -215,6 +215,8 @@
 			var UserID = $("input[name=txtUserID]").val();
 			var Password = $("input[name=txtPassword]").val();
 
+			console.log(UserID, Password);
+
 			$.ajax({
 				type: "POST",
 				dataType: "html",
@@ -224,6 +226,7 @@
 				},
 				url: "PHPFiles/loginvalidation.php",
 				success: function(data){
+					alert(data);
                     if(data == "0"){
                         $('#btnLogin').removeClass('is-loading');
                         $('#btnLogin').prop('disabled', false);
@@ -282,22 +285,11 @@
 							enableForm(formID);
 						});
 					}
+					else if(data == "4"){
+						location.href = 'almost_done.php';
+					}
 					else if(data == "5"){
-						swal({
-							title: 'Incorrect Credentiials!',
-							text: "Incorrect Password or Username.",
-							icon: 'error',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
-							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
+						location.href = './admin/Dashoard.php';
 					}
 					else{
 						swal({

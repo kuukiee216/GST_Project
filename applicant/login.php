@@ -1,3 +1,17 @@
+<!-- Sessions -->
+<?php
+    SESSION_START();
+
+    if(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0){
+		if($_SESSION['Token'] != NULL){
+			// $Token = $_SESSION['Token'];
+			// header("Location: almost_done.php?Token=$Token");
+		}
+		else
+     		header("Location: applicant_profile.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,7 +169,7 @@
 
 									<div class="row">
 										<div class="col-md-12 d-flex justify-content-end">
-											<a href="forgotpassword.php">Forgot Password?</a>
+											<a href="forgot_password.php">Forgot Password?</a>
 										</div>
 
 										<button type="button" class="btn btn-danger btn-round btn-block mt-4" id="btnLogin" onclick="Login('formLogin');">Sign In</button>
@@ -312,7 +326,7 @@
                         $('#btnLogin').prop('disabled', false);
                         enableForm(formID);
 
-                        location.href = "almost_done.php";
+                        location.href = "applicant_profile.php";
 					}
 					else if(data == "1"){
 						swal({
@@ -366,7 +380,7 @@
 						});
 					}
 					else if(data == "4"){
-						location.href = 'almost_done.php';
+						location.href = 'applicant_profile.php';
 					}
 					else if(data == "5"){
 						location.href = './admin/Dashoard.php';

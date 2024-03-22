@@ -1,3 +1,11 @@
+<!-- Sessions -->
+<?php
+    // SESSION_START();
+  
+    if (isset($_GET['Token'])) 
+      $token_value = $_GET['Token'];
+    
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,7 +30,7 @@
       </script>
 
     <title>Almost Done</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
   </head>
 
   <body>
@@ -49,7 +57,6 @@
     <!-- End Navbar -->
         
         <div class="container flex justify-content-center">
-            <form class="mx-auto was-validated">
               <h2 class="mb-3">Your Details</h2>
                 <div for="email">Email Address:</div><br>
                     <div class="mb-3">
@@ -64,28 +71,27 @@
         <div class="mb-3">
             <div for="lname">Last Name</div>
                 <input type="text" class="form-control" id="lname" placeholder="lastname" name="lname" required>
-                  <div class="invalid-feedback">Please fill out this field.</div>  
+              <div class="invalid-feedback">Please fill out this field.</div>
         </div>
 
         <div for="phone">Phone Number:</div><br>
-        <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]+" value="+63" required><br>
+          <input type="tel" class="form-control" id="phone" name="phone" required><br>
         <div for="country">Country:</div><br>
+
         <div class="dropdown">
-          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton"name="country" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Select Country
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">test</a>
-            <a class="dropdown-item" href="#">test test</a>
-            <a class="dropdown-item" href="#">test test test</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdownMenu">
           </div>
         </div>
-  
-        <div class="container">
-          <button class="btn btn-danger mt-4" type="submit">Create Account</button>
-        </div>
 
-    </div>
+        <div class="container">
+          <button class="btn btn-danger mt-4" id="btnSubmit" type="button"> Create Account </button>
+        </div>
+    
+      </div>
+    </form>
 
     <!--bottom navbar-->
     <footer class="footer text-white" style="background-color:mediumseagreen">
@@ -173,5 +179,28 @@
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+
+    <!-- php functions -->
+    <script src="../src/RegistrationHandler.js"></script>
+    
+    <script>
+      $(document).ready(function(){ 
+        getCountries();
+        
+        <?php
+            echo "
+            var token_value = '$token_value';
+            readyFillUpForm(token_value);
+            ";
+        ?>
+
+      });
+
+      $('#btnSubmit').click(function(){
+        
+          AccountSubmit('formAccountDetails');
+      });
+    </script>
+
   </body>
 </html>

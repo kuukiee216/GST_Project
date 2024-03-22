@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 session_start();
 
-$fb = new Facebook\Facebook([
+$fb = new Facebook/Facebook([
     'app_id' => '404459048885536', // your app id
     'app_secret' => 'be09fa919ed8462836ad82f0c4f5e182', // your app secret
     'default_graph_version' => 'v2.5',

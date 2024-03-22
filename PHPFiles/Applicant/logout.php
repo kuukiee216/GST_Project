@@ -2,6 +2,6 @@
     SESSION_START();
     SESSION_UNSET();
     SESSION_DESTROY();
-    header ("Location: login.php");
+    header ("Location: ../../applicant/login.php");
     exit();
-?>
+?>  

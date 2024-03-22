@@ -1,3 +1,22 @@
+<!-- Sessions -->
+<?php
+ SESSION_START();
+
+$landing_page = "../applicant/Landing_Page.html";
+
+ if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0)){
+
+     header ("Location: ../PHPFiles/Applicant/logout.php");
+ }else{
+     if($_SESSION['Token'] != NULL){
+       $Token = $_SESSION['Token'];
+       header("Location: almost_done.php?Token=$Token");
+     }else{
+      $landing_page = "../applicant/applicant_profile.php";
+     }
+ }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,33 +32,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../assets/css/atlantis.css">
-    <link href="/CSS/profile.css" rel="stylesheet" >
+    <link href="../CSS/profile.css" rel="stylesheet" >
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Profile</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
-<body>
+<body onload = "GetApplicantData();">
+    <!-- php Scripts -->
+   
+
      <!-- Japan job posting icon href-->
      <nav class="navbar navbar-expand-sm">
       <div class="container-fluid">
         <form class="">
-          <a class="navbar-brand font-RR text-white" href="/FILES-Applicant Side/Landing_Page.html">
-            <img src="/assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+          <a class="navbar-brand font-RR text-white" href="../applicant/Landing_Page.html">
+            <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
           </form>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar nav me-auto mb-2 mb-lg-0">
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/FILES-Applicant Side/Landing_Page.html">Home</a>
+                        <a class="nav-link text-white" href=<?php  echo $landing_page?>>Home</a>
                       </li>
 
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/FILES-Applicant Side/profile.html">Pofile</a>
+                        <a class="nav-link text-white" href="../applicant/profile.html">Pofile</a>
                       </li>
                         
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/FILES-Applicant Side/about_us.html">About Us</a>
+                        <a class="nav-link text-white" href="../applicant/about_us.html">About Us</a>
                       </li>
                     </ul>
 
@@ -52,9 +74,9 @@
                           gen.test
                         </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/FILES-Applicant Side/Settings.html">Settings</a>
-                        <a class="dropdown-item" href="/FILES-Applicant Side/Saved_jobs.html">Saved Jobs</a>
-                        <a class="dropdown-item" href="/FILES-Applicant Side/recommended_jobs.html">recommended Jobs</a>
+                        <a class="dropdown-item" href="../applicant/Settings.html">Settings</a>
+                        <a class="dropdown-item" href="../applicant/Saved_jobs.html">Saved Jobs</a>
+                        <a class="dropdown-item" href="../applicant/recommended_jobs.html">recommended Jobs</a>
                         <a class="dropdown-item" href="#">Logout</a>
                       </div>
                     </div>
@@ -71,14 +93,14 @@
     </nav>
 
     <div class="container-fluid d-flex justify-contnent-center card text-white mt-5">
-      <img class="card-img" src="/assets/img/text_bg.png" alt="card image" style="width:max-content">
+      <img class="card-img" src="../assets/img/text_bg.png" alt="card image" style="width:max-content">
       <div class="card-img-overlay m-5">
-        <h2>Genesis P Mañale</h2>
+        <h2 name = "applicantName" id = "applicantName">Genesis P Mañale</h2>
         <div class="card-body" style="text-decoration: underline;">
 
-            <div><i class="fa fa-envelope"></i> genesismarvinmanale12@gmail.com</div>
-            <div><i class="fa fa-phone mt-3"></i> +639084746563</div>
-            <div><i class="fa fa-map-marker mt-3"></i> Laguna, Philippines</div>
+            <div id="pf-email"><i class="fa fa-envelope"></i> <span>email</span></div>
+            <div id="pf-phone"><i class="fa fa-phone mt-3"></i><span> phone</span></div>
+            <div id="pf-country"><i class="fa fa-map-marker mt-3"></i><span> country</span></div>
             <div><i class="fa fa-eye mt-3"></i> Visible by Recruiters</div>
 
             <!-- Button trigger modal -->
@@ -148,8 +170,8 @@
             <div class="card-body">
               <div>Create your resume using JAPAN JOBS' form.</div>
 
-              
-              <a href="/FILES-Applicant Side/create_resume.html" class="btn btn-danger mt-1">Create Resume</a>
+              <!-- Button trigger modal -->
+              <a href="../applicant/create_resume.html" class="btn btn-danger mt-1">Create Resume</a>
 
             </div>
           </div>
@@ -531,6 +553,18 @@
 
    <!-- Atlantis JS -->
    <script src="../assets/js/atlantis.min.js"></script>
+
+  <!-- php Data Retrieve Scripts -->
+   <script src="../src/ApplicantHandler.js"></script>
+
+   <script>
+      $(document).ready(function(){ 
+
+        fillProfileInfo();
+
+      });
+   </script>
+   
 
 </body>
 </html>
