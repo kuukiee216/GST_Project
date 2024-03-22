@@ -273,6 +273,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
         <!-- Applicant Settings -->
         <script src="../ajax/SettingHandler.js"></script>
         <script src="../ajax/SettingPassHandler.js"></script>
+        <script src="../ajax/SettingsGetEmail.js"></script>
 
         <script>
           $(document).ready(function() {

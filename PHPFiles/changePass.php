@@ -6,7 +6,7 @@ $connection = $clsConnect->dbConnect();
 session_start();
 
 if (!isset($_SESSION['AccountID'])) {
-    header('Location: ../login.php');
+    header('Location: ../applicant/login.php');
     exit;
 }
 

@@ -141,21 +141,6 @@ function ChangeEmail(formID){
     });
 }
 
-function GetEmail() {
-    $.ajax({
-        type: "POST",
-        dataType: "html",
-        url: "../PHPFiles/Applicant/getEmail.php",
-        success: function(data) {
-            $("#displayEmail").text();
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching email");
-        }
-    });
-}
-
-
 $("#email").keypress(function (event) {
     if (event.keyCode === 13) {
         $('#btnChangeEmail').click();

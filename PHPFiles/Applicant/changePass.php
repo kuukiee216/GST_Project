@@ -6,7 +6,7 @@ $connection = $clsConnect->dbConnect();
 session_start();
 
 if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['Token'] == null)) {
-    header('Location: ../login.php');
+    header('Location: ../applicant/login.php');
     exit;
 }
 
@@ -36,11 +36,11 @@ if (isset($_POST['pass']) && isset($_POST['rpass'])) {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     try {
-        $accountID = $_SESSION['AccountID']; 
+        $accountID = $_SESSION['AccountID'];
         $query = "UPDATE tbl_account SET Password = :password WHERE AccountID = :accountID";
         $statement = $connection->prepare($query);
         $statement->bindValue(':password', $hashedPassword, PDO::PARAM_STR);
-        $statement->bindValue(':accountID', $accountID, PDO::PARAM_INT); 
+        $statement->bindValue(':accountID', $accountID, PDO::PARAM_INT);
         $statement->execute();
 
         echo "0";
