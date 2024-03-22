@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['AccountID'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -31,22 +40,22 @@
     </nav>
 
         <div class="container-fluid">
-            <form class="mx-auto">
+            <form class="mx-auto" id="changePassForm">
                 <h1 class="text-center">Password Reset</h1>
                     <div class="mb-3 mt-5">
-                        <div for="InputPassword" class="form-label">New Password</div>
-                            <input type="password" class="form-control" id="InputEmail" aria-describedby="emailhelp">
+                        <div for="pass" class="form-label">New Password</div>
+                            <input type="password" class="form-control" id="pass" name="pass" aria-describedby="emailhelp">
 
-        <div class="mb-3">
-            <div for="InputNewPassword" class="form-label">Re-enter Password</div>
-                <input type="password" class="form-control" id="InputPassword">
-                        <button onclick="swal()" type="submit" class="btn btn-danger mt-4">Confirm</button>
+                        <div class="mb-3">
+                            <div for="rpass" class="form-label">Re-enter Password</div>
+                                <input type="password" class="form-control" id="rpass" name="rpass">
+                                        <button onclick="ChangePass('changePassForm');" id="btnChangePass" type="submit" class="btn btn-danger mt-4">Confirm</button>
 
-                        <a href="/FILES-Applicant Side/password_verification.html"><button type="submit" class="btn btn-outline-danger mt-4">Back</button></a>
-        </div>
-            </div>
-        </form>
-      </div>
+                                        <a href="/FILES-Applicant Side/password_verification.html"><button type="submit" class="btn btn-outline-danger mt-4">Back</button></a>
+                        </div>
+                            </div>
+                        </form>
+                      </div>
 
     <!--bottom navbar-->
     <footer class="p-2 navbar text-white">
@@ -133,5 +142,226 @@
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+
+    <script>
+  function ChangePass(formID){
+    var pass = $('input[name=pass]').val();
+    var rpass = $('input[name=rpass]').val();
+    $('#btnChangePass').addClass('is-loading');
+    $('#btnChangePass').prop('disabled', true);
+    disableForm(formID);
+
+    $.ajax({
+        type: "Post",
+        dataType: "html",
+        data: {
+            pass: pass,
+            rpass: rpass
+        },
+        url: "../PHPFiles/changePass.php",
+        success: function(data){
+            if(data == "0"){
+                swal({
+                    title: 'Success!',
+                    text: "Password Updated Sucessfully!",
+                    icon: 'success',
+                    buttons : {
+                        confirm: {
+                            text: 'Okay',
+                            className: 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+
+                    location.href = './Settings.php';
+                });
+
+            }
+            else if(data == "1"){
+                swal({
+                    title: 'An Error Occurred!',
+                    text: "Error Updating Password.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+            else if(data == "2"){
+                swal({
+                    title: 'Empty Password!',
+                    text: "Please enter a password and try again.",
+                    icon: 'warning',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+            else if(data == "3"){
+                swal({
+                    title: 'Empty Confirmation Password!',
+                    text: "Your confirmation password is empty!",
+                    icon: 'warning',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+
+            else if(data == "4"){
+                swal({
+                    title: 'Password not match!',
+                    text: "Confirmation password and Password isn`t matched!",
+                    icon: 'warning',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+            else if(data == "5"){
+                swal({
+                    title: 'Cannot Process the change email request!',
+                    text: "Please check your email",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+            else if(data == "6"){
+                swal({
+                    title: 'Invalid Format!',
+                    text: "Please only type valid format!",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+            else{
+                swal({
+                    title: 'An Error Occurred!',
+                    text: "Something went wrong. Please try again",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+        },
+        error: function(xhr, status, error){
+            swal({
+                title: 'Failed to Connect to Server!',
+                text: "Something went wrong while trying to connect to the server. Please",
+                icon: 'error',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
+                    enableForm(formID);
+            });
+        }
+    });
+}
+
+
+$("#pass").keypress(function (event) {
+    if (event.keyCode === 13) {
+        $('#btnChangePass').click();
+    }
+});
+
+$("#rpass").keypress(function (event) {
+    if (event.keyCode === 13) {
+        $('#btnChangePass').click();
+    }
+});
+if (window.history.replaceState){
+    window.history.replaceState(null, null, window.location.href);
+}
+
+function disableForm(formID){
+    var form = document.getElementById(formID);
+    var elements = form.elements;
+    for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+        if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+            elements[elementCounter].disabled = true;
+        }
+        else{
+            continue;
+        }
+    }
+}
+function enableForm(formID){
+    var form = document.getElementById(formID);
+    var elements = form.elements;
+    for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+
+        if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+            elements[elementCounter].disabled = false;
+        }
+        else{
+            continue;
+        }
+    }
+}
+    </script>
   </body>
 </html>

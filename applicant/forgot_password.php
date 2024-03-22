@@ -30,7 +30,7 @@
     </nav>
 
     <div class="container-fluid">
-      <form class="mx-auto">
+      <form class="mx-auto" id="forgotPassForm">
         <h1 class="text-center">Forgot Password</h1>
         <div class="mb-3 mt-5">
           <label for="InputEmail" class="form-label">Email Address</label>
@@ -38,8 +38,8 @@
 
             <div class="mb-3">
               <p class="text-secondary fs-6">Enter your email address and we will send you a verification code if you have existing JAPAN JOBS' account.</p>
-              <a href="/FILES-Applicant Side/password_verification.html"><button type="button" class="btn btn-danger mt-4">Next</button></a>
-              <a href="/FILES-Applicant Side/SignIn.php"><button type="button" class="btn btn-outline-danger mt-4">Back</button></a>
+              <button type="button" class="btn btn-danger mt-4" id="btnForgot" onclick="Forgot('forgotPassForm')">Next</button>
+              <a href="login.php"><button type="button" class="btn btn-outline-danger mt-4">Back</button></a>
             </div>
         </div>
       </form>
@@ -66,11 +66,257 @@
           </li>
           <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
         </ul>
-      </div>
     </footer>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Vendor JS Files -->
+	<script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+	<script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+	<script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+	<script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+	<script src="../assets/vendor/aos/aos.js"></script>
+	<script src="../assets/vendor/php-email-form/validate.js"></script>
+
+	<!--   Core JS Files   -->
+	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+	<script src="../assets/js/core/popper.min.js"></script>
+	<script src="../assets/js/core/bootstrap.min.js"></script>
+
+	<!-- jQuery UI -->
+	<script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+	<script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+
+	<!-- Chart JS -->
+	<script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+	<!-- jQuery Sparkline -->
+	<script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+	<!-- Chart Circle -->
+	<script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+	<!-- Datatables -->
+	<script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+	<!-- Bootstrap Notify -->
+	<script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+	<!-- jQuery Vector Maps -->
+	<script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+	<script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+	<!-- Sweet Alert -->
+	<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+	<!-- Atlantis JS -->
+	<script src="../assets/js/atlantis.min.js"></script>
+    <script>
+    /*
+     * Preloader
+     */
+    const preloader = document.querySelector('#preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            preloader.remove();
+        });
+    }
+
+    function Forgot(formID) {
+
+        $('#btnForgot').addClass('is-loading');
+        $('#btnForgot').prop('disabled', true);
+        disableForm(formID);
+
+        var UserID = $("input[name=InputEmail]").val();
+        var emailPattern = /^[a-zA-Z0-9._-]+@(gmail|yahoo)\.com$/;
+
+        if (!emailPattern.test(UserID)) {
+            swal({
+                title: 'Invalid Email Address!',
+                text: "Please enter a valid email address!",
+                icon: 'error',
+                buttons: {
+                    confirm: {
+                        text: 'Okay',
+                        className: 'btn btn-success'
+                    }
+                }
+            }).then(function () {
+                $('#btnForgot').removeClass('is-loading');
+                $('#btnForgot').prop('disabled', false);
+                enableForm(formID);
+            });
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            dataType: "html",
+            data: {
+                UserID: UserID,
+            },
+            url: "../PHPFiles/forgot.php",
+            success: function (data) {
+                if (data == "0") {
+                    swal({
+                        title: 'Success!',
+                        text: "Verification was sent to your email",
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        window.location.href = "password_verification.php";
+                    });
+                } else if (data == "1") {
+                    swal({
+                        title: 'An Error Occurred!',
+                        text: "Something went wrong while sending the verification email. Please try again.",
+                        icon: 'error',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                } else if (data == "2") {
+                    swal({
+                        title: 'Empty Email!',
+                        text: "Please enter your email and try again.",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                } else if (data == "5") {
+                    swal({
+                        title: 'Failed to Send Email!',
+                        text: "Failed to send code. Please try again!",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                } else if (data == "6") {
+                    swal({
+                        title: 'Error Finding Email!',
+                        text: "Email doesn`t exist!",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                }
+
+                else {
+                    swal({
+                        title: 'An Error Occurred!',
+                        text: "Something went wrong while trying to send the verification email. Please try again.",
+                        icon: 'error',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function () {
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
+                        enableForm(formID);
+                    });
+                }
+            },
+            error: function (xhr, status, error) {
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
+                    icon: 'error',
+                    buttons: {
+                        confirm: {
+                            text: 'Okay',
+                            className: 'btn btn-success'
+                        }
+                    }
+                }).then(function () {
+                    $('#btnForgot').removeClass('is-loading');
+                    $('#btnForgot').prop('disabled', false);
+                    enableForm(formID);
+                });
+            }
+        });
+    }
+
+    $("#InputEmail").keypress(function (event) {
+        if (event.keyCode === 13) {
+            $('#btnForgot').click();
+        }
+    });
+
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+    function disableForm(formID) {
+        var form = document.getElementById(formID);
+        var elements = form.elements;
+        for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
+                elements[elementCounter].disabled = true;
+            } else {
+                continue;
+            }
+        }
+    }
+
+    function enableForm(formID) {
+        var form = document.getElementById(formID);
+        var elements = form.elements;
+        for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
+                elements[elementCounter].disabled = false;
+            } else {
+                continue;
+            }
+        }
+    }
+</script>
+
   </body>
 </html>
