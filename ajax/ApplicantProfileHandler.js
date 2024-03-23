@@ -42,6 +42,7 @@ function getListOfJobs(){
                     var description = job.Description;
                     var summary = job.Summary;
                     
+
                     jobDescription = `
                     <div class="card" style="width: 25rem;">
                         <div class="card-body">

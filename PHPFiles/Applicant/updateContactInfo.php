@@ -1,4 +1,7 @@
 <?php
+require_once '../db_config.php';
+$clsConnect = new dbConnection();
+$connection = $clsConnect->dbConnect();
 session_start();
 
 if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['Token'] == null)) {
@@ -6,34 +9,71 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
     exit;
 }
 
-require_once '../db_config.php';
-$clsConnect = new dbConnection();
-$connection = $clsConnect->dbConnect();
+function validate($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstName = $_POST['FirstName'];
-    $lastName = $_POST['LastName'];
-    $streetAddress = $_POST['StreetAddress'];
+    $firstName = validate($_POST['firstName']);
+    $lastName = validate($_POST['lastName']);
+    $phoneNumber = validate($_POST['phoneNumber']);
+    $country = validate($_POST['country']);
+    $street = validate($_POST['street']);
+    $city = validate($_POST['city']);
+    $state = validate($_POST['state']);
+    $postal = validate($_POST['postal']);
 
-    $sql = "UPDATE tbl_applicantinfo AS app
-            JOIN tbl_account AS a ON a.UserID = app.EmailAddress
-            JOIN tbl_location AS loc ON app.LocationID = loc.LocationID
-            SET app.FirstName = :firstName, app.LastName = :lastName, loc.StreetAddress = :streetAddress
-            WHERE a.UserID = :userID";
+    if (empty($firstName) || empty($lastName) || empty($phoneNumber) || empty($country) || empty($street) || empty($city) || empty($state) || empty($postal)) {
+        echo "2"; // Error code for empty fields
+        exit; // Stop execution
+    }
 
     try {
-        $stmt = $connection->prepare($sql);
-        $stmt->bindParam(':firstName', $firstName);
-        $stmt->bindParam(':lastName', $lastName);
-        $stmt->bindParam(':streetAddress', $streetAddress);
-        $stmt->bindParam(':userID', $_SESSION['UserID']);
-        $stmt->execute();
+        // Begin transaction
+        $connection->beginTransaction();
 
-        echo json_encode(array("status" => "success", "message" => "Contact information updated successfully"));
+        // Update tbl_account
+        $sqlAccount = "UPDATE tbl_account SET UserID = :email WHERE UserID = :email";
+        $stmtAccount = $connection->prepare($sqlAccount);
+        $stmtAccount->bindParam(':email', $_SESSION['UserID']);
+        $stmtAccount->execute();
+
+        // Update tbl_applicantinfo
+        $sqlApplicantInfo = "UPDATE tbl_applicantinfo SET FirstName = :firstName, LastName = :lastName, Phone = :phoneNumber WHERE EmailAddress = :email";
+        $stmtApplicantInfo = $connection->prepare($sqlApplicantInfo);
+        $stmtApplicantInfo->bindParam(':firstName', $firstName);
+        $stmtApplicantInfo->bindParam(':lastName', $lastName);
+        $stmtApplicantInfo->bindParam(':phoneNumber', $phoneNumber);
+        $stmtApplicantInfo->bindParam(':email', $_SESSION['UserID']);
+        $stmtApplicantInfo->execute();
+
+        // Update tbl_location
+        $sqlLocation = "UPDATE tbl_location SET Country = :country, StreetAddress = :street, City = :city, Province = :state, ZipCode = :postal WHERE LocationID = (SELECT LocationID FROM tbl_applicantinfo WHERE EmailAddress = :email)";
+        $stmtLocation = $connection->prepare($sqlLocation);
+        $stmtLocation->bindParam(':country', $country);
+        $stmtLocation->bindParam(':street', $street);
+        $stmtLocation->bindParam(':city', $city);
+        $stmtLocation->bindParam(':state', $state);
+        $stmtLocation->bindParam(':postal', $postal);
+        $stmtLocation->bindParam(':email', $_SESSION['UserID']);
+        $stmtLocation->execute();
+
+        // Commit the transaction
+        $connection->commit();
+
+        echo "0"; // Success code
     } catch (PDOException $e) {
-        echo json_encode(array("status" => "error", "message" => "Error updating contact information: " . $e->getMessage()));
+        // Rollback the transaction on error
+        echo "Error: " . $e->getMessage();
+
+        $connection->rollBack();
+        echo "1"; // Error code
     }
 } else {
-    echo json_encode(array("status" => "error", "message" => "Invalid request method"));
+    echo "Invalid request"; // Error code
 }
-?>

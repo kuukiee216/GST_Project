@@ -1,30 +1,6 @@
 
 // APPLICANT CONTACTS
 
-console.log("contact")
-
-function GetContactInfo() {
-    $.ajax({
-        type: "GET",
-        url: "../PHPFiles/Applicant/getContactInfo.php",
-        success: function(data) {
-            var contactInfo = JSON.parse(data);
-
-            $('#Fname').val(contactInfo.FirstName);
-            $('#Lname').val(contactInfo.LastName);
-            $('#street').val(contactInfo.StreetAddress);
-            $('#country').val(contactInfo.Country);
-            $('#city').val(contactInfo.City);
-            $('#Pnum').val(contactInfo.Phone);
-            $('#state').val(contactInfo.Province);
-            $('#postal').val(contactInfo.ZipCode);
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching contact information:", error);
-        }
-    });
-}
-
 function UpdateContactInfo(formID){
     var firstName = $('#Fname').val();
     var lastName = $('#Lname').val();
@@ -35,6 +11,7 @@ function UpdateContactInfo(formID){
     var state = $('#state').val();
     var postal = $('#postal').val();
 
+    console.log(firstName, lastName, phoneNumber, country, state, street, postal, city)
     $('#btnEditProfle').addClass('is-loading');
     $('#btnEditProfle').prop('disabled', true);
     disableForm(formID);
@@ -57,7 +34,7 @@ function UpdateContactInfo(formID){
             if(data == "0"){
                 swal({
                     title: 'Success!',
-                    text: "Email Updated Sucessfully!",
+                    text: "Contact Information Updated Sucessfully!",
                     icon: 'success',
                     buttons : {
                         confirm: {
@@ -75,7 +52,7 @@ function UpdateContactInfo(formID){
             else if(data == "1"){
                 swal({
                     title: 'An Error Occurred!',
-                    text: "Error Updating Email.",
+                    text: "Error Updating Information.",
                     icon: 'error',
                     buttons : {
                         confirm: {
@@ -91,43 +68,9 @@ function UpdateContactInfo(formID){
             }
             else if(data == "2"){
                 swal({
-                    title: 'Empty Email!',
-                    text: "Please enter your email and try again.",
+                    title: 'Empty Fields!',
+                    text: "Please enter your details and try again.",
                     icon: 'warning',
-                    buttons : {
-                        confirm: {
-                            text : 'Okay',
-                            className : 'btn btn-success'
-                        }
-                    }
-                }).then(function(){
-                    $('#btnEditProfle').removeClass('is-loading');
-                    $('#btnEditProfle').prop('disabled', false);
-                    enableForm(formID);
-                });
-            }
-            else if(data == "3"){
-                swal({
-                    title: 'Cannot Process the change email request!',
-                    text: "Please check your email",
-                    icon: 'error',
-                    buttons : {
-                        confirm: {
-                            text : 'Okay',
-                            className : 'btn btn-success'
-                        }
-                    }
-                }).then(function(){
-                    $('#btnEditProfle').removeClass('is-loading');
-                    $('#btnEditProfle').prop('disabled', false);
-                    enableForm(formID);
-                });
-            }
-            else if(data == "4"){
-                swal({
-                    title: 'Invalid Format!',
-                    text: "Please only type valid format!",
-                    icon: 'error',
                     buttons : {
                         confirm: {
                             text : 'Okay',

@@ -86,7 +86,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
       <h2>Contact Information</h2>
 
-      <form>
+      <form id="changeContact">
 
         <div class="form-group mb-5">
           <label for="Fname">First Name</label>
@@ -114,7 +114,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
         </div>
 
         <h2>Email</h2>
-        <label for="email">genesismarvinmanale12@gmail.com</label>
+        <p id="displayEmail"></p>
         <a class="nav-link mb-5" href="Settings.php">Edit Email in Settings</a>
         <hr>
 
@@ -137,7 +137,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
         <input type="text" class="form-control mb-5" id="postal" name="postal" aria-label="text input">
 
         <div>
-          <button type="button" class="btn btn-danger mb-5" value="submit">Save</button>
+          <button type="submit" class="btn btn-danger mb-5" value="submit" id="btnEditProfle">Save</button>
           <button type="button" class="btn btn-outline-danger mb-5" value="submit">Cancel</button>
         </div>
 
@@ -171,18 +171,24 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
     </footer>
 
     <script src="../ajax/ContactInfo.js"></script>
+    <script src="../ajax/SettingsGetEmail.js"></script>
+    <script src="../ajax/ContactUpdate.js"></script>
     <!-- Add jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <!-- Sweet Alert -->
+    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
     <script>
           $(document).ready(function() {
+            $('#btnEditProfle').click(function() {
+              UpdateContactInfo('changeContact');
+            });
             GetContactInfo();
+            GetEmail();
           });
-          console.log("hey");
         </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
