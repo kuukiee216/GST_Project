@@ -29,6 +29,8 @@
 
 	<!-- Template Main CSS File -->
 	<link href="../assets/css/main.css" rel="stylesheet">
+	<link href="/applicant/applicant.css" rel="stylesheet">
+	<link href="/CSS/applicant.css" rel="stylesheet">
 
 	<!-- Fonts and icons -->
 	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -55,24 +57,80 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
 </head>
 <body>
 	<div class="wrapper">
-        <div class="main-header">
-			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="green2">
 
-				<a href="accounts.php" class="logo">
-					<img src="../assets/img/LogoBanner.png" alt="navbar brand" class="navbar-brand">
-				</a>
-			</div>
-			<!-- End Logo Header -->
-
-			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
-			</nav>
-			<!-- End Navbar -->
-		</div>
+      <!-- Navbar Header -->
+      <nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
+      <div class="container-fluid">
+        <div class="collapse" id="search-nav">
+          <div>
+          <form class="navbar-left navbar-form">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar nav me-auto mb-2 mb-lg-0">
+               <li>
+                   <a href="/applicant/Landing_Page.html" class="logo">
+                     <img src="../assets/img/JapanJobs.png" alt="navbar brand">
+                   </a>
+               </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="/applicant/Landing_Page.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="/applicant/profile.php">Pofile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="/applicant/about_us.html">About Us</a>
+                </li>
+              </ul>
+            </div>
+          </form>
+          </div>
+        </div>
+        <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
+          <li class="nav-item dropdown hidden-caret">
+            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+              <div class="avatar-sm">
+                <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-user animated fadeIn">
+              <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
+                <li>
+                  <div class="user-box">
+                    <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
+                    <div class="u-text">
+                      <h4>Meow</h4>
+                      <p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Saved Jobs</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">recommended Jobs</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Logout</a>
+                </li>
+              </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
+            </ul>
+          </li>
+          <li>
+            <form class="d-flex">
+              <div>
+                <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
+              </div>
+            </form>
+          </li>
+        </ul>
+      </div>
+      </nav>
+      <!-- End Navbar -->
 
         <div class="main-panel w-100">
 			<div class="content">
@@ -144,13 +202,39 @@
 				</div>
 			</div>
 
-			<footer class="footer">
-                <div class="container-fluid">
-                    <div class="copyright mr-auto">
-                        2024 JAPAN JOBS. All rights reserved.
-                    </div>
-                </div>
-            </footer>
+		<!--bottom navbar-->
+		<footer class="footer text-white" style="background-color:mediumseagreen">
+		<div class="container-fluid">
+			<nav class="pull-left">
+				<ul class="nav">
+					<li class="nav-item">
+						<a class="nav-link">
+							Privacy
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">
+							Terms & Condition
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">
+							Protect yourself online
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link">
+							Contact
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="ml-auto">
+				© 2024 JAPAN JOBS.All rights reserved by Japan Jobs
+			</div>				
+		</div>
+		</footer>
+
 		</div>
 	</div>
 
@@ -182,7 +266,6 @@
 
 	<!-- jQuery Scrollbar -->
 	<script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-
 
 	<!-- Chart JS -->
 	<script src="../assets/js/plugin/chart.js/chart.min.js"></script>

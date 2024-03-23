@@ -20,46 +20,63 @@
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
-     <!-- Japan job posting icon href-->
-     <nav class="navbar navbar-expand-sm">
-      <div class="container-fluid">
-        <form class="">
-          <a class="navbar-brand font-RR text-white" href="/recruiter/dashboard_recruiter.html">
-            <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
-              </form>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-              <ul class="navbar nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link text-white" href="#">Job Ads</a>
-                </li>
-              </ul>
-
-              <form class="d-flex">
-                <div class="dropdown">
-                  <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="avatar">
+          <!--Navbar Header-->
+          <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
+            <div class="container-fluid">
+              <div class="collapse" id="search-nav">
+                <div>
+                <form class="navbar-left navbar-form">
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a href="/applicant/Landing_Page.html" class="logo">
+                          <img src="../assets/img/JapanJobs.png" alt="navbar brand">
+                        </a>
+                    </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Japan Ads</a>
+                      </li>
+                    </ul>
+                  </div>
+                </form>
+                </div>
+              </div>
+              <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
+                <li class="nav-item dropdown hidden-caret">
+                  <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <div class="avatar-sm">
                       <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
                     </div>
-                    gen.test
-                </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="/recruiter/dashboard_myaccount.html">My Account</a>
-                    <a class="dropdown-item" href="/recruiter/dashboard_billing.html">My Billing</a>
-                    <a class="dropdown-item" href="#">Logout</a>
-                  </div>
-                </div>
-              </form>
-          </div>
-      </div>
-    </nav>
-
-      
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
+                          <div class="u-text">
+                            <h4>Meow</h4>
+                            <p class="text-muted">Genesis.com</p><a href="/applicant/profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">My Account</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">My Billing</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Logout</a>
+                      </li>
+                    </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <!--End Navbar-->
 
     <div class="container flex justify-content-center mt-5" style="width: 50%;">
 
@@ -211,28 +228,36 @@
 
 
     <!--bottom navbar-->
-    <footer class="p-2 navbar">
-
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Privacy</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Terms & Condition</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Protect yourself online</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Contact</a>
-          </li>
-          
-          <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
-        </ul>
-
+    <footer class="footer text-white" style="background-color:#187498">
+      <div class="container-fluid">
+          <nav class="pull-left">
+              <ul class="nav">
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Privacy
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Terms & Condition
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Protect yourself online
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Contact
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+          <div class="ml-auto">
+              © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
+          </div>				
+      </div>
     </footer>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

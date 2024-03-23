@@ -15,6 +15,7 @@
 
 	<!-- Template Main CSS File -->
 	<link href="../assets/css/main.css" rel="stylesheet">
+	<link href="/CSS/applicant.css" rel="stylesheet">
 
 	<!-- Fonts and icons -->
 	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -44,21 +45,27 @@
 </head>
 <body>
 	<div class="wrapper">
-        <div class="main-header">
-			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="green2">
-
-				<a href="accounts.php" class="logo">
-					<img src="../assets/img/LogoBanner.png" alt="navbar brand" class="navbar-brand">
-				</a>
-			</div>
-			<!-- End Logo Header -->
-
-			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
-			</nav>
-			<!-- End Navbar -->
-		</div>
+    <!-- Navbar Header -->
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
+      <div class="container-fluid">
+        <div class="collapse" id="search-nav">
+          <div>
+          <form class="navbar-left navbar-form">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar nav me-auto mb-2 mb-lg-0">
+               <li>
+                   <a href="/applicant/Landing_Page.html" class="logo">
+                     <img src="../assets/img/JapanJobs.png" alt="navbar brand">
+                   </a>
+               </li>
+              </ul>
+            </div>
+          </form>
+          </div>
+        </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
 
         <div class="main-panel w-100">
 			<div class="content">

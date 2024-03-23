@@ -3,8 +3,8 @@
 <head>
 
     <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
@@ -13,53 +13,88 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../assets/css/atlantis.css">
-    <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
+    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- CSS Files -->
+	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
+
+        <!-- Fonts and icons -->
+        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+        <script>
+          WebFont.load({
+            google: {"families":["Lato:300,400,700,900"]},
+            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+            active: function() {
+              sessionStorage.fonts = true;
+            }
+          });
+        </script>
 
     <title>Pay and Post</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
   </head>
   <body>
-       <!-- Japan job posting icon href-->
-       <nav class="navbar navbar-expand-sm">
-        <div class="container-fluid">
-          <form class="">
-            <a class="navbar-brand font-RR text-white" href="/recruiter/dashboard_recruiter.html">
-              <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
-                </form>
-  
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  
-                <ul class="navbar nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
-                  </li>
-  
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Job Ads</a>
-                  </li>
-                </ul>
-  
-                <form class="d-flex">
-                  <div class="dropdown">
-                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <div class="avatar">
-                        <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
-                      </div>
-                      gen.test
-                  </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="/recruiter/dashboard_myaccount.html">My Account</a>
-                      <a class="dropdown-item" href="/recruiter/dashboard_billing.html">My Billing</a>
-                      <a class="dropdown-item" href="#">Logout</a>
-                    </div>
+          <!--Navbar Header-->
+          <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
+            <div class="container-fluid">
+              <div class="collapse" id="search-nav">
+                <div>
+                <form class="navbar-left navbar-form">
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar nav me-auto mb-2 mb-lg-0">
+                    <li>
+                        <a href="/applicant/Landing_Page.html" class="logo">
+                          <img src="../assets/img/JapanJobs.png" alt="navbar brand">
+                        </a>
+                    </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Japan Ads</a>
+                      </li>
+                    </ul>
                   </div>
                 </form>
+                </div>
+              </div>
+              <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
+                <li class="nav-item dropdown hidden-caret">
+                  <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+                    <div class="avatar-sm">
+                      <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
+                    </div>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user animated fadeIn">
+                    <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
+                      <li>
+                        <div class="user-box">
+                          <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
+                          <div class="u-text">
+                            <h4>Meow</h4>
+                            <p class="text-muted">Genesis.com</p><a href="/applicant/profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">My Account</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">My Billing</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Logout</a>
+                      </li>
+                    </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
+                  </ul>
+                </li>
+              </ul>
             </div>
-        </div>
-      </nav>
+          </nav>
+          <!--End Navbar-->
 
-    <div class="container flex justify-content-center mt-5" style="width: 50%;">
+    <div class="container flex justify-content-center mt-5" style="width: 80%;">
         <a href="/recruiter/create_jobad4.html">
             <button type="button" class="btn btn-icon btn-round btn-primary">
               <i class="fa fa-arrow-circle-left"></i>
@@ -90,62 +125,108 @@
         <h5 class="mt-5">Pay upfront and get a discount on ads</h5>
         <p class="mb-5">Choose an Ad budget and use your balance to post ad jobs</p>
 
-        <div class="row cols-3">
-
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Occasional</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">2-3 ads over 6 months</h6>
-                        <hr>
-                        <p class="card-text">17,950</p>
-                        <p class="tex-muted">Including VAT</p>
-                        <button class="btn btn-outline-primary" type="submit">Select</button>
-                        <p class="card-text bg-primary">4% off Basic ads</p>
-                        <p class="card-text bg-primary">4% off Branded ads</p>
-                        <p><i class="fa fa-check"></i>Post any ad type</p>
-                        <p><i class="fa fa-check"></i>Discount apply for 6 months, even after your balance is used up</p>  
-                    </div>
+        <div class="row justify-content-center align-items-center mb-1">
+          <div class="col-md-3 pl-md-0">
+            <div class="card card-pricing">
+              <div class="card-header">
+                <h4 class="card-title">Occasional</h4>
+                <span class="sub-title">2-3 ads over 6 months</span>
+                <div class="card-price">
+                  <span class="price">$17,920</span>
+                  <span class="text">/mo</span>
                 </div>
+              </div>
+              <div class="card-body">
+                <ul class="specification-list">
+                  <li>
+                    <span class="name-specification">4% off Basic ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">4% off Branded ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">Post any ad type</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">Discount apply for 6 months, even after your balance is used up</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-primary btn-block"><b>Select</b></button>
+              </div>
             </div>
-
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Occasional</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">2-3 ads over 6 months</h6>
-                        <hr>
-                        <p class="card-text">20,000</p>
-                        <p class="tex-muted">Including VAT</p>
-                        <button class="btn btn-outline-primary" type="submit">Select</button>
-                        <p class="card-text bg-primary">10% off Basic ads</p>
-                        <p class="card-text bg-primary">10% off Branded ads</p>
-                        <p class="card-text bg-primary">3% off Premium ads</p>
-                        <p><i class="fa fa-check"></i>Post any ad type</p>
-                        <p><i class="fa fa-check"></i>Discount apply for 12 months, even after your balance is used up</p>
-                    </div>
+          </div>
+          <div class="col-md-3 pl-md-0 pr-md-0">
+            <div class="card card-pricing card-pricing-focus card-primary">
+              <div class="card-header">
+                <h4 class="card-title">Regular</h4>
+                <span class="sub-title">2-3 ads over 6 months</span>
+                <div class="card-price">
+                  <span class="price">$28,000</span>
+                  <span class="text">/mo</span>
                 </div>
+              </div>
+              <div class="card-body">
+                <ul class="specification-list">
+                  <li>
+                    <span class="name-specification">10% off Basic ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">10% off Branded ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">3% off Premium ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">Post any ad type</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">Discount apply for 12 months, even after your balance is used up</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-light btn-block"><b>Select</b></button>
+              </div>
             </div>
-
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title mb-3">Occasional</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">2-3 ads over 6 months</h6>
-                        <hr>
-                        <p class="card-text">22,000</p>
-                        <p class="tex-muted">Including VAT</p>
-                        <button class="btn btn-outline-primary" type="submit">Select</button>
-                        <p class="card-text bg-primary">20% off Basic ads</p>
-                        <p class="card-text bg-primary">20% off Branded ads</p>
-                        <p class="card-text bg-primary">10% off Premium ads</p>
-                        <p><i class="fa fa-check"></i>Post any ad type</p>
-                        <p><i class="fa fa-check"></i>Discount apply for 12 months, even after your balance is used up</p>
-                    </div>
+          </div>
+          <div class="col-md-3 pr-md-0">
+            <div class="card card-pricing">
+              <div class="card-header">
+                <h4 class="card-title">Frequent</h4>
+                <span class="sub-title">2-3 ads over 6 months</span>
+                <div class="card-price">
+                  <span class="price">$52,640</span>
+                  <span class="text">/mo</span>
                 </div>
+              </div>
+              <div class="card-body">
+                <ul class="specification-list">
+                  <li>
+                    <span class="name-specification">20% off Basic ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">20% off Branded ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">10% off Premium ads</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">Post any ad type</span>
+                  </li>
+                  <li>
+                    <span class="name-specification">Discount apply for 12 months, even after your balance is used up</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-primary btn-block"><b>Get Started</b></button>
+              </div>
             </div>
-
+          </div>
         </div>
+
         <hr>
         <h4 class="mt-5">Apply Promo Code</h4>
         <div class="input-group">
@@ -213,7 +294,7 @@
                     </div>
                 </div>
                 <p class="mt-3"><input type="checkbox" id="check"> Save card details for future payments</p>
-                <p><i class="fa fa-lock"></i> Your payment is secured. Your card details won’t be shared with other users on this account.</p>
+                <p><i class="fas fa-lock"></i> Your payment is secured. Your card details won’t be shared with other users on this account.</p>
             </div>
 
             <div class="form-check row cols-3">
@@ -243,28 +324,36 @@
 
 
     <!--bottom navbar-->
-    <footer class="p-2 navbar">
-
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Privacy</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Terms & Condition</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Protect yourself online</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="form-label nav-link text-white" href="#">Contact</a>
-          </li>
-          
-          <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
-        </ul>
-
+    <footer class="footer text-white" style="background-color:#187498">
+      <div class="container-fluid">
+          <nav class="pull-left">
+              <ul class="nav">
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Privacy
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Terms & Condition
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Protect yourself online
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Contact
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+          <div class="ml-auto">
+              © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
+          </div>				
+      </div>
     </footer>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
