@@ -8,69 +8,6 @@
     box-sizing: border-box;
 }
 
-body{
-    background-color:rgb(239, 231, 231);
-    font-family: 'Roboto', sans-serif;
-}
-
-.navbar{
-    background-color: #EB5353;
-}
-
-.font-RR{
-    font-family: Road Rage;
-    font-size:xxx-large;
-}
-
-form{
-    border-radius: 20px;
-    margin-top: 150px !important;
-    margin-bottom: 150px !important;
-    width: 25% !important;
-    background-color: white !important;
-    padding: 50px;
-}
-
-.font-RR{
-    font-family: Road Rage;
-    font-size:xxx-large;
-}
-
-.btn-danger{
-    width: 100%;
-    border: none;
-    border-radius: 50px;
-}
-
-.btn-white{
-    width: 100%;
-    border: none;
-    border-radius: 50px;
-    background:none; /*waiting sa design ni rein hihi*/
-}
-
-.form-control{
-    color: rgba(0, 0, 0, .87);
-    border-bottom-color: rgba(0, 0, 0, .42);
-    box-shadow: none;
-    border: none;
-    border-bottom: 1px solid;
-    border-radius: 4px 4px 0 0;
-}
-
-h1{
-    font-size: 2rem !important;
-    font-weight: 700;
-}
-
-.form-label{
-    font-weight: 800 !important;
-}
-
-.nav-link:hover{
-    text-decoration: underline;
-}
-
 @media only screen and (max-width: 1000px){
     form {
         width: 100% !important;
