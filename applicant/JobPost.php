@@ -9,7 +9,7 @@
     <!-- CSS Files -->
 	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
-    <link href="/CSS/applicant.css" rel="stylesheet">
+    <link href="../CSS/applicant.css" rel="stylesheet">
 
     <!-- Fonts and icons -->
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -24,7 +24,7 @@
     </script>
 
     <title>Fullscreen</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
       <!-- Navbar Header -->
@@ -36,18 +36,18 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar nav me-auto mb-2 mb-lg-0">
                  <li>
-                     <a href="/applicant/Landing_Page.html" class="logo">
+                     <a href="Landing_Page.html" class="logo">
                        <img src="../assets/img/JapanJobs.png" alt="navbar brand">
                      </a>
                  </li>
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="/applicant/Landing_Page.html">Home</a>
+                    <a class="nav-link text-white" href="Landing_Page.html">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="/applicant/profile.php">Pofile</a>
+                    <a class="nav-link text-white" href="profile.php">Pofile</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="/applicant/about_us.html">About Us</a>
+                    <a class="nav-link text-white" href="about_us.html">About Us</a>
                   </li>
                 </ul>
               </div>
@@ -68,7 +68,7 @@
                       <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
                       <div class="u-text">
                         <h4>Meow</h4>
-                        <p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                        <p class="text-muted">Genesis.com</p><a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                       </div>
                     </div>
                   </li>
@@ -85,13 +85,6 @@
                 </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
               </ul>
             </li>
-            <li>
-              <form class="d-flex">
-                <div>
-                  <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
-                </div>
-              </form>
-            </li>
           </ul>
         </div>
         </nav>
@@ -99,7 +92,7 @@
 
       <!--Background-Group-->
       <div class="card">
-        <img src="/assets/img/header_bg.png">
+        <img src="../assets/img/header_bg.png">
       </div>
       
       <!--Search Group-->
@@ -145,7 +138,7 @@
       </div> 
 
       <!--FIlter-->
-      <div id="Div-filter" class="dropdown d-flex justify-content-center gap-3">
+      <div id="Div-filter" class="dropdown d-flex justify-content-center gap-3 d-none d-sm-none">
         <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Date posted
         </button>
@@ -185,58 +178,87 @@
 
       <div class="container-fluid flex justify-content-center row mt-5">
         <div class="card" style="width: 80%;">
-            <div class="card-body">
-                <h5 class="card-title">Software Engineer</h5>
-                <div class="container mt-4">
-                  <p>
-                    <span class="mr-2 text-danger"><i class="fas fa-map-marker-alt"></i></span>Osaka, Japan
-                  </p>
+          <div class="card-header">
+            <h2 class="font-weight-bold">Software Engineer</h2>
+            <div class="row mt-4">
+              <div class="col-md-12 pl-4">
+                <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span>Osaka, Japan</h5>
+                <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span>Information and Communication Technology</h5>
+                <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
+                <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span>60,000 - 80,000 yen</h5>
                 </div>
-                <a href="#" class="btn btn-danger">Apply Now</a>
-                <a href="#" class="btn btn-outline-danger"><i class="fa fa-bookmark"></i> Saved</a>
-                <hr>
-                <h6>Job Summary</h6>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium tempore accusamus iste dicta sit. Eveniet sed cupiditate aut earum eaque aliquam ullam, iusto adipisci pariatur, ipsam facilis. Autem, dolor natus.</p>
-                <h7>Qualifications</h7>
-                <ul>
-                    <li>
-                       <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                    </li>
-                    <li>
-                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                     </li>
-                     <li>
-                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                     </li>
-                </ul>
-
-                <h7>Education & Experiences</h7>
-                <ul>
-                    <li>
-                       <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                    </li>
-                    <li>
-                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                     </li>
-                     <li>
-                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                     </li>
-                </ul>
-
-                <h7>Employer's Questions</h7>
-                <ul>
-                    <li>
-                       <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                    </li>
-                    <li>
-                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                     </li>
-                     <li>
-                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                     </li>
-                </ul>
-                <button class="btn btn-outline-danger"><i class="fa fa-flag"></i> Report Job</button>
             </div>
+
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <button class="btn btn-danger mr-3">Apply Now</button>
+                <button class="btn btn-outline-danger mr-3"><i class="fa fa-bookmark mr-2"></i> Save</button>
+                <button class="btn btn-outline-danger"><i class="fa fa-flag mr-2"></i> Report Job</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Job Summary</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium tempore accusamus iste dicta sit. Eveniet sed cupiditate aut earum eaque aliquam ullam, iusto adipisci pariatur, ipsam facilis. Autem, dolor natus.</p>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Qualifications</h4>
+                <ul>
+                  <li>
+                      <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                  <li>
+                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                  <li>
+                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Education & Experiences</h4>
+                <ul>
+                  <li>
+                      <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                  <li>
+                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                  <li>
+                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Employer's Questions</h4>
+                <ul>
+                  <li>
+                      <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                  <li>
+                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                  <li>
+                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
