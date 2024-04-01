@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Change Content Using Modal</title>
+<!-- Bootstrap CSS (for modal) -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+  <p id="content">This is the initial content.</p>
+  <p id="name">Genesis P. Mañale</p>
+  <p id="tel">+639084746563</p>
+  <p id="email">genesismarvinmanale12@gmail.com</p>
+  <p id="loc">Pagsanjan, Laguna</p>
+  <button class="btn btn-primary" onclick="openEditModal()">Edit Content</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Content</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input id="editInput" type="text" class="form-control" placeholder="test">
+        <input id="editInput2" type="text" class="form-control" placeholder="name">
+        <input id="editInput3" type="text" class="form-control" placeholder="tel">
+        <input id="editInput4" type="text" class="form-control" placeholder="email">
+        <input id="editInput5" type="text" class="form-control" placeholder="loc">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS (for modal) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+// Function to open the edit modal
+function openEditModal() {
+  var content = document.getElementById('content').innerText;
+  document.getElementById('editInput').value = content.trim();
+  var content = document.getElementById('name').innerText;
+  document.getElementById('editInput2').value = content.trim();
+  var content = document.getElementById('email').innerText;
+  document.getElementById('editInput3').value = content.trim();
+  var content = document.getElementById('tel').innerText;
+  document.getElementById('editInput4').value = content.trim();
+  var content = document.getElementById('loc').innerText;
+  document.getElementById('editInput5').value = content.trim();
+  $('#editModal').modal('show');
+}
+
+// Function to save changes made in the modal
+function saveChanges() {
+  var editedContent = document.getElementById('editInput').value;
+  document.getElementById('content').innerText = editedContent;
+  var editedContent = document.getElementById('editInput2').value;
+  document.getElementById('name').innerText = editedContent;
+  var editedContent = document.getElementById('editInput3').value;
+  document.getElementById('email').innerText = editedContent;
+  var editedContent = document.getElementById('editInput4').value;
+  document.getElementById('tel').innerText = editedContent;
+  var editedContent = document.getElementById('editInput5').value;
+  document.getElementById('loc').innerText = editedContent;
+  $('#editModal').modal('hide');
+}
+</script>
+
+</body>
+</html>
