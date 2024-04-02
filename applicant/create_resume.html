@@ -121,7 +121,7 @@
           <p>Location</p>
         </div>
 
-        <div class="col">
+        <div class="col" id="content">
           <p id="name">Genesis P. Mañale</p>
           <p id="tel">+639084746563</p>
           <p id="email">genesismarvinmanale12@gmail.com</p>
@@ -132,7 +132,7 @@
 
 
       <div class="mt-3">
-        <button type="button" data-toggle="modal" class="btn btn-danger" data-target="#edit_detail">Edit</button>
+        <button onclick="opensesame()" type="button" data-toggle="modal" class="btn btn-danger">Edit</button>
       </div>
 
       <!-- Modal -->
@@ -148,38 +148,89 @@
 
                 <div class="modal-body">
                     <label>Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="name">
+                    <input type="text" class="form-control" id="editInput1" placeholder="name">
                     <label>Phone Number</label>
-                    <input type="tel" class="form-control" id="tel" placeholder="phone number">
+                    <input type="tel" class="form-control" id="editInput2" placeholder="phone number">
                     <label>Email Address</label>
-                    <input type="email" class="form-control" id="email" placeholder="email">
+                    <input type="email" class="form-control" id="editInput3" placeholder="email">
                     <label>Location</label>
-                    <input type="text" class="form-control" id="loc" placeholder="location">
+                    <input type="text" class="form-control" id="editInput4" placeholder="location">
                   </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
-      <hr>
+    <hr>
+
+<script>
+// Function to open the edit modal
+function opensesame() {
+  var content = document.getElementById('name').innerText;
+  document.getElementById('editInput1').value = content.trim();
+  var content = document.getElementById('email').innerText;
+  document.getElementById('editInput2').value = content.trim();
+  var content = document.getElementById('tel').innerText;
+  document.getElementById('editInput3').value = content.trim();
+  var content = document.getElementById('loc').innerText;
+  document.getElementById('editInput4').value = content.trim();
+  $('#edit_detail').modal('show');
+}
+
+// Function to save changes made in the modal
+function saveChanges() {
+  var editedContent = document.getElementById('editInput1').value;
+  document.getElementById('name').innerText = editedContent;
+  var editedContent = document.getElementById('editInput2').value;
+  document.getElementById('email').innerText = editedContent;
+  var editedContent = document.getElementById('editInput3').value;
+  document.getElementById('tel').innerText = editedContent;
+  var editedContent = document.getElementById('editInput4').value;
+  document.getElementById('loc').innerText = editedContent;
+  $('#edit_detail').modal('hide');
+}
+</script>
 
       <h4>Personal Summary</h4>
       <p>Tell us about yourself</p>
-      <input type="text" class="form-control pb-5" id="summary" placeholder="Your personal summary will appear here.">
-      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Summary</button>
+      <textarea type="text" class="form-control pb-5" id="summary" placeholder="Your personal summary will appear here."></textarea>
+      <div id="outputDiv" class="mt-3 card card-body"></div>
+      <button onclick="saveInput()" type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Summary</button>
       <hr>
 
       <h4>Work Summary</h4>
       <p>Let the recruiters know your career history. Tip: It is better to use the most recent experience.</p>
-      <input type="text" class="form-control pb-5" id="role" placeholder="Your personal summary will appear here.">
-      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Role</button>
+      <textarea type="text" class="form-control pb-5" id="role" placeholder="Your personal summary will appear here."></textarea>
+      <div id="outputDiv2" class="mt-3 card card-body"></div>
+      <button onclick="saveInput()" type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Role</button>
       <hr>
 
+      <script> //hehe ang galing
+        function saveInput() {
+          // Get input value
+          var inputValue = document.getElementById('summary').value;
+          var inputValue2 = document.getElementById('role').value;
+        
+          // Get the output div
+          var outputDiv = document.getElementById('outputDiv');
+          var outputDiv2 = document.getElementById('outputDiv2');
+        
+          // Clear previous content
+          outputDiv.innerHTML = '';
+          outputDiv2.innerHTML = '';
+        
+          // Set input value as text content of the output div
+          outputDiv.textContent = inputValue;
+          outputDiv2.textContent = inputValue2;
+        
+          alert('Input saved successfully!');}
+      </script>
+
       <h4>Education</h4>
-      <div class="card">
+      <div id="test" class="card">
         <div class="card-body">
           <div class="row">
 
@@ -189,10 +240,9 @@
               <p class="card-text mb-2">Sta. Cruz, Laguna</p>
               <p class="card-text">August 2020 - Present</p>
             </div>
-
-            <div class="col">
-              <a class="m-3" type="button" data-toggle="modal" data-target="#edit_detail_educ"><i class="fa fa-edit"></i></a>
-              <a type="button" data-toggle="modal" data-target="#delete"><i class="fa fa-trash"></i></a>
+            <div class="col d-flex justify-content-end">
+              <a class="btn" data-toggle="modal" data-target="#edit_detail_educ"><i class="fa fa-edit"></i></a>
+              <a class="btn" data-toggle="modal" data-target="#delete"><i class="fa fa-trash"></i></a>
 
               <!-- Modal -->
               <div class="modal fade" id="edit_detail_educ" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -246,8 +296,21 @@
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Education</button>
+      <button onclick="copyDiv()" class="btn btn-danger mt-3 mb-5">Add Education</button>
       <hr>
+
+      <script> //di pa to final testing stage palang
+        function copyDiv() {
+          // Find the original div
+          var test = document.getElementById('test');
+        
+          // Clone the original div
+          var clonedDiv = test.cloneNode(true);
+        
+          // Append the cloned div to the body or another desired location
+          document.body.appendChild(clonedDiv);
+        }
+      </script>
 
       <h4>Skills</h4>
       <p>Showcase what kind of skills you attained.</p>
@@ -268,10 +331,8 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col">
-              <a onclick="" type="button"><i class="fa fa-trash"></i></a>
+            <div class="col d-flex align-items-end">
+              <a onclick="" class="btn"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
@@ -295,8 +356,8 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col">
-              <a onclick="" type="button"><i class="fa fa-trash"></i></a>
+            <div class="col d-flex align-items-end">
+              <a onclick="" class="btn"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
@@ -320,8 +381,8 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col">
-              <a onclick="" type="button"><i class="fa fa-trash"></i></a>
+            <div class="col d-flex align-items-end">
+              <a onclick="" class="btn"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
@@ -355,8 +416,8 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col">
-              <a onclick="" type="button"><i class="fa fa-trash"></i></a>
+            <div class="col d-flex align-items-end">
+              <a onclick="" class="btn"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
@@ -380,14 +441,14 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col">
-              <a onclick="" type="button"><i class="fa fa-trash"></i></a>
+            <div class="col d-flex align-items-end">
+              <a onclick="" class="btn"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
       </div> 
 
-      <div class="card mb-3">
+      <div class="card">
         <div class="card-body">
           <div class="row">
             <div class="col">
@@ -405,8 +466,8 @@
             <div class="col"></div>
             <div class="col"></div>
             <div class="col"></div>
-            <div class="col">
-              <a onclick="" type="button"><i class="fa fa-trash"></i></a>
+            <div class="col d-flex align-items-end">
+              <a class="btn"><i class="fa fa-trash"></i></a>
             </div>
           </div>
         </div>
@@ -464,7 +525,12 @@
       </div>
     </footer>
 
-   <!--   Core JS Files   -->
+  <!-- Bootstrap JS (for modal) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!--   Core JS Files   -->
 	<script src="../assets/js/core/jquery.3.2.1.min.js"></script>
 	<script src="../assets/js/core/popper.min.js"></script>
 	<script src="../assets/js/core/bootstrap.min.js"></script>
