@@ -1,68 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edit Using Modal</title>
-<!-- Bootstrap CSS (for modal) -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
-
-<div class="container">
-  <div id="content">
-    <!-- Initial content to be edited -->
-    <p>This is editable content. Click the button to edit.</p>
-    <p id="testinput">asdfghjkl</p>
-  </div>
-</div>
-
-<button class="btn btn-primary" onclick="openEditModal()">Edit</button>
-
-<!-- Modal -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Content</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <textarea id="editTextArea" class="form-control" style="resize: none;"></textarea>
-        <input id="testinput" class="form-control">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" onclick="saveChanges()">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Bootstrap JS (for modal) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 <script>
-// Function to open the edit modal
-function openEditModal() {
-  var content = document.getElementById('content').innerText;
-  document.getElementById('editTextArea').value = content.trim();
-  document.getElementById('testinput').value = content.trim();
-  $('#editModal').modal('show');
-}
+  function addCreateOption(){
+    event.preventDefault();
 
-// Function to save changes made in the modal
-function saveChanges() {
-  var editedContent = document.getElementById('editTextArea').value;
-  var editedContent = document.getElementById('testinput').value;
-  document.getElementById('content').innerText = editedContent;
-  $('#editModal').modal('hide');
+    var divOptionCount = document.getElementsByClassName("card text-muted");
+    var optionCounter = divOptionCount.length + 1;
+
+    if(optionCounter == 6){
+        swal({
+            title: 'Failed to Add Option!',
+            text: "You can only add upto five(5) Options only.",
+            icon: 'warning',
+            type: 'warning',
+            buttons : {
+                confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                }
+            }
+        });
+    }
+    else{
+        var divFormBox = document.getElementById("optionContainer");
+
+        // Create the main div 
+        var divOption = document.createElement("div");
+        divOption.className = "card text-muted";
+        divOption.id = "divOption"+optionCounter.toString();
+
+        // Create the div header
+        var divHeader = document.createElement("div");
+        divHeader.className = "card-header d-flex justify-content-between align-items-center";
+
+        // Create a new <p> element
+        var pElement = document.createElement("p");
+        pElement.className = "lblAnswerID";
+        pElement.style.display = "none";
+        pElement.textContent = "-";
+
+        // Create the div Header Text
+        var divHeaderText = document.createElement("h3");
+        divHeaderText.className = "font-weight-bold";
+        divHeaderText.textContent = "Option " + optionCounter.toString();
+
+        // Create the button to remove the option
+        var btnRemoveOption = document.createElement("button");
+        btnRemoveOption.type = "button";
+        btnRemoveOption.className = "btn btn-icon btn-round btn-danger btn-xs";
+        btnRemoveOption.onclick = function() {
+            removeOption(optionCounter.toString());
+        };
+        var btnRemoveOptionIcon = document.createElement('i');
+        btnRemoveOptionIcon.className = "fa fa-times-circle";
+        btnRemoveOption.appendChild(btnRemoveOptionIcon);
+
+        // Complete the div Header
+        divHeader.appendChild(pElement);
+        divHeader.appendChild(divHeaderText);
+        divHeader.appendChild(btnRemoveOption);
+
+        // Create main container
+        var divContainerCardBody = document.createElement('div');
+        divContainerCardBody.className = "card-body";
+
+        // create row1
+        var divRow1 = document.createElement('div');
+        divRow1.className = "row";
+
+        // create row1 form group container 1
+        var divFormGroupContainer1 = document.createElement('div');
+        divFormGroupContainer1.className = "form-group form-group-default";
+
+        // create row1  form group container 1 label
+        var lblRemark = document.createElement('label');
+        lblRemark.textContent = "Remark";
+
+        // create row1  form group container 1 input
+        var cbRemark = document.createElement('select');
+        cbRemark.className = "form-control";
+        cbRemark.id = "cbRemark";
+        cbRemark.required = true;
+        cbRemark.name = "cbRemark";
+
+        // Create and add option elements
+        var defaultOption = document.createElement("option");
+        defaultOption.value = "-";
+        defaultOption.disabled = true;
+        defaultOption.selected = true;
+        defaultOption.text = "Select Answer Remark";
+        cbRemark.appendChild(defaultOption);
+
+        var option1 = document.createElement("option");
+        option1.value = "1";
+        option1.text = "Correct Answer";
+        cbRemark.appendChild(option1);
+
+        var option2 = document.createElement("option");
+        option2.value = "2";
+        option2.text = "Incorrect Answer";
+        cbRemark.appendChild(option2);
+
+        // Complete Row1
+        divFormGroupContainer1.appendChild(lblRemark);
+        divFormGroupContainer1.appendChild(cbRemark);
+        divRow1.appendChild(divFormGroupContainer1);
+
+        // create row2
+        var divRow2 = document.createElement('div');
+        divRow2.className = "row";
+
+        // create row2 form group container 2
+        var divFormGroupContainer2 = document.createElement('div');
+        divFormGroupContainer2.className = "form-group form-group-default";
+
+        // create row2 form group container 2 label
+        var lblAnswer = document.createElement('label');
+        lblAnswer.textContent = "Answer";
+
+        // create row2 form group container 2 input
+        var textareaAnswer = document.createElement("textarea");
+        textareaAnswer.className = "form-control";
+        textareaAnswer.rows = 3;
+        textareaAnswer.placeholder = "Enter an Answer";
+        textareaAnswer.required = false;
+        textareaAnswer.name = "txtAnswer";
+
+        // Complete Row2
+        divFormGroupContainer2.appendChild(lblAnswer);
+        divFormGroupContainer2.appendChild(textareaAnswer);
+        divRow2.appendChild(divFormGroupContainer2);
+
+        // create row3
+        var divRow3 = document.createElement('div');
+        divRow3.className = "row";
+
+        // create row3 form group container 3
+        var divFormGroupContainer3 = document.createElement('div');
+        divFormGroupContainer3.className = "form-group form-group-default";
+
+        // create row3 form group container 3 label
+        var lblAnswerPicture = document.createElement('label');
+        lblAnswerPicture.textContent = "Picture for Option 1 (Optional)";
+        lblAnswerPicture.className = "answer-labels";
+
+        // Create a file input element
+        var fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.className = "form-control-file";
+        fileInput.name = "btnUploadAnswerPicture";
+        fileInput.id = "btnUploadAnswerPicture" + optionCounter.toString();
+        fileInput.accept = "image/*";
+        fileInput.onchange = function() {
+            uploadOptionPicture(this, optionCounter.toString());
+        };
+        fileInput.name = "btnUploadAnswerPicture";
+
+        // Create the image for the answer
+        var imgAnswer = document.createElement("img");
+        imgAnswer.src = "";
+        imgAnswer.alt = "Answer Image";
+        imgAnswer.className = "img-fluid mt-3 mb-3";
+        imgAnswer.id = "imgOption" + optionCounter.toString();
+        imgAnswer.onerror = function() {
+            this.style.display = "none";
+        }
+
+        // Create the button to remove the image
+        var btnRemoveAnswerImage = document.createElement("button");
+        btnRemoveAnswerImage.type = "button";
+        btnRemoveAnswerImage.id = "btnRemoveAnswerPicture" + optionCounter.toString();
+        btnRemoveAnswerImage.className = "btn btn-danger btn-lg btn-block mb-3 d-none d-sm-none";
+        btnRemoveAnswerImage.onclick = function() {
+            removeOptionPicture(optionCounter.toString());
+        };
+        btnRemoveAnswerImage.textContent = "Remove Picture";
+
+        // Complete Row3
+        divFormGroupContainer3.appendChild(lblAnswerPicture);
+        divFormGroupContainer3.appendChild(fileInput);
+        divFormGroupContainer3.appendChild(imgAnswer);
+        divFormGroupContainer3.appendChild(btnRemoveAnswerImage);
+        divRow3.appendChild(divFormGroupContainer3);
+
+        // Append the created elements to the main div in the desired order
+        divOption.appendChild(divHeader);
+        divOption.appendChild(divRow1);
+        divOption.appendChild(divRow2);
+        divOption.appendChild(divRow3);
+
+        var optionDivider = document.getElementById("optionDivider");
+
+        // Append the main div to the document or a parent container
+        divFormBox.appendChild(divOption); // You can change the parent container as needed
+        // Update labelTitle for existing divOption elements
+        updateLabelTitles();
+    }
 }
 </script>
-
-</body>
-</html>
