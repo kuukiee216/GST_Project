@@ -23,13 +23,19 @@
       });
     </script>
 
+    <style>
+      #navMain{
+        z-index: 999;
+      }
+    </style>
+
     <title>Japan Jobs Home Page</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
 
   <!-- Navbar Header -->
-  <nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
+  <nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2" id="navMain">
     <div class="container-fluid">
       <div class="collapse" id="search-nav">
         <div>
@@ -92,13 +98,13 @@
   <!-- End Navbar -->
 
   <!--Background-Group-->
-  <div class="card">
+  <div class="card mt--5">
     <img src="../assets/img/header_bg.png">
   </div>
   
   <!--Search Group-->
-  <div class="container-fluid d-flex justify-content-center align-items-center">
-    <div class="row">
+  <div class="container-fluid d-flex justify-content-center align-items-center mt--5">
+    <div class="row mt--3">
       <div class="col-md-12" id="divHotJobList">
         <div class="row">
           <div class="col-md-3 d-flex justify-content-center align-items-center">
@@ -107,7 +113,7 @@
                 <span class="input-icon-addon">
                   <i class="fa fa-search"></i>
                 </span>
-                <input type="text" class="form-control" placeholder="Job Title">
+                <input type="text" class="form-control shadow" placeholder="Job Title">
               </div>
             </div>
           </div>
@@ -118,7 +124,7 @@
                 <span class="input-icon-addon"> 
                   <i class="fa fa-suitcase"></i>
                 </span>
-                <input type="text" class="form-control ps-5" placeholder="Classification" />
+                <input type="text" class="form-control ps-5 shadow" placeholder="Classification" />
               </div>
             </div>
           </div>
@@ -129,14 +135,14 @@
                 <span class="input-icon-addon">
                   <i class="fas fa-map-marker-alt"></i>
                 </span>
-                <input type="text" class="form-control ps-5" placeholder="Location" />
+                <input type="text" class="form-control ps-5 shadow" placeholder="Location" />
               </div>
             </div>
           </div>
 
           <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <button class="btn btn-danger mr-3" type="button">Search</button>
-            <button onclick="triggerFilter();" id="test" class="btn btn-danger" type="button">
+            <button class="btn btn-danger mr-3 shadow" type="button">Search</button>
+            <button onclick="triggerFilter();" id="test" class="btn btn-danger shadow" type="button">
               <i class="fa fa-filter"></i>
             </button>
           </div>
@@ -145,7 +151,7 @@
     </div>  
   </div> 
 
-  <!--FIlter-->
+  <!--Filter-->
   <div id="divFilter" class="container-fluid mt-3 d-none d-sm-none">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-6">
@@ -198,53 +204,34 @@
     </div>
   </div>
 
-  <!--Content-->
+  <!--JOB POSTING LIST-->
   <div id="divPostingList" class="container mt-3">
     <div class="row">
-      <div class="col-md-12" id="divHotJobList">
-        <h2>Recommended Jobs</h2>
-        <div class="row mt-3">
+      <div class="col-md-12">
+        <h2 class="mb-3">Jobs Postings</h2>
+        <div class="row mb-5" id="divJobPostList">
           <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h2>Software Engineering</h2>
-              </div>
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-md-5">
-                    <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span>Osaka, Japan</h5>
-                    <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span>Information and Communication Technology</h5>
-                  </div>
-        
-                  <div class="col-md-5">
-                    <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
-                    <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span>60,000 - 80,000 yen</h5>
-                  </div>
-
-                  <div class="col-md-2 d-flex justify-content-center align-items-center">
-                    <button class="btn btn-danger float-right" onclick="viewJobPostDetails();">View Post</button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <h4><i>No listed job posting found.</i></h4>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="divPost" class="row d-none d-sm-none">
-    <div class="container-fluid flex justify-content-center row mt-3">
-      <div class="card" style="width: 80%;">
+  <!--JOB POSTING DETAILS-->
+  <div id="divPost" class=" container d-none d-sm-none">
+    <div class="container-fluid d-flex justify-content-center row mt-3">
+      <div class="card">
         <div class="card-header">
           <button class="btn btn-link text-dark ml--5" onclick="backToPostingList();"><i class="fas fa-chevron-left mr-2 fa-lg"></i> Back</button>
-          <h1 class="font-weight-bold">Software Engineer</h1>
+          <h1 class="font-weight-bold" id="lblJobTitle">-</h1>
+          <h5 class="font-weight-bold" id="lblCompanyName">-</h5>
           <div class="row mt-4">
             <div class="col-md-12 pl-4">
-              <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span>Osaka, Japan</h5>
-              <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span>Information and Communication Technology</h5>
-              <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
-              <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span>60,000 - 80,000 yen</h5>
+              <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><span id="lblLocation">-</span></h5>
+              <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">-</span></h5>
+              <h5 id="lblEmploymentType"><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full Time</h5>
+              <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span><span id="lblJobSalary">-</span></h5>
               </div>
           </div>
 
@@ -261,7 +248,7 @@
           <div class="row">
             <div class="col-md-12">
               <h4 class="font-weight-bold">Job Summary</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium tempore accusamus iste dicta sit. Eveniet sed cupiditate aut earum eaque aliquam ullam, iusto adipisci pariatur, ipsam facilis. Autem, dolor natus.</p>
+              <p class="card-text" id="lblJobSummary">-</p>
             </div>
           </div>
 
@@ -270,16 +257,8 @@
           <div class="row">
             <div class="col-md-12">
               <h4 class="font-weight-bold">Qualifications</h4>
-              <ul>
-                <li>
-                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
-                <li>
-                  <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
-                <li>
-                  <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
+              <ul id="listQualifications">
+                
               </ul>
             </div>
           </div>
@@ -287,16 +266,8 @@
           <div class="row">
             <div class="col-md-12">
               <h4 class="font-weight-bold">Education & Experiences</h4>
-              <ul>
-                <li>
-                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
-                <li>
-                  <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
-                <li>
-                  <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
+              <ul id="listEducationExperiences">
+                
               </ul>
             </div>
           </div>
@@ -304,16 +275,8 @@
           <div class="row">
             <div class="col-md-12">
               <h4 class="font-weight-bold">Employer's Questions</h4>
-              <ul>
-                <li>
-                    <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
-                <li>
-                  <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
-                <li>
-                  <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
-                </li>
+              <ul id="listQuestionnaires">
+                
               </ul>
             </div>
           </div>
@@ -323,7 +286,7 @@
   </div>
 
   <!--bottom navbar-->
-  <footer class="footer text-white" style="background-color:mediumseagreen">
+  <footer class="footer text-white mt-5" style="background-color:mediumseagreen">
     <div class="container-fluid">
         <nav class="pull-left">
             <ul class="nav">
@@ -403,27 +366,14 @@
   <!-- Atlantis JS -->
   <script src="../assets/js/atlantis.min.js"></script>
 
-  <script>
-    
-    function triggerFilter(){
-      var divFilter = $('#divFilter').attr('class'); //variable name (id or class)
-      
-      if(divFilter == 'container-fluid mt-3'){ //variablename = class
-        $('#divFilter').addClass('d-none d-sm-none');
-      }else {
-        $('#divFilter').removeClass('d-none d-sm-none');
-      }
-    }
+  <script src="../src/Applicant/JobSearchHandler.js"></script>
 
-    function viewJobPostDetails(){
-      $('#divPostingList').addClass('d-none d-sm-none');
-      $('#divPost').removeClass('d-none d-sm-none');
-    }
-    function backToPostingList(){
-      $('#divPostingList').removeClass('d-none d-sm-none');
-      $('#divPost').addClass('d-none d-sm-none');
-    }
-  
+  <script>
+
+    $(document).ready(function(){
+      fillJobPostingList();
+    });
+
   </script>
 
       
