@@ -38,7 +38,7 @@ $landing_page = "../applicant/Landing_Page.html";
     <title>Profile</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
-<body onload = "GetApplicantData();">
+<body>
     <!-- php Scripts -->
    
 
@@ -183,8 +183,11 @@ $landing_page = "../applicant/Landing_Page.html";
             <div class="card-body">
               <div>Upload your own resume here.</div>
               <div class="form-group">
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
+                <form id="applicantResume">
+                  <input id="resumeUploader" type="file" name="resumeUpload" class="form-control" accept=".pdf, .docx, .png, .jpg, .jpeg" required>
+                  <button type="button" id="submitResume" name="submitResume" >Submit</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -558,8 +561,15 @@ $landing_page = "../applicant/Landing_Page.html";
    <script src="../src/ApplicantHandler.js"></script>
 
    <script>
-      $(document).ready(function(){ 
+    $('#resumeUploader').change(function(event) {
+      verifyUploadResume();
+    });
 
+    $('#submitResume').click(function(event) {
+      uploadResume();
+    });
+
+      $(document).ready(function(){ 
         fillProfileInfo();
 
       });

@@ -321,6 +321,7 @@
 				},
 				url: "../PHPFiles/loginvalidation.php",
 				success: function(data){
+					alert(data)
                     if(data == "0"){
                         $('#btnLogin').removeClass('is-loading');
                         $('#btnLogin').prop('disabled', false);
@@ -383,7 +384,7 @@
 						location.href = 'applicant_profile.php';
 					}
 					else if(data == "5"){
-						location.href = './admin/Dashoard.php';
+						location.href = '../admin/admin_dashboard_main.php';
 					}
 					else if(data == "6"){
 						swal({

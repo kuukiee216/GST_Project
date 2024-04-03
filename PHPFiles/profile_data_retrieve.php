@@ -17,8 +17,7 @@ if(isset($_SESSION['AccountID'])){
                             ai.MiddleName, 
                             ai.LastName,
                             ai.EmailAddress,
-                            ai.Phone,
-                            ai.Country
+                            ai.Phone
                         FROM 
                             tbl_applicantinfo as ai
                         WHERE 
@@ -41,7 +40,6 @@ if(isset($_SESSION['AccountID'])){
         $dataResult['FullName'] = $fullName;
         $dataResult['EmailAddress'] = $rowApplicantInfo['EmailAddress'];
         $dataResult['Phone'] = $rowApplicantInfo['Phone'];
-        $dataResult['Country'] = $rowApplicantInfo['Country'];
         
         $jsonDataResult = json_encode($dataResult);
 
