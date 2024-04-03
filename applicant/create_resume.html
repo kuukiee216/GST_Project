@@ -121,19 +121,18 @@
           <p>Location</p>
         </div>
 
-        <div class="col" id="content">
-          <p id="Pname">Genesis P. Mañale</p>
-          <p id="tel">+639084746563</p>
-          <p id="Pemail">genesismarvinmanale12@gmail.com</p>
-          <p id="loc">Pagsanjan, Laguna</p>
+          <div class="col" id="content">
+            <p id="Pname">Genesis P. Mañale</p>
+            <p id="tel">+639084746563</p>
+            <p id="Pemail">genesismarvinmanale12@gmail.com</p>
+            <p id="loc">Pagsanjan, Laguna</p>
+          </div>
         </div>
 
-      </div>
 
-
-      <div class="mt-3">
-        <button onclick="opensesame()" type="button" data-toggle="modal" class="btn btn-danger">Edit</button>
-      </div>
+        <div class="mt-3">
+          <button onclick="opensesame()" type="button" data-toggle="modal" class="btn btn-danger">Edit</button>
+        </div>
 
       <!-- Modal -->
       <div class="modal fade" id="edit_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -415,7 +414,7 @@
 
       <h4>Skills</h4>
       <label for="skills" class="mb-3">Showcase what kind of skills you attained.</label>
-      
+
       <input type="text" class="form-control mb-3" id="skills" placeholder="enter skills here">
 
       <div id="addNewSkill" class="card mb-3">
@@ -447,7 +446,6 @@
       <div id="cardContainer2" class="mt-3"></div>
 
       <button onclick="addSkill()" type="button" class="btn btn-danger mt-3 mb-5" value="button">Add Skills</button>
-
 
       <script>
         // Function to add an element to the card
@@ -507,7 +505,6 @@
 
       <h4>Languages</h4>
       <label for="languages" class="mb-3">Showcase what kind of skills you attained.</label>
-
       <input type="text" class="form-control mb-3" id="languages" placeholder="enter language here">
 
       <div id="addNewLang" class="card mb-3">
@@ -602,10 +599,12 @@
         </div>
       </div>
       <div>
-        <a href="/FILES-Applicant Side/profile.html"><button type="button" class="btn btn-danger mb-5" value="submit">Create Resume</button></a>
+        <button type="submit" class="btn btn-danger mb-5">Create Resume</button>
         <button type="button" class="btn btn-outline-danger mb-5" value="submit">Cancel</button>
       </div>
+
     </div>
+
 
     <!--bottom navbar-->
     <footer class="footer text-white" style="background-color:mediumseagreen">
