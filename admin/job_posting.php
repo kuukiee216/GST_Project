@@ -292,579 +292,102 @@
                         <h1 class="text-dark">Job Posting</h1>
                     </div>
                 </div>
-				
-                
-                <div class="container flex justify-content-center">
-                    <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="pills-1-tab-nobd" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-2-tab-nobd" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-3-tab-nobd" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-4-tab-nobd" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content mb-3" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
-                            <div>
-                                <div class="card">
-                                    <div class="card-body">
+
+                <div class="row px-4">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                    <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-1-tab-nobd" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-2-tab-nobd" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-3-tab-nobd" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-4-tab-nobd" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-body">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
                                         <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="basic-datatables_length">
-                                                            <label>Show 
-                                                            <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select> entries</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div id="basic-datatables_filter" class="dataTables_filter">
-                                                            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+                                            <table id="tblActiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
                                                 <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">#</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Job Title</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.025px;">Requested by</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46.9375px;">Status</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 112.8px;">Date Posted</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Action</th>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Job Title</th>
+                                                        <th>Requested by</th>
+                                                        <th>Status</th>
+                                                        <th>Date Posted</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th rowspan="1" colspan="1">#</th>
-                                                        <th rowspan="1" colspan="1">Job Title</th>
-                                                        <th rowspan="1" colspan="1">Requested by</th>
-                                                        <th rowspan="1" colspan="1">Status</th>
-                                                        <th rowspan="1" colspan="1">Date Posted</th>
-                                                        <th rowspan="1" colspan="1">Action</th>
-                                                    </tr>
-                                                </tfoot>
                                                 <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">1</td>
-                                                        <td>Accountant</td>
-                                                        <td>Genesis</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-warning"><i class="fas fa-ban"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">2</td>
-                                                        <td>Chief Executive Officer (CEO)</td>
-                                                        <td>Ron</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-warning"><i class="fas fa-ban"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">3</td>
-                                                        <td>Chef</td>
-                                                        <td>Vanessa</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-warning"><i class="fas fa-ban"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">4</td>
-                                                        <td>Taga Uwu</td>
-                                                        <td>Bert</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-warning"><i class="fas fa-ban"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
-                            <div>
-                                <div class="card">
-                                    <div class="card-body">
+                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
                                         <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="basic-datatables_length">
-                                                            <label>Show 
-                                                            <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select> entries</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div id="basic-datatables_filter" class="dataTables_filter">
-                                                            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+                                            <table id="tblInactiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
                                                 <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">#</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Job Title</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.025px;">Requested by</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46.9375px;">Status</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 112.8px;">Date Posted</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Action</th>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Job Title</th>
+                                                        <th>Requested by</th>
+                                                        <th>Status</th>
+                                                        <th>Date Posted</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th rowspan="1" colspan="1">#</th>
-                                                        <th rowspan="1" colspan="1">Job Title</th>
-                                                        <th rowspan="1" colspan="1">Requested by</th>
-                                                        <th rowspan="1" colspan="1">Status</th>
-                                                        <th rowspan="1" colspan="1">Date Posted</th>
-                                                        <th rowspan="1" colspan="1">Action</th>
-                                                    </tr>
-                                                </tfoot>
                                                 <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">1</td>
-                                                        <td>Accountant</td>
-                                                        <td>Genesis</td>
-                                                        <td><span class="badge badge-secondary">Expired</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-sync-alt"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">2</td>
-                                                        <td>Chief Executive Officer (CEO)</td>
-                                                        <td>Ron</td>
-                                                        <td><span class="badge badge-secondary">Expired</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-sync-alt"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">3</td>
-                                                        <td>Chef</td>
-                                                        <td>Vanessa</td>
-                                                        <td><span class="badge badge-secondary">Expired</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-sync-alt"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">4</td>
-                                                        <td>Taga Uwu</td>
-                                                        <td>Bert</td>
-                                                        <td><span class="badge badge-secondary">Expired</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-sync-alt"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-3-nobd" role="tabpanel" aria-labelledby="pills-3-tab-nobd">
-                            <div>
-                                <div class="card">
-                                    <div class="card-body">
+                                    <div class="tab-pane fade show" id="pills-3-nobd" role="tabpanel" aria-labelledby="pills-3-tab-nobd">
                                         <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="basic-datatables_length">
-                                                            <label>Show 
-                                                            <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select> entries</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div id="basic-datatables_filter" class="dataTables_filter">
-                                                            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+                                            <table id="tblRequestJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
                                                 <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">#</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Job Title</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.025px;">Requested by</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46.9375px;">Status</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 112.8px;">Date Posted</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Action</th>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Job Title</th>
+                                                        <th>Requested by</th>
+                                                        <th>Status</th>
+                                                        <th>Date Posted</th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th rowspan="1" colspan="1">#</th>
-                                                        <th rowspan="1" colspan="1">Job Title</th>
-                                                        <th rowspan="1" colspan="1">Requested by</th>
-                                                        <th rowspan="1" colspan="1">Status</th>
-                                                        <th rowspan="1" colspan="1">Date Posted</th>
-                                                        <th rowspan="1" colspan="1">Action</th>
-                                                    </tr>
-                                                </tfoot>
                                                 <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">1</td>
-                                                        <td>Accountant</td>
-                                                        <td>Genesis</td>
-                                                        <td><span class="badge badge-warning">Request</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                            <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                            <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">2</td>
-                                                        <td>Chief Executive Officer (CEO)</td>
-                                                        <td>Ron</td>
-                                                        <td><span class="badge badge-warning">Request</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                            <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                            <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">3</td>
-                                                        <td>Chef</td>
-                                                        <td>Vanessa</td>
-                                                        <td><span class="badge badge-warning">Request</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                            <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                            <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">4</td>
-                                                        <td>Taga Uwu</td>
-                                                        <td>Bert</td>
-                                                        <td><span class="badge badge-warning">Request</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                            <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                            <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-4-nobd" role="tabpanel" aria-labelledby="pills-4-tab-nobd">
-                            <div>
-                                <div class="card">
-                                    <div class="card-body">
+                                    <div class="tab-pane fade show" id="pills-4-nobd" role="tabpanel" aria-labelledby="pills-4-tab-nobd">
                                         <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="basic-datatables_length">
-                                                            <label>Show 
-                                                            <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select> entries</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div id="basic-datatables_filter" class="dataTables_filter">
-                                                            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="basic-datatable25" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-                                                            <thead>
-                                                                <tr role="row">
-                                                                    <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">#</th>
-                                                                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Job Title</th>
-                                                                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.025px;">Requested by</th>
-                                                                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46.9375px;">Status</th>
-                                                                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 112.8px;">Date Posted</th>
-                                                                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Action</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tfoot>
-                                                                <tr>
-                                                                    <th rowspan="1" colspan="1">#</th>
-                                                                    <th rowspan="1" colspan="1">Job Title</th>
-                                                                    <th rowspan="1" colspan="1">Requested by</th>
-                                                                    <th rowspan="1" colspan="1">Status</th>
-                                                                    <th rowspan="1" colspan="1">Date Posted</th>
-                                                                    <th rowspan="1" colspan="1">Action</th>
-                                                                </tr>
-                                                            </tfoot>
-                                                            <tbody>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="sorting_1">1</td>
-                                                                    <td>Accountant <span class="badge badge-danger">warning</span></td>
-                                                                    <td>Genesis</td>
-                                                                    <td><span class="badge badge-success">Active</span></td>
-                                                                    <td>2008/11/28</td>
-                                                                    <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                                        <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                                        <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                                        <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="even">
-                                                                    <td class="sorting_1">2</td>
-                                                                    <td>Chief Executive Officer (CEO) <span class="badge badge-danger">warning</span></td>
-                                                                    <td>Ron</td>
-                                                                    <td><span class="badge badge-success">Active</span></td>
-                                                                    <td>2009/10/09</td>
-                                                                    <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                                        <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                                        <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                                        <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="odd">
-                                                                    <td class="sorting_1">3</td>
-                                                                    <td>Chef <span class="badge badge-danger">warning</span></td>
-                                                                    <td>Vanessa</td>
-                                                                    <td><span class="badge badge-success">Active</span></td>
-                                                                    <td>2008/11/28</td>
-                                                                    <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                                        <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                                        <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                                        <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr role="row" class="even">
-                                                                    <td class="sorting_1">4</td>
-                                                                    <td>Taga Uwu <span class="badge badge-danger">warning</span></td>
-                                                                    <td>Bert</td>
-                                                                    <td><span class="badge badge-success">Active</span></td>
-                                                                    <td>2009/10/09</td>
-                                                                    <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                                        <button class="btn-success"><i class="fas fa-check"></i></button>
-                                                                        <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                                                        <button class="btn-warning"><i class="far fa-trash-alt"></i></button>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                    </table>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                            <table id="tblExpiredJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Job Title</th>
+                                                        <th>Requested by</th>
+                                                        <th>Status</th>
+                                                        <th>Date Posted</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
@@ -872,7 +395,6 @@
                         </div>
                     </div>
                 </div>
-                
 
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
@@ -955,6 +477,11 @@
     <script>
         $(document).ready(function() {
             fillApplicantList();
+
+            $('#tblActiveJobPosting').DataTable();
+            $('#tblInactiveJobPosting').DataTable();
+            $('#tblRequestJobPosting').DataTable();
+            $('#tblExpiredJobPosting').DataTable();
         });
 
     </script>
