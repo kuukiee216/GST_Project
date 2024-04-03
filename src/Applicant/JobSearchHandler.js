@@ -13,14 +13,16 @@ function viewJobPostDetails(ID){
     $('#'+ID).addClass('is-loading');
     $('#'+ID).prop('disabled', true);
 
-    var jID = ID.replace('btnViewJobPosting','');
+    var jpID = ID.replace('btnViewJobPosting','');
+    
+    location.href = "#"+jpID;
 
     $.ajax({
         type: 'POST',
         url: '../PHPFiles/Applicant/JobSearch/jobpostingdetailsget.php',
         datatype: 'html',
         data: {
-            JobID: jID
+            JobPostingID: jpID
         },
         success: function(response){
             if(response == '1'){
@@ -78,6 +80,7 @@ function viewJobPostDetails(ID){
                 $('#lblCompanyName').text(decodedResponse.CompanyName);
                 $('#lblLocation').text(decodedResponse.Location);
                 $('#lblClassification').text(decodedResponse.Classification);
+                $('#lblSubClassification').text(decodedResponse.SubClassification.replace(',', ', '));
                 $('#lblJobSalary').text(decodedResponse.Salary);
                 $('#lblJobSummary').text(decodedResponse.Summary);
                 $('#listQualifications').html(decodedResponse.Qualifications);
@@ -94,7 +97,7 @@ function viewJobPostDetails(ID){
         error: function(){
             swal({
                 title: 'Failed to Connect to Server!',
-                text: "Something went wrong while trying to connect to the server. Please",
+                text: "Something went wrong while trying to connect to the server. Please try again later.",
                 icon: 'error',
                 buttons : {
                     confirm: {
@@ -110,8 +113,100 @@ function viewJobPostDetails(ID){
     });
 }
 function backToPostingList(){
+
+    if (window.location.hash) {
+        // Replace the hash with an empty string
+        history.replaceState(null, null, ' ');
+    }
+
     $('#divPostingList').removeClass('d-none d-sm-none');
     $('#divPost').addClass('d-none d-sm-none');
+}
+
+function BookmarkJobPosting(){
+    $('#btnBookmarkJobPosting').addClass('is-loading');
+    $('#btnBookmarkJobPosting').prop('disabled', true);
+
+    var jpID = window.location.hash.replace('#','');
+
+    $.ajax({
+        type: 'POST',
+        url: '../PHPFiles/Applicant/JobSearch/bookmarkjobposting.php',
+        datatype: 'html',
+        data: {
+            JobPostingID: jpID
+        },
+        success: function(response){
+            if(response == '0'){
+                swal({
+                    title: 'Job Posting Bookmarked Successfully!',
+                    text: "The job posting has been saved and bookmarked. You can get back to it through your profile.",
+                    icon: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnBookmarkJobPosting').removeClass('is-loading');
+                    $('#btnBookmarkJobPosting').prop('disabled', false);
+                });
+            }
+            else if(response == '1'){
+                swal({
+                    title: 'Failed Retrieve Save Job Posting!',
+                    text: "Something went wrong while saving job posting. Data handling failed, please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnBookmarkJobPosting').removeClass('is-loading');
+                    $('#btnBookmarkJobPosting').prop('disabled', false);
+                });
+            }
+            else{
+                swal({
+                    title: 'Failed Retrieve Save Job Posting!',
+                    text: "Something went wrong while saving job posting. Please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnBookmarkJobPosting').removeClass('is-loading');
+                    $('#btnBookmarkJobPosting').prop('disabled', false);
+                });
+            }
+        },
+        error: function(){
+            swal({
+                title: 'Failed to Connect to Server!',
+                text: "Something went wrong while trying to connect to the server. Please try again later.",
+                icon: 'error',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#btnBookmarkJobPosting').removeClass('is-loading');
+                $('#btnBookmarkJobPosting').prop('disabled', false);
+            });
+        }
+    });
+}
+
+function ReportJobPosting(){
+
 }
 
 function fillJobPostingList(){
@@ -170,3 +265,117 @@ function fillJobPostingList(){
         }
     });
 }
+
+function searchJobPosting(){
+
+    $('#btnSearchJobPosting').addClass('is-loading');
+    $('#btnSearchJobPosting').prop('disabled', true);
+    $('#btnSearchFilterJobPosting').addClass('is-Loading');
+    $('#btnSearchFilterJobPosting').prop('disabled', true);
+
+    var txtJobTitle = $('#txtSearchJobTitle').val();
+    var txtLocation = $('#txtSearchLocation').val();
+
+    if(txtJobTitle.length > 0 || txtLocation.length > 0){
+        $.ajax({
+            type: 'POST',
+            url: '../PHPFiles/Applicant/JobSearch/jobpostingsearch.php',
+            datatype: 'html',
+            data: {
+                JobTitle: txtJobTitle,
+                Location: txtLocation
+            },
+            success: function(response){
+                if(response == '1'){
+                    swal({
+                        title: 'Failed to Search Job Posting!',
+                        text: "Something went wrong while trying to search job posting. Data handling failed, please try again.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnSearchJobPosting').removeClass('is-loading');
+                        $('#btnSearchJobPosting').prop('disabled', false);
+                        $('#btnSearchFilterJobPosting').removeClass('is-Loading');
+                        $('#btnSearchFilterJobPosting').prop('disabled', false);
+                    });
+                }
+                else if(response == '2'){
+                    swal({
+                        title: 'Failed to Search Job Posting!',
+                        text: "Something went wrong while trying to search job posting. Please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnSearchJobPosting').removeClass('is-loading');
+                        $('#btnSearchJobPosting').prop('disabled', false);
+                        $('#btnSearchFilterJobPosting').removeClass('is-Loading');
+                        $('#btnSearchFilterJobPosting').prop('disabled', false);
+                    });
+                }
+                else if(response == '3'){
+                    swal({
+                        title: 'No Job Posting Found!',
+                        text: "There is no job posting that contains what you tried to search.",
+                        icon: 'info',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnSearchJobPosting').removeClass('is-loading');
+                        $('#btnSearchJobPosting').prop('disabled', false);
+                        $('#btnSearchFilterJobPosting').removeClass('is-Loading');
+                        $('#btnSearchFilterJobPosting').prop('disabled', false);
+                    });
+                }
+                else{
+                    $('#divJobPostList').html(response);
+                }
+            },
+            error: function(){
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnSearchJobPosting').removeClass('is-loading');
+                    $('#btnSearchJobPosting').prop('disabled', false);
+                    $('#btnSearchFilterJobPosting').removeClass('is-Loading');
+                    $('#btnSearchFilterJobPosting').prop('disabled', false);
+                });
+            }
+        });
+    }
+}
+
+var txtSearchJobTitle = $('#txtSearchJobTitle');
+txtSearchJobTitle.on('keypress', function(event){
+    if(event.key === "Enter"){
+        searchJobPosting();
+    }
+});
+
+var txtSearchLocation = $('#txtSearchLocation');
+txtSearchLocation.on('keypress', function(event){
+    if(event.key === "Enter"){
+        searchJobPosting();
+    }
+});

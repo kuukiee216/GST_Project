@@ -11,9 +11,9 @@
     ERROR_REPORTING(0);
 
     // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) && 
-    //    isset($_POST['JobID'])){
+    //    isset($_POST['JobPostingID'])){
 
-        $JobID = $_POST['JobID'];
+        $JobPostingID = $_POST['JobPostingID'];
 
         try{
             $sQryGetJobPostingDetails = "SELECT
@@ -23,7 +23,8 @@
                     l.Province,
                     l.Country,
                     l.ZipCode,
-                    jc.Classification,
+                    class.Classification,
+                    GROUP_CONCAT(DISTINCT subclass.Classification) AS SubClassification,
                     c.Symbol,
                     js.Minimum,
                     js.Maximum,
@@ -34,7 +35,9 @@
                     GROUP_CONCAT(DISTINCT jr.Requirement SEPARATOR '|') AS Requirements,
                     GROUP_CONCAT(DISTINCT q.Question SEPARATOR '|') AS Questionnaires
                 FROM
-                    tbl_companyjob AS cj
+                    tbl_jobposting AS jp
+                INNER JOIN
+                    tbl_companyjob AS cj ON cj.JobID = jp.JobID
                 INNER JOIN
                     tbl_employerinfo AS ei ON ei.EmployerID = cj.EmployerID
                 INNER JOIN
@@ -42,13 +45,15 @@
                 INNER JOIN
                     tbl_location AS l ON l.LocationID = cj.LocationID
                 INNER JOIN
-                    tbl_jobclassification AS jc ON jc.ClassificationID = cj.ClassificationID
+                    tbl_classification AS class ON class.ClassificationID = cj.ClassificationID
+                INNER JOIN
+                    tbl_jobclassification AS jc ON jc.JobID = cj.JobID 
+                INNER JOIN
+                    tbl_subclassification AS subclass ON subclass.ClassificationID = jc.SubClassificationID
                 INNER JOIN 
                     tbl_jobsalary AS js ON js.JobID = cj.JobID
                 INNER JOIN
                     tbl_currency AS c ON c.CurrencyID = js.CurrencyID
-                INNER JOIN
-                    tbl_jobposting AS jp ON jp.JobID = cj.JobID
                 INNER JOIN
                     tbl_jobqualifications AS jq ON jq.JobID = cj.JobID
                 INNER JOIN
@@ -58,13 +63,13 @@
                 LEFT JOIN
                     tbl_questionnaire AS q ON q.QuestionnaireID = jquestion.QuestionnaireID
                 WHERE
-                    cj.Status = '0' AND jquestion.RequirementStatus = '0' AND cj.JobID = ?
+                    cj.Status = '0' AND jquestion.RequirementStatus = '0' AND jp.JobPostingID = ?
                 GROUP BY
                     cj.JobTitle, ci.CompanyName, l.City, l.Province, l.Country, l.ZipCode,
-                    jc.Classification, c.Symbol, js.Minimum, js.Maximum, jp.CompanyPrivacyStatus,
+                    class.Classification, c.Symbol, js.Minimum, js.Maximum, jp.CompanyPrivacyStatus,
                     jp.SalaryPrivacyStatus, cj.Summary;";
             $stmtGetJobPostingDetails = $connection->prepare($sQryGetJobPostingDetails);
-            $stmtGetJobPostingDetails->bindValue(1, $JobID, PDO::PARAM_INT);
+            $stmtGetJobPostingDetails->bindValue(1, $JobPostingID, PDO::PARAM_INT);
             $stmtGetJobPostingDetails->execute();
 
             if($stmtGetJobPostingDetails->rowCount() == 1){
@@ -87,6 +92,7 @@
                 $dataResult['Location'] = $jobLocation;
                 $dataResult['Salary'] = ($rowJobPostDetails['SalaryPrivacyStatus'] == '0') ? $jobSalary : '';
                 $dataResult['Classification'] = $rowJobPostDetails['Classification'];
+                $dataResult['SubClassification'] = '('.$rowJobPostDetails['SubClassification'].')';
                 $dataResult['Summary'] = $rowJobPostDetails['Summary'];
                 
                 $QualificationList = "";

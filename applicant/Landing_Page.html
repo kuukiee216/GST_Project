@@ -107,13 +107,14 @@
     <div class="row mt--3">
       <div class="col-md-12" id="divHotJobList">
         <div class="row">
+
           <div class="col-md-3 d-flex justify-content-center align-items-center">
             <div class="form-group">
               <div class="input-icon">
                 <span class="input-icon-addon">
                   <i class="fa fa-search"></i>
                 </span>
-                <input type="text" class="form-control shadow" placeholder="Job Title">
+                <input id="txtSearchJobTitle" type="text" class="form-control shadow" placeholder="Job Title">
               </div>
             </div>
           </div>
@@ -124,7 +125,7 @@
                 <span class="input-icon-addon"> 
                   <i class="fa fa-suitcase"></i>
                 </span>
-                <input type="text" class="form-control ps-5 shadow" placeholder="Classification" />
+                <input id="txtSearchClassification" type="text" class="form-control ps-5 shadow" placeholder="Classification" />
               </div>
             </div>
           </div>
@@ -135,14 +136,14 @@
                 <span class="input-icon-addon">
                   <i class="fas fa-map-marker-alt"></i>
                 </span>
-                <input type="text" class="form-control ps-5 shadow" placeholder="Location" />
+                <input id="txtSearchLocation" type="text" class="form-control ps-5 shadow" placeholder="Location" />
               </div>
             </div>
           </div>
 
           <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <button class="btn btn-danger mr-3 shadow" type="button">Search</button>
-            <button onclick="triggerFilter();" id="test" class="btn btn-danger shadow" type="button">
+            <button class="btn btn-danger mr-3 shadow" type="button" onclick="searchJobPosting();" id="btnSearchJobPosting">Search</button>
+            <button onclick="triggerFilter();" id="btnSearchFilterJobPosting" class="btn btn-danger shadow" type="button">
               <i class="fa fa-filter"></i>
             </button>
           </div>
@@ -229,7 +230,7 @@
           <div class="row mt-4">
             <div class="col-md-12 pl-4">
               <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><span id="lblLocation">-</span></h5>
-              <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">-</span></h5>
+              <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">-</span> <i><span id="lblSubClassification"></span></i></h5>
               <h5 id="lblEmploymentType"><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full Time</h5>
               <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span><span id="lblJobSalary">-</span></h5>
               </div>
@@ -238,8 +239,8 @@
           <div class="row mt-4">
             <div class="col-md-12">
               <button class="btn btn-danger mr-3">Apply Now</button>
-              <button class="btn btn-outline-danger mr-3"><i class="fa fa-bookmark mr-2"></i> Save</button>
-              <button class="btn btn-outline-danger"><i class="fa fa-flag mr-2"></i> Report Job</button>
+              <button class="btn btn-outline-danger mr-3" id="btnBookmarkJobPosting" onclick="BookmarkJobPosting();"><i class="fa fa-bookmark mr-2"></i> Save</button>
+              <button class="btn btn-outline-danger" onclick="ReportJobPosting();"><i class="fa fa-flag mr-2"></i> Report Job</button>
             </div>
           </div>
         </div>

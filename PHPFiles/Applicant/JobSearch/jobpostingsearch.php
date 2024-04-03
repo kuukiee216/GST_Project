@@ -10,13 +10,17 @@
     SESSION_START();
     ERROR_REPORTING(0);
 
-    //if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID'])){
+    //if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) &&
+    // isset($_POST['JobTitle']) && isset($_POST['Location'])){
 
         date_default_timezone_set('Asia/Manila');
         $currentDateTime = date("Y/m/d H:i:s");
 
+        $JobTitle = $_POST['JobTitle'];
+        $Location = $_POST['Location'];
+
         try{
-            $sQryGetJobPostings = "SELECT
+            $sQrySearchJobPostings = "SELECT
                     jp.JobPostingID,
                     cj.JobTitle,
                     ci.CompanyName,
@@ -47,13 +51,16 @@
                 INNER JOIN
                     tbl_currency AS c ON c.CurrencyID = js.CurrencyID
                 WHERE
-                    cj.Status = '0' AND :currentDateTime BETWEEN jp.DateTimeStamp AND jp.DateTimeStampSpan";
-            $stmtGetJobPostings = $connection->prepare($sQryGetJobPostings);
-            $stmtGetJobPostings->bindValue(":currentDateTime", $currentDateTime, PDO::PARAM_STR);
-            $stmtGetJobPostings->execute();
+                    cj.Status = '0' AND '2024/04/03 13:18:22' BETWEEN jp.DateTimeStamp AND jp.DateTimeStampSpan AND 
+                    (cj.JobTitle = :JobTitle OR (l.City = :Location OR l.Province = :Location OR l.Country = :Location))";
+            $stmtSearchJobPostings = $connection->prepare($sQrySearchJobPostings);
+            $stmtSearchJobPostings->bindValue(":currentDateTime", $currentDateTime, PDO::PARAM_STR);
+            $stmtSearchJobPostings->bindValue(":JobTitle", $JobTitle, PDO::PARAM_STR);
+            $stmtSearchJobPostings->bindValue(":Location", $Location, PDO::PARAM_STR);
+            $stmtSearchJobPostings->execute();
 
-            if($stmtGetJobPostings->rowCount() > 0){
-                while($rowJobPost = $stmtGetJobPostings->fetch(PDO::FETCH_ASSOC)){ 
+            if($stmtSearchJobPostings->rowCount() > 0){
+                while($rowJobPost = $stmtSearchJobPostings->fetch(PDO::FETCH_ASSOC)){ 
                     
                     $jobLocation = $rowJobPost['City'].', '.$rowJobPost['Province'].', '.$rowJobPost['Country'].' '.$rowJobPost['ZipCode'];
                     $jobSalary = "";
