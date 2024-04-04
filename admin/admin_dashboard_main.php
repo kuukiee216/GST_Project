@@ -28,7 +28,7 @@
     <div class="wrapper">
         <div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="blue">
+			<div class="logo-header bg-danger">
 				
 				<a href="admin_dashboard_main.php" class="logo">
 					<img src="../assets/img/JapanJobs.png" alt="navbar brand" class="navbar-brand">
@@ -48,7 +48,7 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+			<nav class="navbar navbar-header navbar-expand-lg bg-danger">
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
 						<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -211,31 +211,31 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a href="../admin/admin_dashboard_main.php">
+							<a href="admin_dashboard_main.php">
 								<i class="fas fa-th-list"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="../admin/job_posting.php">
+							<a href="job_posting.php">
 								<i class="fas fa-briefcase"></i>
 								<p>Job Posting</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="../admin/employer_list.html">
+							<a href="employer_list.php">
 								<i class="fas fa-building"></i>
 								<p>Employer List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="../admin/applicant_list.html">
+							<a href="applicant_list.html">	
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="../admin/application.html">
+							<a href="application.html">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -249,27 +249,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="../admin/settings_job_classification.html">
+										<a href="settings_job_classification.html">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="../admin/settings_job_title.html">
+										<a href="settings_job_title.html">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="../admin/settings_locations.html">
+										<a href="settings_locations.html">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="../admin/settings_posting_fee.html">
+										<a href="settings_posting_fee.html">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="../admin/settings_system_logs.html">
+										<a href="settings_system_logs.html">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -291,8 +291,8 @@
 					<div class="page-inner py-5">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-								<h5 class="text-white op-7 mb-2">Japan Jobs</h5>
+								<h2 class="text-white pb-2 fw-bold">Japan Jobs</h2>
+								<h5 class="text-white op-7 mb-2"></h5>
 							</div>
 							<div class="ml-md-auto py-2 py-md-0">
 								<a href="#" class="btn btn-white btn-border btn-round mr-2">Test button</a>
@@ -333,7 +333,7 @@
                                     </div>
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
-                                            <p class="card-category">Total Registered Candidates</p>
+                                            <p class="card-category">Total Candidates</p>
                                             <h4 class="card-title">30</h4>
                                         </div>
                                     </div>
@@ -371,7 +371,7 @@
                                     </div>
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
-                                            <p class="card-category">Total Registered Employers</p>
+                                            <p class="card-category">Total Employers</p>
                                             <h4 class="card-title">30</h4>
                                         </div>
                                     </div>

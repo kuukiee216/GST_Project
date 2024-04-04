@@ -22,15 +22,15 @@
 	</script>
 
     <title>Job Posting</title>
-    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
     <div class="wrapper">
         <div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header" data-background-color="blue">
+			<div class="logo-header bg-danger">
 				
-				<a href="../admin/admin_dashboard_main.php" class="logo">
+				<a href="admin_dashboard_main.php" class="logo">
 					<img src="../assets/img/JapanJobs.png" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+			<nav class="navbar navbar-header navbar-expand-lg bg-danger">
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
 						<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -211,31 +211,31 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a href="../admin/admin_dashboard_main.php">
+							<a href="admin_dashboard_main.php">
 								<i class="fas fa-th-list"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/job_posting.html">
+							<a href="job_posting.php">
 								<i class="fas fa-briefcase"></i>
 								<p>Job Posting</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/employer_list.html">
+							<a href="employer_list.php">
 								<i class="fas fa-building"></i>
 								<p>Employer List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/applicant_list.html">
+							<a href="applicant_list.html">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/application.html">
+							<a href="application.html">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -289,7 +289,7 @@
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
-                        <h1 class="text-dark">Job Posting</h1>
+                        <h1 class="text-dark">JOB POSTING</h1>
                     </div>
                 </div>
 
@@ -396,7 +396,7 @@
                     </div>
                 </div>
 
-                <footer class="footer bg-danger text-white">
+                <footer class="footer bg-danger text-white fixed-bottom">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul class="nav">
