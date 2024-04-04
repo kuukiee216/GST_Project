@@ -1,3 +1,8 @@
+/*
+
+    JOB SEARCH
+
+*/
 function triggerFilter(){
     var divFilter = $('#divFilter').attr('class'); //variable name (id or class)
 
@@ -155,7 +160,7 @@ function BookmarkJobPosting(){
             }
             else if(response == '1'){
                 swal({
-                    title: 'Failed Retrieve Save Job Posting!',
+                    title: 'Failed to Retrieve Save Job Posting!',
                     text: "Something went wrong while saving job posting. Data handling failed, please try again.",
                     icon: 'error',
                     buttons : {
@@ -171,7 +176,7 @@ function BookmarkJobPosting(){
             }
             else{
                 swal({
-                    title: 'Failed Retrieve Save Job Posting!',
+                    title: 'Failed to Retrieve Save Job Posting!',
                     text: "Something went wrong while saving job posting. Please try again.",
                     icon: 'error',
                     buttons : {
@@ -204,7 +209,6 @@ function BookmarkJobPosting(){
         }
     });
 }
-
 function ReportJobPosting(){
 
 }
@@ -364,6 +368,24 @@ function searchJobPosting(){
             }
         });
     }
+    else{
+        swal({
+            title: 'Empty Search Box and Filters!',
+            text: "Please enter keywords or location on the input field. Note that you can also filter the results.",
+            icon: 'warning',
+            buttons : {
+                confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                }
+            }
+        }).then(function(){
+            $('#btnSearchJobPosting').removeClass('is-loading');
+            $('#btnSearchJobPosting').prop('disabled', false);
+            $('#btnSearchFilterJobPosting').removeClass('is-Loading');
+            $('#btnSearchFilterJobPosting').prop('disabled', false);
+        });
+    }
 }
 
 var txtSearchJobTitle = $('#txtSearchJobTitle');
@@ -379,3 +401,160 @@ txtSearchLocation.on('keypress', function(event){
         searchJobPosting();
     }
 });
+
+/*
+
+    MY JOBS
+
+*/
+
+function fillSavedJobPosting(){
+    $.ajax({
+        type: 'GET',
+        url: '../PHPFiles/Applicant/JobSearch/myjobsavedlistget.php',
+        datatype: 'html',
+        success: function(response){
+            if(response == '1'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-error',
+                    title: 'Failed to Retrieve Saved Job List!',
+                    message: 'Something went wrong while retrieving saved job postings. Data handling failed, please try again later.'
+                },{
+                    // settings
+                    type: 'danger'
+                });
+            }
+            else if(response == '2'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-error',
+                    title: 'Failed to Retrieve Saved Job List!',
+                    message: 'Something went wrong while retrieving saved job postings. Please try again later.'
+                },{
+                    // settings
+                    type: 'danger'
+                });
+            }
+            else if(response == '3'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-exclamation',
+                    title: 'No Saved Job Posting Found!',
+                    message: 'Currently, there are no saved job hiring. Please try and check again later.'
+                },{
+                    // settings
+                    type: 'info'
+                });
+            }
+            else{
+                $('#listSavedJobs').html(response);
+            }
+        },
+        error: function(){
+            $.notify({
+                // options
+                icon: 'flaticon-error',
+                title: 'Failed to Connect to Server!',
+                message: 'Something went wrong while connecting to server. Please try again later.'
+            },{
+                // settings
+                type: 'danger'
+            });
+        }
+    });
+}
+function viewSavedJobPostDetails(ID){
+    var jpID = ID.replace('btnViewSavedJobPosting','');
+    location.href = 'JobSearch.php#'+jpID;
+}
+function removeSavedJobPosting(ID){
+    $('#'+ID).addClass('is-loading');
+    $('#'+ID).prop('disabled', true);
+
+    var bID = ID.replace('removeSavedJobPosting','');
+
+    $.ajax({
+        type: 'POST',
+        url: '../PHPFiles/Applicant/JobSearch/myjobsavedlistremove.php',
+        datatype: 'html',
+        data: {
+            BookmarkID: bID
+        },
+        success: function(response){
+            if(response == '0'){
+                swal({
+                    title: 'Removed Saved Job Posting!',
+                    text: "The saved job posting has been removed successfully.",
+                    icon: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    fillSavedJobPosting();
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                });
+            }
+            else if(response == '1'){
+                swal({
+                    title: 'Failed to Remove Save Job Posting!',
+                    text: "Something went wrong while removing saved job posting. Data handling failed, please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                });
+            }
+            else{
+                swal({
+                    title: 'Failed to Remove Save Job Posting!',
+                    text: "Something went wrong while removing saved job posting. Please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                });
+            }
+        },
+        error: function(){
+            swal({
+                title: 'Failed to Connect to Server!',
+                text: "Something went wrong while trying to connect to the server. Please try again later.",
+                icon: 'error',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#'+ID).removeClass('is-loading');
+                $('#'+ID).prop('disabled', false);
+            });
+        }
+    });
+}
+
+function fillAppliedJobPosting(){
+    
+}
+
+function fillRecommendedJobPosting(){
+    
+}

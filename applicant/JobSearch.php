@@ -9,7 +9,7 @@
     <!-- CSS Files -->
 	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
-    <link href="../CSS/applicant.css" rel="stylesheet">
+      <link href="../CSS/applicant.css" rel="stylesheet">
 
     <!-- Fonts and icons -->
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -23,19 +23,12 @@
       });
     </script>
 
-    <style>
-      #navMain{
-        z-index: 999;
-      }
-    </style>
-
     <title>Japan Jobs Home Page</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
-
-  <!-- Navbar Header -->
-  <nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2" id="navMain">
+  <!--Navbar Header-->
+  <nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
     <div class="container-fluid">
       <div class="collapse" id="search-nav">
         <div>
@@ -43,18 +36,18 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar nav me-auto mb-2 mb-lg-0">
             <li>
-                <a href="Landing_Page.html" class="logo">
+                <a href="JobSearch.php" class="logo">
                   <img src="../assets/img/JapanJobs.png" alt="navbar brand">
                 </a>
             </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="Landing_Page.html">Home</a>
+                <a class="nav-link text-white" href="JobSearch.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="profile.php">Pofile</a>
+                <a class="nav-link text-white" href="MyProfile.php">Pofile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="about_us.html">About Us</a>
+                <a class="nav-link text-white" href="AboutUs.php">About Us</a>
               </li>
             </ul>
           </div>
@@ -74,8 +67,8 @@
                 <div class="user-box">
                   <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
                   <div class="u-text">
-                    <h4>Meow</h4>
-                    <p class="text-muted">Genesis.com</p><a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                    <h4>Genesis Marvin Manale</h4>
+                    <p class="text-muted">genesismarvinmanale@gmail.com</p><a href="/applicant/profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
                   </div>
                 </div>
               </li>
@@ -83,11 +76,9 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Settings</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Saved Jobs</a>
+                <a class="dropdown-item" href="MyJobs.php">My Jobs</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">recommended Jobs</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Logout</a>
+                <a class="dropdown-item" href="../logout.php">Logout</a>
               </li>
             </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
           </ul>
@@ -95,13 +86,12 @@
       </ul>
     </div>
   </nav>
-  <!-- End Navbar -->
+  <!--End Navbar-->
 
-  <!--Background-Group-->
-  <div class="card mt--5">
-    <img src="../assets/img/header_bg.png">
+  <div class="card bg-dark text-white mt--5" style="z-index: -1;">
+    <img class="card-img" src="../assets/img/header_bg.png" alt="Card image">
   </div>
-  
+
   <!--Search Group-->
   <div class="container-fluid d-flex justify-content-center align-items-center mt--5">
     <div class="row mt--3">
@@ -210,7 +200,7 @@
     <div class="row">
       <div class="col-md-12">
         <h2 class="mb-3">Jobs Postings</h2>
-        <div class="row mb-5" id="divJobPostList">
+        <div class="row" id="divJobPostList">
           <div class="col-md-12">
             <h4><i>No listed job posting found.</i></h4>
           </div>
@@ -287,50 +277,50 @@
   </div>
 
   <!--bottom navbar-->
-  <footer class="footer text-white mt-5" style="background-color:mediumseagreen">
-    <div class="container-fluid">
-        <nav class="pull-left">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link">
-                        Privacy
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        Terms & Condition
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        Protect yourself online
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="ml-auto">
-            © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-        </div>				
-    </div>
+  <footer class="footer text-white" style="background-color:mediumseagreen">
+      <div class="container-fluid">
+          <nav class="pull-left">
+              <ul class="nav">
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Privacy
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Terms & Condition
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Protect yourself online
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Contact
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+          <div class="ml-auto">
+              © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
+          </div>				
+      </div>
   </footer>
 
-  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-  <!-- Option 1: Bootstrap scripts -->
-  <script src="../.../assets/js/atlantis.js"></script>
-  <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
 
-  <!--   Core JS Files   -->
+  <!-- Core JS Files -->
   <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -341,6 +331,7 @@
 
   <!-- jQuery Scrollbar -->
   <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
 
   <!-- Chart JS -->
   <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
@@ -372,11 +363,18 @@
   <script>
 
     $(document).ready(function(){
-      fillJobPostingList();
+      
+      var hashURL = window.location.hash;
+      if(hashURL !== ''){
+        var jpID = window.location.hash.replace('#','');
+        viewJobPostDetails('btnViewJobPosting'+jpID);
+      }
+      else{
+        fillJobPostingList();
+      }
     });
 
   </script>
 
-      
 </body>
 </html>

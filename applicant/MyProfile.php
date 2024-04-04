@@ -43,54 +43,66 @@ $landing_page = "../applicant/Landing_Page.html";
    
 
      <!-- Japan job posting icon href-->
-     <nav class="navbar navbar-expand-sm">
+     <!--Navbar Header-->
+    <nav class="navbar navbar-header navbar-expand-lg" data-background-color="green2">
       <div class="container-fluid">
-        <form class="">
-          <a class="navbar-brand font-RR text-white" href="../applicant/Landing_Page.html">
-            <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
+        <div class="collapse" id="search-nav">
+          <div>
+          <form class="navbar-left navbar-form">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar nav me-auto mb-2 mb-lg-0">
+              <li>
+                  <a href="JobSearch.php" class="logo">
+                    <img src="../assets/img/JapanJobs.png" alt="navbar brand">
+                  </a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="JobSearch.php">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="MyProfile.php">Pofile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="AboutUs.php">About Us</a>
+                </li>
+              </ul>
+            </div>
           </form>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href=<?php  echo $landing_page?>>Home</a>
-                      </li>
-
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="../applicant/profile.html">Pofile</a>
-                      </li>
-                        
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="../applicant/about_us.html">About Us</a>
-                      </li>
-                    </ul>
-
-                  <form class="d-flex">
-                      <div class="dropdown">
-                        <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <div class="avatar">
-                            <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
-                          </div>
-                          gen.test
-                        </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="../applicant/Settings.html">Settings</a>
-                        <a class="dropdown-item" href="../applicant/Saved_jobs.html">Saved Jobs</a>
-                        <a class="dropdown-item" href="../applicant/recommended_jobs.html">recommended Jobs</a>
-                        <a class="dropdown-item" href="#">Logout</a>
-                      </div>
-                    </div>
-                  </form>
-
-                  <form class="d-flex">
-                    <div>
-                      <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
-                    </div>
-                </form>
-                
           </div>
+        </div>
+        <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
+          <li class="nav-item dropdown hidden-caret">
+            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
+              <div class="avatar-sm">
+                <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-user animated fadeIn">
+              <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
+                <li>
+                  <div class="user-box">
+                    <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
+                    <div class="u-text">
+                      <h4>Genesis Marvin Manale</h4>
+                      <p class="text-muted">genesismarvinmanale@gmail.com</p><a href="/applicant/profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="MyJobs.php">My Jobs</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../logout.php">Logout</a>
+                </li>
+              </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
+            </ul>
+          </li>
+        </ul>
       </div>
     </nav>
+    <!--End Navbar-->
 
     <div class="container-fluid d-flex justify-contnent-center card text-white mt-5">
       <img class="card-img" src="../assets/img/text_bg.png" alt="card image" style="width:max-content">
