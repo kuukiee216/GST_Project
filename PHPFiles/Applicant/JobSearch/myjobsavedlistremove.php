@@ -11,11 +11,11 @@
     ERROR_REPORTING(0);
 
     // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) && 
-    //    isset($_POST['JobPostingID'])){
+    //    isset($_POST['BookmarkID'])){
 
         $AccountID = $_SESSION['AccountID'];
         $CredentialID = $_SESSION['CredentialID'];
-        $JobPostingID = $_POST['JobPostingID'];
+        $BookmarkID = $_POST['BookmarkID'];
 
         try{
             date_default_timezone_set('Asia/Manila');
@@ -23,16 +23,16 @@
 
             $connection->beginTransaction();
 
-            $sQryBookmarkJobPosting = "INSERT INTO tbl_bookmark(JobPostingID, ApplicantID) VALUES(?,?);";
-            $stmtBookmarkJobPosting = $connection->prepare($sQryBookmarkJobPosting);
-            $stmtBookmarkJobPosting->bindValue(1, $JobPostingID, PDO::PARAM_INT);
-            $stmtBookmarkJobPosting->bindValue(2, $CredentialID, PDO::PARAM_INT);
-            $stmtBookmarkJobPosting->execute();
+            $sQryRemoveBookmarkJobPosting = "DELETE FROM tbl_bookmark WHERE BookMarkID = ? AND ApplicantID = ?;";
+            $stmtRemoveBookmarkJobPosting = $connection->prepare($sQryRemoveBookmarkJobPosting);
+            $stmtRemoveBookmarkJobPosting->bindValue(1, $BookmarkID, PDO::PARAM_INT);
+            $stmtRemoveBookmarkJobPosting->bindValue(2, $CredentialID, PDO::PARAM_INT);
+            $stmtRemoveBookmarkJobPosting->execute();
 
             $sQryInsertLog = "INSERT INTO tbl_systemlog(DateTimeStamp,Action,Target,AccountID) VALUES(?,?,?,?);";
             $stmtInsertLog = $connection->prepare($sQryInsertLog);
             $stmtInsertLog->bindValue(1, $currentDateTime, PDO::PARAM_STR);
-            $stmtInsertLog->bindValue(2, 'Bookmark', PDO::PARAM_STR);
+            $stmtInsertLog->bindValue(2, 'Remove Bookmark', PDO::PARAM_STR);
             $stmtInsertLog->bindValue(3, 'Job Posting (Posting ID: '.$JobPostingID.')', PDO::PARAM_STR);
             $stmtInsertLog->bindValue(4, $AccountID, PDO::PARAM_INT);
             $stmtInsertLog->execute();

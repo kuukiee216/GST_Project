@@ -76,24 +76,24 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                            <div class="col-md-5">
-                                <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><?PHP ECHO $jobLocation; ?></h5>
-                                <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><?PHP ECHO $rowJobPost['Classification']; ?></h5>
-                            </div>
-                    
-                            <div class="col-md-5">
-                                <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
-                                <?PHP 
-                                    ECHO ($rowJobPost['SalaryPrivacyStatus'] == '0') ? 
-                                        '<h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span>'.$jobSalary.'</h5>' 
-                                        : 
-                                        ''
-                                ?>
-                            </div>
+                                <div class="col-md-5">
+                                    <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><?PHP ECHO $jobLocation; ?></h5>
+                                    <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><?PHP ECHO $rowJobPost['Classification']; ?></h5>
+                                </div>
+                        
+                                <div class="col-md-5">
+                                    <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
+                                    <?PHP 
+                                        ECHO ($rowJobPost['SalaryPrivacyStatus'] == '0') ? 
+                                            '<h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span>'.$jobSalary.'</h5>' 
+                                            : 
+                                            ''
+                                    ?>
+                                </div>
 
-                            <div class="col-md-2 d-flex justify-content-end align-items-center">
-                                <button class="btn btn-danger float-right" id="btnViewJobPosting<?PHP ECHO $rowJobPost['JobPostingID']; ?>" onclick="viewJobPostDetails(this.id);">View Post</button>
-                            </div>
+                                <div class="col-md-2 d-flex justify-content-end align-items-center">
+                                    <button class="btn btn-danger float-right" id="btnViewJobPosting<?PHP ECHO $rowJobPost['JobPostingID']; ?>" onclick="viewJobPostDetails(this.id);">View Post</button>
+                                </div>
                             </div>
                         </div>
                         </div>

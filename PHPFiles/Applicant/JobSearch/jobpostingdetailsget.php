@@ -13,9 +13,12 @@
     // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) && 
     //    isset($_POST['JobPostingID'])){
 
+        $CredentialID = $_SESSION['CredentialID'];
         $JobPostingID = $_POST['JobPostingID'];
 
         try{
+            $connection->beginTransaction();
+
             $sQryGetJobPostingDetails = "SELECT
                     cj.JobTitle,
                     ci.CompanyName,
@@ -115,6 +118,18 @@
                 $dataResult['Questionnaires'] = $QuestionnairesList;
 
                 $jsonResult = json_encode($dataResult);
+
+                date_default_timezone_set('Asia/Manila');
+                $currentDateTime = date("Y/m/d H:i:s");
+
+                $sQryAddJobPostingView = "INSERT INTO tbl_jobpostingviews(DateTimeStamp,JobPostingID,ApplicantID) VALUES(?,?,?);";
+                $stmtAddJobPostingView = $connection->prepare($sQryAddJobPostingView);
+                $stmtAddJobPostingView->bindValue(1, $currentDateTime, PDO::PARAM_STR);
+                $stmtAddJobPostingView->bindValue(2, $JobPostingID, PDO::PARAM_INT);
+                $stmtAddJobPostingView->bindValue(3, $CredentialID, PDO::PARAM_INT);
+                $stmtAddJobPostingView->execute();
+
+                $connection->commit();
                 ECHO $jsonResult;
             }
             else{
@@ -122,6 +137,7 @@
             }
         }
         catch(PDOException $e){
+            $connection->rollBack();
             ECHO "2";
         }
     // }

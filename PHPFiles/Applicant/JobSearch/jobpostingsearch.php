@@ -55,8 +55,8 @@
                     (cj.JobTitle = :JobTitle OR (l.City = :Location OR l.Province = :Location OR l.Country = :Location))";
             $stmtSearchJobPostings = $connection->prepare($sQrySearchJobPostings);
             $stmtSearchJobPostings->bindValue(":currentDateTime", $currentDateTime, PDO::PARAM_STR);
-            $stmtSearchJobPostings->bindValue(":JobTitle", $JobTitle, PDO::PARAM_STR);
-            $stmtSearchJobPostings->bindValue(":Location", $Location, PDO::PARAM_STR);
+            $stmtSearchJobPostings->bindValue(":JobTitle", "%$JobTitle%", PDO::PARAM_STR);
+            $stmtSearchJobPostings->bindValue(":Location", "%$Location%", PDO::PARAM_STR);
             $stmtSearchJobPostings->execute();
 
             if($stmtSearchJobPostings->rowCount() > 0){
