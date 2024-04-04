@@ -165,7 +165,7 @@
 												<h4>Meow</h4>
 												<p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
-										</div>
+										</div>btn
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
@@ -299,16 +299,16 @@
                             <div class="card-header">
                                     <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="pills-1-tab-nobd" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
+                                        <a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Active');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="pills-2-tab-nobd" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
+                                        <a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Inactive');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="pills-3-tab-nobd" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
+                                        <a class="nav-link" id="btnShowRequest" onclick="changeTableActive('Request');" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="pills-4-tab-nobd" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
+                                        <a class="nav-link" id="btnShowExpired" onclick="changeTableActive('Expired');" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
                                     </li>
                                 </ul>
                             </div>
@@ -475,14 +475,39 @@
 
     <!-- Events -->
     <script>
+		
+		var activeTable = 1;
+		
         $(document).ready(function() {
-            fillApplicantList();
+
+			
+
+            fillApplicantList(activeTable);
 
             $('#tblActiveJobPosting').DataTable();
             $('#tblInactiveJobPosting').DataTable();
             $('#tblRequestJobPosting').DataTable();
             $('#tblExpiredJobPosting').DataTable();
         });
+
+
+		function changeTableActive(status){
+			switch(status){
+				case 'Active':
+					activeTable = 1;
+					break;
+				case 'Inactive':
+					activeTable = 2;
+					break;
+				case 'Request':
+					activeTable = 3;
+					break;
+				case 'Expired':
+					activeTable = 4;
+					break;
+			}
+
+		}
 
     </script>
 </body>

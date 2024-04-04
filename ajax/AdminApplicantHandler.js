@@ -1,15 +1,23 @@
-function fillApplicantList(){
-
+function fillApplicantList(activeTable){
+    
     $.ajax({
         type: "POST",
         datatype: "html",
+        data:{
+            ActiveTable: activeTable
+        },
         url: "../PHPFiles/Admin/getJobPostingList.php",
         success: function(data){
             console.log(data);
             if(data != null){
                 var decodedData = JSON.parse(data);
                 
-                $('#basic-datatable25').DataTable({
+                if($.fn.DataTable.isDataTable('#tblActiveJobPosting')){
+                    $('#tblActiveJobPosting').DataTable().destroy();
+                }
+
+                $('#tblActiveJobPosting').DataTable({
+                    pageLength: 10,
                     data: decodedData,
                     columns: [
                         { data: 'JobID' },
@@ -20,6 +28,8 @@ function fillApplicantList(){
                         { data: 'Action' }
                     ]
                 });
+
+                //$('#tblActiveJobPosting').DataTable.destroy();
                 //$('#tblexamineelist').html(data);
             }
 
