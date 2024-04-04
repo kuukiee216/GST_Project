@@ -45,6 +45,7 @@ if(isset($_POST['ActiveTable'])){
 
                 # Map Status
                 $JobStatus = mapStatus($rowJobList['Status']);
+                $ButtonAction = mapActionButtons($rowJobList['Status'], $rowJobList['JobID']);
 
                 if(strlen($rowJobList['MiddleName']) > 0){
                     $EmployerName = $rowJobList['LastName'].", ".$rowJobList['FirstName']." ".substr($rowJobList['MiddleName'], 0, 1).".";
@@ -58,10 +59,7 @@ if(isset($_POST['ActiveTable'])){
                 $rowData['EmployerName'] = $EmployerName;
                 $rowData['Status'] = $JobStatus;
                 $rowData['Date'] = $rowJobList['DateTimeStamp'];
-                $rowData['Action'] = '<button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                    <button class="btn-success"><i class="fas fa-check"></i></button>
-                                    <button class="btn-danger"><i class="fas fa-times"></i></button>
-                                    <button class="btn-warning"><i class="far fa-trash-alt"></i></button>';
+                $rowData['Action'] = $ButtonAction;
 
                 $dataResultArray[] = $rowData;
             }
@@ -76,6 +74,37 @@ if(isset($_POST['ActiveTable'])){
     }
 }
 
+// Mapping Functions
+function mapActionButtons($status, $id){
+    
+    $temp = '<button class="btn-success" id="btnAcceptJob'.$id.'" name="btnAcceptJob" onclick="acceptJobPost(this.id);"><i class="fas fa-check"></i></button>
+            <button class="btn-danger" id="btnRejectJob'.$id.'" name="btnRejectJob" onclick="rejectJobPost(this.id);"><i class="fas fa-times"></i></button>';
+
+    switch($status){
+        case 1:
+            return '<button class="btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>
+            <button class="btn-warning" id="btnHideJob'.$id.'" onclick="toggleJobPostVisibility(this.id);" name="btnViewJob"><i class="fas fa-ban"></i></button>
+            <button class="btn-danger" id="btnDeleteJob'.$id.'" name="btnDeleteJob" onclick="deleteJobPost(this.id);"><i class="far fa-trash-alt"></i></button>';
+        case 2:
+            return '<button class="btn-secondary"><i class="far fa-eye"></i></button>
+            <button class="btn-success"><i class="fas fa-sync-alt"></i></button>
+            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>';
+        case 3:
+            return '<button class="btn-secondary"><i class="far fa-eye"></i></button>
+            <button class="btn-success"><i class="fas fa-check"></i></button>
+            <button class="btn-danger"><i class="fas fa-times"></i></button>
+            <button class="btn-warning"><i class="far fa-trash-alt"></i></button>';
+        case 4:
+            return '<button class="btn-secondary"><i class="far fa-eye"></i></button>
+                                                            <button class="btn-success"><i class="fas fa-check"></i></button>
+                                                            <button class="btn-danger"><i class="fas fa-times"></i></button>
+                                                            <button class="btn-warning"><i class="far fa-trash-alt"></i></button>';
+    }
+
+    
+
+    return $ButtonAction;
+}
 
 function mapStatus($status){
     switch($status){
