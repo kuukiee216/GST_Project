@@ -88,196 +88,200 @@
   </nav>
   <!--End Navbar-->
 
-  <div class="card bg-dark text-white mt--5" style="z-index: -1;">
-    <img class="card-img" src="../assets/img/header_bg.png" alt="Card image">
-  </div>
+  <main>
 
-  <!--Search Group-->
-  <div class="container-fluid d-flex justify-content-center align-items-center mt--5">
-    <div class="row mt--3">
-      <div class="col-md-12" id="divHotJobList">
-        <div class="row">
+    <div class="card bg-dark text-white mt--5" style="z-index: -1;">
+      <img class="card-img" src="../assets/img/header_bg.png" alt="Card image">
+    </div>
 
-          <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <div class="form-group">
-              <div class="input-icon">
-                <span class="input-icon-addon">
-                  <i class="fa fa-search"></i>
-                </span>
-                <input id="txtSearchJobTitle" type="text" class="form-control shadow" placeholder="Job Title">
+    <!--Search Group-->
+    <div class="container-fluid d-flex justify-content-center align-items-center mt--5">
+      <div class="row mt--3">
+        <div class="col-md-12" id="divHotJobList">
+          <div class="row">
+
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+              <div class="form-group">
+                <div class="input-icon">
+                  <span class="input-icon-addon">
+                    <i class="fa fa-search"></i>
+                  </span>
+                  <input id="txtSearchJobTitle" type="text" class="form-control shadow" placeholder="Job Title">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <div class="form-group">
-              <div class="input-icon">
-                <span class="input-icon-addon"> 
-                  <i class="fa fa-suitcase"></i>
-                </span>
-                <input id="txtSearchClassification" type="text" class="form-control ps-5 shadow" placeholder="Classification" />
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+              <div class="form-group">
+                <div class="input-icon">
+                  <span class="input-icon-addon"> 
+                    <i class="fa fa-suitcase"></i>
+                  </span>
+                  <input id="txtSearchClassification" type="text" class="form-control ps-5 shadow" placeholder="Classification" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <div class="form-group">
-              <div class="input-icon">
-                <span class="input-icon-addon">
-                  <i class="fas fa-map-marker-alt"></i>
-                </span>
-                <input id="txtSearchLocation" type="text" class="form-control ps-5 shadow" placeholder="Location" />
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+              <div class="form-group">
+                <div class="input-icon">
+                  <span class="input-icon-addon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </span>
+                  <input id="txtSearchLocation" type="text" class="form-control ps-5 shadow" placeholder="Location" />
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-md-3 d-flex justify-content-center align-items-center">
-            <button class="btn btn-danger mr-3 shadow" type="button" onclick="searchJobPosting();" id="btnSearchJobPosting">Search</button>
-            <button onclick="triggerFilter();" id="btnSearchFilterJobPosting" class="btn btn-danger shadow" type="button">
-              <i class="fa fa-filter"></i>
-            </button>
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+              <button class="btn btn-danger mr-3 shadow" type="button" onclick="searchJobPosting();" id="btnSearchJobPosting">Search</button>
+              <button onclick="triggerFilter();" id="btnSearchFilterJobPosting" class="btn btn-danger shadow" type="button">
+                <i class="fa fa-filter"></i>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </div>  
-  </div> 
+      </div>  
+    </div> 
 
-  <!--Filter-->
-  <div id="divFilter" class="container-fluid mt-3 d-none d-sm-none">
-    <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-md-3 d-flex justify-content-center">
-            <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="btnDatePostedDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Date posted
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnDatePostedDD">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a> 
+    <!--Filter-->
+    <div id="divFilter" class="container-fluid mt-3 d-none d-sm-none">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3 d-flex justify-content-center">
+              <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="btnDatePostedDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Date posted
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnDatePostedDD">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a> 
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-3 d-flex justify-content-center">
-            <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="btnExperienceDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Experience Level
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnExperienceDD">
-              <a class="dropdown-item" href="#">test</a>
-              <a class="dropdown-item" href="#">test test</a>
-              <a class="dropdown-item" href="#">test</a>
+            <div class="col-md-3 d-flex justify-content-center">
+              <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="btnExperienceDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Experience Level
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnExperienceDD">
+                <a class="dropdown-item" href="#">test</a>
+                <a class="dropdown-item" href="#">test test</a>
+                <a class="dropdown-item" href="#">test</a>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-3 d-flex justify-content-center">
-            <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="btnSalaryDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Minimum Salary
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnSalaryDD">
-              <a class="dropdown-item" href="#">test</a>
-              <a class="dropdown-item" href="#">test test </a>
-              <a class="dropdown-item" href="#">test</a>
+            <div class="col-md-3 d-flex justify-content-center">
+              <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="btnSalaryDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Minimum Salary
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnSalaryDD">
+                <a class="dropdown-item" href="#">test</a>
+                <a class="dropdown-item" href="#">test test </a>
+                <a class="dropdown-item" href="#">test</a>
+              </div>
             </div>
-          </div>
 
-          <div class="col-md-3 d-flex justify-content-center">
-            <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Remote
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">test</a>
-              <a class="dropdown-item" href="#">test test</a>
-              <a class="dropdown-item" href="#">test</a>
+            <div class="col-md-3 d-flex justify-content-center">
+              <button class="btn btn-outline-danger dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Remote
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">test</a>
+                <a class="dropdown-item" href="#">test test</a>
+                <a class="dropdown-item" href="#">test</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!--JOB POSTING LIST-->
-  <div id="divPostingList" class="container mt-3">
-    <div class="row">
-      <div class="col-md-12">
-        <h2 class="mb-3">Jobs Postings</h2>
-        <div class="row" id="divJobPostList">
-          <div class="col-md-12">
-            <h4><i>No listed job posting found.</i></h4>
+    <!--JOB POSTING LIST-->
+    <div id="divPostingList" class="container mt-3">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="mb-3">Jobs Postings</h2>
+          <div class="row" id="divJobPostList">
+            <div class="col-md-12">
+              <h4><i>No listed job posting found.</i></h4>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!--JOB POSTING DETAILS-->
-  <div id="divPost" class=" container d-none d-sm-none">
-    <div class="container-fluid d-flex justify-content-center row mt-3">
-      <div class="card">
-        <div class="card-header">
-          <button class="btn btn-link text-dark ml--5" onclick="backToPostingList();"><i class="fas fa-chevron-left mr-2 fa-lg"></i> Back</button>
-          <h1 class="font-weight-bold" id="lblJobTitle">-</h1>
-          <h5 class="font-weight-bold" id="lblCompanyName">-</h5>
-          <div class="row mt-4">
-            <div class="col-md-12 pl-4">
-              <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><span id="lblLocation">-</span></h5>
-              <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">-</span> <i><span id="lblSubClassification"></span></i></h5>
-              <h5 id="lblEmploymentType"><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full Time</h5>
-              <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span><span id="lblJobSalary">-</span></h5>
+    <!--JOB POSTING DETAILS-->
+    <div id="divPost" class=" container d-none d-sm-none">
+      <div class="container-fluid d-flex justify-content-center row mt-3">
+        <div class="card">
+          <div class="card-header">
+            <button class="btn btn-link text-dark ml--5" onclick="backToPostingList();"><i class="fas fa-chevron-left mr-2 fa-lg"></i> Back</button>
+            <h1 class="font-weight-bold" id="lblJobTitle">-</h1>
+            <h5 class="font-weight-bold" id="lblCompanyName">-</h5>
+            <div class="row mt-4">
+              <div class="col-md-12 pl-4">
+                <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><span id="lblLocation">-</span></h5>
+                <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">-</span> <i><span id="lblSubClassification"></span></i></h5>
+                <h5 id="lblEmploymentType"><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full Time</h5>
+                <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span><span id="lblJobSalary">-</span></h5>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <button class="btn btn-danger mr-3">Apply Now</button>
+                <button class="btn btn-outline-danger mr-3" id="btnBookmarkJobPosting" onclick="BookmarkJobPosting();"><i class="fa fa-bookmark mr-2"></i> Save</button>
+                <button class="btn btn-outline-danger" onclick="ReportJobPosting();"><i class="fa fa-flag mr-2"></i> Report Job</button>
               </div>
-          </div>
-
-          <div class="row mt-4">
-            <div class="col-md-12">
-              <button class="btn btn-danger mr-3">Apply Now</button>
-              <button class="btn btn-outline-danger mr-3" id="btnBookmarkJobPosting" onclick="BookmarkJobPosting();"><i class="fa fa-bookmark mr-2"></i> Save</button>
-              <button class="btn btn-outline-danger" onclick="ReportJobPosting();"><i class="fa fa-flag mr-2"></i> Report Job</button>
-            </div>
-          </div>
-        </div>
-        
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="font-weight-bold">Job Summary</h4>
-              <p class="card-text" id="lblJobSummary">-</p>
-            </div>
-          </div>
-
-          <br>
-
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="font-weight-bold">Qualifications</h4>
-              <ul id="listQualifications">
-                
-              </ul>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="font-weight-bold">Education & Experiences</h4>
-              <ul id="listEducationExperiences">
-                
-              </ul>
             </div>
           </div>
           
-          <div class="row">
-            <div class="col-md-12">
-              <h4 class="font-weight-bold">Employer's Questions</h4>
-              <ul id="listQuestionnaires">
-                
-              </ul>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Job Summary</h4>
+                <p class="card-text" id="lblJobSummary">-</p>
+              </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Qualifications</h4>
+                <ul id="listQualifications">
+                  
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Education & Experiences</h4>
+                <ul id="listEducationExperiences">
+                  
+                </ul>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="font-weight-bold">Employer's Questions</h4>
+                <ul id="listQuestionnaires">
+                  
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+  </main>
 
   <!--bottom navbar-->
-  <footer class="footer text-white" style="background-color:mediumseagreen">
+  <footer class="footer text-white mt-auto fixed-bottom" style="background-color:mediumseagreen">
       <div class="container-fluid">
           <nav class="pull-left">
               <ul class="nav">
