@@ -82,7 +82,7 @@ function mapActionButtons($status, $id){
 
     switch($status){
         case 1:
-            return '<button class="btn btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>
+            return '<button class="btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>
             <button class="btn-warning" id="btnHideJob'.$id.'" onclick="toggleJobPostVisibility(this.id);" name="btnViewJob"><i class="fas fa-ban"></i></button>
             <button class="btn-danger" id="btnDeleteJob'.$id.'" name="btnDeleteJob" onclick="deleteJobPost(this.id);"><i class="far fa-trash-alt"></i></button>';
         case 2:
