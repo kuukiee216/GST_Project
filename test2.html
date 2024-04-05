@@ -1,48 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Validation with SweetAlert</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disabled/Enabled Radio Button Selection</title>
 </head>
 <body>
 
-<div class="container mt-5">
-  <form id="myForm">
-    <div class="form-group">
-      <label for="test1">Name</label>
-      <input type="text" class="form-control" id="test1" placeholder="Enter your name">
-    </div>
-    <div class="form-group">
-      <label for="test2">Email address</label>
-      <input type="email" class="form-control" id="test2" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-      <label for="test3">Name</label>
-      <input type="text" class="form-control" id="test3" placeholder="Enter your name">
-    </div>
-    <div class="form-group">
-      <label for="test4">Email address</label>
-      <input type="email" class="form-control" id="test4" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-      <label for="test5">Name</label>
-      <input type="text" class="form-control" id="test5" placeholder="Enter your name">
-    </div>
-    <div class="form-group">
-      <label for="test6">Email address</label>
-      <input type="email" class="form-control" id="test6" placeholder="Enter email">
-    </div>
-    <div class="form-group">
-      <label for="test7">Email address</label>
-      <input type="email" class="form-control" id="test7" placeholder="Enter email">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-</div>
+<!-- Radio buttons -->
+<label><input type="radio" name="options" value="option1" disabled> Option 1</label>
+<label><input type="radio" name="options" value="option2" disabled> Option 2</label>
+<label><input type="radio" name="options" value="option3" disabled> Option 3</label>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="script.js"></script>
+<script>
+// Get reference to all radio buttons
+const radios = document.querySelectorAll('input[name="options"]');
+
+// Add event listener to each radio button
+radios.forEach(function(radio) {
+  radio.addEventListener('click', function() {
+    // If the radio button is disabled, enable it and disable others
+    if (this.disabled) {
+      radios.forEach(function(r) {
+        r.disabled = false;
+      });
+      this.disabled = true;
+    }
+  });
+});
+</script>
+
 </body>
 </html>

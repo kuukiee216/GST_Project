@@ -129,7 +129,6 @@
           </div>
         </div>
 
-
         <div class="mt-3">
           <button onclick="opensesame()" type="button" data-toggle="modal" class="btn btn-danger">Edit</button>
         </div>
@@ -165,34 +164,6 @@
     </div>
     <hr>
 
-    <script>
-    // Function to open the edit modal
-    function opensesame() {
-      var content = document.getElementById('Pname').innerText;
-      document.getElementById('editInput1').value = content.trim();
-      var content = document.getElementById('Pemail').innerText;
-      document.getElementById('editInput2').value = content.trim();
-      var content = document.getElementById('tel').innerText;
-      document.getElementById('editInput3').value = content.trim();
-      var content = document.getElementById('loc').innerText;
-      document.getElementById('editInput4').value = content.trim();
-      $('#edit_detail').modal('show');
-    }
-
-    // Function to save changes made in the modal
-    function saveChanges() {
-      var editedContent = document.getElementById('editInput1').value;
-      document.getElementById('Pname').innerText = editedContent;
-      var editedContent = document.getElementById('editInput2').value;
-      document.getElementById('Pemail').innerText = editedContent;
-      var editedContent = document.getElementById('editInput3').value;
-      document.getElementById('tel').innerText = editedContent;
-      var editedContent = document.getElementById('editInput4').value;
-      document.getElementById('loc').innerText = editedContent;
-      $('#edit_detail').modal('hide');
-    }
-    </script>
-
       <h4>Personal Summary</h4>
       <p>Tell us about yourself</p>
       <textarea type="text" class="form-control pb-5" id="summary" placeholder="Your personal summary will appear here."></textarea>
@@ -206,29 +177,6 @@
       <div id="outputDiv2" class="mt-3 card card-body"></div>
       <button onclick="saveInput()" type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Role</button>
       <hr>
-
-      <script> //hehe ang galing
-        function saveInput() {
-          // Get input value
-          var inputValue = document.getElementById('summary').value;
-          var inputValue2 = document.getElementById('role').value;
-          var inputValue3 = document.getElementById('about').value;
-        
-          // Get the output div
-          var outputDiv = document.getElementById('outputDiv');
-          var outputDiv2 = document.getElementById('outputDiv2');
-          var outputDiv3 = document.getElementById('outputDiv3');
-        
-          // Clear previous content
-          outputDiv.innerHTML = '';
-          outputDiv2.innerHTML = '';
-        
-          // Set input value as text content of the output div
-          outputDiv.textContent = inputValue;
-          outputDiv2.textContent = inputValue2;
-          outputDiv3.textContent = inputValue3;
-        }
-      </script>
 
       <h4>Education</h4>
       <div id="cardContainer">
@@ -285,6 +233,184 @@
       </div>
       <button id="addButton" onclick="addCard()" class="btn btn-danger mt-3 mb-5">Add Education</button>
       <hr>
+
+      <h4>Skills</h4>
+      <label for="skills" class="mb-3">Showcase what kind of skills you attained.</label>
+
+      <input type="text" class="form-control mb-3" id="skills" placeholder="enter skills here">
+
+      <div id="addNewSkill" class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5>Organizational Skills</h5>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col d-flex align-items-end">
+              <a class="btn" onclick="deleteSkill(this)"><i class="fa fa-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Container for cards -->
+      <div id="cardContainer2" class="mt-3"></div>
+
+      <button onclick="addSkill()" type="button" class="btn btn-danger mt-3 mb-5" value="button">Add Skills</button>
+
+      <h4>Licenses and Certifications</h4>
+      <p>Add your legitimate certifications, licenses, and accreditations here.</p>
+      <textarea type="text" class="form-control pb-5" id="about" placeholder="Your licenses and certifications will appear here."></textarea>
+      <div id="outputDiv3" class="mt-3 card card-body"></div>
+      <button type="button" onclick="saveInput()" class="btn btn-danger mt-3 mb-5" value="submit">Add Certification / License</button>
+
+      <h4>Languages</h4>
+      <label for="languages" class="mb-3">Showcase what kind of skills you attained.</label>
+      <input type="text" class="form-control mb-3" id="languages" placeholder="enter language here">
+
+      <div id="addNewLang" class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5>Filipino</h5>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col d-flex align-items-end">
+              <a onclick="deleteLang(this)" class="btn"><i class="fa fa-trash"></i></a>
+            </div>
+          </div>
+        </div>
+      </div> 
+
+      <!-- Container for cards -->
+      <div id="cardContainer3" class="mt-3"></div>
+    
+      <button onclick="addLang()" type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Language</button>
+      <hr>
+
+      <div class="dropdown mb-5">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Add more details
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">detail 1</a>
+          <a class="dropdown-item" href="#">detail 2</a>
+          <a class="dropdown-item" href="#">detail 3</a>
+        </div>
+      </div>
+      <div>
+        <button id="resumeSaved" type="submit" class="btn btn-danger mb-5">Create Resume</button>
+        <button type="button" class="btn btn-outline-danger mb-5" value="submit">Cancel</button>
+      </div>
+
+    </div>
+
+    
+    <!--bottom navbar-->
+    <footer class="footer text-white" style="background-color:mediumseagreen">
+      <div class="container-fluid">
+          <nav class="pull-left">
+              <ul class="nav">
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Privacy
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Terms & Condition
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Protect yourself online
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link">
+                          Contact
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+          <div class="ml-auto">
+              © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
+          </div>				
+      </div>
+    </footer>
+
+    <script>
+      // Function to open the edit modal
+      function opensesame() {
+        var content = document.getElementById('Pname').innerText;
+        document.getElementById('editInput1').value = content.trim();
+        var content = document.getElementById('Pemail').innerText;
+        document.getElementById('editInput2').value = content.trim();
+        var content = document.getElementById('tel').innerText;
+        document.getElementById('editInput3').value = content.trim();
+        var content = document.getElementById('loc').innerText;
+        document.getElementById('editInput4').value = content.trim();
+        $('#edit_detail').modal('show');
+      }
+  
+      // Function to save changes made in the modal
+      function saveChanges() {
+        var editedContent = document.getElementById('editInput1').value;
+        document.getElementById('Pname').innerText = editedContent;
+        var editedContent = document.getElementById('editInput2').value;
+        document.getElementById('Pemail').innerText = editedContent;
+        var editedContent = document.getElementById('editInput3').value;
+        document.getElementById('tel').innerText = editedContent;
+        var editedContent = document.getElementById('editInput4').value;
+        document.getElementById('loc').innerText = editedContent;
+        $('#edit_detail').modal('hide');
+      }
+      </script>
+
+      <script> //hehe ang galing
+        function saveInput() {
+          // Get input value
+          var inputValue = document.getElementById('summary').value;
+          var inputValue2 = document.getElementById('role').value;
+          var inputValue3 = document.getElementById('about').value;
+        
+          // Get the output div
+          var outputDiv = document.getElementById('outputDiv');
+          var outputDiv2 = document.getElementById('outputDiv2');
+          var outputDiv3 = document.getElementById('outputDiv3');
+        
+          // Clear previous content
+          outputDiv.innerHTML = '';
+          outputDiv2.innerHTML = '';
+        
+          // Set input value as text content of the output div
+          outputDiv.textContent = inputValue;
+          outputDiv2.textContent = inputValue2;
+          outputDiv3.textContent = inputValue3;
+        }
+      </script>
 
       <script>
         function addCard() {
@@ -412,232 +538,107 @@
           }
         </script>
 
-      <h4>Skills</h4>
-      <label for="skills" class="mb-3">Showcase what kind of skills you attained.</label>
-
-      <input type="text" class="form-control mb-3" id="skills" placeholder="enter skills here">
-
-      <div id="addNewSkill" class="card mb-3">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <h5>Organizational Skills</h5>
-            </div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col d-flex align-items-end">
-              <a class="btn" onclick="deleteSkill(this)"><i class="fa fa-trash"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Container for cards -->
-      <div id="cardContainer2" class="mt-3"></div>
-
-      <button onclick="addSkill()" type="button" class="btn btn-danger mt-3 mb-5" value="button">Add Skills</button>
-
-      <script>
-        // Function to add an element to the card
-        function addSkill() {
-          // Get the input value
-          var inputValue = document.getElementById('skills').value;
-        
-          // Create a new card element
-          var newCard = document.createElement('div');
-          newCard.innerHTML = `
-            <div id="addNewSkill" class="card mb-3">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h5>${inputValue}</h5>
-                  </div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col d-flex align-items-end">
-                    <a onclick="deleteSkill(this)" class="btn"><i class="fa fa-trash"></i></a>
+        <script>
+          // Function to add an element to the card
+          function addSkill() {
+            // Get the input value
+            var inputValue = document.getElementById('skills').value;
+          
+            // Create a new card element
+            var newCard = document.createElement('div');
+            newCard.innerHTML = `
+              <div id="addNewSkill" class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5>${inputValue}</h5>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col d-flex align-items-end">
+                      <a onclick="deleteSkill(this)" class="btn"><i class="fa fa-trash"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          `;
-        
-          // Append the new card to the card container
-          var cardContainer2 = document.getElementById('cardContainer2');
-          cardContainer2.appendChild(newCard);
-        
-          // Clear the input field
-          document.getElementById('skills').value = '';
-        }
+            `;
+          
+            // Append the new card to the card container
+            var cardContainer2 = document.getElementById('cardContainer2');
+            cardContainer2.appendChild(newCard);
+          
+            // Clear the input field
+            document.getElementById('skills').value = '';
+          }
+  
+          function deleteSkill(button) {
+            // Get the parent card element and remove it
+            var card = button.closest('.card');
+            card.remove();
+          }
+        </script>
 
-        function deleteSkill(button) {
-          // Get the parent card element and remove it
-          var card = button.closest('.card');
-          card.remove();
-        }
-      </script>
-
-      <h4>Licenses and Certifications</h4>
-      <p>Add your legitimate certifications, licenses, and accreditations here.</p>
-      <textarea type="text" class="form-control pb-5" id="about" placeholder="Your licenses and certifications will appear here."></textarea>
-      <div id="outputDiv3" class="mt-3 card card-body"></div>
-      <button type="button" onclick="saveInput()" class="btn btn-danger mt-3 mb-5" value="submit">Add Certification / License</button>
-
-      <h4>Languages</h4>
-      <label for="languages" class="mb-3">Showcase what kind of skills you attained.</label>
-      <input type="text" class="form-control mb-3" id="languages" placeholder="enter language here">
-
-      <div id="addNewLang" class="card mb-3">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-              <h5>Filipino</h5>
-            </div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col"></div>
-            <div class="col d-flex align-items-end">
-              <a onclick="deleteLang(this)" class="btn"><i class="fa fa-trash"></i></a>
-            </div>
-          </div>
-        </div>
-      </div> 
-
-      <!-- Container for cards -->
-      <div id="cardContainer3" class="mt-3"></div>
-    
-      <button onclick="addLang()" type="button" class="btn btn-danger mt-3 mb-5" value="submit">Add Language</button>
-      <hr>
-
-      <script>
-        // Function to add an element to the card
-        function addLang() {
-          // Get the input value
-          var inputValue = document.getElementById('languages').value;
-        
-          // Create a new card element
-          var newCard = document.createElement('div');
-          newCard.innerHTML = `
-            <div id="addNewSkill" class="card mb-3">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <h5>${inputValue}</h5>
-                  </div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col"></div>
-                  <div class="col d-flex align-items-end">
-                    <a onclick="deleteSkill(this)" class="btn"><i class="fa fa-trash"></i></a>
+        <script>
+          // Function to add an element to the card
+          function addLang() {
+            // Get the input value
+            var inputValue = document.getElementById('languages').value;
+          
+            // Create a new card element
+            var newCard = document.createElement('div');
+            newCard.innerHTML = `
+              <div id="addNewSkill" class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col">
+                      <h5>${inputValue}</h5>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                    <div class="col d-flex align-items-end">
+                      <a onclick="deleteSkill(this)" class="btn"><i class="fa fa-trash"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          `;
-        
-          // Append the new card to the card container
-          var cardContainer3 = document.getElementById('cardContainer3');
-          cardContainer3.appendChild(newCard);
-        
-          // Clear the input field
-          document.getElementById('Languages').value = '';
-        }
-
-        function deleteLang(button) {
-          // Get the parent card element and remove it
-          var card = button.closest('.card');
-          card.remove();
-        }
-      </script>
-
-      <div class="dropdown mb-5">
-        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Add more details
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">detail 1</a>
-          <a class="dropdown-item" href="#">detail 2</a>
-          <a class="dropdown-item" href="#">detail 3</a>
-        </div>
-      </div>
-      <div>
-        <button type="submit" class="btn btn-danger mb-5">Create Resume</button>
-        <button type="button" class="btn btn-outline-danger mb-5" value="submit">Cancel</button>
-      </div>
-
-    </div>
+            `;
+          
+            // Append the new card to the card container
+            var cardContainer3 = document.getElementById('cardContainer3');
+            cardContainer3.appendChild(newCard);
+          
+            // Clear the input field
+            document.getElementById('Languages').value = '';
+          }
+  
+          function deleteLang(button) {
+            // Get the parent card element and remove it
+            var card = button.closest('.card');
+            card.remove();
+          }
+        </script>
 
 
-    <!--bottom navbar-->
-    <footer class="footer text-white" style="background-color:mediumseagreen">
-      <div class="container-fluid">
-          <nav class="pull-left">
-              <ul class="nav">
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Privacy
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Terms & Condition
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Protect yourself online
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Contact
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="ml-auto">
-              © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-          </div>				
-      </div>
-    </footer>
 
   <!-- Bootstrap JS (for modal) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -678,6 +679,7 @@
 
 	<!-- Sweet Alert -->
 	<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+  <script src="../scripts/create_resume_SCRIPTS.js"></script>
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
