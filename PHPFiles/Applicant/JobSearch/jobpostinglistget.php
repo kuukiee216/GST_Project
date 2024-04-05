@@ -100,7 +100,9 @@
                     </div>
 
             <?PHP
-                }
+                } ?>
+                <div class="col-md-12 mb-5"></div>
+            <?PHP
             }
             else{
                 ECHO "3";

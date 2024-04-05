@@ -480,8 +480,6 @@
 
         $(document).ready(function() {
 
-			
-
             fillApplicantList(activeTable);
 
             $('#tblActiveJobPosting').DataTable();
@@ -506,6 +504,8 @@
 					activeTable = 4;
 					break;
 			}
+
+			fillApplicantList(activeTable);
 
 		}
 

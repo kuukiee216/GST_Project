@@ -68,8 +68,10 @@ if(isset($_POST['JobPostID'])){
 
 function mapStatus($status){
     switch($status){
-        case 1:
+        case 0:
             return "Active";
+        case 1:
+            return "Hidden";
         case 2:
             return "Inactive";
         case 3:
