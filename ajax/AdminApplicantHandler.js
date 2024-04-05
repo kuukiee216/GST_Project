@@ -207,21 +207,182 @@ function deleteJobPost(JobPostID){
 
 }
 
-function rejectJobPost(JobPostID){
-    console.log(JobPostID);
+function acceptJobPost(JobPostID){
 
-    var JID = JobPostID.replace("btnViewJob", "");
+    var JID = JobPostID.replace("btnAcceptJob", "");
     console.log(JID);
+
+    swal({
+        title: 'Accept Pending Job?',
+        text: "Are you sure you want to Accept Job Post #" + JID + "?",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Accept it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Toggle) => {
+        if (Toggle) {
+
+            // ACCEPT JOB FUNCTION
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: {
+                    JobPostID: JID
+                },
+                url: "../PHPFiles/Admin/jobPostRequestAccept.php",
+                success: function(data){
+                    console.log(data);
+                    swal({
+                        title: 'Job Post Request Accepted!',
+                        text: "Job Post Request has been Accepted! see changes in Active",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        fillApplicantList(3);
+                    });
+                         
+                }
+            });
+        }
+        else{
+        }
+    });
+
+
+}
+
+function rejectJobPost(JobPostID){
+
+    var JID = JobPostID.replace("btnRejectJob", "");
+    console.log(JID);
+
+
+                                                    // EDIT THIS
+    swal({
+        title: 'Reject Pending Job?',
+        text: "Are you sure you want to REJECT Job Post #" + JID + "?",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Reject it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Toggle) => {
+        if (Toggle) {
+
+            // REJECT FUNCTION
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: {
+                    JobPostID: JID
+                },
+                url: "../PHPFiles/Admin/jobPostRequestReject.php",
+                success: function(data){
+                    console.log(data);
+                    swal({
+                        title: 'Job Post has been Rejected!',
+                        text: "Successfully Deleted Job Post #" + JID + ".",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        fillApplicantList(3);
+                    });
+                         
+                }
+            });
+        }
+        else{
+        }
+    });
 
     
 }
 
-function requestJobPost(JobPostID){
-    console.log(JobPostID);
+function repostJobPost(JobPostID){
 
-    var JID = JobPostID.replace("btnViewJob", "");
+    var JID = JobPostID.replace("btnRepostJob", "");
     console.log(JID);
 
+
+    swal({
+        title: 'Repost Job Post?',
+        text: "Are you sure you want to Repost Job Post #" + JID + "?",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Repost it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Toggle) => {
+        if (Toggle) {
+
+            // REPOST JOB FUNCTION
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: {
+                    JobPostID: JID
+                },
+                url: "../PHPFiles/Admin/jobPostRepost.php",
+                success: function(data){
+                    console.log(data);
+                    swal({
+                        title: 'Job Post Successfuly Reposted!',
+                        text: "Job Post Request has been Reposted! see changes in Active",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        fillApplicantList(2);
+                    });
+                         
+                }
+            });
+        }
+        else{
+        }
+    });
     
 }
 

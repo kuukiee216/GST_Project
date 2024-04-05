@@ -22,17 +22,15 @@ if(isset($_POST['JobPostID'])){
         $stmtDeleteJobPost2 = $connection->prepare($sQryDeleteJobPost2);
         $stmtDeleteJobPost2->bindValue(1, $JID, PDO::PARAM_INT);
         $stmtDeleteJobPost2->execute();
-        echo '1';
-        
 
-    } catch(PDOException $err){
+        echo '1';
+
+    }catch(PDOException $err){
         echo '2';
     }
 
-}
-else{
+}else{
     echo '3';
 }
-
 
 ?>
