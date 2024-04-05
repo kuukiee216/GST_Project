@@ -85,21 +85,21 @@ function mapActionButtons($status, $id){
             <button class="btn-danger" id="btnDeleteJob'.$id.'" name="btnDeleteJob" onclick= "deleteJobPost(this.id);"><i class="far fa-trash-alt"></i></button>';
     }
     else if($status == 2){ // INACTIVE
-        return '<button class="btn-secondary"><i class="far fa-eye"></i></button>
-            <button class="btn-success"><i class="fas fa-sync-alt"></i></button>
-            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>';
+        return '<button class="btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>
+            <button class="btn-success" id="btnRepostJob'.$id.'" name="btnRepostJob" onclick= "repostJobPost(this.id);"><i class="fas fa-sync-alt"></i></button>
+            <button class="btn-danger" id="btnDeleteJob'.$id.'" name="btnDeleteJob" onclick= "deleteJobPost(this.id);"><i class="far fa-trash-alt"></i></button>';
     }
     else if($status == 3){ // REQUEST
-        return '<button class="btn-secondary"><i class="far fa-eye"></i></button>
-            <button class="btn-success"><i class="fas fa-check"></i></button>
-            <button class="btn-danger"><i class="fas fa-times"></i></button>
+        return '<button class="btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>
+            <button class="btn-success" id="btnAcceptJob'.$id.'" onclick="acceptJobPost(this.id);" name="btnAcceptJob"><i class="fas fa-check"></i></button>
+            <button class="btn-danger" id="btnRejectJob'.$id.'" onclick="rejectJobPost(this.id);" name="btnRejectJob"><i class="fas fa-times"></i></button>
             <button class="btn-warning"><i class="far fa-trash-alt"></i></button>';
     }
     else if($status == 4){ // EXPIRED
-        return '<button class="btn-secondary"><i class="far fa-eye"></i></button>
-            <button class="btn-success"><i class="fas fa-check"></i></button>
-            <button class="btn-danger"><i class="fas fa-times"></i></button>
-            <button class="btn-warning"><i class="far fa-trash-alt"></i></button>';
+        return '<button class="btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>
+            <button class="btn-success" id="btnAcceptJob'.$id.'" onclick="acceptJobPost(this.id);" name="btnAcceptJob"><i class="fas fa-check"></i></button>
+            <button class="btn-danger" id="btnRejectJob'.$id.'" onclick="rejectJobPost(this.id);" name="btnRejectJob"><i class="fas fa-times"></i></button>
+            <button class="btn-warning" id="btnDeleteJob'.$id.'" name="btnDeleteJob" onclick= "deleteJobPost(this.id);"><i class="far fa-trash-alt"></i></button>';
     }
 }
 
@@ -110,7 +110,7 @@ function mapStatus($status){
         case 2:
             return "Inactive";
         case 3:
-            return "Request";
+            return "Pending";
         case 4: 
             return "Expired";
     }
