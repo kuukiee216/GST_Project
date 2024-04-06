@@ -481,36 +481,43 @@
       $(document).ready(function(){
         var formType = window.location.hash.replace('#','');
 
-        if(formType == 'Form1'){
-          $('#Form1').addClass('show active');
-          $('#Form2').removeClass('show active');
-          $('#Form3').removeClass('show active');
+        if (formType.indexOf('&') !== -1) {
+          var formPage = formType.split('&');
 
-          $('#divApplicationProgress').css('width', '20%');
-          $('#divApplicationProgress').removeClass('bg-success');
-          $('#divApplicationProgress').addClass('bg-primary');
+          if(formPage[1] == 'Form1'){
+            $('#Form1').addClass('show active');
+            $('#Form2').removeClass('show active');
+            $('#Form3').removeClass('show active');
 
-          $('#btnApplicationBack').text("Cancel");
-        }
-        else if(formType == 'Form2'){
-          $('#Form1').removeClass('show active');
-          $('#Form2').addClass('show active');
-          $('#Form3').removeClass('show active');
+            $('#divApplicationProgress').css('width', '20%');
+            $('#divApplicationProgress').removeClass('bg-success');
+            $('#divApplicationProgress').addClass('bg-primary');
 
-          $('#divApplicationProgress').css('width', '66%');
+            $('#btnApplicationBack').text("Cancel");
+          }
+          else if(formPage[1]  == 'Form2'){
+            $('#Form1').removeClass('show active');
+            $('#Form2').addClass('show active');
+            $('#Form3').removeClass('show active');
 
-          $('#btnApplicationBack').text("Back");
+            $('#divApplicationProgress').css('width', '66%');
+
+            $('#btnApplicationBack').text("Back");
+          }
+          else{
+            $('#Form1').removeClass('show active');
+            $('#Form2').removeClass('show active');
+            $('#Form3').addClass('show active');
+
+            $('#divApplicationProgress').css('width', '100%');
+            $('#divApplicationProgress').removeClass('bg-primary');
+            $('#divApplicationProgress').addClass('bg-success');
+
+            $('#btnApplicationBack').text("Back");
+          }
         }
         else{
-          $('#Form1').removeClass('show active');
-          $('#Form2').removeClass('show active');
-          $('#Form3').addClass('show active');
-
-          $('#divApplicationProgress').css('width', '100%');
-          $('#divApplicationProgress').removeClass('bg-primary');
-          $('#divApplicationProgress').addClass('bg-success');
-
-          $('#btnApplicationBack').text("Back");
+          location.href = "JobSearch.php";
         }
       });
     </script>
