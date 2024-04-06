@@ -3,31 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Disabled/Enabled Radio Button Selection</title>
+<title>Data Validation in Bootstrap Modal</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  .error {
+    color: red;
+  }
+</style>
 </head>
 <body>
 
-<!-- Radio buttons -->
-<label><input type="radio" name="options" value="option1" disabled> Option 1</label>
-<label><input type="radio" name="options" value="option2" disabled> Option 2</label>
-<label><input type="radio" name="options" value="option3" disabled> Option 3</label>
+<!-- Button to trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Open Modal
+</button>
 
+<!-- Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create Profile</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name">
+          <span id="nameError" class="error"></span>
+        </div>
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+          <span id="phoneError" class="error"></span>
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email">
+          <span id="emailError" class="error"></span>
+        </div>
+        <!-- Location -->
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" class="form-control" id="location" placeholder="Enter your location">
+          <span id="locationError" class="error"></span>
+        </div>
+      </div>
+      
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="validateForm()">Create Profile</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Get reference to all radio buttons
-const radios = document.querySelectorAll('input[name="options"]');
+// Function to validate the form
+function validateForm() {
+  let isValid = true;
 
-// Add event listener to each radio button
-radios.forEach(function(radio) {
-  radio.addEventListener('click', function() {
-    // If the radio button is disabled, enable it and disable others
-    if (this.disabled) {
-      radios.forEach(function(r) {
-        r.disabled = false;
-      });
-      this.disabled = true;
-    }
-  });
-});
+  // Validate name
+  const nameInput = document.getElementById("name");
+  const nameError = document.getElementById("nameError");
+  if (nameInput.value.trim() === "") {
+    nameError.textContent = "Name is required";
+    isValid = false;
+  } else {
+    nameError.textContent = "";
+  }
+
+  // Validate phone number
+  const phoneInput = document.getElementById("phone");
+  const phoneError = document.getElementById("phoneError");
+  const phoneRegex = /^\d{10}$/; // simple 10-digit phone number validation
+  if (!phoneRegex.test(phoneInput.value.trim())) {
+    phoneError.textContent = "Please enter a valid 10-digit phone number";
+    isValid = false;
+  } else {
+    phoneError.textContent = "";
+  }
+
+  // Validate email
+  const emailInput = document.getElementById("email");
+  const emailError = document.getElementById("emailError");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email format validation
+  if (!emailRegex.test(emailInput.value.trim())) {
+    emailError.textContent = "Please enter a valid email address";
+    isValid = false;
+  } else {
+    emailError.textContent = "";
+  }
+
+  // Validate location
+  const locationInput = document.getElementById("location");
+  const locationError = document.getElementById("locationError");
+  if (locationInput.value.trim() === "") {
+    locationError.textContent = "Location is required";
+    isValid = false;
+  } else {
+    locationError.textContent = "";
+  }
+
+  // If all fields are valid, submit the form
+  if (isValid) {
+    alert("Profile created successfully!");
+    $('#myModal').modal('hide'); // Hide modal on successful submission
+    document.getElementById("profileForm").reset(); // Reset the form
+  }
+}
 </script>
 
 </body>

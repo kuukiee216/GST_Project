@@ -23,6 +23,12 @@
       });
       </script>
 
+      <style>
+        .error {
+          color: red;
+        }
+      </style>
+
     <title>Create Resume</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
@@ -145,15 +151,24 @@
                 </div>
 
                 <div class="modal-body">
-                    <label>Name</label>
-                    <input type="text" class="form-control" id="editInput1" placeholder="name">
-                    <label>Phone Number</label>
-                    <input type="tel" class="form-control" id="editInput2" placeholder="phone number">
-                    <label>Email Address</label>
-                    <input type="email" class="form-control" id="editInput3" placeholder="email">
-                    <label>Location</label>
-                    <input type="text" class="form-control" id="editInput4" placeholder="location">
-                  </div>
+                    <form id="validateform">
+                      <label>Name</label>
+                      <input type="text" class="form-control" id="editInput1" placeholder="name">
+                      <span id="usernameError" class="error"></span><br><br>
+
+                      <label>Phone Number</label>
+                      <input type="tel" class="form-control" id="editInput2" placeholder="phone number">
+                      <span id="phoneError" class="error"></span><br><br>
+
+                      <label>Email Address</label>
+                      <input type="email" class="form-control" id="editInput3" placeholder="email">
+                      <span id="emailError" class="error"></span><br><br>
+
+                      <label>Location</label>
+                      <input type="text" class="form-control" id="editInput4" placeholder="location">
+                      <span id="locationError" class="error"></span><br><br>
+                    </form>
+                </div>
                 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -361,7 +376,9 @@
       </div>
     </footer>
 
-    <script>
+
+    <script>      
+
       // Function to open the edit modal
       function opensesame() {
         var content = document.getElementById('Pname').innerText;
@@ -374,20 +391,76 @@
         document.getElementById('editInput4').value = content.trim();
         $('#edit_detail').modal('show');
       }
-  
-      // Function to save changes made in the modal
-      function saveChanges() {
-        var editedContent = document.getElementById('editInput1').value;
-        document.getElementById('Pname').innerText = editedContent;
-        var editedContent = document.getElementById('editInput2').value;
-        document.getElementById('Pemail').innerText = editedContent;
-        var editedContent = document.getElementById('editInput3').value;
-        document.getElementById('tel').innerText = editedContent;
-        var editedContent = document.getElementById('editInput4').value;
-        document.getElementById('loc').innerText = editedContent;
-        $('#edit_detail').modal('hide');
+
+      // Function to validate the form
+      function validateForm() {
+        let isValid = true;
+      
+        // Validate name
+        const editInput1 = document.getElementById("editInput1");
+        const usernameError = document.getElementById("usernameError");
+        if (editInput1.value.trim() === "") {
+          usernameError.textContent = "Name is required";
+          isValid = false;
+        } else {
+          usernameError.textContent = "";
+        }
+      
+        // Validate phone number
+        const editInput2 = document.getElementById("editInput2");
+        const phoneError = document.getElementById("phoneError");
+        const phoneRegex = /^\d{10}$/; // simple 10-digit phone number validation
+        if (!phoneRegex.test(phoneInput.value.trim())) {
+          phoneError.textContent = "Please enter a valid 10-digit phone number";
+          isValid = false;
+        } else {
+          phoneError.textContent = "";
+        }
+      
+        // Validate email
+        const editInput3 = document.getElementById("editInput3");
+        const emailError = document.getElementById("emailError");
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email format validation
+        if (!emailRegex.test(emailInput.value.trim())) {
+          emailError.textContent = "Please enter a valid email address";
+          isValid = false;
+        } else {
+          emailError.textContent = "";
+        }
+      
+        // Validate location
+        const editInput4 = document.getElementById("editInput4");
+        const locationError = document.getElementById("locationError");
+        if (locationInput.value.trim() === "") {
+          locationError.textContent = "Location is required";
+          isValid = false;
+        } else {
+          locationError.textContent = "";
+        }
+      
+        // If all fields are valid, submit the form
+        if (isValid) {
+          alert("Profile created successfully!");
+          $('#myModal').modal('hide'); // Hide modal on successful submission
+          document.getElementById("profileForm").reset(); // Reset the form
+        }
       }
+
+        // Function to save changes made in the modal
+        function saveChanges() {
+          var editedContent = document.getElementById('editInput1').value;
+          document.getElementById('Pname').innerText = editedContent;
+          var editedContent = document.getElementById('editInput2').value;
+          document.getElementById('tel').innerText = editedContent;
+          var editedContent = document.getElementById('editInput3').value;
+          document.getElementById('Pemail').innerText = editedContent;
+          var editedContent = document.getElementById('editInput4').value;
+          document.getElementById('loc').innerText = editedContent;
+          $('#edit_detail').modal('hide');
+        }
+
       </script>
+
 
       <script> //hehe ang galing
         function saveInput() {

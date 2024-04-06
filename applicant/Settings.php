@@ -94,13 +94,6 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                 </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
               </ul>
             </li>
-            <li>
-              <form class="d-flex">
-                <div>
-                  <a class="text-white nav-link" href="/recruiter/dashboard_recruiter.html">Recruiter Site</a>
-                </div>
-              </form>
-            </li>
           </ul>
         </div>
       </nav>
