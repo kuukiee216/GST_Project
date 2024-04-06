@@ -353,7 +353,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Listed Jobs</p>
-                                            <h4 id="lbltotaltotal" class="card-title">30</h4>
+											<h4 id="lbltotaltotallistedjobs" class="card-title">30</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -578,6 +578,70 @@
             }
             else{
                 $('#lbltotalregisteredemployers').text(decoderesponse);
+            }
+        },
+        error: function(){
+            $.notify({
+                // options
+                icon: 'flaticon-error',
+                title: 'Failed to Connect to Server!',
+                message: 'Something went wrong while connecting to server. Please try again later.'
+            },{
+                // settings
+                type: 'danger'
+            });
+        }
+    });
+		}
+	</script>
+
+<script>
+		$(document).ready(function(){
+			filltotallistedjobs();
+		});
+
+		function filltotallistedjobs(){
+			$.ajax({
+        type: 'GET',
+        url: '../PHPFiles/Admin/Dashboardtotallistedjobs.php',
+        datatype: 'html',
+        success: function(response){
+			var decoderesponse = json.parse(response);
+            if(decoderesponse == '1'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-error',
+                    title: 'Failed to Retrieve Total Jobs!',
+                    message: 'Something went wrong while retrieving Total Jobs. Data handling failed, please try again later.'
+                },{
+                    // settings
+                    type: 'danger'
+                });
+            }
+            else if(decoderesponse == '2'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-error',
+                    title: 'Failed to Retrieve Total Jobs!',
+                    message: 'Something went wrong while retrieving Total Jobs. Please try again later.'
+                },{
+                    // settings
+                    type: 'danger'
+                });
+            }
+            else if(decoderesponse == '3'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-exclamation',
+                    title: 'No Registered Total Jobs Found!',
+                    message: 'Currently, there is no registered jobs. Please try and check again later.'
+                },{
+                    // settings
+                    type: 'info'
+                });
+            }
+            else{
+                $('#lbltotallistedjobs').text(decoderesponse);
             }
         },
         error: function(){
