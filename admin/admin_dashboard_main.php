@@ -353,7 +353,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Listed Jobs</p>
-                                            <h4 class="card-title">30</h4>
+                                            <h4 id="lbltotaltotal" class="card-title">30</h4>
                                         </div>
                                     </div>
                                 </div>
