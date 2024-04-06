@@ -213,7 +213,9 @@
       <!--JOB POSTING DETAILS-->
       <div id="divPost" class=" container d-none d-sm-none">
         <div class="container-fluid d-flex justify-content-center row mt-3">
+
           <div class="card">
+
             <div class="card-header">
               <button class="btn btn-link text-dark ml--5" onclick="backToPostingList();"><i class="fas fa-chevron-left mr-2 fa-lg"></i> Back</button>
               <h1 class="font-weight-bold" id="lblJobTitle">-</h1>
@@ -229,7 +231,7 @@
 
               <div class="row mt-4">
                 <div class="col-md-12">
-                  <button class="btn btn-danger mr-3">Apply Now</button>
+                  <button class="btn btn-danger mr-3" id="btnFileApplication" onclick="fileApplication();">Apply Now</button>
                   <button class="btn btn-outline-danger mr-3" id="btnBookmarkJobPosting" onclick="BookmarkJobPosting();"><i class="fa fa-bookmark mr-2"></i> Save</button>
                   <button class="btn btn-outline-danger" onclick="ReportJobPosting();"><i class="fa fa-flag mr-2"></i> Report Job</button>
                 </div>
@@ -274,6 +276,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
 

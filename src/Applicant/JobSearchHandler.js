@@ -388,6 +388,78 @@ function searchJobPosting(){
     }
 }
 
+function fileApplication(){
+    $('#btnFileApplication').addClass('is-loading');
+    $('#btnFileApplication').prop('disabled', true);
+
+    var jpID = window.location.hash.replace('#','');
+
+    $.ajax({
+        type: 'POST',
+        url: '../PHPFiles/Applicant/Application/applicationfiling.php',
+        datatype: 'html',
+        data: {
+            JobPostingID: jpID
+        },
+        success: function(response){
+            if(response == '1'){
+                swal({
+                    title: 'Failed to File an Application!',
+                    text: "Something went wrong while filing an application. Data handling failed, please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnFileApplication').removeClass('is-loading');
+                    $('#btnFileApplication').prop('disabled', false);
+                });
+            }
+            else if(response == '2'){
+                swal({
+                    title: 'Failed to Retrieve Save Job Posting!',
+                    text: "Something went wrong while filing an application. Please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnFileApplication').removeClass('is-loading');
+                    $('#btnFileApplication').prop('disabled', false);
+                });
+            }
+            else{
+                var decodedResponse = JSON.parse(response);
+                
+                var AID = decodedResponse.ApplicationID;
+                location.href = "ApplicationForm.php#PostID="+jpID+"&ApplicationID="+AID+"&Form1";
+            }
+        },
+        error: function(){
+            swal({
+                title: 'Failed to Connect to Server!',
+                text: "Something went wrong while trying to connect to the server. Please try again later.",
+                icon: 'error',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#btnFileApplication').removeClass('is-loading');
+                $('#btnFileApplication').prop('disabled', false);
+            });
+        }
+    });
+}
+
 var txtSearchJobTitle = $('#txtSearchJobTitle');
 txtSearchJobTitle.on('keypress', function(event){
     if(event.key === "Enter"){

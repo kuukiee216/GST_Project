@@ -93,7 +93,7 @@
           <button class="btn btn-danger btn-link fw-bold" id="btnApplicationBack" onclick="revertApplication();">Cancel</button>
         </div>
         <div class="progress" style="height: 8px;">
-          <div class="progress-bar bg-primary" id="divApplicationProgress" role="progressbar" style="width: 20%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="33%"></div>
+          <div class="progress-bar bg-primary" id="divApplicationProgress" role="progressbar" style="width: 5%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="33%"></div>
         </div>
       </div>
     </div>
@@ -105,7 +105,55 @@
           <div class="col-md-6">
             <div class="tab-content mb-3" id="pills-tabContent">
 
-              <div class="tab-pane fade show active" id="Form1" role="tabpanel" aria-labelledby="btnForm1">
+              <div class="tab-pane fade show active" id="Form1" role="tabpanel" aria-labelledby="btnForm3">
+
+                <div class="card">
+
+                  <div class="card-header">
+
+                    <h2>Personal Information</h2>
+                    <h5><i>Please review and review all the information before continuing.</i></h5>
+
+                  </div>
+
+                  <div class="card-body">
+
+                    <div class="row px-3">
+                      <h3>Contact Information</h3>
+                    </div>
+
+                    <div class="row px-3">
+                      <table class="table">
+                        <tr>
+                          <td>Full Name</td>
+                          <td class="font-weight-bold" id="lblFullName">-</td>
+                        </tr>
+                        <tr>
+                          <td>Contact Number</td>
+                          <td class="font-weight-bold" id="lblContactNumber">-</td>
+                        </tr>
+                        <tr>
+                          <td>Email Address</td>
+                          <td class="font-weight-bold" id="lblEmailAddress">-</td>
+                        </tr>
+                        <tr>
+                          <td>Complete Address</td>
+                          <td class="font-weight-bold" id="lblCompleteAddress">-</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div class="row d-flex justify-content-end px-3">
+                      <button onclick="" type="button" class="btn btn-danger"><i class="fas fa-edit mr-2"></i> Edit</button>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            
+              <div class="tab-pane fade" id="Form2" role="tabpanel" aria-labelledby="btnForm1">
 
                 <div class="card">
 
@@ -117,25 +165,25 @@
 
                     <div class="form-group form-group-default py-3">
                       <label for="rbResumeOption1" class="py-1">
-                        <input type="radio" id="rbResumeOption1" name="rbResumeOption" class="mr-2">
+                        <input type="radio" id="rbResumeOption1" name="rbResumeOption" class="mr-2" onchange="onchangeResumeOption(this.id);">
                         <span class="d-inline-block vertical-align-middle"><h5>Select From My Existing Resume</h5></span>
                       </label>
-                      <select class="form-control" id="formGroupDefaultSelect">
+                      <select class="form-control" id="cbExistingResume" onchange="updateApplicationResume(this.value);" disabled>
                         <option value="0" selected disabled>Select Your Resume</option>
                       </select>
                     </div>
 
                     <div class="form-group form-group-default py-3">
                       <label for="rbResumeOption2" class="py-1">
-                        <input type="radio" id="rbResumeOption2" name="rbResumeOption" class="mr-2">
-                        <span class="d-inline-block vertical-align-middle"><h5>Upload a Resume</h5></span>
+                        <input type="radio" id="rbResumeOption2" name="rbResumeOption" class="mr-2" onchange="onchangeResumeOption(this.id);">
+                        <span class="d-inline-block vertical-align-middle"><h5>Upload a Resume <i class="fas fa-info-circle fa-lg text-primary ml-2" data-toggle="tooltip" data-placement="top" title="PDF document only."></i></h5></span>
                       </label>
-                      <input type="file" class="form-control">
+                      <input type="file" class="form-control" id="fdResume" accept=".pdf" onchange="updateApplicationResumeUpload();" disabled>
                     </div>
 
                     <div class="form-group form-group-default py-3">
                       <label for="rbResumeOption3" class="py-1">
-                        <input type="radio" id="rbResumeOption3" name="rbResumeOption" class="mr-2">
+                        <input type="radio" id="rbResumeOption3" name="rbResumeOption" class="mr-2" onchange="onchangeResumeOption(this.id);">
                         <span class="d-inline-block vertical-align-middle"><h5>Apply Without Resume</h5></span>
                       </label>
                     </div>
@@ -154,26 +202,26 @@
 
                     <div class="form-group form-group-default py-3">
                       <label for="rbCoverLetterOption1" class="py-1">
-                        <input type="radio" id="rbCoverLetterOption1" name="rbCoverLetterOption" class="mr-2">
-                        <span class="d-inline-block vertical-align-middle"><h5>Upload a Cover Letter</h5></span>
+                        <input type="radio" id="rbCoverLetterOption1" name="rbCoverLetterOption" class="mr-2" onchange="onchangeCoverLetterOption(this.id);">
+                        <span class="d-inline-block vertical-align-middle"><h5>Upload a Cover Letter <i class="fas fa-info-circle fa-lg text-primary ml-2" data-toggle="tooltip" data-placement="top" title="File Name: Lastname_Firstname_CoverLetter.pdf"></i></h5></span>
                       </label>
-                      <input type="file" class="form-control">
+                      <input type="file" class="form-control" id="fdCoverLetter" accept=".pdf" disabled>
                     </div>
 
                     <div class="form-group form-group-default py-3">
                       <label for="rbCoverLetterOption2" class="py-1">
-                        <input type="radio" id="rbCoverLetterOption2" name="rbCoverLetterOption" class="mr-2">
+                        <input type="radio" id="rbCoverLetterOption2" name="rbCoverLetterOption" class="mr-2" onchange="onchangeCoverLetterOption(this.id);">
                         <span class="d-inline-block vertical-align-middle"><h5>Write a Cover Letter</h5></span>
                       </label>
                       <h6 class="mb-3"><i>Introduce yourself briefly. 
                       Explain why you're a good fit for this role by highlighting your relevant skills, 
                       qualifications, and experience.</i></h6>
-                      <textarea class="form-control" row="4" placeholder="Write here..."></textarea>
+                      <textarea class="form-control" row="4" placeholder="Write a cover letter here (consisting of at least 200 words)..." id="txtCoverLetter" disabled></textarea>
                     </div>
 
                     <div class="form-group form-group-default py-3">
                       <label for="rbCoverLetterOption3" class="py-1">
-                        <input type="radio" id="rbCoverLetterOption3" name="rbCoverLetterOption" class="mr-2">
+                        <input type="radio" id="rbCoverLetterOption3" name="rbCoverLetterOption" class="mr-2" onchange="onchangeCoverLetterOption(this.id);">
                         <span class="d-inline-block vertical-align-middle"><h5>Apply Without Cover Letter</h5></span>
                       </label>
                     </div>
@@ -184,7 +232,7 @@
 
               </div>
 
-              <div class="tab-pane fade" id="Form2" role="tabpanel" aria-labelledby="btnForm2">
+              <div class="tab-pane fade" id="Form3" role="tabpanel" aria-labelledby="btnForm2">
 
                 <div class="card">
                   <div class="card-header">
@@ -212,15 +260,17 @@
 
               </div>
 
-              <div class="tab-pane fade" id="Form3" role="tabpanel" aria-labelledby="btnForm3">
+              <div class="tab-pane fade" id="Form4" role="tabpanel" aria-labelledby="btnForm3">
 
                 <div class="card">
+
                   <div class="card-header">
 
                     <h2>Application Form Review</h2>
                     <h5><i>Please review all the information before submitting.</i></h5>
 
                   </div>
+
                   <div class="card-body">
 
                     <div class="row px-3">
@@ -231,28 +281,25 @@
                       <table class="table">
                         <tr>
                           <td>Full Name</td>
-                          <td class="font-weight-bold">Parungao, Ron Henrick C.</td>
+                          <td class="font-weight-bold" id="lblConfirmFullName">-</td>
                         </tr>
                         <tr>
                           <td>Contact Number</td>
-                          <td class="font-weight-bold">+63915 231 6884</td>
+                          <td class="font-weight-bold" id="lblConfirmContactNumber">-</td>
                         </tr>
                         <tr>
                           <td>Email Address</td>
-                          <td class="font-weight-bold">ronhenrick.parungao@gmail.com</td>
+                          <td class="font-weight-bold" id="lblConfirmEmailAddress">-</td>
                         </tr>
                         <tr>
                           <td>Complete Address</td>
-                          <td class="font-weight-bold">Bay, Laguna, Philippines 4033</td>
+                          <td class="font-weight-bold" id="lblConfirmCompleteAddress">-</td>
                         </tr>
                       </table>
                     </div>
 
-                    <div class="row d-flex justify-content-end px-3">
-                      <button onclick="" type="button" class="btn btn-danger"><i class="fas fa-edit mr-2"></i> Edit</button>
-                    </div>
-
                   </div>
+
                 </div>
 
                 <div class="card">
@@ -264,11 +311,11 @@
                   <div class="card-body">
 
                     <div class="row px-3">
-                      <h4>Parungao_Ron Henrick_Resume.pdf</h4>
+                      <h4 id="lblResumeFileName">-</h4>
                     </div>
 
                     <div class="row d-flex justify-content-end px-3">
-                      <button onclick="" type="button" class="btn btn-danger"><i class="fas fa-edit mr-2"></i> Edit</button>
+                      <button type="button" class="btn btn-danger" onclick="editResumeCoverLetterForm();"><i class="fas fa-edit mr-2"></i> Edit</button>
                     </div>
 
                   </div>
@@ -282,22 +329,14 @@
                   </div>
 
                   <div class="card-body">
-                    
-                    <div class="row px-3">
-                      <h4>Parungao_Ron Henrick_Cover Letter.pdf</h4>
-                    </div>
 
                     <div class="row px-3">
-                      <h1>OR</h1>
-                    </div>
-
-                    <div class="row px-3">
-                      <h4>You wrote a cover letter for this application.</h4>
-                      <p class="text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam est doloribus quae, illo, non enim quas soluta, incidunt voluptates vitae fugiat laborum quidem esse consequatur voluptatem. At officia ab magnam.</p>
+                      <h4 id="lblCoverLetter">-</h4>
+                      <p class="text-justify" id="txtWrittenCoverLetter"></p>
                     </div>
 
                     <div class="row d-flex justify-content-end px-3">
-                      <button onclick="" type="button" class="btn btn-danger"><i class="fas fa-edit mr-2"></i> Edit</button>
+                      <button type="button" class="btn btn-danger" onclick="editResumeCoverLetterForm();"><i class="fas fa-edit mr-2"></i> Edit</button>
                     </div>
                   </div>
                 </div>
@@ -315,7 +354,7 @@
                     </div>
 
                     <div class="row d-flex justify-content-end px-3">
-                      <button onclick="" type="button" class="btn btn-danger"><i class="fas fa-edit mr-2"></i> Edit</button>
+                      <button type="button" class="btn btn-danger" onclick="editQuestionnaireInputForm();"><i class="fas fa-edit mr-2"></i> Edit</button>
                     </div>
 
                   </div>
@@ -332,14 +371,14 @@
               <div class="card-header">
                 <h2>You are applying for...</h2>
                 <hr>
-                <h2 class="font-weight-bold">Software Engineer</h2>
-                <h5 class="font-weight-bold" id="lblCompanyName">Global Solutions Technology INC.</h5>
+                <h2 class="font-weight-bold" id="lblJobTitle">N/A</h2>
+                <h5 class="font-weight-bold" id="lblCompanyName">N/A.</h5>
                 <div class="row mt-4">
                   <div class="col-md-12 pl-4">
-                    <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><span id="lblLocation">Bay, Laguna, Philippines 4033</span></h5>
-                    <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">Information and Communications Technology</span> <i><span id="lblSubClassification"></span></i></h5>
+                    <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><span id="lblLocation">N/A</span></h5>
+                    <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">N/A</span> <i><span id="lblSubClassification"></span></i></h5>
                     <h5 id="lblEmploymentType"><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full Time</h5>
-                    <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span><span id="lblJobSalary">P 16,000.00 - 20,000.00</span></h5>
+                    <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span><span id="lblJobSalary">N/A</span></h5>
                   </div>
                 </div>
               </div>
@@ -479,46 +518,11 @@
 
     <script>
       $(document).ready(function(){
-        var formType = window.location.hash.replace('#','');
+        refreshForm();
 
-        if (formType.indexOf('&') !== -1) {
-          var formPage = formType.split('&');
-
-          if(formPage[1] == 'Form1'){
-            $('#Form1').addClass('show active');
-            $('#Form2').removeClass('show active');
-            $('#Form3').removeClass('show active');
-
-            $('#divApplicationProgress').css('width', '20%');
-            $('#divApplicationProgress').removeClass('bg-success');
-            $('#divApplicationProgress').addClass('bg-primary');
-
-            $('#btnApplicationBack').text("Cancel");
-          }
-          else if(formPage[1]  == 'Form2'){
-            $('#Form1').removeClass('show active');
-            $('#Form2').addClass('show active');
-            $('#Form3').removeClass('show active');
-
-            $('#divApplicationProgress').css('width', '66%');
-
-            $('#btnApplicationBack').text("Back");
-          }
-          else{
-            $('#Form1').removeClass('show active');
-            $('#Form2').removeClass('show active');
-            $('#Form3').addClass('show active');
-
-            $('#divApplicationProgress').css('width', '100%');
-            $('#divApplicationProgress').removeClass('bg-primary');
-            $('#divApplicationProgress').addClass('bg-success');
-
-            $('#btnApplicationBack').text("Back");
-          }
-        }
-        else{
-          location.href = "JobSearch.php";
-        }
+        fillJobPostDetails();
+        fillResumeOption();
+        fillPersonalInformation();
       });
     </script>
 
