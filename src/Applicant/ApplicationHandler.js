@@ -184,16 +184,26 @@ function proceedApplication(){
             }
         }
         else if(formPage[2] == 'Form3'){
-            $('#Form3').removeClass('show active');
-            $('#Form4').addClass('show active');
 
-            $('#btnApplicationBack').text("Back");
-
-            $('#divApplicationProgress').css('width', '100%');
-            $('#divApplicationProgress').removeClass('bg-primary');
-            $('#divApplicationProgress').addClass('bg-success');
-
-            location.href = "#" + formType.replace('Form3', 'Form4');;
+            if(validateForm3()){
+                saveQuestionnaireAnswers();
+            }
+            else{
+                swal({
+                    title: 'Empty Answer Field Found!',
+                    text: "Please make sure that all question that has ' * ' on the end has an answer.",
+                    icon: 'info',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                });
+            }
+        }
+        else if(formPage[2] == 'Form4'){
+            saveApplicationData();
         }
     }
     else{
@@ -506,6 +516,224 @@ function fillPersonalInformation(){
             });
         }
     });
+}
+function fillQuestionnaires(){
+    var formType = window.location.hash.replace('#','');
+
+    if (formType.indexOf('&') !== -1) {
+
+        var formPage = formType.split('&');
+        var jpID = formPage[0].replace('PostID=','');
+
+        $.ajax({
+            type: 'POST',
+            url: '../PHPFiles/Applicant/Application/jobpostingquestionnaireget.php',
+            datatype: 'html',
+            data: {
+                JobPostingID: jpID
+            },
+            success: function(response){
+                if(response == '1'){
+                    swal({
+                        title: 'Failed to Retrieve Job Questionnaire!',
+                        text: "Something went wrong while retrieving job questionnaire. Data handling failed, please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = "JobSearch.php";
+                    });
+                }
+                else if(response == '2'){
+                    swal({
+                        title: 'Failed to Retrieve Job Questionnaire!',
+                        text: "Something went wrong while retrieving job questionnaire. Please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = "JobSearch.php";
+                    });
+                }
+                else{
+                    $('#listQuestionnaire').html(response);
+                }
+            },
+            error: function(){
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    location.href = "JobSearch.php";
+                });
+            }
+        });
+    }
+    else{
+        location.href = "JobSearch.php";
+    }
+}
+function fillInputData(){
+    var formType = window.location.hash.replace('#','');
+
+    if (formType.indexOf('&') !== -1) {
+
+        var formPage = formType.split('&');
+        var appID = formPage[1].replace('ApplicationID=','');
+
+        $.ajax({
+            type: 'POST',
+            url: '../PHPFiles/Applicant/Application/applicationdataget.php',
+            datatype: 'html',
+            data: {
+                ApplicationID: appID
+            },
+            success: function(response){
+                if(response == '1'){
+                    swal({
+                        title: 'Failed to Retrieve Application Data!',
+                        text: "Something went wrong while retrieving your application data. Data handling failed, please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = "JobSearch.php";
+                    });
+                }
+                else if(response == '2'){
+                    swal({
+                        title: 'Failed to Retrieve Application Data!',
+                        text: "Something went wrong while retrieving your application data. Please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = "JobSearch.php";
+                    });
+                }
+                else if(response == '3'){
+                    swal({
+                        title: 'No Application Data Found!',
+                        text: "Could not find your  application data. Please try again later.",
+                        icon: 'info',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = "JobSearch.php";
+                    });
+                }
+                else{
+                    var decodedResponse = JSON.parse(response);
+
+                    var Form2Status = false;
+
+                    if(decodedResponse.ApplicantDocumentID > 0){
+                        $('#rbResumeOption1').click();
+                        $('#cbExistingResume').prop('selectedIndex', decodedResponse.ApplicantDocumentID);
+
+                        var CBResumeOptions = $('#cbExistingResume');
+                        var selectedResumeOption = CBResumeOptions.find(':selected');
+
+                        $('#lblResumeFileName').text(selectedResumeOption.text());
+
+                        Form2Status = true;
+                    }
+                    else{
+                        $('#rbResumeOption3').click();
+                    }
+
+                    if(decodedResponse.CoverLetterFileName.length > 0){
+                        $('#rbCoverLetterOption1').click();
+                        $('#fdCoverLetter').val(decodedResponse.CoverLetterFileName);
+
+                        $('#lblCoverLetter').text($('#fdCoverLetter')[0].files[0].name);
+
+                        Form2Status = true;
+                    }
+                    else if(decodedResponse.CoverLetter.length > 0){
+                        $('#rbCoverLetterOption2').click();
+                        $('#txtCoverLetter').val(decodedResponse.CoverLetter);
+
+                        $('#lblCoverLetter').text("You wrote a cover letter for this application.");
+                        $('#txtWrittenCoverLetter').text($('#txtCoverLetter').val());
+
+                        Form2Status = true;
+                    }
+                    else{
+                        $('#rbCoverLetterOption3').click();
+                        $('#lblCoverLetter').text("You chose to apply without a cover letter.");
+                    }
+
+                    if(decodedResponse.QuestionnaireIDs.indexOf('|') !== -1 && decodedResponse.Answers.indexOf('|') !== -1){
+                        var QuestionID = decodedResponse.QuestionnaireIDs.split('|');
+                        var Answer = decodedResponse.Answers.split('|');
+                        
+                        for(var counter = 0; counter < QuestionID.length; counter++){
+                            $('#txtAnswer'+QuestionID[counter]).val(Answer[counter]);
+                        }
+                    }
+                    else if(decodedResponse.QuestionnaireIDs.length > 0 && decodedResponse.Answers.length > 0){
+                        
+                        $('#txtAnswer'+decodedResponse.QuestionnaireIDs).val(decodedResponse.Answers);
+                    }
+
+                    if(validateForm3()){
+                        location.href = "#"+formPage[0]+"&"+formPage[1]+"&Form4";
+                        refreshForm();
+                    }
+                    else if(Form2Status){
+                        location.href = "#"+formPage[0]+"&"+formPage[1]+"&Form3";
+                        refreshForm();
+                    }
+                }
+            },
+            error: function(){
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    location.href = "JobSearch.php";
+                });
+            }
+        });
+    }
+    else{
+        location.href = "JobSearch.php";
+    }
 }
 
 function updateApplicationResume(ID){
@@ -921,6 +1149,250 @@ function editQuestionnaireInputForm(){
     var locationURL = window.location.hash.replace('Form4','Form3');
     location.href = locationURL;
     refreshForm();
+}
+
+function validateForm3(){
+    var Questions = document.getElementsByClassName('lblQuestionnaire');
+    var Answers = document.getElementsByName('txtAnswer');
+    
+    if(Questions.length > 0){
+
+        var form3Flag = true;
+
+        var totalAnswered = 0;
+
+        for(var elementCounter = 0; elementCounter < Questions.length; elementCounter++){
+            if(Questions[elementCounter].textContent.indexOf('*') !== -1){
+                if(Answers[elementCounter].value.length < 5){
+                    form3Flag = false;
+                }
+            }
+
+            if(Answers[elementCounter].value.length > 5){
+                totalAnswered += 1;
+            }
+        }
+
+        $('#lblQuestionnaireResult').text('You have answered ' + totalAnswered + ' out of ' + Questions.length + ' Questions.');
+
+        if(form3Flag){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return true;
+    }
+}
+
+function saveQuestionnaireAnswers(){
+
+    var formType = window.location.hash.replace('#','');
+
+    if (formType.indexOf('&') !== -1) {
+        var IDs = formType.split('&');
+
+        $('#btnContinueApplication').addClass('is-loading');
+        $('#btnContinueApplication').prop('disabled', true);
+
+        var Answers = document.getElementsByName('txtAnswer');
+
+        var theQuestionID = "";
+        var theAnswers = "";
+    
+        if(Answers.length > 0){
+            for(var elementCounter = 0; elementCounter < Answers.length; elementCounter++){
+                if(Answers[elementCounter].value.length > 5){
+                    theQuestionID += Answers[elementCounter].id.replace('txtAnswer','') + "|";
+                    theAnswers += Answers[elementCounter].value + "|";
+                }
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: '../PHPFiles/Applicant/Application/applicationquestionnaireanswersave.php',
+                datatype: 'html',
+                data: {
+                    QuestionIDs: theQuestionID,
+                    Answers: theAnswers,
+                    ApplicationID: IDs[1].replace('ApplicationID=','')
+                },
+                success: function(response){
+                    if(response == '0'){
+                        $('#Form3').removeClass('show active');
+                        $('#Form4').addClass('show active');
+    
+                        $('#btnApplicationBack').text("Back");
+    
+                        $('#divApplicationProgress').css('width', '100%');
+                        $('#divApplicationProgress').removeClass('bg-primary');
+                        $('#divApplicationProgress').addClass('bg-success');
+    
+                        location.href = "#" + formType.replace('Form3', 'Form4');
+    
+                        $('#btnContinueApplication').removeClass('is-loading');
+                        $('#btnContinueApplication').prop('disabled', false);
+                    }
+                    else if(response = '1'){
+                        swal({
+                            title: 'Failed to Save Answer!',
+                            text: "Something went wrong while trying to save your answers to questionnaires. Data handling failed, please try again later.",
+                            icon: 'error',
+                            buttons : {
+                                confirm: {
+                                    text : 'Okay',
+                                    className : 'btn btn-success'
+                                }
+                            }
+                        }).then(function(){
+                            $('#btnContinueApplication').removeClass('is-loading');
+                            $('#btnContinueApplication').prop('disabled', false);
+                        });
+                    }
+                    else{
+                        swal({
+                            title: 'Failed to Save Answer!',
+                            text: "Something went wrong while trying to save your answers to questionnaires. Please try again later.",
+                            icon: 'error',
+                            buttons : {
+                                confirm: {
+                                    text : 'Okay',
+                                    className : 'btn btn-success'
+                                }
+                            }
+                        }).then(function(){
+                            $('#btnContinueApplication').removeClass('is-loading');
+                            $('#btnContinueApplication').prop('disabled', false);
+                        });
+                    }
+                },
+                error: function(){
+                    swal({
+                        title: 'Failed to Connect to Server!',
+                        text: "Something went wrong while trying to connect to the server. Please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnContinueApplication').removeClass('is-loading');
+                        $('#btnContinueApplication').prop('disabled', false);
+                    });
+                }
+            });
+        }
+        else{
+            $('#Form3').removeClass('show active');
+            $('#Form4').addClass('show active');
+
+            $('#btnApplicationBack').text("Back");
+
+            $('#divApplicationProgress').css('width', '100%');
+            $('#divApplicationProgress').removeClass('bg-primary');
+            $('#divApplicationProgress').addClass('bg-success');
+
+            location.href = "#" + formType.replace('Form3', 'Form4');
+
+            $('#btnContinueApplication').removeClass('is-loading');
+            $('#btnContinueApplication').prop('disabled', false);
+        }
+    }
+    else{
+        location.href = "JobSearch.php";
+    }
+}
+
+function saveApplicationData(){
+    var formType = window.location.hash.replace('#','');
+
+    if (formType.indexOf('&') !== -1) {
+        var IDs = formType.split('&');
+
+        $('#btnContinueApplication').addClass('is-loading');
+        $('#btnContinueApplication').prop('disabled', true);
+
+        $.ajax({
+            type: 'POST',
+            url: '../PHPFiles/Applicant/Application/applicationsubmit.php',
+            datatype: 'html',
+            data: {
+                ApplicationID: IDs[1].replace('ApplicationID=','')
+            },
+            success: function(response){
+                if(response == '0'){
+                    swal({
+                        title: 'Application Submitted Successfully!',
+                        text: "Your application has been submitted successfully. It will be validated by the administrator and will be sent to the employer once validated.",
+                        icon: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = "MyJobs.php";
+                    });
+                }
+                else if(response = '1'){
+                    swal({
+                        title: 'Failed to Submit Application!',
+                        text: "Something went wrong while trying to submit your application. Data handling failed, please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnContinueApplication').removeClass('is-loading');
+                        $('#btnContinueApplication').prop('disabled', false);
+                    });
+                }
+                else{
+                    swal({
+                        title: 'Failed to Submit Application!',
+                        text: "Something went wrong while trying to submit your application. Please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnContinueApplication').removeClass('is-loading');
+                        $('#btnContinueApplication').prop('disabled', false);
+                    });
+                }
+            },
+            error: function(){
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnContinueApplication').removeClass('is-loading');
+                    $('#btnContinueApplication').prop('disabled', false);
+                });
+            }
+        });
+    }
+    else{
+        location.href = "JobSearch.php";
+    }
 }
 
 function refreshForm(){
