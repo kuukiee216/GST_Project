@@ -315,7 +315,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Job Category</p>
-                                            <h4 class="card-title">30</h4>
+                                            <h4 class="card-title" id="">0</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -334,7 +334,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Candidates</p>
-                                            <h4 class="card-title">30</h4>
+                                            <h4 class="card-title" id="lblTotalCandidates">0</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -353,7 +353,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Listed Jobs</p>
-                                            <h4 class="card-title">30</h4>
+                                            <h4 id="lblTotalListedJobs" class="card-title">0</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -372,7 +372,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Employers</p>
-                                            <h4 class="card-title">30</h4>
+                                            <h4 id="lblTotalEmployers" class="card-title">0</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -530,5 +530,13 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
+
+	<script src="../src/Admin/AdminHandler.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			fillDashboardTotals();
+		});
+	</script>
 </body>
 </html>
