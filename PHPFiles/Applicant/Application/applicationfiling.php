@@ -41,13 +41,14 @@
 
                 $connection->beginTransaction();
 
-                $sQryFileApplication = "INSERT INTO tbl_application(ApplicantID,JobPostingID,ApplicantDocumentID,DateTimeStamp,Status) VALUES(?,?,?,?,?);";
+                $sQryFileApplication = "INSERT INTO tbl_application(ApplicantID,JobPostingID,ApplicantDocumentID,CoverLetterID,DateTimeStamp,Status) VALUES(?,?,?,?,?,?);";
                 $stmtFileApplication = $connection->prepare($sQryFileApplication);
                 $stmtFileApplication->bindValue(1, $CredentialID, PDO::PARAM_INT);
                 $stmtFileApplication->bindValue(2, $JobPostingID, PDO::PARAM_INT);
-                $stmtFileApplication->bindValue(3, 0, PDO::PARAM_STR);
-                $stmtFileApplication->bindValue(4, $currentDateTime, PDO::PARAM_STR);
-                $stmtFileApplication->bindValue(5, 2, PDO::PARAM_INT);
+                $stmtFileApplication->bindValue(3, 0, PDO::PARAM_INT);
+                $stmtFileApplication->bindValue(4, 0, PDO::PARAM_INT);
+                $stmtFileApplication->bindValue(5, $currentDateTime, PDO::PARAM_STR);
+                $stmtFileApplication->bindValue(6, 2, PDO::PARAM_INT);
                 $stmtFileApplication->execute();
 
                 $createdApplicationID = $connection->lastInsertId();

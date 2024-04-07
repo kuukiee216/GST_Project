@@ -740,6 +740,135 @@ function updateApplicationResumeUpload(){
     }
 }
 
+function updateApplicationCoverLetterUpload(){
+    $('#rbCoverLetterOption2').addClass('is-loading');
+    $('#rbCoverLetterOption1').prop('disabled', true);
+    $('#rbCoverLetterOption2').prop('disabled', true);
+    $('#rbCoverLetterOption3').prop('disabled', true);
+
+    $('#btnContinueApplication').prop('disabled', true);
+
+    var formType = window.location.hash.replace('#','');
+
+    if (formType.indexOf('&') !== -1) {
+        var IDs = formType.split('&');
+
+        var fileCoverLetter = $('#fdCoverLetter')[0].files[0];
+
+        var formDataQA = new FormData();
+        formDataQA.append("ApplicationID", IDs[1].replace('ApplicationID=',''));
+        formDataQA.append("CoverLetterDocument", fileCoverLetter);
+
+        $.ajax({
+            type: 'POST',
+            url: '../PHPFiles/Applicant/Application/applicationcoverletterupload.php',
+            datatype: 'html',
+            data: formDataQA,
+            contentType: false,
+            processData: false,
+            success: function(response){
+                if(response == '0'){
+                    $('#rbCoverLetterOption2').removeClass('is-loading');
+                    $('#rbCoverLetterOption1').prop('disabled', false);
+                    $('#rbCoverLetterOption2').prop('disabled', false);
+                    $('#rbCoverLetterOption3').prop('disabled', false);
+
+                    $('#btnContinueApplication').prop('disabled', false);
+                }
+                else if(response == '1'){
+                    swal({
+                        title: 'Failed to Upload Application Cover Letter!',
+                        text: "Something went wrong while trying to upload your application's cover letter. Data handling failed, please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#fdCoverLetter').val('');
+
+                        $('#rbCoverLetterOption2').removeClass('is-loading');
+                        $('#rbCoverLetterOption1').prop('disabled', false);
+                        $('#rbCoverLetterOption2').prop('disabled', false);
+                        $('#rbCoverLetterOption3').prop('disabled', false);
+    
+                        $('#btnContinueApplication').prop('disabled', false);
+                    });
+                }
+                else if(response == '3'){
+                    swal({
+                        title: 'Invalid Document File Type!',
+                        text: "Please make sure that the document you will upload is a PDF file.",
+                        icon: 'warning',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#fdCoverLetter').val('');
+
+                        $('#rbCoverLetterOption2').removeClass('is-loading');
+                        $('#rbCoverLetterOption1').prop('disabled', false);
+                        $('#rbCoverLetterOption2').prop('disabled', false);
+                        $('#rbCoverLetterOption3').prop('disabled', false);
+    
+                        $('#btnContinueApplication').prop('disabled', false);
+                    });
+                }
+                else{
+                    swal({
+                        title: 'Failed to Upload Application Cover Letter!',
+                        text: "Something went wrong while trying to upload your application's cover letter. Please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#fdCoverLetter').val('');
+
+                        $('#rbCoverLetterOption2').removeClass('is-loading');
+                        $('#rbCoverLetterOption1').prop('disabled', false);
+                        $('#rbCoverLetterOption2').prop('disabled', false);
+                        $('#rbCoverLetterOption3').prop('disabled', false);
+    
+                        $('#btnContinueApplication').prop('disabled', false);
+                    });
+                }
+            },
+            error: function(){
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#rbCoverLetterOption2').removeClass('is-loading');
+                    $('#rbCoverLetterOption1').prop('disabled', false);
+                    $('#rbCoverLetterOption2').prop('disabled', false);
+                    $('#rbCoverLetterOption3').prop('disabled', false);
+
+                    $('#btnContinueApplication').prop('disabled', false);
+                });
+            }
+        });
+    }
+    else{
+        location.href = "JobSearch.php";
+    }
+}   
+
 function onchangeResumeOption(ID) {
     if(ID == "rbResumeOption1"){
         $('#cbExistingResume').prop('disabled', false);

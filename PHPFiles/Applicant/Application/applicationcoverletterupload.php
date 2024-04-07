@@ -11,12 +11,12 @@
     ERROR_REPORTING(0);
 
     // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) && 
-    // isset($_POST['ApplicationID'])  && isset($_FILES['ResumeDocument'])){
+    // isset($_POST['ApplicationID'])  && isset($_FILES['CoverLetterDocument'])){
 
         $AccountID = 1; //$_SESSION['AccountID'];
         $CredentialID = 1; //$_SESSION['CredentialID'];
         $ApplicationID = $_POST['ApplicationID'];
-        $ResumeDocument = $_FILES['ResumeDocument'];
+        $CoverLetterDocument = $_FILES['CoverLettereDocument'];
 
         try{
             date_default_timezone_set('Asia/Manila');
@@ -42,7 +42,7 @@
                 $targetDirectory = "C:/xampp/htdocs/GST_PROJECT/Documents/";
                 //$targetDirectory = "../../Documents/"; // Directory where files will be uploaded
                 //$targetDirectory = "/home/bscs4b-prs/htdocs/bscs4b-prs.online/GradeFiles/";
-                $fileName = $rowApplicantName['LastName'].'_'.$rowApplicantName['FirstName'].'_'.$rowApplicantName['MiddleName'].'_Resume';
+                $fileName = $rowApplicantName['LastName'].'_'.$rowApplicantName['FirstName'].'_'.$rowApplicantName['MiddleName'].'_CoverLetter';
                 
                 if($rowApplicantName['DocumentCount'] == 0){
                     $fileName .= '.pdf';
@@ -51,7 +51,7 @@
                     $fileName .= '('.(intval($rowApplicantName['DocumentCount'])+1).').pdf';
                 }
 
-                $targetFile = $targetDirectory.basename($ResumeDocument["name"]);
+                $targetFile = $targetDirectory.basename($CoverLetterDocument["name"]);
 
                 $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
                 $uploadStatus = 0;
@@ -72,8 +72,8 @@
                 }
 
                 if($uploadStatus == 0){
-                    if(move_uploaded_file($ResumeDocument["tmp_name"], $targetDirectory.$fileName)){
-                        $fileLocation = $targetDirectory.$rowApplicantName['LastName'].'_'.$rowApplicantName['FirstName'].'_'.$rowApplicantName['MiddleName'].'_Resume';
+                    if(move_uploaded_file($CoverLetterDocument["tmp_name"], $targetDirectory.$fileName)){
+                        $fileLocation = $targetDirectory.$rowApplicantName['LastName'].'_'.$rowApplicantName['FirstName'].'_'.$rowApplicantName['MiddleName'].'_CoverLetter';
 
                         if($rowApplicantName['DocumentCount'] == 0){
                             $fileLocation .= '.pdf';
@@ -84,25 +84,25 @@
 
                         $connection->beginTransaction();
 
-                        $sQryUploadDocument = "INSERT INTO tbl_applicantdocuments(ApplicantID,Location,DateTimeStamp) VALUES(?,?,?);";
-                        $stmtUploadDocument = $connection->prepare($sQryUploadDocument);
-                        $stmtUploadDocument->bindValue(1, $CredentialID, PDO::PARAM_INT);
-                        $stmtUploadDocument->bindValue(2, $fileLocation, PDO::PARAM_STR);
-                        $stmtUploadDocument->bindValue(3, $currentDateTime, PDO::PARAM_STR);
-                        $stmtUploadDocument->execute();
+                        $sQryAddCoverLetterDocument = "INSERT INTO tbl_applicantdocuments(ApplicantID,Location,CoverLetter) VALUES(?,?,?);";
+                        $stmtAddCoverLetterDocument = $connection->prepare($sQryAddCoverLetterDocument);
+                        $stmtAddCoverLetterDocument->bindValue(1, $CredentialID, PDO::PARAM_INT);
+                        $stmtAddCoverLetterDocument->bindValue(2, $fileLocation, PDO::PARAM_STR);
+                        $stmtAddCoverLetterDocument->bindValue(3, $currentDateTime, PDO::PARAM_STR);
+                        $stmtAddCoverLetterDocument->execute();
 
-                        $createdDocumentID = $connection->lastInsertId();
+                        $createdCoverLetterID = $connection->lastInsertId();
 
-                        $sQryUpdateApplicationResume = "UPDATE tbl_application SET ApplicantDocumentID = ? WHERE ApplicationID = ?";
-                        $stmtUpdateApplicationResume = $connection->prepare($sQryUpdateApplicationResume);
-                        $stmtUpdateApplicationResume->bindValue(1, $createdDocumentID, PDO::PARAM_INT);
-                        $stmtUpdateApplicationResume->bindValue(2, $ApplicationID, PDO::PARAM_INT);
-                        $stmtUpdateApplicationResume->execute();
+                        $sQryUpdateApplicationCoverLetter = "UPDATE tbl_application SET CoverLetterID = ? WHERE ApplicationID = ?";
+                        $stmtUpdateApplicationCoverLetter = $connection->prepare($sQryUpdateApplicationCoverLetter);
+                        $stmtUpdateApplicationCoverLetter->bindValue(1, $createdCoverLetterID, PDO::PARAM_INT);
+                        $stmtUpdateApplicationCoverLetter->bindValue(2, $ApplicationID, PDO::PARAM_INT);
+                        $stmtUpdateApplicationCoverLetter->execute();
 
                         $sQryInsertLog = "INSERT INTO tbl_systemlog(DateTimeStamp,Action,Target,AccountID) VALUES(?,?,?,?);";
                         $stmtInsertLog = $connection->prepare($sQryInsertLog);
                         $stmtInsertLog->bindValue(1, $currentDateTime, PDO::PARAM_STR);
-                        $stmtInsertLog->bindValue(2, 'Update Resume', PDO::PARAM_STR);
+                        $stmtInsertLog->bindValue(2, 'Update Cover Letter', PDO::PARAM_STR);
                         $stmtInsertLog->bindValue(3, 'Application (Application ID: '.$ApplicationID.')', PDO::PARAM_STR);
                         $stmtInsertLog->bindValue(4, $AccountID, PDO::PARAM_INT);
                         $stmtInsertLog->execute();

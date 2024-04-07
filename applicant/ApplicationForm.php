@@ -203,9 +203,9 @@
                     <div class="form-group form-group-default py-3">
                       <label for="rbCoverLetterOption1" class="py-1">
                         <input type="radio" id="rbCoverLetterOption1" name="rbCoverLetterOption" class="mr-2" onchange="onchangeCoverLetterOption(this.id);">
-                        <span class="d-inline-block vertical-align-middle"><h5>Upload a Cover Letter <i class="fas fa-info-circle fa-lg text-primary ml-2" data-toggle="tooltip" data-placement="top" title="File Name: Lastname_Firstname_CoverLetter.pdf"></i></h5></span>
+                        <span class="d-inline-block vertical-align-middle"><h5>Upload a Cover Letter <i class="fas fa-info-circle fa-lg text-primary ml-2" data-toggle="tooltip" data-placement="top" title="PDF document only."></i></h5></span>
                       </label>
-                      <input type="file" class="form-control" id="fdCoverLetter" accept=".pdf" disabled>
+                      <input type="file" class="form-control" id="fdCoverLetter" accept=".pdf" onchange="updateApplicationCoverLetterUpload();" disabled>
                     </div>
 
                     <div class="form-group form-group-default py-3">
