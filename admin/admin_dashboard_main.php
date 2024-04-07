@@ -1,3 +1,14 @@
+<?php
+  SESSION_START();
+
+  date_default_timezone_set('Asia/Manila');
+  $currentDateTime = time();
+
+  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
+      header ("Location: ../PHPFiles/Applicant/logout.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -229,7 +240,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="applicant_list.html">	
+							<a href="applicant_list.php">	
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>

@@ -1,4 +1,4 @@
-function fillApplicantList(activeTable){
+function fillJobPostList(activeTable){
     var current_Table = "#tblActiveJobPosting";
 
     switch(activeTable){
@@ -57,7 +57,7 @@ function fillApplicantList(activeTable){
 
         }
 
-    })
+    });
 
     
 }
@@ -136,7 +136,7 @@ function archiveJobPost(JobPostID){
                             }
                         }
                     }).then(function(){
-                        fillApplicantList(1);
+                        fillJobPostList(1);
                     });
                          
                 }
@@ -195,7 +195,7 @@ function deleteJobPost(JobPostID){
                             }
                         }
                     }).then(function(){
-                        fillApplicantList(1);
+                        fillJobPostList(1);
                     });
                          
                 }
@@ -253,7 +253,7 @@ function acceptJobPost(JobPostID){
                             }
                         }
                     }).then(function(){
-                        fillApplicantList(3);
+                        fillJobPostList(3);
                     });
                          
                 }
@@ -314,7 +314,7 @@ function rejectJobPost(JobPostID){
                             }
                         }
                     }).then(function(){
-                        fillApplicantList(3);
+                        fillJobPostList(3);
                     });
                          
                 }
@@ -374,7 +374,7 @@ function repostJobPost(JobPostID){
                             }
                         }
                     }).then(function(){
-                        fillApplicantList(2);
+                        fillJobPostList(2);
                     });
                          
                 }

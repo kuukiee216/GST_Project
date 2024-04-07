@@ -59,6 +59,10 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
                     echo "6";
                 }
 
+                date_default_timezone_set('Asia/Manila');
+                $_SESSION['start'] = time();
+                $_SESSION['expire'] = $_SESSION['start'] + (60*360);
+
                 $_SESSION['AccountID'] = $rowAccount['AccountID'];
                 $_SESSION['Role'] = $rowAccount['Role'];
                 $_SESSION['UserID'] = $rowAccount['UserID'];

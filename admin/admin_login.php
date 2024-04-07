@@ -1,3 +1,14 @@
+<?php
+  SESSION_START();
+
+  date_default_timezone_set('Asia/Manila');
+  $currentDateTime = time();
+
+  if(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire']){
+      header ("Location: ../admin/admin_dashboard_main.php");
+  }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,13 +45,13 @@
                 <h1 class="text-center">Sign In</h1>
         
                 <div class="container flex mb-3 mt-5">  
-                        <label name="txtUserID" for="InputEmail" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="InputEmail" aria-describedby="emailhelp">
+                        <label for="InputEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" name="txtUserID" id="txtUserID" aria-describedby="emailhelp">
                 </div>
 
                 <div class="container flex mb-3">
-                    <label name="txtPassword" for="InputPassword" class="form-label">Password</label>
-                    <input type="password" class="form-control mb-3" id="InputPassword">
+                    <label for="InputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control mb-3" name="txtPassword" id="txtPassword">
                     <a href="#" class="text-end">Forgot Password?</a>
                     <button type="button" class="btn btn-danger mt-4" onclick="Login('formLogin');">LOGIN</button> 
                 </div>
@@ -110,184 +121,211 @@
     <script src="../assets/js/atlantis.min.js"></script>
 
     <!-- Sweet Alert -->
-	  <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+	<script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
 
     <script>
-    function Login(formID){
+	function Login(formID){
 
-      $('#btnLogin').addClass('is-loading');
-      $('#btnLogin').prop('disabled', true);
-      disableForm(formID);
+		alert('worked');
 
-      var UserID = $("input[name=txtUserID]").val();
-      var Password = $("input[name=txtPassword]").val();
+		// $('#btnLogin').addClass('is-loading');
+		// $('#btnLogin').prop('disabled', true);
+		// disableForm(formID);
 
-      console.log(UserID, Password);
+		var UserID = $("input[name=txtUserID]").val();
+		var Password = $("input[name=txtPassword]").val();
 
-      $.ajax({
+		console.log(UserID, Password);
 
-        type: "POST",
-				dataType: "html",
-				data: {
-					UserID: UserID,
-					Password: Password
-				},
-				url: "../PHPFiles/loginvalidation.php",
-				success: function(data){
-          if(data == "0"){
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
+		$.ajax({
+			type: "POST",
+			dataType: "html",
+			data: {
+				UserID: UserID,
+				Password: Password
+			},
+			url: "../PHPFiles/loginvalidation.php",
+			success: function(data){
+				if(data == "0"){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
 
-                        location.href = "applicant_profile.php";
+						location.href = "applicant_profile.php";
 					}
-					else if(data == "1"){
-						swal({
-							title: 'An Error Occurred!',
-							text: "Something went wrong while trying to login. Please try again.",
-							icon: 'error',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+				else if(data == "1"){
+					swal({
+						title: 'An Error Occurred!',
+						text: "Something went wrong while trying to login. Please try again.",
+						icon: 'error',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-					else if(data == "2"){
-						swal({
-							title: 'Empty Username!',
-							text: "Please enter your username and try again.",
-							icon: 'warning',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+				else if(data == "2"){
+					swal({
+						title: 'Empty Username!',
+						text: "Please enter your username and try again.",
+						icon: 'warning',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-					else if(data == "3"){
-						swal({
-							title: 'Empty Password!',
-							text: "Please enter your password and try again.",
-							icon: 'warning',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+				else if(data == "3"){
+					swal({
+						title: 'Empty Password!',
+						text: "Please enter your password and try again.",
+						icon: 'warning',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-					else if(data == "4"){
-						location.href = 'applicant_profile.php';
-					}
-					else if(data == "5"){
-						location.href = '../admin/admin_dashboard_main.php';
-					}
-					else if(data == "6"){
-						swal({
-							title: 'Invalid Roles!',
-							text: "No role Existing",
-							icon: 'error',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+				else if(data == "4"){
+					location.href = 'applicant_profile.php';
+				}
+				else if(data == "5"){
+					location.href = '../admin/admin_dashboard_main.php';
+				}
+				else if(data == "6"){
+					swal({
+						title: 'Invalid Roles!',
+						text: "No role Existing",
+						icon: 'error',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-					else if(data == "7"){
-						swal({
-							title: 'Email not found!',
-							text: "Incorrect Email.",
-							icon: 'error',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+				else if(data == "7"){
+					swal({
+						title: 'Email not found!',
+						text: "Incorrect Email.",
+						icon: 'error',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-					else if(data == "8"){
-						swal({
-							title: 'Cannot Process the login request!',
-							text: "Please check your credentials",
-							icon: 'error',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+				else if(data == "8"){
+					swal({
+						title: 'Cannot Process the login request!',
+						text: "Please check your credentials",
+						icon: 'error',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-					else if(data == "9"){
-						swal({
-							title: 'Incorrect Credentiials!',
-							text: "Password didn`t match",
-							icon: 'error',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+				else if(data == "9"){
+					swal({
+						title: 'Incorrect Credentiials!',
+						text: "Password didn`t match",
+						icon: 'error',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-					else{
-						swal({
-							title: 'An Error Occurred!',
-							text: "Something went wrong while trying to login.",
-							icon: 'error',
-							buttons : {
-								confirm: {
-									text : 'Okay',
-									className : 'btn btn-success'
-								}
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+				else{
+					swal({
+						title: 'An Error Occurred!',
+						text: "Something went wrong while trying to login.",
+						icon: 'error',
+						buttons : {
+							confirm: {
+								text : 'Okay',
+								className : 'btn btn-success'
 							}
-						}).then(function(){
-							$('#btnLogin').removeClass('is-loading');
-							$('#btnLogin').prop('disabled', false);
-							enableForm(formID);
-						});
-					}
-        }
+						}
+					}).then(function(){
+						$('#btnLogin').removeClass('is-loading');
+						$('#btnLogin').prop('disabled', false);
+						enableForm(formID);
+					});
+				}
+			}
 
-      })
-    }
+		});
+	}
+
+	function disableForm(formID){
+			var form = document.getElementById(formID);
+			var elements = form.elements;
+			for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+				if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+					elements[elementCounter].disabled = true;
+				}
+				else{
+					continue;
+				}
+			}
+		}
+		function enableForm(formID){
+			var form = document.getElementById(formID);
+			var elements = form.elements;
+			for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
+
+				if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+					elements[elementCounter].disabled = false;
+				}
+				else{
+					continue;
+				}
+			}
+		}
 
 
     </script>
