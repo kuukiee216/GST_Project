@@ -216,7 +216,7 @@
                       <h6 class="mb-3"><i>Introduce yourself briefly. 
                       Explain why you're a good fit for this role by highlighting your relevant skills, 
                       qualifications, and experience.</i></h6>
-                      <textarea class="form-control" row="4" placeholder="Write a cover letter here (consisting of at least 200 words)..." id="txtCoverLetter" disabled></textarea>
+                      <textarea class="form-control" row="4" placeholder="Write a cover letter here (consisting of at least 200 words)..." id="txtCoverLetter" maxlength="2000" disabled></textarea>
                     </div>
 
                     <div class="form-group form-group-default py-3">
@@ -235,26 +235,19 @@
               <div class="tab-pane fade" id="Form3" role="tabpanel" aria-labelledby="btnForm2">
 
                 <div class="card">
+
                   <div class="card-header">
                     <h2>Recruiter's Question</h2>
                   </div>
-                  <div class="card-body">
-                    <div class="form-check row">
-                      <label class="form-radio-label col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-                        <span class="form-radio-sign">Questions(Optional)</span>
-                      </label>
-                    </div>
-                    <div class="dropdown">
-                      <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown button
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">test</a>
-                          <a class="dropdown-item" href="#">test</a>
-                          <a class="dropdown-item" href="#">test</a>
+                  
+                  <div class="card-body" id="listQuestionnaire">
+                    
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h4><i>The Employer did not put any questionnaire for this job posting. <br><br>You may proceed to the next page by clicking 'continue'.</i></h4>
                       </div>
                     </div>
+
                   </div>
                 </div>
 
@@ -350,7 +343,7 @@
                   <div class="card-body">
 
                     <div class="row px-3">
-                      <h4>You have answered 5 out of 5 questions.</h4>
+                      <h4 id="lblQuestionnaireResult">You have answered 0 out of 0 questions.</h4>
                     </div>
 
                     <div class="row d-flex justify-content-end px-3">
@@ -518,11 +511,21 @@
 
     <script>
       $(document).ready(function(){
-        refreshForm();
+        var formType = window.location.hash.replace('#','');
 
-        fillJobPostDetails();
-        fillResumeOption();
-        fillPersonalInformation();
+        if (formType.indexOf('&') !== -1) {
+          
+          refreshForm();
+
+          fillJobPostDetails();
+          fillQuestionnaires();
+          fillResumeOption();
+          fillPersonalInformation();
+          fillInputData();
+        }
+        else{
+          location.href = "JobSearch.php";
+        }
       });
     </script>
 
