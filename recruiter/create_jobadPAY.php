@@ -50,7 +50,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -95,7 +95,7 @@
           <!--End Navbar-->
 
     <div class="container flex justify-content-center mt-5" style="width: 80%;">
-        <a href="/recruiter/create_jobad4.html">
+        <a href="/recruiter/create_jobad4.php">
             <button type="button" class="btn btn-icon btn-round btn-primary">
               <i class="fa fa-arrow-circle-left"></i>
             </button>
@@ -318,7 +318,7 @@
         </div>
           <div class="mb-5">
             <a class="btn btn-danger" type="button" id="alert_demo_3_3">post my Ad</a>
-            <a href="/recruiter/create_jobadPreview.html" class="btn btn-outline-danger">Preview</a>
+            <a href="/recruiter/create_jobadPreview.php" class="btn btn-outline-danger">Preview</a>
           </div>
     </div>
 

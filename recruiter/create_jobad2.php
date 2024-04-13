@@ -41,7 +41,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -89,7 +89,7 @@
 
         <div class="progress-card">
             <div class="progress-status">
-                <a href="/recruiter/create_jobad.html">
+                <a href="/recruiter/create_jobad.php">
                   <button type="button" class="btn btn-icon btn-round btn-primary">
                     <i class="fa fa-arrow-circle-left"></i>
                   </button>
@@ -165,7 +165,7 @@
             
 
             <div class="container justify-content-center form-group mt-3 mb-5">   
-              <a href="/recruiter/create_jobad3.html"><button class="btn btn-danger" type="button">Continue</button></a>
+              <a href="/recruiter/create_jobad3.php"><button class="btn btn-danger" type="button">Continue</button></a>
               <button class="btn btn-outline-danger">Save Draft</button>
             </div>
             

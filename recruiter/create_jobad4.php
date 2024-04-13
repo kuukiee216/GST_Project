@@ -3,8 +3,8 @@
 <head>
 
     <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
@@ -13,13 +13,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../assets/css/atlantis.css">
-    <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
+    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <title>Create Job Ad Page 3</title>
+    <!-- CSS Files -->
+	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
+
+    <title>Create Job Ad Page 4</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
-</head>
-<body>
+  </head>
+  <body>
           <!--Navbar Header-->
           <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
             <div class="container-fluid">
@@ -34,7 +38,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -78,151 +82,140 @@
           </nav>
           <!--End Navbar-->
 
-    <div class="container flex justify-content-center mt-5" style="width: 50%;">
+    <div class="container justify-content-center mt-5" style="width: 50%;">
 
         <div class="progress-card">
             <div class="progress-status">
-                <a href="/recruiter/create_jobad2.html">
+                <a href="/recruiter/create_jobad3.php">
                   <button type="button" class="btn btn-icon btn-round btn-primary">
                     <i class="fa fa-arrow-circle-left"></i>
                   </button>
                 </a>
-                <span class="text-muted fw-bold">75%</span>
+                <span class="text-muted fw-bold">100%</span>
             </div>
             <div class="progress" style="height: 6px;">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="75%"></div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="100%"></div>
             </div>
         </div>
 
-        <form>
+        <div class="container">
+        <h4 class="mt-5">Manage candidate applications</h4>
+        <div class="text-muted">(optional)</div>
+        <div class="fw-bold mt-5">Questions for candidates</div>
+        <p>Include up to 8 easy-to-answer questions in your job ad. 
+            When reviewing candidates, you will be able to easily filter 
+            candidates who match your preferred answers. 
+        </p>
 
-            <div class="row mt-5">
-                <h4>Write about your Job</h4>
-                <h6>Showcase your brand</h6>
-                <div class="text-muted mb-5" style="width: 70%;">Create your first brand by uploading your company logo. 
-                    Cover images can be added from the success page after payment. 
+        <p class="text-muted">1/8 Questions selected</p>
+
+        <div class="input-icon">
+            <span class="input-icon-addon">
+                <i class="fa fa-search"></i>
+            </span>
+            <input type="tel" class="form-control" placeholder="find a question">
+        </div>
+
+        <h4 class="mt-5">Recommended questions</h4>
+        <div class="card">
+            <div class="card-body">
+                <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="">
+                      <span class="form-check-sign">What is your expected salary?
+                        I will accept this range:</span>
+                    </label>
                 </div>
 
-                <div class="card text-white" style="width: 40%;">
-                    <img class="card-img" src="/assets/img/icon.png" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                    </div>
-                </div>
-
-                <h4>Job Description</h4>
-                <div class="text-muted mb-3">Enter your job details or let us guide you through what to write.</div>
-
-                <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab-nobd" data-toggle="pill" href="#pills-home-nobd" role="tab" aria-controls="pills-home-nobd" aria-selected="true">Write your Own</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab-nobd" data-toggle="pill" href="#pills-profile-nobd" role="tab" aria-controls="pills-profile-nobd" aria-selected="false">Help me write my ad</a>
-                    </li>
-                </ul>
-
-                <div class="tab-content mb-3" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home-nobd" role="tabpanel" aria-labelledby="pills-home-tab-nobd">
-                        <div class="form-group">
-                            <div class="row col-5">
-
-                                <div class="col">
-                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
+                <div class="form-group">
+                    <div class="row row-col-3">
+                    
+                        <div class="col">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Minimum</button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item" href="#">test</a>
+                                    <a class="dropdown-item" href="#">test2</a>
+                                    <a class="dropdown-item" href="#">test3</a>
+                                    <a class="dropdown-item" href="#">test4</a>
                                 </div>
-
-                                <div class="col">
-                                    <div for="bold">
-                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="italic">
-                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="left">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="right">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-right"></i></a>
-                                    </div>
-                                </div>
-
                             </div>
-
-                            <textarea class="form-control" id="comment" rows="5">
-                            </textarea>
                         </div>
-                    </div>
 
-                    <div class="tab-pane fade" id="pills-profile-nobd" role="tabpanel" aria-labelledby="pills-profile-tab-nobd">
-                        <div class="form-group">
-                            <div class="row col-5">
+                        <div class="col">
+                            To
+                        </div>
 
-                                <div class="col">
-                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
+                        <div class="col">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maximum</button>
+                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item" href="#">test</a>
+                                    <a class="dropdown-item" href="#">test2</a>
+                                    <a class="dropdown-item" href="#">test3</a>
+                                    <a class="dropdown-item" href="#">test4</a>
                                 </div>
-
-                                <div class="col">
-                                    <div for="bold">
-                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="italic">
-                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="left">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="right">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-justify"></i></a>
-                                    </div>
-                                </div>
-
                             </div>
-
-                            <textarea class="form-control" id="comment" rows="5">AI Helper
-                            </textarea>
                         </div>
                     </div>
                 </div>
+                <hr>
             </div>
+        </div>
 
-            <h4 class="mt-3">Video</h4><div class="text-muted">(optional)</div>
-            <p>Add a video to your ad. The video will appear at the bottom of your ad.</p>
-            <div class="form-group">
-                <input type="file" class="form-control-file" id="exampleFormControlFile2">
-            </div>
-            <div class="text-muted">e.g. myVideoAd.mp4</div>
+            <div class="form-check row">
 
-            <h4 class="mt-5">Candidate search result</h4>
-            <p>Write a compelling statement about your role to entice more candidates.</p>
-            <textarea class="form-control" id="comment" rows="5">
-            </textarea>
-
-            <div class="form-group mt-3 mb-5">   
-              <a href="/recruiter/create_jobad4.html" class="btn btn-danger" type="button">Continue</a>
-              <button class="btn btn-outline-danger" type="submit">Save Draft</button>
-            </div>
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                <span class="form-check-sign">Which of the programming languanges are you experienced in?</span>
+                </label>
             
-        </form>
+                <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                <span class="form-check-sign">Which of the following Relational Database Management System (RDBMS) are you experienced with?</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="">
+                    <span class="form-check-sign">test</span>
+                </label>
+
+                <button class="btn btn-primary text-uppercase">Add Questions</button>
+
+            </div>
+
+            <div class="mt-5">
+            <div>
+                <span class="input-icon-addon">
+                    <i class="fa fa-info-circle"></i>
+                </span>
+                Your question and answers can't be changed after you post your job ad. 
+            </div>
+
+            <h4>Internal Job Reference</h4><div class="text-muted">optional</div>
+            <input type="tel" class="form-control" placeholder="">
+            </div>
+            <div class="form-group mt-5 mb-5">   
+                <a href="/recruiter/create_jobadPAY.php" class="btn btn-danger" type="button">Continue</a>
+                <button class="btn btn-outline-danger" type="submit">Save Draft</button>
+            </div>
+
+        </div>
 
     </div>
 

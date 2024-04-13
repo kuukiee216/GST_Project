@@ -20,19 +20,20 @@
 	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
 
-        <!-- Fonts and icons -->
-        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-        <script>
-          WebFont.load({
-            google: {"families":["Lato:300,400,700,900"]},
-            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
-            active: function() {
-            sessionStorage.fonts = true;
-            }
-          });
-      </script>
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+      <script>
+        WebFont.load({
+          google: {"families":["Lato:300,400,700,900"]},
+          custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+          active: function() {
+          sessionStorage.fonts = true;
+          }
+        });
+    </script>
 
-    <title>Edit Profile</title>
+
+    <title>Dashboard My Billing</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
@@ -50,7 +51,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -94,72 +95,62 @@
           </nav>
           <!--End Navbar-->
 
-    <div class="container flex justify-content-center" style="width: 50%;">
-
-        <form>
-
-            <div class="form-group">
-                <h4 class="pb-3 pt-5">Employer Details</h4>
-                <div></div>
-                <h4><i class="fas fa-user"></i> Your Details</h4>
-                <label for="exampleEmail" class="fw-bold">Email</label>
-                <div class="text-muted pb-3" style="text-decoration: underline;">genesismarvinmanale12@gmai.com</div>  
-                <label for="exampleGivenName1">Given Name</label>
-                <input type="text" class="form-control" id="exampleGivenName1" aria-describedby="nameHelp" placeholder="Enter Name">
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFamilyName">Family Name</label>
-                <input type="text" class="form-control" id="exampleFamilyName" placeholder="Family Name">
-            </div>
-            <hr>
-
-            <div class="form-group">
-                <h4 class="pb-3"><i class="fas fa-building"></i> Business Details</h4>
-                <label for="exampleEmail" class="fw-bold">Business Name</label>
-                <div class="text-muted pb-3">For security purpose, please enter the registered business name.</div>
-                <input type="text" class="form-control" id="exampleBusunessName" aria-describedby="nameHelp" placeholder="Enter Business Name">
-                <label for="examplePhoneNumber" class="pt-3">Phone Number</label>
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-dark btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Country Code</button>
-                            <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                <a class="dropdown-item" href="#">test</a>
-                                <a class="dropdown-item" href="#">test2</a>
-                                <a class="dropdown-item" href="#">test3</a>
-                                <a class="dropdown-item" href="#">test4</a>
-                            </div>
-                        </div>
-                            <div class="input-icon">
-                                <span class="input-icon-addon">
-                                    <i class="fas fa-plus"></i>
-                                </span>
-                                <input type="tel" class="form-control" placeholder="Number">
-                            </div>
-                    </div>
+      <div class="container pt-5 pb-5">
+        <h2 class="pb-5 pt-5">Account Details</h2>
+        <div class="card">
+            <div class="card-body">
+              <div class="row row-cols-3 text-start">
+        
+                <div class="col">
+                    <img src="/assets/img/image7.png" style="height: 60px;">
                 </div>
-            </div> 
+                <div class="col">
+                    <h3 class="pb-5">Billing Details</h3>
+                  <div class="row">
+                    <div>Billing Address</div>
+                    <div class="text-muted pb-5">same as company address</div>
+                    <hr>
+                    <div class="fw-bold">Billing Email</div>
+                    <div class="text-primary">vanessatatel.lu@gmail.com</div>
+                    <div class="text-muted">ALL JAPAN JOBS  invoices for your company will be sent to your billing email.</div>
+                  </div>
+                </div>
+                <div class="row">
+                    <a class="text-primary float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
 
-            <div class="form-group">
-                <label for="exampleFamilyName">Country</label>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-dark btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Country</button>
-                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                            <a class="dropdown-item" href="#">test</a>
-                            <a class="dropdown-item" href="#">test2</a>
-                            <a class="dropdown-item" href="#">test3</a>
-                            <a class="dropdown-item" href="#">test4</a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Billing Address</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+
+                            <div class="modal-body">
+                            <label>Billing Address</label>
+                            <input type="text" class="form-control" id="place" placeholder="address">
+                            <label>Billing Email</label>
+                            <input type="text" class="form-control" id="Bemail" placeholder="email">
+                            </div>
+
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    <button class="btn btn-danger mt-3 mb-5"> Create Account</button>
+                  </div>
+              </div>
             </div>
-        </form>
-    </div>
-
+          </div>
+      </div>
 
     <!--bottom navbar-->
-    <footer class="footer text-white" style="background-color:#187498">
+    <footer class="footer fixed-bottom text-white" style="background-color:#187498">
       <div class="container-fluid">
           <nav class="pull-left">
               <ul class="nav">

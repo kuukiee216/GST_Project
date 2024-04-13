@@ -3,8 +3,8 @@
 <head>
 
     <!-- Required meta tags -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
@@ -13,26 +13,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../assets/css/atlantis.css">
-    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
+    <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <!-- CSS Files -->
-	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
-
-        <!-- Fonts and icons -->
-        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-        <script>
-          WebFont.load({
-            google: {"families":["Lato:300,400,700,900"]},
-            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
-            active: function() {
-            sessionStorage.fonts = true;
-            }
-          });
-      </script>
-
-    <title>Dashboard My Account</title>
+    <title>Create Job Ad Page 3</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
@@ -50,7 +34,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -94,161 +78,154 @@
           </nav>
           <!--End Navbar-->
 
-      <div class="container pt-5">
-        <h2 class="pb-4">Account Details</h2>
-        <div class="card">
-            <div class="card-body">
-              <div class="row row-cols-3 text-start">
-        
-                <div class="col">
-                    <img src="/assets/img/image4.png" style="height: 60px;">
+    <div class="container flex justify-content-center mt-5" style="width: 50%;">
+
+        <div class="progress-card">
+            <div class="progress-status">
+                <a href="/recruiter/create_jobad2.php">
+                  <button type="button" class="btn btn-icon btn-round btn-primary">
+                    <i class="fa fa-arrow-circle-left"></i>
+                  </button>
+                </a>
+                <span class="text-muted fw-bold">75%</span>
+            </div>
+            <div class="progress" style="height: 6px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="75%"></div>
+            </div>
+        </div>
+
+        <form>
+
+            <div class="row mt-5">
+                <h4>Write about your Job</h4>
+                <h6>Showcase your brand</h6>
+                <div class="text-muted mb-5" style="width: 70%;">Create your first brand by uploading your company logo. 
+                    Cover images can be added from the success page after payment. 
                 </div>
-                <div class="col">
-                    <h3 class="pb-5">Personal Detail</h3>
-                  <div class="row">
-                    <div>Genesis Manale</div>
-                    <div class="text-muted" style="text-decoration: underline;">genesismarvinmanale12@gmail.com</div>
-                  </div>
-                </div>
-                <div class="col">
-                    <a class="text-primary float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Email</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-
-                            <div class="modal-body">
-                            <label>Email</label>
-                            <input type="text" class="form-control" id="email" placeholder="email">
-                            </div>
-
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save email</button>
-                            </div>
-                        </div>
+                <div class="card text-white" style="width: 40%;">
+                    <img class="card-img" src="/assets/img/icon.png" alt="Card image">
+                    <div class="card-img-overlay">
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
                         </div>
                     </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-body">
-              <div class="row row-cols-3 text-start">
-        
-                <div class="col">
-                    <img src="/assets/img/image5.png" style="height: 60px;">
                 </div>
-                <div class="col">
-                    <h3 class="pb-5">Company Details</h3>
-                  <div class="row">
-                    <div class="fw-bold">Company Name</div>
-                    <div class="pb-3">Global Solution OPC</div>
-                    <div class="fw-bold">Japan Jobs Account</div>
-                    <div class="pb-3">0000011</div>
-                    <div class="pb-5">To change your company name please visit the <u type="button" class="text-primary" href="#"> Help Center</u></div>
-                    <hr>
-                    <div class="fw-bold pb-3">Primary Contact</div>
-                    <div>Genesis Manale</div>
-                    <div class="text-primary" style="text-decoration: underline;">genesismarvinmanale12@gmail.com</div>
-                    <div>Phone:</div>
-                    <div class="pb-5">+639084746563</div>
-                    <hr>
-                    <div class="fw-bold">Company Address</div>
-                    <div class="pb-5">Philippines</div>
-                  </div>
-                </div>
-                <div class="row">
-                    <a class="text-primary" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter2">Edit</a>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalChangeEmail">Primary Contact</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                <h4>Job Description</h4>
+                <div class="text-muted mb-3">Enter your job details or let us guide you through what to write.</div>
+
+                <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab-nobd" data-toggle="pill" href="#pills-home-nobd" role="tab" aria-controls="pills-home-nobd" aria-selected="true">Write your Own</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab-nobd" data-toggle="pill" href="#pills-profile-nobd" role="tab" aria-controls="pills-profile-nobd" aria-selected="false">Help me write my ad</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content mb-3" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home-nobd" role="tabpanel" aria-labelledby="pills-home-tab-nobd">
+                        <div class="form-group">
+                            <div class="row col-5">
+
+                                <div class="col">
+                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
+                                </div>
+
+                                <div class="col">
+                                    <div for="bold">
+                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="italic">
+                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="left">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="right">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-right"></i></a>
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <div class="modal-body">
-                            <label>Email</label>
-                            <input type="text" class="form-control" id="email" placeholder="email">
-                            <label>Phone</label>
-                            <input type="tel" class="form-control" id="number" placeholder="number">
-                            <label>Company address</label>
-                            <input type="text" class="form-control" id="address" placeholder="address">
-                            </div>
-
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
-                            </div>
-                        </div>
+                            <textarea class="form-control" id="comment" rows="5">
+                            </textarea>
                         </div>
                     </div>
-                  </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="card">
-            <div class="card-body">
-              <div class="row row-cols-3 text-start">
-        
-                <div class="col">
-                    <img src="/assets/img/image6.png" style="height: 60px;">
-                </div>
-                <div class="col">
-                    <h3 class="pb-5">Account Settings</h3>
-                  <div class="row">
-                    <div>Email:</div>
-                    <div class="text-muted" style="text-decoration: underline;">genesismarvinmanale12@gmail.com</div>
-                    <div>Password:</div>
-                    <div class="text-muted" style="text-decoration: underline;">testtest12341234</div>
-                  </div>
-                </div>
-                <div class="row">
-                    <a class="text-danger float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter3">Edit</a>
+                    <div class="tab-pane fade" id="pills-profile-nobd" role="tabpanel" aria-labelledby="pills-profile-tab-nobd">
+                        <div class="form-group">
+                            <div class="row col-5">
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter3" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Password</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                                <div class="col">
+                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
+                                </div>
+
+                                <div class="col">
+                                    <div for="bold">
+                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="italic">
+                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="left">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="right">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-justify"></i></a>
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <div class="modal-body">
-                            <label>Change Password</label>
-                            <input type="password" class="form-control" id="pass" placeholder="password">
-                            </div>
-
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save Password</button>
-                            </div>
-                        </div>
+                            <textarea class="form-control" id="comment" rows="5">AI Helper
+                            </textarea>
                         </div>
                     </div>
-                  </div>
-              </div>
+                </div>
             </div>
-          </div>
-      </div>
+
+            <h4 class="mt-3">Video</h4><div class="text-muted">(optional)</div>
+            <p>Add a video to your ad. The video will appear at the bottom of your ad.</p>
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="exampleFormControlFile2">
+            </div>
+            <div class="text-muted">e.g. myVideoAd.mp4</div>
+
+            <h4 class="mt-5">Candidate search result</h4>
+            <p>Write a compelling statement about your role to entice more candidates.</p>
+            <textarea class="form-control" id="comment" rows="5">
+            </textarea>
+
+            <div class="form-group mt-3 mb-5">   
+              <a href="/recruiter/create_jobad4.php" class="btn btn-danger" type="button">Continue</a>
+              <button class="btn btn-outline-danger" type="submit">Save Draft</button>
+            </div>
+            
+        </form>
+
+    </div>
+
 
     <!--bottom navbar-->
     <footer class="footer text-white" style="background-color:#187498">

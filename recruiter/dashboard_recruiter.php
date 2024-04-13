@@ -42,7 +42,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -98,7 +98,7 @@
                 <p>You're in the right place to find your next hire. Get started by creating your job ad. </p>
             </div>
             <div class="float-right pt-5">
-                <a href="/recruiter/create_jobad.html"><button class="btn btn-danger">Create a Job Ad</button></a>
+                <a href="/recruiter/create_jobad.php"><button class="btn btn-danger">Create a Job Ad</button></a>
             </div>
       </div>
       </div>

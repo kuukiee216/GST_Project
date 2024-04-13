@@ -20,10 +20,22 @@
 	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
 
-    <title>Create Job Ad Page 4</title>
+        <!-- Fonts and icons -->
+        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+        <script>
+          WebFont.load({
+            google: {"families":["Lato:300,400,700,900"]},
+            custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+            active: function() {
+            sessionStorage.fonts = true;
+            }
+          });
+      </script>
+
+    <title>Dashboard My Account</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
-  </head>
-  <body>
+</head>
+<body>
           <!--Navbar Header-->
           <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
             <div class="container-fluid">
@@ -38,7 +50,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -82,143 +94,161 @@
           </nav>
           <!--End Navbar-->
 
-    <div class="container justify-content-center mt-5" style="width: 50%;">
-
-        <div class="progress-card">
-            <div class="progress-status">
-                <a href="/recruiter/create_jobad3.html">
-                  <button type="button" class="btn btn-icon btn-round btn-primary">
-                    <i class="fa fa-arrow-circle-left"></i>
-                  </button>
-                </a>
-                <span class="text-muted fw-bold">100%</span>
-            </div>
-            <div class="progress" style="height: 6px;">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="100%"></div>
-            </div>
-        </div>
-
-        <div class="container">
-        <h4 class="mt-5">Manage candidate applications</h4>
-        <div class="text-muted">(optional)</div>
-        <div class="fw-bold mt-5">Questions for candidates</div>
-        <p>Include up to 8 easy-to-answer questions in your job ad. 
-            When reviewing candidates, you will be able to easily filter 
-            candidates who match your preferred answers. 
-        </p>
-
-        <p class="text-muted">1/8 Questions selected</p>
-
-        <div class="input-icon">
-            <span class="input-icon-addon">
-                <i class="fa fa-search"></i>
-            </span>
-            <input type="tel" class="form-control" placeholder="find a question">
-        </div>
-
-        <h4 class="mt-5">Recommended questions</h4>
+      <div class="container pt-5">
+        <h2 class="pb-4">Account Details</h2>
         <div class="card">
             <div class="card-body">
-                <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value="">
-                      <span class="form-check-sign">What is your expected salary?
-                        I will accept this range:</span>
-                    </label>
+              <div class="row row-cols-3 text-start">
+        
+                <div class="col">
+                    <img src="/assets/img/image4.png" style="height: 60px;">
                 </div>
+                <div class="col">
+                    <h3 class="pb-5">Personal Detail</h3>
+                  <div class="row">
+                    <div>Genesis Manale</div>
+                    <div class="text-muted" style="text-decoration: underline;">genesismarvinmanale12@gmail.com</div>
+                  </div>
+                </div>
+                <div class="col">
+                    <a class="text-primary float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
 
-                <div class="form-group">
-                    <div class="row row-col-3">
-                    
-                        <div class="col">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Minimum</button>
-                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                    <a class="dropdown-item" href="#">test</a>
-                                    <a class="dropdown-item" href="#">test2</a>
-                                    <a class="dropdown-item" href="#">test3</a>
-                                    <a class="dropdown-item" href="#">test4</a>
-                                </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Email</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+
+                            <div class="modal-body">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="email">
+                            </div>
+
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save email</button>
                             </div>
                         </div>
-
-                        <div class="col">
-                            To
-                        </div>
-
-                        <div class="col">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Maximum</button>
-                                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                    <a class="dropdown-item" href="#">test</a>
-                                    <a class="dropdown-item" href="#">test2</a>
-                                    <a class="dropdown-item" href="#">test3</a>
-                                    <a class="dropdown-item" href="#">test4</a>
-                                </div>
-                            </div>
                         </div>
                     </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="row row-cols-3 text-start">
+        
+                <div class="col">
+                    <img src="/assets/img/image5.png" style="height: 60px;">
                 </div>
-                <hr>
+                <div class="col">
+                    <h3 class="pb-5">Company Details</h3>
+                  <div class="row">
+                    <div class="fw-bold">Company Name</div>
+                    <div class="pb-3">Global Solution OPC</div>
+                    <div class="fw-bold">Japan Jobs Account</div>
+                    <div class="pb-3">0000011</div>
+                    <div class="pb-5">To change your company name please visit the <u type="button" class="text-primary" href="#"> Help Center</u></div>
+                    <hr>
+                    <div class="fw-bold pb-3">Primary Contact</div>
+                    <div>Genesis Manale</div>
+                    <div class="text-primary" style="text-decoration: underline;">genesismarvinmanale12@gmail.com</div>
+                    <div>Phone:</div>
+                    <div class="pb-5">+639084746563</div>
+                    <hr>
+                    <div class="fw-bold">Company Address</div>
+                    <div class="pb-5">Philippines</div>
+                  </div>
+                </div>
+                <div class="row">
+                    <a class="text-primary" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter2">Edit</a>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalChangeEmail">Primary Contact</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+
+                            <div class="modal-body">
+                            <label>Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="email">
+                            <label>Phone</label>
+                            <input type="tel" class="form-control" id="number" placeholder="number">
+                            <label>Company address</label>
+                            <input type="text" class="form-control" id="address" placeholder="address">
+                            </div>
+
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
             </div>
-        </div>
+          </div>
 
-            <div class="form-check row">
+          <div class="card">
+            <div class="card-body">
+              <div class="row row-cols-3 text-start">
+        
+                <div class="col">
+                    <img src="/assets/img/image6.png" style="height: 60px;">
+                </div>
+                <div class="col">
+                    <h3 class="pb-5">Account Settings</h3>
+                  <div class="row">
+                    <div>Email:</div>
+                    <div class="text-muted" style="text-decoration: underline;">genesismarvinmanale12@gmail.com</div>
+                    <div>Password:</div>
+                    <div class="text-muted" style="text-decoration: underline;">testtest12341234</div>
+                  </div>
+                </div>
+                <div class="row">
+                    <a class="text-danger float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter3">Edit</a>
 
-                <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-sign">Which of the programming languanges are you experienced in?</span>
-                </label>
-            
-                <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-sign">Which of the following Relational Database Management System (RDBMS) are you experienced with?</span>
-                </label>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter3" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Password</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
 
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">test</span>
-                </label>
+                            <div class="modal-body">
+                            <label>Change Password</label>
+                            <input type="password" class="form-control" id="pass" placeholder="password">
+                            </div>
 
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">test</span>
-                </label>
-
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">test</span>
-                </label>
-
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">test</span>
-                </label>
-
-                <button class="btn btn-primary text-uppercase">Add Questions</button>
-
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save Password</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
             </div>
-
-            <div class="mt-5">
-            <div>
-                <span class="input-icon-addon">
-                    <i class="fa fa-info-circle"></i>
-                </span>
-                Your question and answers can't be changed after you post your job ad. 
-            </div>
-
-            <h4>Internal Job Reference</h4><div class="text-muted">optional</div>
-            <input type="tel" class="form-control" placeholder="">
-            </div>
-            <div class="form-group mt-5 mb-5">   
-                <a href="/recruiter/create_jobadPAY.html" class="btn btn-danger" type="button">Continue</a>
-                <button class="btn btn-outline-danger" type="submit">Save Draft</button>
-            </div>
-
-        </div>
-
-    </div>
-
+          </div>
+      </div>
 
     <!--bottom navbar-->
     <footer class="footer text-white" style="background-color:#187498">
