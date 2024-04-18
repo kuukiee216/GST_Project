@@ -43,7 +43,7 @@
     </script>
 
     <title>Dashboard My Account</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
 <body>
@@ -191,37 +191,33 @@
             <div class="card-body">
                 <div class="row row-cols-3 text-start">
 
-                    <div class="col d-flex justify-content-center align-items-center">
-                        <img src="../assets/img/image5.png" class="mx-auto d-block" style="width: 30%;"
-                            alt="Centered Image">
+                    <div class="col">
+                        <img src="../assets/img/image5.png" style="height: 60px;">
                     </div>
                     <div class="col">
+                        <h3 class="pb-5">Company Details</h3>
                         <div class="row">
-                            <h3 class="pb-2"><b>Company Details</b></h3>
                             <div class="fw-bold">Company Name</div>
                             <div class="pb-3">Global Solution OPC</div>
-                            <div class="fw-bold">Telephone Number</div>
-                            <div class="pb-3">123-456</div>
-                            <div class="pb-4">To change your company name please visit the <u type="button"
-                                    class="text-primary" href="#"> Help Center</u>.</div>
-
+                            <div class="fw-bold">Japan Jobs Account</div>
+                            <div class="pb-3">0000011</div>
+                            <div class="pb-5">To change your company name please visit the <u type="button"
+                                    class="text-primary" href="#"> Help Center</u></div>
                             <hr>
-                            <div class="fw-bold">Company Address:</div>
-                            <div class="fw-bold pt-2">Country</div>
-                            <div class="pb-2">Philippines</div>
-                            <div class="fw-bold">Address Line</div>
-                            <div class="pb-2">222 Tumutunog-tunog Street</div>
-                            <div class="fw-bold">Suburb/Town/City</div>
-                            <div class="pb-2">Pagsanjan</div>
-                            <div class="fw-bold">State</div>
-                            <div class="pb-2">Laguna</div>
-                            <div class="fw-bold">Postal Code</div>
-                            <div class="pb-2">4008</div>
+                            <div class="fw-bold pb-3">Primary Contact</div>
+                            <div>Genesis Manale</div>
+                            <div class="text-primary" style="text-decoration: underline;">
+                                genesismarvinmanale12@gmail.com</div>
+                            <div>Phone:</div>
+                            <div class="pb-5">+639084746563</div>
+                            <hr>
+                            <div class="fw-bold">Company Address</div>
+                            <div class="pb-5">Philippines</div>
                         </div>
                     </div>
-                    <div class="col">
-                        <a class="text-primary float-right" style="text-decoration: underline;" type="button"
-                            data-toggle="modal" data-target="#exampleModalCenter2">Edit</a>
+                    <div class="row">
+                        <a class="text-primary" style="text-decoration: underline;" type="button" data-toggle="modal"
+                            data-target="#exampleModalCenter2">Edit</a>
 
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"

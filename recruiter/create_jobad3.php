@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
     <title>Create Job Ad Page 3</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
           <!--Navbar Header-->
@@ -64,9 +64,9 @@
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Billing</a>
+                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                       </li>
@@ -218,8 +218,7 @@
             </textarea>
 
             <div class="form-group mt-3 mb-5">   
-              <a href="/recruiter/create_jobad4.php" class="btn btn-danger" type="button">Continue</a>
-              <button class="btn btn-outline-danger" type="submit">Save Draft</button>
+              <a href="/GST_Project/recruiter/create_jobad4.php" class="btn btn-danger" type="button">Continue</a>
             </div>
             
         </form>
