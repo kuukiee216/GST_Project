@@ -1,10 +1,10 @@
 
-// APPLICANT SETTINGS
+// Recruiter retrieve info
 
 function GetInfo() {
     $.ajax({
         type: "POST",
-        dataType: "json", // Change to JSON
+        dataType: "json",
         url: "../PHPFiles/Recruiter/getEmployerInfo.php",
         success: function(data) {
             if (data.error) {
