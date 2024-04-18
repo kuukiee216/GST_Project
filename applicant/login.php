@@ -1,15 +1,16 @@
 <!-- Sessions -->
 <?php
-    SESSION_START();
+SESSION_START();
 
-    if(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0){
-		if($_SESSION['Token'] != NULL){
-			// $Token = $_SESSION['Token'];
-			// header("Location: almost_done.php?Token=$Token");
-		}
-		else
-     		header("Location: applicant_profile.php");
+if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0) {
+    if ($_SESSION['Token'] != null) {
+        // $Token = $_SESSION['Token'];
+        // header("Location: almost_done.php?Token=$Token");
+    } else {
+        header("Location: applicant_profile.php");
     }
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +58,7 @@
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
+
 </head>
 <body>
 	<div class="wrapper">
@@ -231,7 +232,7 @@
 			</nav>
 			<div class="ml-auto">
 				© 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-			</div>				
+			</div>
 		</div>
 		</footer>
 

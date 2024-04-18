@@ -53,9 +53,12 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
             if (password_verify($Password, $rowAccount['Password'])) {
                 if ($rowAccount['Role'] == 0) {
                     echo "0";
-                } else if ($rowAccount['Role'] == 1 || $rowAccount['Role'] == 2) {
+                } else if ($rowAccount['Role'] == 1) {
                     echo "5";
-                } else {
+                } else if ($rowAccount['Role'] == 2) {
+                    echo "4";
+                }
+                 else {
                     echo "6";
                 }
 
