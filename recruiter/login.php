@@ -1,14 +1,9 @@
 <?php
 SESSION_START();
 
-if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0) {
-    if ($_SESSION['Token'] != null) {
-        // $Token = $_SESSION['Token'];
-        // header("Location: almost_done.php?Token=$Token");
-    } else {
-        header("Location: applicant_profile.php");
-    }
-
+if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
+    header("Location: dashboard_myaccount.php");
+	exit();
 }
 ?>
 

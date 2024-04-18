@@ -25,7 +25,7 @@
 
 
     <title>Japan Jobs Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body> 
           <!--Navbar Header-->
@@ -87,18 +87,18 @@
           <!--End Navbar-->
 
       <div>
-        <img src="/assets/img/bg_recruiter.png" style="width:100%">
+        <img src="../assets/img/bg_recruiter.png" style="width:100%">
 
         <div class="d-flex">
             <div class="m-5">
-                <img src="/assets/img/image8.png" alt="star" style="height: 60px;">
+                <img src="../assets/img/image8.png" alt="star" style="height: 60px;">
             </div>
             <div class="flex-1 ml-3 pt-5">
                 <p class="fw-bold">Hi Gen</p>
                 <p>You're in the right place to find your next hire. Get started by creating your job ad. </p>
             </div>
             <div class="float-right pt-5">
-                <a href="/recruiter/create_jobad.php"><button class="btn btn-danger">Create a Job Ad</button></a>
+                <a href="../recruiter/create_jobad.php"><button class="btn btn-danger">Create a Job Ad</button></a>
             </div>
       </div>
       </div>
@@ -108,7 +108,7 @@
 
       <div class="container d-flex justify-content-center bg-primary">
         <div class="m-5">
-            <img src="/assets/img/rocket.png" alt="rocket" style="height: 80px;">
+            <img src="../assets/img/rocket.png" alt="rocket" style="height: 80px;">
         </div>
             <div class="flex-1 ml-3 pt-5">
                 <p>Enhance Your Recruitment Efforts with Tailored Candidate Suggestions.</p>
@@ -120,7 +120,7 @@
 
     <div class="row row-cols-3 m-5 w-70">
         <div class="card col">
-            <img class="card-img-top" src="/assets/img/image1.png" alt="Card image cap">
+            <img class="card-img-top" src="../assets/img/image1.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title fw-bold">Create a Job Ad</h5>
                 <p class="card-text text-center">Posting your job ad is made quick and easy with our step-by-step guide.</p>
@@ -128,7 +128,7 @@
         </div>
 
         <div class="card col">
-            <img class="card-img-top" src="/assets/img/image2.png" alt="Card image cap">
+            <img class="card-img-top" src="../assets/img/image2.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title fw-bold">Choose your Ad type</h5>
                 <p class="card-text text-center">We offer three distinct ad types tailored to meet your specific requirements.</p>
@@ -136,7 +136,7 @@
         </div>
 
         <div class="card col">
-            <img class="card-img-top" src="/assets/img/image3.png" alt="Card image cap">
+            <img class="card-img-top" src="../assets/img/image3.png" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title fw-bold">Manage your candidates</h5>
                 <p class="card-text text-center">We streamline the process for you to pinpoint the most qualified candidates applying for your position.</p>

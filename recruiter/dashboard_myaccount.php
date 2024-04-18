@@ -50,7 +50,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
+                        <a class="nav-link text-white" href="dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -101,7 +101,7 @@
               <div class="row row-cols-3 text-start">
         
                 <div class="col">
-                    <img src="/assets/img/image4.png" style="height: 60px;">
+                    <img src="../assets/img/image4.png" style="height: 60px;">
                 </div>
                 <div class="col">
                     <h3 class="pb-5">Personal Detail</h3>
@@ -146,7 +146,7 @@
               <div class="row row-cols-3 text-start">
         
                 <div class="col">
-                    <img src="/assets/img/image5.png" style="height: 60px;">
+                    <img src="../assets/img/image5.png" style="height: 60px;">
                 </div>
                 <div class="col">
                     <h3 class="pb-5">Company Details</h3>
@@ -207,7 +207,7 @@
               <div class="row row-cols-3 text-start">
         
                 <div class="col">
-                    <img src="/assets/img/image6.png" style="height: 60px;">
+                    <img src="../assets/img/image6.png" style="height: 60px;">
                 </div>
                 <div class="col">
                     <h3 class="pb-5">Account Settings</h3>

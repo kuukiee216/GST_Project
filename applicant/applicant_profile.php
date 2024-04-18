@@ -1,16 +1,16 @@
 <!-- Sessions -->
 <?php
-  SESSION_START();
+SESSION_START();
 
-  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0)){
+if (!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 0)) {
 
-      header ("Location: ../PHPFiles/Applicant/logout.php");
-  }else{
-      if($_SESSION['Token'] != NULL){
+    header("Location: ../PHPFiles/Applicant/logout.php");
+} else {
+    if ($_SESSION['Token'] != null) {
         $Token = $_SESSION['Token'];
         header("Location: almost_done.php?Token=$Token");
-      }
-  }
+    }
+}
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,700,900" media="all">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -53,7 +53,7 @@
                         <li class="nav-item">
                           <a class="nav-link text-white" href="../applicant/profile.php">Profile</a>
                         </li>
-                          
+
                         <li class="nav-item">
                           <a class="nav-link text-white" href="../applicant/about_us.html">About Us</a>
                         </li>
@@ -75,7 +75,7 @@
                         </div>
                       </div>
                     </form>
-  
+
                     <form class="d-flex">
                       <div>
                         <a class="text-white nav-link" href="../applicant/dashboard_recruiter.html">Recruiter Site</a>
@@ -101,7 +101,7 @@
 
             <div class="form-group">
               <div class="input-icon">
-                <span class="input-icon-addon"> 
+                <span class="input-icon-addon">
                   <i class="fa fa-suitcase"></i>
               </span>
               <input type="text" class="form-control ps-5" placeholder="Classification" />
@@ -110,7 +110,7 @@
 
           <div class="form-group">
             <div class="input-icon">
-            <span class="input-icon-addon"> 
+            <span class="input-icon-addon">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
             </svg>
@@ -126,7 +126,7 @@
           </button>
 
         </div>
-      </div> 
+      </div>
 
       <div id="Div-filter" class="dropdown d-flex justify-content-center gap-3">
         <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -275,8 +275,8 @@
                 </div>
               </div>
 
-          
-    
+
+
           <div class="col pt-3 pb-5">
               <div class="card" style="width: 25rem;">
                   <div class="card-body">
@@ -403,13 +403,13 @@
                   <h7>Qualifications</h7>
                   <ul>
                       <li>
-                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                        <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a>
                       </li>
                       <li>
-                          <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                          <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a>
                       </li>
                       <li>
-                          <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a> 
+                          <a>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum voluptatum ut consectetur provident rem ab illo eum error, officiis quam ullam dolorem perferendis veniam quod nesciunt doloremque voluptatem esse dolorum?</a>
                       </li>
                   </ul>
                   <button class="btn btn-danger">Report Job</button>
@@ -435,7 +435,7 @@
           <li class="nav-item">
             <a class="form-label nav-link text-white" href="#">Contact</a>
           </li>
-          
+
           <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
         </ul>
     </footer>
@@ -448,7 +448,7 @@
     <script>
       function test(){
         var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
-      
+
         if(variablename == 'dropdown d-flex justify-content-center gap-3'){ //variablename = class
           $('#Div-filter').addClass('d-none d-sm-none');
         }else {
@@ -515,10 +515,10 @@
     <script src="../ajax/ApplicantProfileHandler.js"></script>
 
     <script>
-      
+
       $(document).ready(function(){
         getListOfJobs();
-        
+
       });
 
 

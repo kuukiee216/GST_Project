@@ -34,7 +34,7 @@
 
 
     <title>Dashboard My Billing</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
           <!--Navbar Header-->
@@ -102,7 +102,7 @@
               <div class="row row-cols-3 text-start">
         
                 <div class="col">
-                    <img src="/assets/img/image7.png" style="height: 60px;">
+                    <img src="../assets/img/image7.png" style="height: 60px;">
                 </div>
                 <div class="col">
                     <h3 class="pb-5">Billing Details</h3>
