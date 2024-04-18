@@ -24,7 +24,7 @@
     </script>
 
     <title>Create Job Ad Page 2</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
   </head>
   <body>
           <!--Navbar Header-->
@@ -41,7 +41,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
+                        <a class="nav-link text-white" href="dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -71,9 +71,9 @@
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Billing</a>
+                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                       </li>
@@ -165,8 +165,7 @@
             
 
             <div class="container justify-content-center form-group mt-3 mb-5">   
-              <a href="/recruiter/create_jobad3.php"><button class="btn btn-danger" type="button">Continue</button></a>
-              <button class="btn btn-outline-danger">Save Draft</button>
+              <a href="/GST_Project/recruiter/create_jobad3.php"><button class="btn btn-danger" type="button">Continue</button></a>
             </div>
             
         </form>

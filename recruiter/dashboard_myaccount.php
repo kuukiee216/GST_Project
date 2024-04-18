@@ -33,7 +33,7 @@
       </script>
 
     <title>Dashboard My Account</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
           <!--Navbar Header-->
@@ -153,8 +153,6 @@
                   <div class="row">
                     <div class="fw-bold">Company Name</div>
                     <div class="pb-3">Global Solution OPC</div>
-                    <div class="fw-bold">Japan Jobs Account</div>
-                    <div class="pb-3">0000011</div>
                     <div class="pb-5">To change your company name please visit the <u type="button" class="text-primary" href="#"> Help Center</u></div>
                     <hr>
                     <div class="fw-bold pb-3">Primary Contact</div>
