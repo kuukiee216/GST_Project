@@ -555,8 +555,7 @@
 				url: '../PHPFiles/Admin/Dashboardtotalemployers.php',
 				datatype: 'html',
 				success: function(response){
-					var decoderesponse = json.parse(response);
-					if(decoderesponse == '1'){
+					if(response == '1'){
 						$.notify({
 							// options
 							icon: 'flaticon-error',
@@ -567,7 +566,7 @@
 							type: 'danger'
 						});
 					}
-					else if(decoderesponse == '2'){
+					else if(response == '2'){
 						$.notify({
 							// options
 							icon: 'flaticon-error',
@@ -578,7 +577,7 @@
 							type: 'danger'
 						});
 					}
-					else if(decoderesponse == '3'){
+					else if(response == '3'){
 						$.notify({
 							// options
 							icon: 'flaticon-exclamation',
@@ -590,7 +589,8 @@
 						});
 					}
 					else{
-						$('#lbltotalregisteredemployers').text(decoderesponse);
+						var decoderesponse = JSON.parse(response);
+						$('#lblTotalRegisteredEmployers').text(decoderesponse.totalemployers);
 					}
 				},
 				error: function(){
