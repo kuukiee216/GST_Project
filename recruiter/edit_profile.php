@@ -136,7 +136,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
     <div class="container flex justify-content-center" style="width: 50%;">
 
-        <form>
+        <form id="editInfoForms">
 
             <div class="form-group">
                 <h4 class="pb-3 pt-5">Employer Details</h4>
@@ -153,16 +153,16 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                 <div class="form-group">
                     <label for="fname">Given Name</label>
                     <input type="text" class="form-control" name="fname" id="fname" aria-describedby="nameHelp"
-                        placeholder="Enter Name">
+                        placeholder="Enter Name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="lname">Family Name</label>
-                    <input type="text" class="form-control" name="lname" id="lname" placeholder="Family Name">
+                    <input type="text" class="form-control" name="lname" id="lname" placeholder="Family Name" required>
 
                     <label for="phone" class="pt-3">Phone Number</label>
                     <div class="input-group">
-                        <input type="tel" id="phone" name="number" placeholder="Phone Number" value="+">
+                        <input type="tel" id="phone" name="number" placeholder="Phone Number" value="+" required>
                     </div>
                 </div>
 
@@ -175,11 +175,11 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     <label for="exampleEmail" class="fw-bold">Business Name</label>
                     <div class="text-muted pb-3">For security purpose, please enter the registered business name.
                     </div>
-                    <input type="text" class="form-control" id="exampleBusunessName" aria-describedby="nameHelp"
-                        placeholder="Enter Business Name">
+                    <input type="text" class="form-control" name="companyName" aria-describedby="nameHelp"
+                        placeholder="Enter Business Name" required>
                     <label for="phone1" class="pt-3">Telephone Number</label>
                     <div class="input-group">
-                        <input type="tel" id="phone1" name="telephone" placeholder="Telephone Number" value="+">
+                        <input type="tel" id="phone1" name="telephone" placeholder="Telephone Number" value="+" required>
                     </div>
 
                     <br><br>
@@ -189,38 +189,38 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     <div class="pt-3">
                         <label for="country">Country</label>
                         <input type="text" class="form-control" id="country" name="country" aria-describedby="nameHelp"
-                            placeholder="Enter Country">
+                            placeholder="Enter Country" required>
                     </div>
 
                     <div class="pt-3">
                         <label for="address">Address Line</label>
                         <input type="text" class="form-control" id="address" name="address" aria-describedby="nameHelp"
-                            placeholder="Enter Address Line (e.g. building number, street, etc...)">
+                            placeholder="Enter Address Line (e.g. building number, street, etc...)" required>
                     </div>
 
                     <div class="pt-3">
                         <label for="city">Suburb/Town/City</label>
                         <input type="text" class="form-control" id="city" name="city" aria-describedby="nameHelp"
-                            placeholder="Enter Suburb/Town/City">
+                            placeholder="Enter Suburb/Town/City" required>
                     </div>
 
                     <div class="pt-3">
                         <label for="state">State</label>
                         <input type="text" class="form-control" id="state" name="state" aria-describedby="nameHelp"
-                            placeholder="Enter State">
+                            placeholder="Enter State" required>
                     </div>
 
                     <div class="pt-3">
                         <label for="postal">Postal Code</label>
                         <input type="text" class="form-control" id="postal" name="postal" aria-describedby="nameHelp"
-                            placeholder="Enter Postal Code">
+                            placeholder="Enter Postal Code" required>
                     </div>
 
                 </div>
 
 
                 <div class="form-group">
-                    <button class="btn btn-danger mt-3 mb-5 d-flex align-items-center"> Update Account</button>
+                    <button class="btn btn-danger mt-3 mb-5 d-flex align-items-center" > Update Account</button>
                 </div>
         </form>
     </div>

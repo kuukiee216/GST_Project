@@ -7,7 +7,7 @@
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,7 +100,7 @@
         <div class="card">
             <div class="card-body">
               <div class="row row-cols-3 text-start">
-        
+
                 <div class="col">
                     <img src="../assets/img/image7.png" style="height: 60px;">
                 </div>
@@ -119,6 +119,7 @@
                     <a class="text-primary float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
 
                     <!-- Modal -->
+                    <form id="changeBillingForm">
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -131,18 +132,19 @@
 
                             <div class="modal-body">
                             <label>Billing Address</label>
-                            <input type="text" class="form-control" id="place" placeholder="address">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="address">
                             <label>Billing Email</label>
-                            <input type="text" class="form-control" id="Bemail" placeholder="email">
+                            <input type="text" class="form-control" id="emailadd" name="emailadd" placeholder="email">
                             </div>
 
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
+                            <button onclick="ChangeAccountDetails('changeBillingForm');" id="btnChangeAcount" type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </div>
                         </div>
                     </div>
+                    </form>
                   </div>
               </div>
             </div>
@@ -178,7 +180,7 @@
           </nav>
           <div class="ml-auto">
               © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-          </div>				
+          </div>
       </div>
     </footer>
 
@@ -189,7 +191,7 @@
     <script>
       function test(){
         var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
-      
+
         if(variablename == 'dropdown d-flex justify-content-center gap-3'){ //variablename = class
           $('#Div-filter').addClass('d-none d-sm-none');
         }else {
@@ -253,9 +255,14 @@
     <script src="../assets/js/atlantis.min.js"></script>
 
     <script src="../ajax/Recruiter/ProfileHandler.js"></script>
+    <script src="../ajax/Recruiter/ChangeCompanyProfileHandler.js"></script>
 
     <script>
     $(document).ready(function() {
+      $('#btnChangeAcount').click(function() {
+            ChangeAccountDetails('changeBillingForm');
+            });
+
         GetInfo();
     });
     </script>

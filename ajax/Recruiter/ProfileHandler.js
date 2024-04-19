@@ -19,13 +19,14 @@ function GetInfo() {
             $("input[name='lname']").val(data.LastName);
             $("input[name='email']").val(data.UserID);
             $("input[name='number']").val(data.Phone);
-            $("#exampleBusunessName").val(data.CompanyName);
+            $("input[name='emailadd']").val(data.EmailAddress);
             $("input[name='telephone']").val(data.ContactNumber1);
             $("input[name='state']").val(data.state);
             $("input[name='country']").val(data.country);
             $("input[name='city']").val(data.city);
             $("input[name='address']").val(data.address_line);
             $("input[name='postal']").val(data.postal);
+            $("input[name='companyName']").val(data.CompanyName);
 
             // Para sa not input type
             $("#email").text(data.UserID);
