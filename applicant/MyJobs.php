@@ -90,25 +90,30 @@
 
     <div class="container flex justify-content-center">
       <h2 class="mt-5">My Jobs</h2>
+
       <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-4" id="pills-tab" role="tablist">
+
         <li class="nav-item">
           <a class="nav-link active" id="pills-SavedJobs" data-toggle="pill" href="#pills-SavedJobs-content" role="tab" aria-controls="pills-SavedJobs-content" aria-selected="true">
             <i class="fa fa-bookmark mr-2"></i> 
             Saved
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" id="pills-AppliedJobs" data-toggle="pill" href="#pills-AppliedJobs-content" role="tab" aria-controls="pills-AppliedJobs-content" aria-selected="false">
             <i class="fa fa-envelope mr-2"></i> 
             Applied
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" id="pills-RecommendedJobs" data-toggle="pill" href="#pills-RecommendedJobs-content" role="tab" aria-controls="pills-RecommendedJobs-content" aria-selected="false">
             <i class="fa fa-lightbulb mr-2"></i> 
             Recommended
           </a>
         </li>
+
       </ul>
       <div class="tab-content" id="pills-tabContent">
 
@@ -121,41 +126,9 @@
         </div>
 
         <div class="tab-pane fade" id="pills-AppliedJobs-content" role="tabpanel" aria-labelledby="pills-AppliedJobs-content">
-          <h3 class="text-muted"><i>Currently, you have no pending application.</i></h3>
-          <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <div class="col-md-6">
-                    <h2>Software Engineer</h2>
-                    <h5>Global Solutions Technology INC. <span class="text-muted"><i>(Applied 2 hours ago)</i></span></h5>
-                </div>
-                <div class="col-md-6 d-flex justify-content-end">
-                    <div class="btn-group dropright">
-                        <button type="button" class="btn btn-light btn-round m-3 btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-ellipsis-v fa-lg"></i>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                            <button class="dropdown-item btn btn-light" href="#"><i class="fas fa-trash mr-2 fa-lg"></i> Remove</a>
-                            <button class="dropdown-item btn btn-light" href="#"><i class="fa fa-flag mr-2 fa-lg"></i> Report Job</a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span>Bay, Laguna, Philippines 4033</h5>
-                        <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span>Information and Communications Technology</h5>
-                    </div>
-            
-                    <div class="col-md-5">
-                        <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
-                        <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span>P 15,000.00 - 20,000.00</h5>
-                    </div>
-
-                    <div class="col-md-2 d-flex justify-content-end align-items-center">
-                        <button href="#" class="btn btn-danger">Cancel Application</button>
-                    </div>
-                </div>
+          <div class="row">
+            <div class="col-md-12" id="listAppliedJobs">
+              <h3 class="text-muted"><i>Currently, you have no submitted application.</i></h3>
             </div>
           </div>
         </div>
@@ -164,6 +137,87 @@
           <h3 class="text-muted"><i>No Recommended Jobs Found.</i></h3>
         </div>
 
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="modalViewApplication" tabindex="-1" role="dialog" aria-labelledby="modalViewApplication" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title">Application Details</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h2 id="lblJobTitle" class="font-weight-bold">-</h2>
+                <h5 id="lblCompanyName">-</h5>
+                <hr>
+                <div class="row">
+                  <div class="col-md-6">
+                      <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><span id="lblJobLocation">-</span></h5>
+                      <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><span id="lblClassification">-</span</h5>
+                  </div>
+          
+                  <div class="col-md-6">
+                    <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
+                    <h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span><span id="lblJobSalary">-</span></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+                <h4>Submitted Documents</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group form-group-default">
+                  <h5 class="font-weight-bold">Resume</h5>
+                  <h4 id="lblResumeLocation">Parungao_Ron Henrick_Cadang_Resume.pdf</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group form-group-default">
+                  <h5 class="font-weight-bold">Cover Letter</h5>
+                  <h4 id="lblCoverLetter">Parungao_Ron Henrick_Cadang_Cover Letter.pdf</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <hr>
+                <h4>Questions and Answers</h4>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12"id="divQuestionsAnswers">
+                <div class="form-group form-group-default">
+                  <h5 class="font-weight-bold">1. This is a question?</h5>
+                  <h4><b>Your Answer:</b> Yes, this is an answer.</h4>
+                </div>
+
+                <div class="form-group form-group-default">
+                  <h5 class="font-weight-bold">2. This is another question?</h5>
+                  <h4><b>Your Answer:</b> Yes, this is another answer.</h4>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
 
@@ -199,22 +253,6 @@
             </div>				
         </div>
     </footer>
-
-    <!-- Option 1: Bootstrap scripts -->
-    <script src="../.../assets/js/atlantis.js"></script>
-    <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <!-- Vendor JS Files -->
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../assets/vendor/aos/aos.js"></script>
-    <script src="../assets/vendor/php-email-form/validate.js"></script>
 
     <!--   Core JS Files   -->
     <script src="../assets/js/core/jquery.3.2.1.min.js"></script>

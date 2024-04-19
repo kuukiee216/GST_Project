@@ -226,13 +226,12 @@
 				},
 				url: "PHPFiles/loginvalidation.php",
 				success: function(data){
-					alert(data);
                     if(data == "0"){
                         $('#btnLogin').removeClass('is-loading');
                         $('#btnLogin').prop('disabled', false);
                         enableForm(formID);
 
-                        location.href = "admin/Dashboard.php";
+                        location.href = "applicant/JobSearch.php";
 					}
 					else if(data == "1"){
 						swal({

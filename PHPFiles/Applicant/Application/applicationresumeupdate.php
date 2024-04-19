@@ -10,11 +10,11 @@
     SESSION_START();
     ERROR_REPORTING(0);
 
-    // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) && 
-    // isset($_POST['DocumentID']) && isset($_POST['ApplicationID'])){
+    if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && $_SESSION['Access'] == '2' && isset($_SESSION['CredentialID']) && 
+        isset($_POST['DocumentID']) && isset($_POST['ApplicationID'])){
 
-        $AccountID = 1; //$_SESSION['AccountID'];
-        $CredentialID = 1; //$_SESSION['CredentialID'];
+        $AccountID = $_SESSION['AccountID'];
+        $CredentialID = $_SESSION['CredentialID'];
         $DocumentID = $_POST['DocumentID'];
         $ApplicationID = $_POST['ApplicationID'];
 
@@ -45,8 +45,8 @@
             $connection->rollBack();
             ECHO "2";
         }
-    // }
-    // else{
-    //     ECHO "1";
-    // }
+    }
+    else{
+        ECHO "1";
+    }
 ?>

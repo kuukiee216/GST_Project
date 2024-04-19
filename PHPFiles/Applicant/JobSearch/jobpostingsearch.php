@@ -10,8 +10,8 @@
     SESSION_START();
     ERROR_REPORTING(0);
 
-    //if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) &&
-    // isset($_POST['JobTitle']) && isset($_POST['Location'])){
+    if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && $_SESSION['Access'] == '0' && isset($_SESSION['CredentialID']) &&
+        isset($_POST['JobTitle']) && isset($_POST['Location'])){
 
         date_default_timezone_set('Asia/Manila');
         $currentDateTime = date("Y/m/d H:i:s");
@@ -116,8 +116,8 @@
         catch(PDOException $e){
             ECHO "2";
         }
-    // }
-    // else{
-    //     ECHO "1";
-    // }
+    }
+    else{
+        ECHO "1";
+    }
 ?>

@@ -1,7 +1,12 @@
 <?php
-require_once 'db_config.php';
+// Path to db_config_local.php file relative
+$localConfigPath = 'Essentials/db_config_local.php';
+
+// Require the db_config_local.php file
+require_once $localConfigPath;
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
+
 SESSION_START();
 ERROR_REPORTING(0);
 

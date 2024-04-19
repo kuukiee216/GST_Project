@@ -10,9 +10,9 @@
     SESSION_START();
     ERROR_REPORTING(0);
 
-    // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID'])){
+    if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && $_SESSION['Access'] == '0' && isset($_SESSION['CredentialID'])){
 
-        $CredentialID = 1;
+        $CredentialID = $_SESSION['CredentialID'];
 
         try{
             $sQryGetApplicantResumes = "SELECT 
@@ -48,8 +48,8 @@
         catch(PDOException $e){
             ECHO "2";
         }
-    // }
-    // else{
-    //     ECHO "1";
-    // }
+    }
+    else{
+        ECHO "1";
+    }
 ?>

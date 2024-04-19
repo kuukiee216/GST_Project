@@ -476,10 +476,9 @@ txtSearchLocation.on('keypress', function(event){
 
 /*
 
-    MY JOBS
+    MY SAVED JOBS
 
 */
-
 function fillSavedJobPosting(){
     $.ajax({
         type: 'GET',
@@ -623,10 +622,287 @@ function removeSavedJobPosting(ID){
     });
 }
 
+
+/*
+
+    MY APPLIED JOBS
+
+*/
 function fillAppliedJobPosting(){
-    
+    $.ajax({
+        type: 'GET',
+        url: '../PHPFiles/Applicant/Application/myjobappliedlistget.php',
+        datatype: 'html',
+        success: function(response){
+            if(response == '1'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-error',
+                    title: 'Failed to Retrieve Applied Job List!',
+                    message: 'Something went wrong while retrieving applied job postings. Data handling failed, please try again later.'
+                },{
+                    // settings
+                    type: 'danger'
+                });
+            }
+            else if(response == '2'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-error',
+                    title: 'Failed to Retrieve Applied Job List!',
+                    message: 'Something went wrong while retrieving applied job postings. Please try again later.'
+                },{
+                    // settings
+                    type: 'danger'
+                });
+            }
+            else if(response == '3'){
+                $.notify({
+                    // options
+                    icon: 'flaticon-exclamation',
+                    title: 'No Applied Job Posting Found!',
+                    message: 'Currently, there are no applied job hiring. Please try and check again later.'
+                },{
+                    // settings
+                    type: 'info'
+                });
+            }
+            else{
+                $('#listAppliedJobs').html(response);
+            }
+        },
+        error: function(){
+            $.notify({
+                // options
+                icon: 'flaticon-error',
+                title: 'Failed to Connect to Server!',
+                message: 'Something went wrong while connecting to server. Please try again later.'
+            },{
+                // settings
+                type: 'danger'
+            });
+        }
+    });
 }
 
+function cancelAppliedJobPosting(ID){
+    var aID = ID.replace('btnCancelAppliedJobPosting','');
+
+    $('#'+ID).addClass('is-loading');
+    $('#'+ID).prop('disabled', true);
+    $('#btnViewAppliedJobPosting'+aID).prop('disabled', true);
+
+    $.ajax({
+        type: 'POST',
+        url: '../PHPFiles/Applicant/Application/myjobappliedcancel.php',
+        datatype: 'html',
+        data: {
+            ApplicationID: aID
+        },
+        success: function(response){
+            if(response == '0'){
+                swal({
+                    title: 'Application Cancelled Successfully!',
+                    text: "Your application has been cancelled successfully.",
+                    icon: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                    $('#btnViewAppliedJobPosting'+aID).prop('disabled', false);
+                    
+                    fillAppliedJobPosting();
+                });
+            }
+            else if(response == '1'){
+                swal({
+                    title: 'Failed to Cancel Application!',
+                    text: "Something went wrong while cancelling your application. Data handling failed, please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                    $('#btnViewAppliedJobPosting'+aID).prop('disabled', false);
+                });
+            }
+            else{
+                swal({
+                    title: 'Failed to Cancel Application!',
+                    text: "Something went wrong while cancelling your application. Please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                    $('#btnViewAppliedJobPosting'+aID).prop('disabled', false);
+                });
+            }
+        },
+        error: function(){
+            swal({
+                title: 'Failed to Connect to Server!',
+                text: "Something went wrong while trying to connect to the server. Please try again later.",
+                icon: 'error',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#'+ID).removeClass('is-loading');
+                $('#'+ID).prop('disabled', false);
+                $('#btnViewAppliedJobPosting'+aID).prop('disabled', false);
+            });
+        }
+    });
+}
+function continueAppliedJobPosting(ID){
+    var IDs = ID.replace('btnContinueAppliedJobPosting','').split(':');
+
+    location.href = "ApplicationForm.php#PostID=" + IDs[1] + "&ApplicationID=" + IDs[0] + "&Form1";
+}
+function viewAppliedJobPosting(ID){
+    var aID = ID.replace('btnViewAppliedJobPosting','');
+
+    $('#'+ID).addClass('is-loading');
+    $('#'+ID).prop('disabled', true);
+    $('#btnCancelAppliedJobPosting'+aID).prop('disabled', true);
+
+    $.ajax({
+        type: 'POST',
+        url: '../PHPFiles/Applicant/Application/myjobappliedview.php',
+        datatype: 'html',
+        data: {
+            ApplicationID: aID
+        },
+        success: function(response){
+            if(response == '1'){
+                swal({
+                    title: 'Failed to Retrieve Application Details!',
+                    text: "Something went wrong while retrieving your application details. Data handling failed, please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                    $('#btnCancelAppliedJobPosting'+aID).prop('disabled', false);
+                });
+            }
+            else if(response == '2'){
+                swal({
+                    title: 'Failed to Retrieve Application Details!',
+                    text: "Something went wrong while retrieving your application details. Please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                    $('#btnCancelAppliedJobPosting'+aID).prop('disabled', false);
+                });
+            }
+            else if(response == '3'){
+                swal({
+                    title: 'No Application Details Found!',
+                    text: "There is no application details found. Please try again or contact the administrator.",
+                    icon: 'info',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#'+ID).removeClass('is-loading');
+                    $('#'+ID).prop('disabled', false);
+                    $('#btnCancelAppliedJobPosting'+aID).prop('disabled', false);
+                });
+            }
+            else{
+                var decodedResponse = JSON.parse(response);
+
+                $('#lblJobTitle').text(decodedResponse.JobTitle);
+                $('#lblCompanyName').text(decodedResponse.CompanyName);
+                $('#lblJobLocation').text(decodedResponse.JobLocation);
+                $('#lblClassification').text(decodedResponse.Classification);
+                $('#lblJobSalary').text(decodedResponse.JobSalary);
+                $('#lblResumeLocation').text(decodedResponse.ResumeLocation);
+                
+
+                if(decodedResponse.CoverLetterLocation.length > 0){
+                    $('#lblCoverLetter').text(decodedResponse.CoverLetterLocation);
+                }
+                else if(decodedResponse.CoverLetter.length == null || decodedResponse.CoverLetter.length > 0){
+                    $('#lblCoverLetter').text(decodedResponse.CoverLetter);
+                }
+                else{
+                    $('#lblCoverLetter').text("You chose to apply without a cover letter.");
+                }
+                
+                $('#modalViewApplication').modal({
+                    backdrop: 'static',
+                    keyboard: false,
+                    focus: true,
+                    show: true
+                });
+
+                $('#'+ID).removeClass('is-loading');
+                $('#'+ID).prop('disabled', false);
+                $('#btnCancelAppliedJobPosting'+aID).prop('disabled', false);
+            }
+        },
+        error: function(){
+            swal({
+                title: 'Failed to Connect to Server!',
+                text: "Something went wrong while trying to connect to the server. Please try again later.",
+                icon: 'error',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#'+ID).removeClass('is-loading');
+                $('#'+ID).prop('disabled', false);
+                $('#btnCancelAppliedJobPosting'+aID).prop('disabled', false);
+            });
+        }
+    });
+}
+
+
+/*
+
+    MY RECOMMENDED JOBS
+
+*/
 function fillRecommendedJobPosting(){
     
 }

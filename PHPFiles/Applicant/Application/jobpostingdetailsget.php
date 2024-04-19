@@ -10,8 +10,8 @@
     SESSION_START();
     ERROR_REPORTING(0);
 
-    // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) && 
-    //    isset($_POST['JobPostingID'])){
+    if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && $_SESSION['Access'] == '0' && isset($_SESSION['CredentialID']) && 
+       isset($_POST['JobPostingID'])){
 
         $JobPostingID = $_POST['JobPostingID'];
 

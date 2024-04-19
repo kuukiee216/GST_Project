@@ -18,10 +18,11 @@
         $CredentialID = $_SESSION['CredentialID'];
 
         try{
-            $sQryGetSavedJobPostings = "SELECT
-                    b.BookmarkID,
+            $sQryGetAppliedJobPostings = "SELECT DISTINCT
+                    a.ApplicationID,
+                    a.DateTimeStamp,
+                    a.Status,
                     jp.JobPostingID,
-                    jp.DateTimeStamp,
                     cj.JobTitle,
                     ci.CompanyName,
                     class.Classification,
@@ -35,9 +36,9 @@
                     jp.CompanyPrivacyStatus,
                     jp.SalaryPrivacyStatus
                 FROM
-                    tbl_bookmark AS b
+                    tbl_application AS a
                 INNER JOIN
-                    tbl_jobposting AS jp ON jp.JobPostingID = b.JobPostingID
+                    tbl_jobposting AS jp ON jp.JobPostingID = a.JobPostingID
                 INNER JOIN
                     tbl_companyjob AS cj ON cj.JobID = jp.JobID
                 INNER JOIN
@@ -53,56 +54,42 @@
                 INNER JOIN
                     tbl_currency AS c ON c.CurrencyID = js.CurrencyID
                 WHERE
-                    b.ApplicantID = :CredentialID AND cj.Status = '0' AND :currentDateTime BETWEEN jp.DateTimeStamp AND jp.DateTimeStampSpan";
-            $stmtGetSavedJobPostings = $connection->prepare($sQryGetSavedJobPostings);
-            $stmtGetSavedJobPostings->bindValue(":CredentialID", $CredentialID, PDO::PARAM_INT);
-            $stmtGetSavedJobPostings->bindValue(":currentDateTime", $currentDateTime, PDO::PARAM_STR);
-            $stmtGetSavedJobPostings->execute();
+                    a.ApplicantID = :CredentialID AND cj.Status = '0' AND (a.Status = '0' || a.Status = '2');";
+            $stmtGetAppliedJobPostings = $connection->prepare($sQryGetAppliedJobPostings);
+            $stmtGetAppliedJobPostings->bindValue(":CredentialID", $CredentialID, PDO::PARAM_INT);
+            $stmtGetAppliedJobPostings->execute();
 
-            if($stmtGetSavedJobPostings->rowCount() > 0){
-                while($rowSavedJobPost = $stmtGetSavedJobPostings->fetch(PDO::FETCH_ASSOC)){ 
+            if($stmtGetAppliedJobPostings->rowCount() > 0){
+                while($rowAppliedJobPost = $stmtGetAppliedJobPostings->fetch(PDO::FETCH_ASSOC)){ 
                     
-                    $jobLocation = $rowSavedJobPost['City'].', '.$rowSavedJobPost['Province'].', '.$rowSavedJobPost['Country'].' '.$rowSavedJobPost['ZipCode'];
+                    $jobLocation = $rowAppliedJobPost['City'].', '.$rowAppliedJobPost['Province'].', '.$rowAppliedJobPost['Country'].' '.$rowAppliedJobPost['ZipCode'];
                     $jobSalary = "";
 
-                    if(strlen($rowSavedJobPost['Maximum'])){
-                        $jobSalary = '₱ '.number_format($rowSavedJobPost['Minimum'], 2).' - '.number_format($rowSavedJobPost['Maximum'], 2);
+                    if(strlen($rowAppliedJobPost['Maximum'])){
+                        $jobSalary = '₱ '.number_format($rowAppliedJobPost['Minimum'], 2).' - '.number_format($rowAppliedJobPost['Maximum'], 2);
                     }
                     else{
-                        $jobSalary = '₱ '.number_format($rowSavedJobPost['Minimum'], 2);
+                        $jobSalary = '₱ '.number_format($rowAppliedJobPost['Minimum'], 2);
                     }
                 ?>
                     <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <div class="col-md-6">
-                                <h2><?PHP ECHO $rowSavedJobPost['JobTitle']; ?></h2>
-                                <?PHP 
-                                    ECHO ($rowSavedJobPost['CompanyPrivacyStatus'] == '0') ? '<h5>'.$rowSavedJobPost['CompanyName'].' <i>('.getDateTimeDifference($rowSavedJobPost['DateTimeStamp'], $currentDateTime).')</i></span></h5>' : ''
-                                ?>
-                            </div>
-                            <div class="col-md-6 d-flex justify-content-end">
-                                <div class="btn-group dropright">
-                                    <button type="button" class="btn btn-light btn-round m-3 btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v fa-lg"></i>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                        <button class="dropdown-item btn btn-light" id="btnRemoveSavedJob<?PHP ECHO $rowSavedJobPost['BookMarkID']; ?>" onclick="removeSavedJobPosting(this.id);"><i class="fas fa-trash mr-2 fa-lg"></i> Remove</a>
-                                        <button class="dropdown-item btn btn-light"><i class="fa fa-flag mr-2 fa-lg"></i> Report Job</a>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="card-header">
+                            <h2><?PHP ECHO $rowAppliedJobPost['JobTitle']; ?></h2>
+                            <?PHP 
+                                ECHO ($rowAppliedJobPost['CompanyPrivacyStatus'] == '0') ? '<h5>'.$rowAppliedJobPost['CompanyName'].' <i> ('.getDateTimeDifference($rowAppliedJobPost['DateTimeStamp'], $currentDateTime).')</i></span></h5>' : ''
+                            ?>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-5">
                                     <h5><span class="mr-2 text-danger"><i class="fas fa-map-marker-alt fa-lg"></i></span><?PHP ECHO $jobLocation; ?></h5>
-                                    <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><?PHP ECHO $rowSavedJobPost['Classification']; ?></h5>
+                                    <h5><span class="mr-2 text-danger"><i class="fas fa-clone fa-lg"></i></span><?PHP ECHO $rowAppliedJobPost['Classification']; ?></h5>
                                 </div>
                         
                                 <div class="col-md-5">
                                     <h5><span class="mr-2 text-danger"><i class="fas fa-clock fa-lg"></i></span>Full-Time</h5>
                                     <?PHP 
-                                        ECHO ($rowSavedJobPost['SalaryPrivacyStatus'] == '0') ? 
+                                        ECHO ($rowAppliedJobPost['SalaryPrivacyStatus'] == '0') ? 
                                             '<h5><span class="mr-2 text-danger"><i class="fas fa-database fa-lg"></i></span>'.$jobSalary.'</h5>' 
                                             : 
                                             ''
@@ -110,7 +97,19 @@
                                 </div>
 
                                 <div class="col-md-2 d-flex justify-content-end align-items-center">
-                                    <button class="btn btn-danger" id="btnViewSavedJobPosting<?PHP ECHO $rowSavedJobPost['JobPostingID']; ?>" onclick="viewSavedJobPostDetails(this.id);">View Post</button>
+                                    <?PHP 
+
+                                        if($rowAppliedJobPost['Status'] == 0){ ?>
+                                            <button class="btn btn-danger mr-2" id="btnCancelAppliedJobPosting<?PHP ECHO $rowAppliedJobPost['ApplicationID']; ?>" onclick="cancelAppliedJobPosting(this.id);">Cancel</button>
+                                            <button class="btn btn-primary" id="btnViewAppliedJobPosting<?PHP ECHO $rowAppliedJobPost['ApplicationID']; ?>" onclick="viewAppliedJobPosting(this.id);">View</button>
+                                    <?PHP
+                                        }
+                                        else{ ?>
+                                            <button class="btn btn-danger mr-2" id="btnCancelAppliedJobPosting<?PHP ECHO $rowAppliedJobPost['ApplicationID']; ?>" onclick="cancelAppliedJobPosting(this.id);">Cancel</button>
+                                            <button class="btn btn-primary" id="btnContinueAppliedJobPosting<?PHP ECHO $rowAppliedJobPost['ApplicationID'].':'.$rowAppliedJobPost['JobPostingID']; ?>" onclick="continueAppliedJobPosting(this.id);">Continue</button>
+                                    <?PHP
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -130,10 +129,11 @@
         ECHO "1";
     }
 
-    function getDateTimeDifference($postedDateTime, $currentDateTime) {
-        $interval = date_diff(date_create($postedDateTime), date_create($currentDateTime));
 
-        $result = "Posted ";
+    function getDateTimeDifference($appliedDateTime, $currentDateTime) {
+        $interval = date_diff(date_create($appliedDateTime), date_create($currentDateTime));
+
+        $result = "Applied ";
         
         if($interval->y > 0){
             $result .= $interval->y;

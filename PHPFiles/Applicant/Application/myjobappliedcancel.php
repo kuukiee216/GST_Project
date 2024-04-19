@@ -23,22 +23,23 @@
 
             $connection->beginTransaction();
 
-            $sQrySubmitApplication = "UPDATE tbl_application SET Status = ?, DateTimeStamp = ? WHERE ApplicationID = ?;";
-            $stmtSubmitApplication = $connection->prepare($sQrySubmitApplication);
-            $stmtSubmitApplication->bindValue(1, 0, PDO::PARAM_INT);
-            $stmtSubmitApplication->bindValue(2, $currentDateTime, PDO::PARAM_STR);
-            $stmtSubmitApplication->bindValue(3, $ApplicationID, PDO::PARAM_INT);
-            $stmtSubmitApplication->execute();
+            $sQryCancelApplication = "UPDATE tbl_application SET Status = ? WHERE ApplicationID = ? AND ApplicantID = ?;";
+            $stmtCancelApplication = $connection->prepare($sQryCancelApplication);
+            $stmtCancelApplication->bindValue(1, 3, PDO::PARAM_INT);
+            $stmtCancelApplication->bindValue(2, $ApplicationID, PDO::PARAM_INT);
+            $stmtCancelApplication->bindValue(3, $CredentialID, PDO::PARAM_INT);
+            $stmtCancelApplication->execute();
 
             $sQryInsertLog = "INSERT INTO tbl_systemlog(DateTimeStamp,Action,Target,AccountID) VALUES(?,?,?,?);";
             $stmtInsertLog = $connection->prepare($sQryInsertLog);
             $stmtInsertLog->bindValue(1, $currentDateTime, PDO::PARAM_STR);
-            $stmtInsertLog->bindValue(2, 'Submitted Application', PDO::PARAM_STR);
+            $stmtInsertLog->bindValue(2, 'Cancel', PDO::PARAM_STR);
             $stmtInsertLog->bindValue(3, 'Application (Application ID: '.$ApplicationID.')', PDO::PARAM_STR);
             $stmtInsertLog->bindValue(4, $AccountID, PDO::PARAM_INT);
             $stmtInsertLog->execute();
 
             $connection->commit();
+            
             ECHO "0";
         }
         catch(PDOException $e){

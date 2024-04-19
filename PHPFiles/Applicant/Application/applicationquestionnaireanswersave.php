@@ -10,10 +10,10 @@
     SESSION_START();
     ERROR_REPORTING(0);
 
-    // if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && isset($_SESSION['Access']) == '2' && isset($_SESSION['CredentialID']) && 
-    // isset($_POST['ApplicationID']) && isset($_POST['QuestionIDs']) && isset($_POST['Answers'])){
+    if(isset($_SESSION['AccountID']) && isset($_SESSION['Access']) && $_SESSION['Access'] == '0' && isset($_SESSION['CredentialID']) && 
+        isset($_POST['ApplicationID']) && isset($_POST['QuestionIDs']) && isset($_POST['Answers'])){
 
-        $CredentialID = 1;
+        $CredentialID = $_SESSION['CredentialID'];
         $ApplicationID = $_POST['ApplicationID'];
         $QuestionID = $_POST['QuestionIDs'];
         $Answer = $_POST['Answers'];
@@ -106,8 +106,8 @@
                 ECHO "2";
             }
         }   
-    // }
-    // else{
-    //     ECHO "1";
-    // }
+    }
+    else{
+        ECHO "1";
+    }
 ?>

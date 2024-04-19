@@ -1,5 +1,5 @@
 <?php
-require_once 'db_config.php';
+require_once 'Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 error_reporting(E_ALL);
@@ -35,7 +35,7 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
                     acc.Password,
                     acc.Token,
                     acc.Status,
-                    acc.Token,
+                    ai.ApplicantID,
                     ai.LastName,
                     ai.FirstName
                 FROM
@@ -60,9 +60,10 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
                 }
 
                 $_SESSION['AccountID'] = $rowAccount['AccountID'];
-                $_SESSION['Role'] = $rowAccount['Role'];
+                $_SESSION['Access'] = $rowAccount['Role'];
                 $_SESSION['UserID'] = $rowAccount['UserID'];
                 $_SESSION['Token'] = $rowAccount['Token'];  
+                $_SESSION['CredentialID'] = $rowAccount['ApplicantID'];
                 
             } else {
                 echo "9";
