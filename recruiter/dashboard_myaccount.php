@@ -143,7 +143,7 @@
                             <div class="text-muted pb-2" style="text-decoration: underline;" id="email">
                             </div>
                             <div class="fw-bold">Phone Number</div>
-                            <div class="pb-3" id="phoneNum">+639084746563</div>
+                            <div class="pb-3" id="phoneNum"></div>
                         </div>
                     </div>
                     <div class="col">
@@ -281,8 +281,6 @@
                             <div class="fw-bold">Email:</div>
                             <div class="text-muted" style="text-decoration: underline;" id="emails">
                             </div>
-                            <div class="fw-bold pt-2">Password:</div>
-                            <div class="text-muted pb-3" id="password">****</div>
                         </div>
                     </div>
                     <div class="col">
