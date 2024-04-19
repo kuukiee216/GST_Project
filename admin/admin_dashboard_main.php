@@ -4,9 +4,9 @@
   date_default_timezone_set('Asia/Manila');
   $currentDateTime = time();
 
-  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
-      header ("Location: ../PHPFiles/Applicant/logout.php");
-  }
+//   if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
+//       header ("Location: ../PHPFiles/Applicant/logout.php");
+//   }
 ?>
 
 <!DOCTYPE html>
@@ -546,65 +546,65 @@
 
 	<script>
 		$(document).ready(function(){
-			fillDashboardTotals();
+			filltotalemployers();
 		});
 
 		function filltotalemployers(){
 			$.ajax({
-        type: 'GET',
-        url: '../PHPFiles/Admin/Dashboardtotalemployers.php',
-        datatype: 'html',
-        success: function(response){
-			var decoderesponse = json.parse(response);
-            if(decoderesponse == '1'){
-                $.notify({
-                    // options
-                    icon: 'flaticon-error',
-                    title: 'Failed to Retrieve Total Employers!',
-                    message: 'Something went wrong while retrieving saved jototal employers. Data handling failed, please try again later.'
-                },{
-                    // settings
-                    type: 'danger'
-                });
-            }
-            else if(decoderesponse == '2'){
-                $.notify({
-                    // options
-                    icon: 'flaticon-error',
-                    title: 'Failed to Retrieve Total Employers!',
-                    message: 'Something went wrong while retrieving total employers. Please try again later.'
-                },{
-                    // settings
-                    type: 'danger'
-                });
-            }
-            else if(decoderesponse == '3'){
-                $.notify({
-                    // options
-                    icon: 'flaticon-exclamation',
-                    title: 'No Registered Employers Found!',
-                    message: 'Currently, there is no registered employers. Please try and check again later.'
-                },{
-                    // settings
-                    type: 'info'
-                });
-            }
-            else{
-                $('#lbltotalregisteredemployers').text(decoderesponse);
-            }
-        },
-        error: function(){
-            $.notify({
-                // options
-                icon: 'flaticon-error',
-                title: 'Failed to Connect to Server!',
-                message: 'Something went wrong while connecting to server. Please try again later.'
-            },{
-                // settings
-                type: 'danger'
-            });
-        }
-    });
+				type: 'GET',
+				url: '../PHPFiles/Admin/Dashboardtotalemployers.php',
+				datatype: 'html',
+				success: function(response){
+					var decoderesponse = json.parse(response);
+					if(decoderesponse == '1'){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve Total Employers!',
+							message: 'Something went wrong while retrieving saved jototal employers. Data handling failed, please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+					else if(decoderesponse == '2'){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve Total Employers!',
+							message: 'Something went wrong while retrieving total employers. Please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+					else if(decoderesponse == '3'){
+						$.notify({
+							// options
+							icon: 'flaticon-exclamation',
+							title: 'No Registered Employers Found!',
+							message: 'Currently, there is no registered employers. Please try and check again later.'
+						},{
+							// settings
+							type: 'info'
+						});
+					}
+					else{
+						$('#lbltotalregisteredemployers').text(decoderesponse);
+					}
+				},
+				error: function(){
+					$.notify({
+						// options
+						icon: 'flaticon-error',
+						title: 'Failed to Connect to Server!',
+						message: 'Something went wrong while connecting to server. Please try again later.'
+					},{
+						// settings
+						type: 'danger'
+					});
+				}
+			});
 		}
 	</script>
 </body>
