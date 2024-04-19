@@ -43,7 +43,7 @@
     </script>
 
     <title>Dashboard My Account</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
 <body>
@@ -138,13 +138,12 @@
                         <div class="row">
                             <h3 class="pb-2"><b>Personal Details</b></h3>
                             <div class="fw-bold">Name</div>
-                            <div class="pb-2">Genesis Manale</div>
+                            <div class="pb-2" id="fullName"></div>
                             <div class="fw-bold">Email</div>
-                            <div class="text-muted pb-2" style="text-decoration: underline;">
-                                genesismarvinmanale12@gmail.com
+                            <div class="text-muted pb-2" style="text-decoration: underline;" id="email">
                             </div>
                             <div class="fw-bold">Phone Number</div>
-                            <div class="pb-3">+639084746563</div>
+                            <div class="pb-3" id="phoneNum">+639084746563</div>
                         </div>
                     </div>
                     <div class="col">
@@ -200,24 +199,24 @@
                         <div class="row">
                             <h3 class="pb-2"><b>Company Details</b></h3>
                             <div class="fw-bold">Company Name</div>
-                            <div class="pb-3">Global Solution OPC</div>
+                            <div class="pb-3" id="companyName"></div>
                             <div class="fw-bold">Telephone Number</div>
-                            <div class="pb-3">123-456</div>
+                            <div class="pb-3" id="phoneCompany"></div>
                             <div class="pb-4">To change your company name please visit the <u type="button"
                                     class="text-primary" href="#"> Help Center</u>.</div>
 
                             <hr>
                             <div class="fw-bold">Company Address:</div>
                             <div class="fw-bold pt-2">Country</div>
-                            <div class="pb-2">Philippines</div>
+                            <div class="pb-2" id="countryText"></div>
                             <div class="fw-bold">Address Line</div>
-                            <div class="pb-2">222 Tumutunog-tunog Street</div>
+                            <div class="pb-2" id="addressText"></div>
                             <div class="fw-bold">Suburb/Town/City</div>
-                            <div class="pb-2">Pagsanjan</div>
+                            <div class="pb-2" id="cityText"></div>
                             <div class="fw-bold">State</div>
-                            <div class="pb-2">Laguna</div>
+                            <div class="pb-2" id="stateText"></div>
                             <div class="fw-bold">Postal Code</div>
-                            <div class="pb-2">4008</div>
+                            <div class="pb-2" id="postalText"></div>
                         </div>
                     </div>
                     <div class="col">
@@ -280,10 +279,10 @@
                         <h3 class="pb-2"><b>Account Settings</b></h3>
                         <div class="row">
                             <div class="fw-bold">Email:</div>
-                            <div class="text-muted" style="text-decoration: underline;">genesismarvinmanale12@gmail.com
+                            <div class="text-muted" style="text-decoration: underline;" id="emails">
                             </div>
                             <div class="fw-bold pt-2">Password:</div>
-                            <div class="text-muted pb-3" style="text-decoration: underline;">testtest12341234</div>
+                            <div class="text-muted pb-3" id="password">****</div>
                         </div>
                     </div>
                     <div class="col">
@@ -439,7 +438,13 @@
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
+    <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
+    <script>
+    $(document).ready(function() {
+        GetInfo();
+    });
+    </script>
 </body>
 
 </html>

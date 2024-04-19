@@ -177,9 +177,9 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     </div>
                     <input type="text" class="form-control" id="exampleBusunessName" aria-describedby="nameHelp"
                         placeholder="Enter Business Name">
-                    <label for="examplePhoneNumber" class="pt-3">Telephone Number</label>
+                    <label for="phone1" class="pt-3">Telephone Number</label>
                     <div class="input-group">
-                        <input type="tel" id="phone" placeholder="Telephone Number" value="+">
+                        <input type="tel" id="phone1" placeholder="Telephone Number" value="+">
                     </div>
 
                     <br><br>
@@ -187,32 +187,32 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     <div class="text-muted pb-3">Please provide the business adress details below.</div>
 
                     <div class="pt-3">
-                        <label for="exampleGivenName1">Country</label>
-                        <input type="text" class="form-control" id="exampleGivenName1" aria-describedby="nameHelp"
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" id="country" aria-describedby="nameHelp"
                             placeholder="Enter Country">
                     </div>
 
                     <div class="pt-3">
-                        <label for="exampleGivenName1">Address Line</label>
-                        <input type="text" class="form-control" id="exampleGivenName1" aria-describedby="nameHelp"
+                        <label for="address">Address Line</label>
+                        <input type="text" class="form-control" id="address" aria-describedby="nameHelp"
                             placeholder="Enter Address Line (e.g. building number, street, etc...)">
                     </div>
 
                     <div class="pt-3">
-                        <label for="exampleGivenName1">Suburb/Town/City</label>
-                        <input type="text" class="form-control" id="exampleGivenName1" aria-describedby="nameHelp"
+                        <label for="city">Suburb/Town/City</label>
+                        <input type="text" class="form-control" id="city" aria-describedby="nameHelp"
                             placeholder="Enter Suburb/Town/City">
                     </div>
 
                     <div class="pt-3">
-                        <label for="exampleGivenName1">State</label>
-                        <input type="text" class="form-control" id="exampleGivenName1" aria-describedby="nameHelp"
+                        <label for="state">State</label>
+                        <input type="text" class="form-control" id="state" aria-describedby="nameHelp"
                             placeholder="Enter State">
                     </div>
 
                     <div class="pt-3">
-                        <label for="exampleGivenName1">Postal Code</label>
-                        <input type="text" class="form-control" id="exampleGivenName1" aria-describedby="nameHelp"
+                        <label for="postal">Postal Code</label>
+                        <input type="text" class="form-control" id="postal" aria-describedby="nameHelp"
                             placeholder="Enter Postal Code">
                     </div>
 
@@ -350,7 +350,9 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
     <script>
     var input = document.querySelector("#phone");
+    var inputs =document.querySelector("#phone1");
     window.intlTelInput(input, {});
+    window.intlTelInput(inputs, {});
     </script>
 </body>
 
