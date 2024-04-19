@@ -146,23 +146,23 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleEmail" class="fw-bold">Email</label>
-                    <div class="text-muted" style="text-decoration: underline;" id="displayUserID"></div>
+                    <label for="email" class="fw-bold">Email</label>
+                    <div class="text-muted" style="text-decoration: underline;" id="email"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleGivenName1">Given Name</label>
-                    <input type="text" class="form-control" id="exampleGivenName1" aria-describedby="nameHelp"
+                    <label for="fname">Given Name</label>
+                    <input type="text" class="form-control" name="fname" id="fname" aria-describedby="nameHelp"
                         placeholder="Enter Name">
                 </div>
 
                 <div class="form-group">
-                    <label for="exampleFamilyName">Family Name</label>
-                    <input type="text" class="form-control" id="exampleFamilyName" placeholder="Family Name">
+                    <label for="lname">Family Name</label>
+                    <input type="text" class="form-control" name="lname" id="lname" placeholder="Family Name">
 
-                    <label for="examplePhoneNumber" class="pt-3">Phone Number</label>
+                    <label for="phone" class="pt-3">Phone Number</label>
                     <div class="input-group">
-                        <input type="tel" id="phone" placeholder="Phone Number" value="+">
+                        <input type="tel" id="phone" name="number" placeholder="Phone Number" value="+">
                     </div>
                 </div>
 
@@ -179,7 +179,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                         placeholder="Enter Business Name">
                     <label for="phone1" class="pt-3">Telephone Number</label>
                     <div class="input-group">
-                        <input type="tel" id="phone1" placeholder="Telephone Number" value="+">
+                        <input type="tel" id="phone1" name="telephone" placeholder="Telephone Number" value="+">
                     </div>
 
                     <br><br>
@@ -188,31 +188,31 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
                     <div class="pt-3">
                         <label for="country">Country</label>
-                        <input type="text" class="form-control" id="country" aria-describedby="nameHelp"
+                        <input type="text" class="form-control" id="country" name="country" aria-describedby="nameHelp"
                             placeholder="Enter Country">
                     </div>
 
                     <div class="pt-3">
                         <label for="address">Address Line</label>
-                        <input type="text" class="form-control" id="address" aria-describedby="nameHelp"
+                        <input type="text" class="form-control" id="address" name="address" aria-describedby="nameHelp"
                             placeholder="Enter Address Line (e.g. building number, street, etc...)">
                     </div>
 
                     <div class="pt-3">
                         <label for="city">Suburb/Town/City</label>
-                        <input type="text" class="form-control" id="city" aria-describedby="nameHelp"
+                        <input type="text" class="form-control" id="city" name="city" aria-describedby="nameHelp"
                             placeholder="Enter Suburb/Town/City">
                     </div>
 
                     <div class="pt-3">
                         <label for="state">State</label>
-                        <input type="text" class="form-control" id="state" aria-describedby="nameHelp"
+                        <input type="text" class="form-control" id="state" name="state" aria-describedby="nameHelp"
                             placeholder="Enter State">
                     </div>
 
                     <div class="pt-3">
                         <label for="postal">Postal Code</label>
-                        <input type="text" class="form-control" id="postal" aria-describedby="nameHelp"
+                        <input type="text" class="form-control" id="postal" name="postal" aria-describedby="nameHelp"
                             placeholder="Enter Postal Code">
                     </div>
 

@@ -108,10 +108,10 @@
                     <h3 class="pb-5">Billing Details</h3>
                   <div class="row">
                     <div>Billing Address</div>
-                    <div class="text-muted pb-5">same as company address</div>
+                    <div class="text-muted pb-5" id="addressText"></div>
                     <hr>
                     <div class="fw-bold">Billing Email</div>
-                    <div class="text-primary">vanessatatel.lu@gmail.com</div>
+                    <div class="text-primary" id="companyEmail"></div>
                     <div class="text-muted">ALL JAPAN JOBS  invoices for your company will be sent to your billing email.</div>
                   </div>
                 </div>
@@ -252,6 +252,12 @@
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
-      
+    <script src="../ajax/Recruiter/ProfileHandler.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        GetInfo();
+    });
+    </script>
 </body>
 </html>

@@ -12,20 +12,25 @@ function GetInfo() {
                 return;
             }
             var fullName = data.FirstName + " " + data.LastName;
-
-            $("#displayUserID").text(data.UserID);
-            $("#exampleGivenName1").val(data.FirstName);
-            $("#exampleFamilyName").val(data.LastName);
+            
+            // input type
+            $("input[name='name']").val(fullName);
+            $("input[name='fname']").val(data.FirstName);
+            $("input[name='lname']").val(data.LastName);
+            $("input[name='email']").val(data.UserID);
+            $("input[name='number']").val(data.Phone);
             $("#exampleBusunessName").val(data.CompanyName);
-            $("#phone").val(data.Phone);
-            $("#phone1").val(data.ContactNumber1);
-            $("#state").val(data.state);
-            $("#country").val(data.country);
-            $("#city").val(data.city);
-            $("#address").val(data.address_line);
-            $("#postal").val(data.postal);
+            $("input[name='telephone']").val(data.ContactNumber1);
+            $("input[name='state']").val(data.state);
+            $("input[name='country']").val(data.country);
+            $("input[name='city']").val(data.city);
+            $("input[name='address']").val(data.address_line);
+            $("input[name='postal']").val(data.postal);
+
+            // Para sa not input type
             $("#email").text(data.UserID);
             $("#emails").text(data.UserID);
+            $("#companyEmail").text(data.EmailAddress);
             $("#fullName").text(fullName);
             $("#companyName").text(data.CompanyName);
             $("#phoneNum").text(data.Phone);
@@ -35,7 +40,6 @@ function GetInfo() {
             $("#cityText").text(data.city);
             $("#addressText").text(data.address_line);
             $("#postalText").text(data.postal);
-
 
         },
         error: function(xhr, status, error) {

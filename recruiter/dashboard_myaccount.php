@@ -151,6 +151,7 @@
                             data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
 
                         <!-- Modal -->
+                        <form id="editForm">
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenter" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -164,12 +165,15 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <label>Name</label>
-                                        <input type="tel" class="form-control" id="name" placeholder="Enter Name">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" name="fname" placeholder="Enter First Name">
+
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" name="lname" placeholder="Enter Last Name">
                                         <label class="pt-2">Email</label>
-                                        <input type="text" class="form-control" id="email" placeholder="Enter Email">
+                                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
                                         <label class="pt-2">Phone Number</label>
-                                        <input type="tel" class="form-control" id="number"
+                                        <input type="tel" class="form-control" id="number" name="number"
                                             placeholder="Enter Phone Number">
                                     </div>
 
@@ -182,6 +186,7 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -224,6 +229,7 @@
                             data-toggle="modal" data-target="#exampleModalCenter2">Edit</a>
 
                         <!-- Modal -->
+                        <form id="companyEditForm">
                         <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenter2" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -237,20 +243,20 @@
 
                                     <div class="modal-body">
                                         <label>Telephone Number</label>
-                                        <input type="tel" class="form-control" id="number"
+                                        <input type="tel" class="form-control" name="telephone"
                                             placeholder="Enter Telephone Number">
                                         <label class="pt-2">Country</label>
-                                        <input type="tel" class="form-control" id="number" placeholder="Enter Country">
+                                        <input type="text" class="form-control" name="country" placeholder="Enter Country">
                                         <label class="pt-2">Address Line</label>
-                                        <input type="tel" class="form-control" id="number"
+                                        <input type="text" class="form-control" name="address"
                                             placeholder="Enter Address Line (e.g. building number, street, etc...)">
                                         <label class="pt-2">Suburb/Town/City</label>
-                                        <input type="tel" class="form-control" id="number"
+                                        <input type="text" class="form-control" name="city"
                                             placeholder="Enter Suburb/Town/City">
                                         <label class="pt-2">State</label>
-                                        <input type="tel" class="form-control" id="number" placeholder="Enter State">
+                                        <input type="text" class="form-control" name="state" placeholder="Enter State">
                                         <label class="pt-2">Postal Code</label>
-                                        <input type="tel" class="form-control" id="number"
+                                        <input type="number" class="form-control" name="postal"
                                             placeholder="Enter Postal Code">
                                     </div>
 
@@ -262,6 +268,7 @@
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -288,6 +295,7 @@
                             data-toggle="modal" data-target="#exampleModalCenter3">Edit</a>
 
                         <!-- Modal -->
+                        <form id="changePassForm">
                         <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenter3" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -300,25 +308,23 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <label>Old Password</label>
-                                        <input type="password" class="form-control" id="pass"
-                                            placeholder="Enter your old password">
                                         <label class="pt-2">New Password</label>
                                         <input type="password" class="form-control" id="pass"
-                                            placeholder="Enter your new password">
+                                            placeholder="Enter your new password" name="pass">
                                         <label class="pt-2">Re-enter Password</label>
-                                        <input type="password" class="form-control" id="pass"
+                                        <input type="password" class="form-control" id="rpass" name="rpass"
                                             placeholder="Re-enter your new password">
                                     </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary"
                                             data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save Password</button>
+                                        <button class="btn btn-primary" onclick="ChangePass('changePassForm');" id="btnChangePass" type="submit">Save Password</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -438,8 +444,12 @@
 
     <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
+    <script src="../ajax/Recruiter/ChangePassHandler.js"></script>
     <script>
     $(document).ready(function() {
+        $('#btnChangePass').click(function() {
+            ChangePass('changePassForm');
+            });
         GetInfo();
     });
     </script>
