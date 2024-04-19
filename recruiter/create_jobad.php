@@ -23,10 +23,10 @@
       });
     </script>
 
-    <title>Create Job Ad Page 2</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
-  </head>
-  <body>
+    <title>Create Job Ad</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
+</head>
+<body>
           <!--Navbar Header-->
           <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
             <div class="container-fluid">
@@ -41,7 +41,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -71,9 +71,9 @@
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Billing</a>
+                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                       </li>
@@ -89,88 +89,90 @@
 
         <div class="progress-card">
             <div class="progress-status">
-                <a href="/recruiter/create_jobad.html">
+                <a href="/recruiter/dashboard_recruiter.php">
                   <button type="button" class="btn btn-icon btn-round btn-primary">
                     <i class="fa fa-arrow-circle-left"></i>
                   </button>
                 </a>
-                <span class="text-muted fw-bold">50%</span>
+                <span class="text-muted fw-bold">25%</span>
             </div>
             <div class="progress" style="height: 6px;">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="50%"></div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="25%"></div>
             </div>
         </div>
-    </div>
 
-        <h2 class="container d-flex justify-content-center">Select an Ad Type</h2>
         <form>
-          <div class="row justify-content-center align-items-center mb-5">
-						<div class="col-md-3 pl-md-0 pr-md-0">
-							<div class="card-pricing2 card-primary">
-								<div class="pricing-header">
-									<h3 class="fw-bold">Basic</h3>
-									<span class="sub-title">Including VAT</span>
-								</div>
-								<div class="price-value">
-									<div class="value">
-										<span class="currency">$</span>
-										<span class="amount">124.<span>20</span></span>
-										<span class="month">/month</span>
-									</div>
-								</div>
-								<ul class="pricing-content">
-									<li>30 days listing</li>
-									<li>Good visibility to candidates</li>
-									<li>Get candidates fast</li>
-									<li>Credit to access our talent candidates</li>
-									<li>Include your company logo</li>
-								</ul>
-								<a href="#" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Select</a>
-							</div>
-						</div>
-						<div class="col-md-3 pr-md-0">
-							<div class="card-pricing2 card-secondary">
-								<div class="pricing-header">
-									<h3 class="fw-bold">Premium</h3>
-									<span class="sub-title">Including VAT</span>
-								</div>
-								<div class="price-value">
-									<div class="value">
-										<span class="currency">$</span>
-										<span class="amount">180.<span>98</span></span>
-										<span class="month">/month</span>
-									</div>
-								</div>
-								<ul class="pricing-content">
-									<li>30 days listing</li>
-									<li>Good visibility to candidates</li>
-									<li>Get candidates fast</li>
-									<li>Credit to access our talent candidates</li>
-									<li>Access to analytics and reporting</li>
-                  <li>Add company image to promote your brand</li>
-                  <li>Include 3 key selling points to attract candidates</li>
-                  <li>Priority listing in search</li>
-								</ul>
-								<a href="#" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Select</a>
-							</div>
-						</div>
-					</div>
+          <h2>Pay Details</h2>
+          <h4>Pay type</h4>
+          <div class="form-check row cols-4" aria-required="true">
 
-            <div class="card container justify-content-center" style="width: 85%;">
-                <div class="card-body">
-                    Ad prices may vary based on a number of factors including the supply of and demand for, 
-                    candidates for the role being advertised. Prices may change in response to these factors changing.
+            <label class="form-radio-label col">
+                <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                <span class="form-radio-sign">Hourly Rate</span>
+            </label>
+
+            <label class="form-radio-label ml-3 col">
+                <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                <span class="form-radio-sign">Monthly Salary</span>
+            </label>
+
+            <label class="form-radio-label ml-3 col">
+                <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                <span class="form-radio-sign">Annual Salary</span>
+            </label>
+
+            <label class="form-radio-label ml-3 col">
+              <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+              <span class="form-radio-sign">Annual plus commission</span>
+          </label>
+          </div>
+
+            <div class="form-group">
+                <label for="exampleFamilyName">Pay Range</label>
+                <div class="text-muted pb-3">enter a subsurb, city or region(e.g. Malate Manila)</div>
+                <div class="row">
+                  <div class="col">
+                    <label for="exampleCurrency">Currency</label>
+                    <div class="input-group-append">
+                      <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Currency</button>
+                      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
+                          <a class="dropdown-item" href="#">test</a>
+                          <a class="dropdown-item" href="#">test2</a>
+                          <a class="dropdown-item" href="#">test3</a>
+                          <a class="dropdown-item" href="#">test4</a>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="col">
+                    <label for="exampleCurrency">From</label>
+                    <input type="text" class="form-control" id="exampleFamilyName" placeholder="Min. pay">
+                  </div>
+                  <div class="col">
+                    <label for="exampleCurrency">To</label>
+                    <input type="text" class="form-control" id="exampleFamilyName" placeholder="Max. pay">
+                  </div>
                 </div>
+                
             </div>
-            
+            <hr>
 
-            <div class="container justify-content-center form-group mt-3 mb-5">   
-              <a href="/recruiter/create_jobad3.html"><button class="btn btn-danger" type="button">Continue</button></a>
-              <button class="btn btn-outline-danger">Save Draft</button>
+            <div class="form-check row">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                <span class="form-check-sign">Hide Salary on your Ad</span>
+              </label>
+              <h4 class="mt-5">Advertise Privately</h4>
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                <span class="form-check-sign">Hide company name, reviews, branding on job ads.</span>
+              </label>
+            </div>
+
+            <div class="form-group mt-3 mb-5">   
+              <a href="/GST_Project/recruiter/create_jobad2.php"class="btn btn-danger" type="button">Continue</a>
             </div>
             
         </form>
-
     </div>
 
 

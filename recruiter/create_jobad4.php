@@ -21,7 +21,7 @@
 	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
 
     <title>Create Job Ad Page 4</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
   </head>
   <body>
           <!--Navbar Header-->
@@ -38,7 +38,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -68,9 +68,9 @@
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Billing</a>
+                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                       </li>
@@ -86,7 +86,7 @@
 
         <div class="progress-card">
             <div class="progress-status">
-                <a href="/recruiter/create_jobad3.html">
+                <a href="/recruiter/create_jobad3.php">
                   <button type="button" class="btn btn-icon btn-round btn-primary">
                     <i class="fa fa-arrow-circle-left"></i>
                   </button>
@@ -211,8 +211,7 @@
             <input type="tel" class="form-control" placeholder="">
             </div>
             <div class="form-group mt-5 mb-5">   
-                <a href="/recruiter/create_jobadPAY.html" class="btn btn-danger" type="button">Continue</a>
-                <button class="btn btn-outline-danger" type="submit">Save Draft</button>
+                <a href="/GST_Project/recruiter/create_jobadPAY.php" class="btn btn-danger" type="button">Continue</a>
             </div>
 
         </div>

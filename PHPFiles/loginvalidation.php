@@ -53,11 +53,18 @@ if (isset($_POST['UserID']) && isset($_POST['Password'])) {
             if (password_verify($Password, $rowAccount['Password'])) {
                 if ($rowAccount['Role'] == 0) {
                     echo "0";
-                } else if ($rowAccount['Role'] == 1 || $rowAccount['Role'] == 2) {
+                } else if ($rowAccount['Role'] == 1) {
                     echo "5";
-                } else {
+                } else if ($rowAccount['Role'] == 2) {
+                    echo "4";
+                }
+                 else {
                     echo "6";
                 }
+
+                date_default_timezone_set('Asia/Manila');
+                $_SESSION['start'] = time();
+                $_SESSION['expire'] = $_SESSION['start'] + (60*360);
 
                 $_SESSION['AccountID'] = $rowAccount['AccountID'];
                 $_SESSION['Access'] = $rowAccount['Role'];

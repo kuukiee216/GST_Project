@@ -1,18 +1,7 @@
-<?php
-  SESSION_START();
-
-  date_default_timezone_set('Asia/Manila');
-  $currentDateTime = time();
-
-  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
-      header ("Location: ../PHPFiles/Applicant/logout.php");
-  }
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 
@@ -33,16 +22,16 @@
 		});
 	</script>
 
-    <title>Job Posting</title>
+    <title>Applicant List 2</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
     <div class="wrapper">
         <div class="main-header">
 			<!-- Logo Header -->
-			<div class="logo-header bg-danger">
+			<div class="logo-header" data-background-color="blue">
 				
-				<a href="admin_dashboard_main.php" class="logo">
+				<a href="admin_dashboard_main.html" class="logo">
 					<img src="../assets/img/JapanJobs.png" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,7 +49,7 @@
 			<!-- End Logo Header -->
 
 			<!-- Navbar Header -->
-			<nav class="navbar navbar-header navbar-expand-lg bg-danger">
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
 				<div class="container-fluid">
 					<div class="collapse" id="search-nav">
 						<form class="navbar-left navbar-form nav-search mr-md-3">
@@ -177,7 +166,7 @@
 												<h4>Meow</h4>
 												<p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
-										</div>btn
+										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
@@ -187,7 +176,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href=" ../PHPFiles/Applicant/logout.php">Logout</a>
+										<a class="dropdown-item" href="#">Logout</a>
 									</li>
 								</div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
 							</ul>
@@ -223,31 +212,31 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a href="admin_dashboard_main.php">
+							<a href="/admin/admin_dashboard_main.html">
 								<i class="fas fa-th-list"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="job_posting.php">
+							<a href="/admin/job_posting.html">
 								<i class="fas fa-briefcase"></i>
 								<p>Job Posting</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="employer_list.php">
+							<a href="/admin/employer_list.html">
 								<i class="fas fa-building"></i>
 								<p>Employer List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="applicant_list.php">
+							<a href="/admin/applicant_list.html">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="application.html">
+							<a href="/admin/application.html">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -301,114 +290,51 @@
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
-                        <h1 class="text-dark">JOB POSTING</h1>
+                        <h1 class="text-dark">Applicant List</h1>
                     </div>
                 </div>
-
-                <div class="row px-4">
-                    <div class="col-md-12">
+				
+               
+                    <div class="container-fluid flex justify-content-center">
+                        <a href="#" class="btn btn-secondary">Back</a>
+                        <h2 class="mt-5">Applicant's Information</h2>
                         <div class="card">
-                            <div class="card-header">
-                                    <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Active');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Inactive');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowRequest" onclick="changeTableActive('Request');" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowExpired" onclick="changeTableActive('Expired');" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
-                                    </li>
-                                </ul>
-                            </div>
                             <div class="card-body">
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblActiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div>Applicants Name:</div>
+                                        <div>Phone Number:</div>
+                                        <div>Email:</div>
+                                        <div>Country:</div>
+                                        <div>Street Address:</div>
+                                        <div>City:</div>
+                                        <div>State:</div>
+                                        <div>Postal Card:</div>
+                                        <div>Registration Date:</div>
+                
                                     </div>
-                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblInactiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-3-nobd" role="tabpanel" aria-labelledby="pills-3-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblRequestJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-4-nobd" role="tabpanel" aria-labelledby="pills-4-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblExpiredJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+
+                                    <div class="col">
+                                        <div id="pf-name"><span>Genesis</span></div>
+                                        <div id="pf-contact-number"><span>+639084746563</span></div>
+                                        <div id="pf-email"><span>genesismarvinmanale12@gmail.com</span></div>
+                                        <div id="pf-country"><span>Philippines</span></div>
+                                        <div id="pf-street-address"><span>R. Liwag St. Cabanbanan</span></div>
+                                        <div id="pf-city"><span>Pagsanjan</span></div>
+                                        <div id="pf-state"><span>Laguna</span></div>
+                                        <div id="pf-postal-card"><span>4008</span></div>
+                                        <div id="pf-registration-date"><span>2024/02/19</span></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+						<div id="applicationHistory" name="applicationHistory">
+							<h4 class="mt-3">History of Applicant's Applications</h4>
+							
+						</div>
                     </div>
-                </div>
-
-                <footer class="footer bg-danger text-white fixed-bottom">
+                        
+                <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul class="nav">
@@ -439,6 +365,7 @@
                         </div>				
                     </div>
                 </footer>
+
 		    </div>
 		<!-- End Custom template -->
 	    </div>
@@ -482,45 +409,16 @@
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
 
-    <!-- PHP -->
-    <script src="../ajax/AdminJobListHandler.js"></script>
+	<!-- Scripts -->
+	<script src="../ajax/Admin/AdminApplicantListHandler.js"></script>
 
-    <!-- Events -->
-    <script>
-		
-		var activeTable = 1;
+	<script>
 
-        $(document).ready(function() {
+		$(document).ready(function(){
+			getApplicantContent();
+			getApplicationHistory();
+		});
 
-            fillJobPostList(activeTable);
-
-            $('#tblActiveJobPosting').DataTable();
-            $('#tblInactiveJobPosting').DataTable();
-            $('#tblRequestJobPosting').DataTable();
-            $('#tblExpiredJobPosting').DataTable();
-        });
-
-
-		function changeTableActive(status){
-			switch(status){
-				case 'Active':
-					activeTable = 1;
-					break;
-				case 'Inactive':
-					activeTable = 2;
-					break;
-				case 'Request':
-					activeTable = 3;
-					break;
-				case 'Expired':
-					activeTable = 4;
-					break;
-			}
-
-			fillApplicantList(activeTable);
-
-		}
-
-    </script>
+	</script>
 </body>
 </html>

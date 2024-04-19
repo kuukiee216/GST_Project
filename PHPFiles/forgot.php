@@ -1,5 +1,5 @@
 <?php
-require_once 'db_config.php';
+require_once 'db_config (online database)/db_config.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 session_start();

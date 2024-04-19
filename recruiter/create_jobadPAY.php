@@ -33,7 +33,7 @@
         </script>
 
     <title>Pay and Post</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
   </head>
   <body>
           <!--Navbar Header-->
@@ -50,7 +50,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -80,9 +80,10 @@
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Billing</a>
+                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
+                        <div class="dropdown-divider"></div>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                       </li>
@@ -95,7 +96,7 @@
           <!--End Navbar-->
 
     <div class="container flex justify-content-center mt-5" style="width: 80%;">
-        <a href="/recruiter/create_jobad4.html">
+        <a href="/recruiter/create_jobad4.php">
             <button type="button" class="btn btn-icon btn-round btn-primary">
               <i class="fa fa-arrow-circle-left"></i>
             </button>
@@ -267,15 +268,15 @@
             <div class="row cols-3" style="width: 30%;">
 
                 <div class="col">
-                    <img class="card-img-top" src="/assets/img/visa.png" alt="visa">
+                    <img class="card-img-top" src="../assets/img/visa.png" alt="visa">
                 </div>
                 
                 <div class="col">
-                    <img class="card-img-top" src="/assets/img/mastercard.png" alt="visa">
+                    <img class="card-img-top" src="../assets/img/mastercard.png" alt="visa">
                 </div>
                 
                 <div class="col">
-                    <img class="card-img-top" src="/assets/img/americanexpress.png" alt="visa">
+                    <img class="card-img-top" src="../assets/img/americanexpress.png" alt="visa">
                 </div>
                 
             </div>
@@ -318,7 +319,7 @@
         </div>
           <div class="mb-5">
             <a class="btn btn-danger" type="button" id="alert_demo_3_3">post my Ad</a>
-            <a href="/recruiter/create_jobadPreview.html" class="btn btn-outline-danger">Preview</a>
+            <a href="/GST_Project/recruiter/create_jobadPreview.php" class="btn btn-outline-danger">Preview</a>
           </div>
     </div>
 

@@ -3,28 +3,21 @@
 <head>
 
     <!-- Required meta tags -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS Files -->
-	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
-    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../assets/css/atlantis.css">
+    <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <!-- Fonts and icons -->
-    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-    <script>
-      WebFont.load({
-        google: {"families":["Lato:300,400,700,900"]},
-        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
-        active: function() {
-          sessionStorage.fonts = true;
-        }
-      });
-    </script>
-
-    <title>Create Job Ad</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <title>Create Job Ad Page 3</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 <body>
           <!--Navbar Header-->
@@ -41,7 +34,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -71,9 +64,9 @@
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Billing</a>
+                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                       </li>
@@ -89,91 +82,147 @@
 
         <div class="progress-card">
             <div class="progress-status">
-                <a href="/recruiter/dashboard_recruiter.html">
+                <a href="/recruiter/create_jobad2.php">
                   <button type="button" class="btn btn-icon btn-round btn-primary">
                     <i class="fa fa-arrow-circle-left"></i>
                   </button>
                 </a>
-                <span class="text-muted fw-bold">25%</span>
+                <span class="text-muted fw-bold">75%</span>
             </div>
             <div class="progress" style="height: 6px;">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="25%"></div>
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="75%"></div>
             </div>
         </div>
 
         <form>
-          <h2>Pay Details</h2>
-          <h4>Pay type</h4>
-          <div class="form-check row cols-4" aria-required="true">
 
-            <label class="form-radio-label col">
-                <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-                <span class="form-radio-sign">Hourly Rate</span>
-            </label>
-
-            <label class="form-radio-label ml-3 col">
-                <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                <span class="form-radio-sign">Monthly Salary</span>
-            </label>
-
-            <label class="form-radio-label ml-3 col">
-                <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                <span class="form-radio-sign">Annual Salary</span>
-            </label>
-
-            <label class="form-radio-label ml-3 col">
-              <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-              <span class="form-radio-sign">Annual plus commission</span>
-          </label>
-          </div>
-
-            <div class="form-group">
-                <label for="exampleFamilyName">Pay Range</label>
-                <div class="text-muted pb-3">enter a subsurb, city or region(e.g. Malate Manila)</div>
-                <div class="row">
-                  <div class="col">
-                    <label for="exampleCurrency">Currency</label>
-                    <div class="input-group-append">
-                      <button class="btn btn-primary btn-border dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Currency</button>
-                      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                          <a class="dropdown-item" href="#">test</a>
-                          <a class="dropdown-item" href="#">test2</a>
-                          <a class="dropdown-item" href="#">test3</a>
-                          <a class="dropdown-item" href="#">test4</a>
-                      </div>
-                  </div>
-                  </div>
-                  <div class="col">
-                    <label for="exampleCurrency">From</label>
-                    <input type="text" class="form-control" id="exampleFamilyName" placeholder="Min. pay">
-                  </div>
-                  <div class="col">
-                    <label for="exampleCurrency">To</label>
-                    <input type="text" class="form-control" id="exampleFamilyName" placeholder="Max. pay">
-                  </div>
+            <div class="row mt-5">
+                <h4>Write about your Job</h4>
+                <h6>Showcase your brand</h6>
+                <div class="text-muted mb-5" style="width: 70%;">Create your first brand by uploading your company logo. 
+                    Cover images can be added from the success page after payment. 
                 </div>
-                
-            </div>
-            <hr>
 
-            <div class="form-check row">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-sign">Hide Salary on your Ad</span>
-              </label>
-              <h4 class="mt-5">Advertise Privately</h4>
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
-                <span class="form-check-sign">Hide company name, reviews, branding on job ads.</span>
-              </label>
+                <div class="card text-white" style="width: 40%;">
+                    <img class="card-img" src="/assets/img/icon.png" alt="Card image">
+                    <div class="card-img-overlay">
+                        <div class="form-group">
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Job Description</h4>
+                <div class="text-muted mb-3">Enter your job details or let us guide you through what to write.</div>
+
+                <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab-nobd" data-toggle="pill" href="#pills-home-nobd" role="tab" aria-controls="pills-home-nobd" aria-selected="true">Write your Own</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab-nobd" data-toggle="pill" href="#pills-profile-nobd" role="tab" aria-controls="pills-profile-nobd" aria-selected="false">Help me write my ad</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content mb-3" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home-nobd" role="tabpanel" aria-labelledby="pills-home-tab-nobd">
+                        <div class="form-group">
+                            <div class="row col-5">
+
+                                <div class="col">
+                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
+                                </div>
+
+                                <div class="col">
+                                    <div for="bold">
+                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="italic">
+                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="left">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="right">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-right"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <textarea class="form-control" id="comment" rows="5">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="pills-profile-nobd" role="tabpanel" aria-labelledby="pills-profile-tab-nobd">
+                        <div class="form-group">
+                            <div class="row col-5">
+
+                                <div class="col">
+                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
+                                </div>
+
+                                <div class="col">
+                                    <div for="bold">
+                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="italic">
+                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="left">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div for="right">
+                                        <a href="#" class="text-dark"><i class="fa fa-align-justify"></i></a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <textarea class="form-control" id="comment" rows="5">AI Helper
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <h4 class="mt-3">Video</h4><div class="text-muted">(optional)</div>
+            <p>Add a video to your ad. The video will appear at the bottom of your ad.</p>
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="exampleFormControlFile2">
+            </div>
+            <div class="text-muted">e.g. myVideoAd.mp4</div>
+
+            <h4 class="mt-5">Candidate search result</h4>
+            <p>Write a compelling statement about your role to entice more candidates.</p>
+            <textarea class="form-control" id="comment" rows="5">
+            </textarea>
 
             <div class="form-group mt-3 mb-5">   
-              <a href="/recruiter/create_jobad2.html"class="btn btn-danger" type="button">Continue</a>
-              <button class="btn btn-outline-danger">Save Draft</button>
+              <a href="/GST_Project/recruiter/create_jobad4.php" class="btn btn-danger" type="button">Continue</a>
             </div>
             
         </form>
+
     </div>
 
 

@@ -234,7 +234,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
             </nav>
             <div class="ml-auto">
                 © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-            </div>				
+            </div>
         </div>
     </footer>
 

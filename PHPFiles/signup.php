@@ -58,23 +58,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($emailExists) {
             echo "6";
             die();
-        }   
+        }
 
         $Token = generateRandomString();
         $expirationTime = time() + 3600;
         $Token .= '_' . $expirationTime;
 
         $connection->beginTransaction();
+        $currrentDateTime = date("Y/m/d");
 
-        $sQrySignUp = "INSERT INTO tbl_account (UserID, Password, Token) VALUES (?, ?, ?)";
+
+        $sQrySignUp = "INSERT INTO tbl_account (UserID, Password, Token, RegistrationDate) VALUES (?, ?, ?, ?)";
         $stmtSignUp = $connection->prepare($sQrySignUp);
         $stmtSignUp->bindValue(1, $Email, PDO::PARAM_STR);
         $stmtSignUp->bindValue(2, $HashPass, PDO::PARAM_STR);
         $stmtSignUp->bindValue(3, $Token, PDO::PARAM_STR);
+        $stmtSignUp->bindValue(4, $currrentDateTime, PDO::PARAM_STR);
         $stmtSignUp->execute();
 
         $accountID = $connection->lastInsertId();
-        
+
         $sQryApplicantInfo = "INSERT INTO tbl_applicantinfo (AccountID, LastName, FirstName, MiddleName, EmailAddress) VALUES (?, '', '', '', ?)";
         $stmtApplicantInfo = $connection->prepare($sQryApplicantInfo);
         $stmtApplicantInfo->bindValue(1, $accountID, PDO::PARAM_INT);
@@ -83,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $connection->commit();
 
-
+        
         $recipient = $Email;
         $subject = "Email Verification";
         $verificationLink = "http://localhost/GST_Project/applicant/almost_done.php?Token=$Token";

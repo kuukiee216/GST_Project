@@ -6,37 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../assets/css/atlantis.css">
-    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-
     <!-- CSS Files -->
 	  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	  <link rel="stylesheet" href="../assets/css/atlantis.min.css">
+    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
 
     <!-- Fonts and icons -->
     <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-      <script>
-        WebFont.load({
-          google: {"families":["Lato:300,400,700,900"]},
-          custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
-          active: function() {
+    <script>
+      WebFont.load({
+        google: {"families":["Lato:300,400,700,900"]},
+        custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['../assets/css/fonts.min.css']},
+        active: function() {
           sessionStorage.fonts = true;
-          }
-        });
+        }
+      });
     </script>
 
-
-    <title>Dashboard My Billing</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
-</head>
-<body>
+    <title>Create Job Ad Page 2</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
+  </head>
+  <body>
           <!--Navbar Header-->
           <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
             <div class="container-fluid">
@@ -51,7 +41,7 @@
                         </a>
                     </li>
                       <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                        <a class="nav-link text-white" href="dashboard_recruiter.php">Home</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-white" href="#">Japan Ads</a>
@@ -81,9 +71,9 @@
                       </li>
                       <li>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Account</a>
+                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">My Billing</a>
+                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Logout</a>
                       </li>
@@ -95,62 +85,96 @@
           </nav>
           <!--End Navbar-->
 
-      <div class="container pt-5 pb-5">
-        <h2 class="pb-5 pt-5">Account Details</h2>
-        <div class="card">
-            <div class="card-body">
-              <div class="row row-cols-3 text-start">
-        
-                <div class="col">
-                    <img src="/assets/img/image7.png" style="height: 60px;">
-                </div>
-                <div class="col">
-                    <h3 class="pb-5">Billing Details</h3>
-                  <div class="row">
-                    <div>Billing Address</div>
-                    <div class="text-muted pb-5">same as company address</div>
-                    <hr>
-                    <div class="fw-bold">Billing Email</div>
-                    <div class="text-primary">vanessatatel.lu@gmail.com</div>
-                    <div class="text-muted">ALL JAPAN JOBS  invoices for your company will be sent to your billing email.</div>
-                  </div>
-                </div>
-                <div class="row">
-                    <a class="text-primary float-right" style="text-decoration: underline;" type="button" data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
+    <div class="container flex justify-content-center mt-5" style="width: 50%;">
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Billing Address</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            </div>
-
-                            <div class="modal-body">
-                            <label>Billing Address</label>
-                            <input type="text" class="form-control" id="place" placeholder="address">
-                            <label>Billing Email</label>
-                            <input type="text" class="form-control" id="Bemail" placeholder="email">
-                            </div>
-
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
+        <div class="progress-card">
+            <div class="progress-status">
+                <a href="/recruiter/create_jobad.php">
+                  <button type="button" class="btn btn-icon btn-round btn-primary">
+                    <i class="fa fa-arrow-circle-left"></i>
+                  </button>
+                </a>
+                <span class="text-muted fw-bold">50%</span>
             </div>
-          </div>
-      </div>
+            <div class="progress" style="height: 6px;">
+                <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="50%"></div>
+            </div>
+        </div>
+    </div>
+
+        <h2 class="container d-flex justify-content-center">Select an Ad Type</h2>
+        <form>
+          <div class="row justify-content-center align-items-center mb-5">
+						<div class="col-md-3 pl-md-0 pr-md-0">
+							<div class="card-pricing2 card-primary">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Basic</h3>
+									<span class="sub-title">Including VAT</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">124.<span>20</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>30 days listing</li>
+									<li>Good visibility to candidates</li>
+									<li>Get candidates fast</li>
+									<li>Credit to access our talent candidates</li>
+									<li>Include your company logo</li>
+								</ul>
+								<a href="#" class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3">Select</a>
+							</div>
+						</div>
+						<div class="col-md-3 pr-md-0">
+							<div class="card-pricing2 card-secondary">
+								<div class="pricing-header">
+									<h3 class="fw-bold">Premium</h3>
+									<span class="sub-title">Including VAT</span>
+								</div>
+								<div class="price-value">
+									<div class="value">
+										<span class="currency">$</span>
+										<span class="amount">180.<span>98</span></span>
+										<span class="month">/month</span>
+									</div>
+								</div>
+								<ul class="pricing-content">
+									<li>30 days listing</li>
+									<li>Good visibility to candidates</li>
+									<li>Get candidates fast</li>
+									<li>Credit to access our talent candidates</li>
+									<li>Access to analytics and reporting</li>
+                  <li>Add company image to promote your brand</li>
+                  <li>Include 3 key selling points to attract candidates</li>
+                  <li>Priority listing in search</li>
+								</ul>
+								<a href="#" class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3">Select</a>
+							</div>
+						</div>
+					</div>
+
+            <div class="card container justify-content-center" style="width: 85%;">
+                <div class="card-body">
+                    Ad prices may vary based on a number of factors including the supply of and demand for, 
+                    candidates for the role being advertised. Prices may change in response to these factors changing.
+                </div>
+            </div>
+            
+
+            <div class="container justify-content-center form-group mt-3 mb-5">   
+              <a href="/GST_Project/recruiter/create_jobad3.php"><button class="btn btn-danger" type="button">Continue</button></a>
+            </div>
+            
+        </form>
+
+    </div>
+
 
     <!--bottom navbar-->
-    <footer class="footer fixed-bottom text-white" style="background-color:#187498">
+    <footer class="footer text-white" style="background-color:#187498">
       <div class="container-fluid">
           <nav class="pull-left">
               <ul class="nav">

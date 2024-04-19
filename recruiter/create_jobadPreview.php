@@ -24,7 +24,7 @@
        <nav class="navbar navbar-expand-sm">
         <div class="container-fluid">
           <form class="">
-            <a class="navbar-brand font-RR text-white" href="/recruiter/dashboard_recruiter.html">
+            <a class="navbar-brand font-RR text-white" href="/recruiter/dashboard_recruiter.php">
               <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan jobs</a>
                 </form>
   
@@ -32,7 +32,7 @@
   
                 <ul class="navbar nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.html">Home</a>
+                    <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
                   </li>
   
                   <li class="nav-item">
@@ -49,8 +49,8 @@
                       gen.test
                   </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="/recruiter/dashboard_myaccount.html">My Account</a>
-                      <a class="dropdown-item" href="/recruiter/dashboard_billing.html">My Billing</a>
+                      <a class="dropdown-item" href="/recruiter/dashboard_myaccount.php">My Account</a>
+                      <a class="dropdown-item" href="/recruiter/dashboard_billing.php">My Billing</a>
                       <a class="dropdown-item" href="#">Logout</a>
                     </div>
                   </div>
@@ -60,7 +60,7 @@
       </nav>
 
       <div class="container flex justify-content-center mt-5" style="width: 70%;">
-        <a href="/recruiter/create_jobadPAY.html">
+        <a href="/recruiter/create_jobadPAY.php">
           <button type="button" class="btn btn-icon btn-round btn-primary">
             <i class="fa fa-arrow-circle-left"></i>
           </button>
