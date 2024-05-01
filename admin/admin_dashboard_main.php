@@ -4,10 +4,11 @@
   date_default_timezone_set('Asia/Manila');
   $currentDateTime = time();
 
-//   if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
-//       header ("Location: ../PHPFiles/Applicant/logout.php");
-//   }
+  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
+      header ("Location: ../PHPFiles/Applicant/logout.php");
+  }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -182,7 +183,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="../admin/settings_system_logs.html">System Logs</a>
+										<a class="dropdown-item" href="../admin/settings_system_logs.php">System Logs</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
@@ -246,7 +247,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="application.html">
+							<a href="application.php">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -260,27 +261,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="settings_job_classification.html">
+										<a href="settings_job_classification.php">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_job_title.html">
+										<a href="settings_job_title.php">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_locations.html">
+										<a href="settings_locations.php">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_posting_fee.html">
+										<a href="settings_posting_fee.php">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_system_logs.html">
+										<a href="settings_system_logs.php">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -288,7 +289,7 @@
 							</div>
 						</li>
 						<li class="mx-3 mt-3">
-							<a href="#" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a> 
+							<a href="../PHPFiles/Applicant/logout.php" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a> 
 						</li>
 					</ul>
 				</div>
@@ -544,6 +545,8 @@
 
 	<script src="../src/Admin/AdminHandler.js"></script>
 
+
+	
 	<script>
 		$(document).ready(function(){
 			filltotalemployers();

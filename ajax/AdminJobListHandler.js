@@ -1,6 +1,6 @@
 function fillJobPostList(activeTable){
     var current_Table = "#tblActiveJobPosting";
-
+    
     switch(activeTable){
         case 1:
             current_Table = "#tblActiveJobPosting";

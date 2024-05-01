@@ -212,31 +212,31 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/admin_dashboard_main.html">
+							<a href="admin_dashboard_main.php">
 								<i class="fas fa-th-list"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/job_posting.html">
+							<a href="job_posting.php">
 								<i class="fas fa-briefcase"></i>
 								<p>Job Posting</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/employer_list.html">
+							<a href="employer_list.php">
 								<i class="fas fa-building"></i>
 								<p>Employer List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/applicant_list.html">
+							<a href="applicant_list.php">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/application.html">
+							<a href="application.php">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -250,27 +250,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="/admin/settings_job_classification.html">
+										<a href="settings_job_classification.php">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_job_title.html">
+										<a href="settings_job_title.php">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_locations.html">
+										<a href="settings_locations.php">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_posting_fee.html">
+										<a href="settings_posting_fee.php">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_system_logs.html">
+										<a href="settings_system_logs.php">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -278,7 +278,7 @@
 							</div>
 						</li>
 						<li class="mx-3 mt-3">
-							<a href="#" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a> 
+							<a href="../PHPFiles/Applicant/logout.php" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a> 
 						</li>
 					</ul>
 				</div>
@@ -296,7 +296,7 @@
 				
                
                     <div class="container-fluid flex justify-content-center">
-                        <a href="#" class="btn btn-secondary">Back</a>
+                        <a href="applicant_list.php" class="btn btn-secondary">Back</a>
                         <h2 class="mt-5">Applicant's Information</h2>
                         <div class="card">
                             <div class="card-body">

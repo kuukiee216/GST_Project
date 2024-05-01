@@ -16,7 +16,7 @@ if(isset($_POST['JobPostID'])){
         $sQryArchiveJobPost = "UPDATE 
                                     tbl_companyjob
                                 SET 
-                                    Status = 4 
+                                    Status = 2 
                                 WHERE 
                                     JobID = ?";
         $stmtArchiveJobPost = $connection->prepare($sQryArchiveJobPost);
