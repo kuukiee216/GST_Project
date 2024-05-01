@@ -864,6 +864,10 @@ function viewAppliedJobPosting(ID){
                 else{
                     $('#lblCoverLetter').text("You chose to apply without a cover letter.");
                 }
+
+                if(decodedResponse.QAs.length > 0){
+                    $('#divQuestionsAnswers').html(decodedResponse.QAs);
+                }
                 
                 $('#modalViewApplication').modal({
                     backdrop: 'static',

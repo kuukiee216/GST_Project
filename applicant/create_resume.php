@@ -91,13 +91,6 @@
                </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
              </ul>
            </li>
-           <li>
-             <form class="d-flex">
-               <div>
-                 <a class="text-white nav-link" href="/FILES-Recruiter Side/dashboard_recruiter.html">Recruiter Site</a>
-               </div>
-             </form>
-           </li>
          </ul>
        </div>
      </nav>
@@ -130,7 +123,7 @@
           <div class="col" id="content">
             <p id="Pname">Genesis P. Mañale</p>
             <p id="tel">+639084746563</p>
-            <p id="Pemail">genesismarvinmanale12@gmail.com</p>
+            <p id="email">genesismarvinmanale12@gmail.com</p>
             <p id="loc">Pagsanjan, Laguna</p>
           </div>
         </div>
@@ -151,22 +144,22 @@
                 </div>
 
                 <div class="modal-body">
-                    <form id="validateform">
+                    <form id="validateForm">
                       <label>Name</label>
-                      <input type="text" class="form-control" id="editInput1" placeholder="name">
-                      <span id="usernameError" class="error"></span><br><br>
+                      <input type="text" class="form-control" id="editInput1" name="editInput1" placeholder="name">
+                      <span id="nameError" class="text-danger"></span><br><br>
 
                       <label>Phone Number</label>
-                      <input type="tel" class="form-control" id="editInput2" placeholder="phone number">
-                      <span id="phoneError" class="error"></span><br><br>
+                      <input type="tel" class="form-control" id="editInput2" name="editInput2" placeholder="phone number">
+                      <span id="phoneError" class="text-danger"></span><br><br>
 
                       <label>Email Address</label>
-                      <input type="email" class="form-control" id="editInput3" placeholder="email">
-                      <span id="emailError" class="error"></span><br><br>
+                      <input type="email" class="form-control" id="editInput3" name="editInput3" placeholder="email">
+                      <span id="emailError" class="text-danger"></span><br><br>
 
                       <label>Location</label>
-                      <input type="text" class="form-control" id="editInput4" placeholder="location">
-                      <span id="locationError" class="error"></span><br><br>
+                      <input type="text" class="form-control" id="editInput4" name="editInput4" placeholder="location">
+                      <span id="locationError" class="text-danger"></span><br><br>
                     </form>
                 </div>
                 
@@ -226,9 +219,9 @@
                                 <label>Course</label>
                                 <input type="text" class="form-control" id="editInput5" placeholder="Course">
                                 <label>School</label>
-                                <input type="tel" class="form-control" id="editInput6" placeholder="school">
+                                <input type="text" class="form-control" id="editInput6" placeholder="school">
                                 <label>School Address</label>
-                                <input type="email" class="form-control" id="editInput7" placeholder="address">
+                                <input type="text" class="form-control" id="editInput7" placeholder="address">
                                 <label>Year Graduated</label>
                                 <input type="text" class="form-control" id="editInput8" placeholder="year">
                               </div>
@@ -375,343 +368,6 @@
           </div>				
       </div>
     </footer>
-
-
-    <script>      
-
-      // Function to open the edit modal
-      function opensesame() {
-        var content = document.getElementById('Pname').innerText;
-        document.getElementById('editInput1').value = content.trim();
-        var content = document.getElementById('Pemail').innerText;
-        document.getElementById('editInput2').value = content.trim();
-        var content = document.getElementById('tel').innerText;
-        document.getElementById('editInput3').value = content.trim();
-        var content = document.getElementById('loc').innerText;
-        document.getElementById('editInput4').value = content.trim();
-        $('#edit_detail').modal('show');
-      }
-
-      // Function to validate the form
-      function validateForm() {
-        let isValid = true;
-      
-        // Validate name
-        const editInput1 = document.getElementById("editInput1");
-        const usernameError = document.getElementById("usernameError");
-        if (editInput1.value.trim() === "") {
-          usernameError.textContent = "Name is required";
-          isValid = false;
-        } else {
-          usernameError.textContent = "";
-        }
-      
-        // Validate phone number
-        const editInput2 = document.getElementById("editInput2");
-        const phoneError = document.getElementById("phoneError");
-        const phoneRegex = /^\d{10}$/; // simple 10-digit phone number validation
-        if (!phoneRegex.test(phoneInput.value.trim())) {
-          phoneError.textContent = "Please enter a valid 10-digit phone number";
-          isValid = false;
-        } else {
-          phoneError.textContent = "";
-        }
-      
-        // Validate email
-        const editInput3 = document.getElementById("editInput3");
-        const emailError = document.getElementById("emailError");
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // simple email format validation
-        if (!emailRegex.test(emailInput.value.trim())) {
-          emailError.textContent = "Please enter a valid email address";
-          isValid = false;
-        } else {
-          emailError.textContent = "";
-        }
-      
-        // Validate location
-        const editInput4 = document.getElementById("editInput4");
-        const locationError = document.getElementById("locationError");
-        if (locationInput.value.trim() === "") {
-          locationError.textContent = "Location is required";
-          isValid = false;
-        } else {
-          locationError.textContent = "";
-        }
-      
-        // If all fields are valid, submit the form
-        if (isValid) {
-          alert("Profile created successfully!");
-          $('#myModal').modal('hide'); // Hide modal on successful submission
-          document.getElementById("profileForm").reset(); // Reset the form
-        }
-      }
-
-        // Function to save changes made in the modal
-        function saveChanges() {
-          var editedContent = document.getElementById('editInput1').value;
-          document.getElementById('Pname').innerText = editedContent;
-          var editedContent = document.getElementById('editInput2').value;
-          document.getElementById('tel').innerText = editedContent;
-          var editedContent = document.getElementById('editInput3').value;
-          document.getElementById('Pemail').innerText = editedContent;
-          var editedContent = document.getElementById('editInput4').value;
-          document.getElementById('loc').innerText = editedContent;
-          $('#edit_detail').modal('hide');
-        }
-
-      </script>
-
-
-      <script> //hehe ang galing
-        function saveInput() {
-          // Get input value
-          var inputValue = document.getElementById('summary').value;
-          var inputValue2 = document.getElementById('role').value;
-          var inputValue3 = document.getElementById('about').value;
-        
-          // Get the output div
-          var outputDiv = document.getElementById('outputDiv');
-          var outputDiv2 = document.getElementById('outputDiv2');
-          var outputDiv3 = document.getElementById('outputDiv3');
-        
-          // Clear previous content
-          outputDiv.innerHTML = '';
-          outputDiv2.innerHTML = '';
-        
-          // Set input value as text content of the output div
-          outputDiv.textContent = inputValue;
-          outputDiv2.textContent = inputValue2;
-          outputDiv3.textContent = inputValue3;
-        }
-      </script>
-
-      <script>
-        function addCard() {
-          // Clone the card template
-          var cardTemplate = document.getElementById('cardTemplate');
-          //var newCard = cardTemplate.cloneNode(true);
-
-          // Create a new div element for the card
-          var newCard = document.createElement("div");
-          
-          // Set the inner HTML content for the card
-          newCard.innerHTML = `
-                    <div class="container card">
-                      <div class="card-body">
-                        <div class="row">
-          
-                          <div class="col" id="content2">
-                            <h5 id="course" class="card-title mb-3">College Course</h5>
-                            <p id="school" class="card-text mb-2">Name of College/University</p>
-                            <p id="address" class="card-text mb-2">Address</p>
-                            <p id="year" class="card-text">Year Graduated</p>
-                          </div>
-          
-                          <div class="col d-flex justify-content-end">
-                            <a class="btn" onclick="opensesame2()" data-toggle="modal"><i class="fa fa-edit"></i></a>
-                            <a class="btn" onclick="deleteCard(this)"><i class="fa fa-trash"></i></a>
-          
-                            <!-- Modal -->
-                            <div class="modal fade" id="edit_detail_educ" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                              <div class="modal-dialog modal-dialog-centered" role="document">
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLongTitle">Edit Details</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span>
-                                          </button>
-                                      </div>
-          
-                                      <div class="modal-body">
-                                          <label>Course</label>
-                                          <input type="text" class="form-control" id="editInput5" placeholder="Course">
-                                          <label>School</label>
-                                          <input type="tel" class="form-control" id="editInput6" placeholder="school">
-                                          <label>School Address</label>
-                                          <input type="email" class="form-control" id="editInput7" placeholder="address">
-                                          <label>Year Graduated</label>
-                                          <input type="text" class="form-control" id="editInput8" placeholder="year">
-                                        </div>
-                                      
-                                      <div class="modal-footer">
-                                          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                          <button type="button" onclick="saveChanges2()" class="btn btn-danger">Save changes</button>
-                                      </div>
-                                  </div>
-                                </div>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                `;
-      
-          // Show the new card by removing the 'display: none' style
-          newCard.style.display = '';
-      
-          // Append the new card to the body of the document
-          document.body.appendChild(newCard);
-      
-          // Append the new card to the card container
-          var cardContainer = document.getElementById('cardContainer');
-              cardContainer.appendChild(newCard);
-          
-          /*Get the button to add the element
-          var addButton = document.getElementById('addButton')
-
-          // Set the maximum number of elements allowed
-          var maxElements = 3;
-                  
-          // Counter to keep track of the number of elements added
-          var numElements = 1;
-                  
-          // Add event listener to the add button
-          addButton.addEventListener('click', function() {
-            if (numElements < maxElements) {
-            addCard();
-            numElements++;
-            } else {
-            alert('Maximum number of elements reached!');
-            }
-          });*/
-        }
-
-        function deleteCard(button) {
-          // Get the parent card element and remove it
-          var card = button.closest('.card');
-          card.remove();
-        }
-        </script>
-
-        <script>
-          // Function to open the edit modal
-          function opensesame2() {
-            var content2 = document.getElementById('course').innerText;
-            document.getElementById('editInput5').value = content2.trim();
-            var content2 = document.getElementById('school').innerText;
-            document.getElementById('editInput6').value = content2.trim();
-            var content2 = document.getElementById('address').innerText;
-            document.getElementById('editInput7').value = content2.trim();
-            var content2 = document.getElementById('year').innerText;
-            document.getElementById('editInput8').value = content2.trim();
-            $('#edit_detail_educ').modal('show');
-          }
-          
-          // Function to save changes made in the modal
-          function saveChanges2() {
-            var editedContent2 = document.getElementById('editInput5').value;
-            document.getElementById('course').innerText = editedContent2;
-            var editedContent2 = document.getElementById('editInput6').value;
-            document.getElementById('school').innerText = editedContent2;
-            var editedContent2 = document.getElementById('editInput7').value;
-            document.getElementById('address').innerText = editedContent2;
-            var editedContent2 = document.getElementById('editInput8').value;
-            document.getElementById('year').innerText = editedContent2;
-            $('#edit_detail_educ').modal('hide');
-          }
-        </script>
-
-        <script>
-          // Function to add an element to the card
-          function addSkill() {
-            // Get the input value
-            var inputValue = document.getElementById('skills').value;
-          
-            // Create a new card element
-            var newCard = document.createElement('div');
-            newCard.innerHTML = `
-              <div id="addNewSkill" class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5>${inputValue}</h5>
-                    </div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col d-flex align-items-end">
-                      <a onclick="deleteSkill(this)" class="btn"><i class="fa fa-trash"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;
-          
-            // Append the new card to the card container
-            var cardContainer2 = document.getElementById('cardContainer2');
-            cardContainer2.appendChild(newCard);
-          
-            // Clear the input field
-            document.getElementById('skills').value = '';
-          }
-  
-          function deleteSkill(button) {
-            // Get the parent card element and remove it
-            var card = button.closest('.card');
-            card.remove();
-          }
-        </script>
-
-        <script>
-          // Function to add an element to the card
-          function addLang() {
-            // Get the input value
-            var inputValue = document.getElementById('languages').value;
-          
-            // Create a new card element
-            var newCard = document.createElement('div');
-            newCard.innerHTML = `
-              <div id="addNewSkill" class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5>${inputValue}</h5>
-                    </div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col d-flex align-items-end">
-                      <a onclick="deleteSkill(this)" class="btn"><i class="fa fa-trash"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            `;
-          
-            // Append the new card to the card container
-            var cardContainer3 = document.getElementById('cardContainer3');
-            cardContainer3.appendChild(newCard);
-          
-            // Clear the input field
-            document.getElementById('Languages').value = '';
-          }
-  
-          function deleteLang(button) {
-            // Get the parent card element and remove it
-            var card = button.closest('.card');
-            card.remove();
-          }
-        </script>
-
-
 
   <!-- Bootstrap JS (for modal) -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

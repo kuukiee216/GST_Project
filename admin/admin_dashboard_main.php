@@ -327,7 +327,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Job Category</p>
-                                            <h4 class="card-title" id="">0</h4>
+                                            <h4 class="card-title" id="lblTotalJobCategory">0</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -545,8 +545,7 @@
 
 	<script src="../src/Admin/AdminHandler.js"></script>
 
-
-	
+	<!-- Data Retrieval ng Total Registered Jobs -->
 	<script>
 		$(document).ready(function(){
 			filltotalemployers();
@@ -563,7 +562,7 @@
 							// options
 							icon: 'flaticon-error',
 							title: 'Failed to Retrieve Total Employers!',
-							message: 'Something went wrong while retrieving saved jototal employers. Data handling failed, please try again later.'
+							message: 'Something went wrong while retrieving saved total employers. Data handling failed, please try again later.'
 						},{
 							// settings
 							type: 'danger'
@@ -610,5 +609,202 @@
 			});
 		}
 	</script>
+
+		<!-- Data Retrieval ng Total Listed Jobs -->
+	<script>
+		$(document).ready(function(){
+				filltotallistedjobs();
+			});
+
+			function filltotallistedjobs(){
+				$.ajax({
+					type: 'GET',
+					url: '../PHPFiles/Admin/Dashboardtotallistedjobs.php',
+					datatype: 'html',
+					success: function(response){
+						if(response == '1'){
+							$.notify({
+								// options
+								icon: 'flaticon-error',
+								title: 'Failed to Retrieve Total Listed Jobs!',
+								message: 'Something went wrong while retrieving saved Listed Jobs. Data handling failed, please try again later.'
+							},{
+								// settings
+								type: 'danger'
+							});
+						}
+						else if(response == '2'){
+							$.notify({
+								// options
+								icon: 'flaticon-error',
+								title: 'Failed to Retrieve Total Listed Jobs!',
+								message: 'Something went wrong while retrieving listed jobs. Please try again later.'
+							},{
+								// settings
+								type: 'danger'
+							});
+						}
+						else if(response == '3'){
+							$.notify({
+								// options
+								icon: 'flaticon-exclamation',
+								title: 'No Listed Jobs Found!',
+								message: 'Currently, there is no registered listed jobs. Please try and check again later.'
+							},{
+								// settings
+								type: 'info'
+							});
+						}
+						else{
+							var decoderesponse = JSON.parse(response);
+							$('#lblTotalListedJobs').text(decoderesponse.totaljobs);
+						}
+					},
+					error: function(){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Connect to Server!',
+							message: 'Something went wrong while connecting to server. Please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+				});
+			}
+	</script>
+
+			<!-- Data Retrieval ng Total Candidates -->
+	<script>
+			$(document).ready(function(){
+					filltotalcandids();
+				});
+
+				function filltotalcandids(){
+					$.ajax({
+						type: 'GET',
+						url: '../PHPFiles/Admin/Dashboardtotalcandids.php',
+						datatype: 'html',
+						success: function(response){
+							if(response == '1'){
+								$.notify({
+									// options
+									icon: 'flaticon-error',
+									title: 'Failed to Retrieve Total Candidates!',
+									message: 'Something went wrong while retrieving saved Total Candidates. Data handling failed, please try again later.'
+								},{
+									// settings
+									type: 'danger'
+								});
+							}
+							else if(response == '2'){
+								$.notify({
+									// options
+									icon: 'flaticon-error',
+									title: 'Failed to Retrieve Total Candidates!',
+									message: 'Something went wrong while retrieving Total Candidates. Please try again later.'
+								},{
+									// settings
+									type: 'danger'
+								});
+							}
+							else if(response == '3'){
+								$.notify({
+									// options
+									icon: 'flaticon-exclamation',
+									title: 'No Listed Jobs Found!',
+									message: 'Currently, there is no registered Candidates. Please try and check again later.'
+								},{
+									// settings
+									type: 'info'
+								});
+							}
+							else{
+								var decoderesponse = JSON.parse(response);
+								$('#lblTotalCandidates').text(decoderesponse.totalcandids);
+							}
+						},
+						error: function(){
+							$.notify({
+								// options
+								icon: 'flaticon-error',
+								title: 'Failed to Connect to Server!',
+								message: 'Something went wrong while connecting to server. Please try again later.'
+							},{
+								// settings
+								type: 'danger'
+							});
+						}
+					});
+				}
+	</script>
+
+				<!-- Data Retrieval ng Total Job Category -->
+	<script>
+		$(document).ready(function(){
+				filltotaljobcategory();
+			});
+
+			function filltotaljobcategory(){
+				$.ajax({
+					type: 'GET',
+					url: '../PHPFiles/Admin/Dashboardtotaljobcategory.php',
+					datatype: 'html',
+					success: function(response){
+						if(response == '1'){
+							$.notify({
+								// options
+								icon: 'flaticon-error',
+								title: 'Failed to Retrieve Total Job Category!',
+								message: 'Something went wrong while retrieving saved Job Category. Data handling failed, please try again later.'
+							},{
+								// settings
+								type: 'danger'
+							});
+						}
+						else if(response == '2'){
+							$.notify({
+								// options
+								icon: 'flaticon-error',
+								title: 'Failed to Retrieve Total Listed Jobs!',
+								message: 'Something went wrong while retrieving Job Category. Please try again later.'
+							},{
+								// settings
+								type: 'danger'
+							});
+						}
+						else if(response == '3'){
+							$.notify({
+								// options
+								icon: 'flaticon-exclamation',
+								title: 'No Job Category!',
+								message: 'Currently, there is no Job Category. Please try and check again later.'
+							},{
+								// settings
+								type: 'info'
+							});
+						}
+						else{
+							var decoderesponse = JSON.parse(response);
+							$('#lblTotalJobCategory').text(decoderesponse.totaljobcategory);
+						}
+					},
+					error: function(){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Connect to Server!',
+							message: 'Something went wrong while connecting to server. Please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+				});
+			}
+	</script>
+
+
 </body>
 </html>
