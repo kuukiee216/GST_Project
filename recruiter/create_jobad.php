@@ -52,7 +52,7 @@
                     <span class="text-muted fw-bold">25%</span>
                 </div>
                 <div class="progress" style="height: 6px;">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="0"
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 25%" aria-valuenow="0"
                         aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title=""
                         data-original-title="25%"></div>
                 </div>

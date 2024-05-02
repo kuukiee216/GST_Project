@@ -54,7 +54,7 @@
 
                 <div class="row">
                     <div class="col">
-                        <h4>Write about your Job</h4>
+                        <h2>Write about your Job</h2>
                         <br>
                         <h5>Showcase your Brand</h5>
                         <div class="text-muted mb-3">Create your first brand by uploading your

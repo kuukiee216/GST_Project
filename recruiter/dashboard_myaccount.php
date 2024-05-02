@@ -42,7 +42,7 @@
     });
     </script>
 
-    <title>Dashboard My Account</title>
+    <title>My Account</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 

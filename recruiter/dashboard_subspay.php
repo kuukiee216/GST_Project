@@ -42,7 +42,7 @@
     });
     </script>
 
-    <title>Pay and Post</title>
+    <title>Subscription</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
@@ -51,137 +51,10 @@
     <?php include('../PHPFiles/recruiter_header.php')?>
     <!--End Navbar-->
 
-    <div class="container-fluid">
-        <div class="container justify-content-center mt-5" style="width: 50%;">
-            <a href="../recruiter/create_jobad4.php">
-                <button type="button" class="btn btn-icon btn-round btn-primary">
-                    <i class="fa fa-arrow-circle-left"></i>
-                </button>
-            </a>
-
-            <h2 class="mt-4"><b>Pay Post</b></h2>
-            <h3 class="mt-3">Business Address</h3>
-            <h5 class="text-muted mt-2">To protect candidates and seek from fraud, we verify the business address of
-                all
-                first time hirers .
-                Don’t worry, we only need to do this one.</h5>
-
-            <h5 class="mt-3">Country</h5>
-            <input type="tel" class="form-control" placeholder="">
-
-            <h5 class="mt-3">Address Line</h5>
-            <input type="tel" class="form-control" placeholder="">
-            <h5 class="mt-3">Suburb/Town/City</h5>
-            <input type="tel" class="form-control" placeholder="">
-            <h5 class="mt-3">Postal Code</h5>
-            <input type="tel" class="form-control" placeholder="">
-            <br>
-
-
-
-            <hr>
-            <h3 class="mt-5">Apply Promo Code</h3>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                <div class="input-group-prepend">
-                    <button class="btn btn-secondary btn-border" type="button">Apply</button>
-                </div>
-            </div>
-            <h3 class="mt-5">Order Summary</h3>
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Items</th>
-                        <th scope="col">Cost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Basic Ad</td>
-                        <td>6250.00</td>
-                    </tr>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td>750.00</td>
-                    </tr>
-                    <tr>
-                        <td>Discounted (Subscription)</td>
-                        <td>500.00</td>
-                    </tr>
-                    <tr>
-                        <td><b>Total (including VAT)<b></td>
-                        <td><b>6,500.00</b></td>
-                    </tr>
-                </tbody>
-            </table>
-            <hr>
-            <h3 class="mt-5">Pay Method</h3>
-
-            <div class="card container">
-
-                <div class="row cols-3" style="width: 50%;">
-
-                    <div class="col">
-                        <img class="card-img-top" src="../assets/img/visa.png" alt="visa">
-                    </div>
-
-                    <div class="col">
-                        <img class="card-img-top" src="../assets/img/mastercard.png" alt="visa">
-                    </div>
-
-                    <div class="col">
-                        <img class="card-img-top" src="../assets/img/americanexpress.png" alt="visa">
-                    </div>
-
-                </div>
-
-                <div class="card-body">
-                    <label for="tel">Card Number</label>
-                    <input type="tel" class="form-control" id="tel" placeholder="0000-0000-0000-0000">
-                    <div class="row cols-2 mt-3">
-                        <div class="col">
-                            <label for="EDate">Expire Date</label>
-                            <input type="date" class="form-control" id="EDate">
-                        </div>
-                        <div class="col">
-                            <label for="cvc">CVC</label>
-                            <input type="tel" class="form-control" id="cvc" placeholder="123">
-                        </div>
-                    </div>
-                    <p class="mt-3"><input type="checkbox" id="check"> Save card details for future payments</p>
-                    <p><i class="fas fa-lock"></i> Your payment is secured. Your card details won't be shared with
-                        other
-                        users on this account.</p>
-                </div>
-
-                <div class="form-check row cols-3">
-
-                    <label class="form-radio-label col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-                        <span class="form-radio-sign">Pay by online payment (direct bank transfer)</span>
-                    </label>
-
-                    <label class="form-radio-label ml-3 col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                        <span class="form-radio-sign">Pay by e-wallet</span>
-                    </label>
-
-                    <label class="form-radio-label ml-3 col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                        <span class="form-radio-sign">Pay by invoice</span>
-                    </label>
-                </div>
-                <p>By continuing you agree to use this purchase in accordance with our advertising<a href="#">terms
-                        of
-                        use.</a></p>
-            </div>
-            <div class="mb-5">
-                <a class="btn btn-danger" type="button" id="alert_demo_3_3">Post My Ad</a>
-                <a href="../recruiter/create_jobadPreview.php" class="btn btn-outline-danger">Preview</a>
-            </div>
-        </div>
+    <div class="container">
+        Coming soon uwu
     </div>
+
 
 
     <!--bottom navbar-->
@@ -265,7 +138,9 @@
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
+    <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
+    <script src="../ajax/Recruiter/ChangePassHandler.js"></script>
 </body>
 
 </html>

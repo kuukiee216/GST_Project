@@ -70,154 +70,161 @@
                         data-original-title="100%"></div>
                 </div>
             </div>
+            <div class="row">
+                <div class="container">
+                    <h2 class="mt-3"><b>Manage Candidate Applications </b><span class="text-muted">(optional)
+                        </span>
+                    </h2>
+                    <div class="row mt-3">
+                        <h5><b>Questions for Candidates</b></h5>
+                    </div>
+                    <p>Include up to 8 easy-to-answer questions in your job ad.
+                        When reviewing candidates, you will be able to easily filter
+                        candidates who match your preferred answers.
+                    </p>
 
-            <div class="container">
-                <h4 class="mt-3"><b>Manage Candidate Applications </b><span class="text-muted">(optional)
-                    </span>
-                </h4>
-                <div class="row mt-3">
-                    <h5><b>Questions for Candidates</b></h5>
-                </div>
-                <p>Include up to 8 easy-to-answer questions in your job ad.
-                    When reviewing candidates, you will be able to easily filter
-                    candidates who match your preferred answers.
-                </p>
+                    <p class="text-muted">1/8 Questions Selected</p>
 
-                <p class="text-muted">1/8 Questions Selected</p>
+                    <div class="input-icon">
+                        <span class="input-icon-addon">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <input type="tel" class="form-control" placeholder="Find a Question">
+                    </div>
 
-                <div class="input-icon">
-                    <span class="input-icon-addon">
-                        <i class="fa fa-search"></i>
-                    </span>
-                    <input type="tel" class="form-control" placeholder="Find a Question">
-                </div>
+                    <h4 class="mt-3"><b>Recommended questions</b></h4>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-check row">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <h5 class="form-check-sign">What is your expected salary?
+                                        I will accept this range:</h5>
+                                </label>
+                            </div>
 
-                <h4 class="mt-3"><b>Recommended questions</b></h4>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-check row">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">What is your expected salary?
-                                    I will accept this range:</h5>
-                            </label>
-                        </div>
+                            <div class="form-group">
+                                <div class="row row-col-3">
 
-                        <div class="form-group">
-                            <div class="row row-col-3">
-
-                                <div class="col">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary btn-border dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Minimum</button>
-                                        <div class="dropdown-menu" x-placement="bottom-start"
-                                            style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                            <a class="dropdown-item" href="#">test</a>
-                                            <a class="dropdown-item" href="#">test2</a>
-                                            <a class="dropdown-item" href="#">test3</a>
-                                            <a class="dropdown-item" href="#">test4</a>
+                                    <div class="col">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-border dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">Minimum</button>
+                                            <div class="dropdown-menu" x-placement="bottom-start"
+                                                style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                <a class="dropdown-item" href="#">test</a>
+                                                <a class="dropdown-item" href="#">test2</a>
+                                                <a class="dropdown-item" href="#">test3</a>
+                                                <a class="dropdown-item" href="#">test4</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="col text-center m-2">
-                                    To
-                                </div>
+                                    <div class="col text-center m-2">
+                                        To
+                                    </div>
 
-                                <div class="col">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary btn-border dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">Maximum</button>
-                                        <div class="dropdown-menu" x-placement="bottom-start"
-                                            style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                            <a class="dropdown-item" href="#">test</a>
-                                            <a class="dropdown-item" href="#">test2</a>
-                                            <a class="dropdown-item" href="#">test3</a>
-                                            <a class="dropdown-item" href="#">test4</a>
+                                    <div class="col">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-border dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">Maximum</button>
+                                            <div class="dropdown-menu" x-placement="bottom-start"
+                                                style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                <a class="dropdown-item" href="#">test</a>
+                                                <a class="dropdown-item" href="#">test2</a>
+                                                <a class="dropdown-item" href="#">test3</a>
+                                                <a class="dropdown-item" href="#">test4</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="container-fluid row">
-                    <div class="form-check row" id="question-container">
+                    <div class="container-fluid row">
+                        <div class="form-check row" id="question-container">
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <h5 class="form-check-sign">Which of the programming languanges are you experienced
-                                in?</h5>
-                        </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <h5 class="form-check-sign">Which of the programming languanges are you experienced
+                                    in?</h5>
+                            </label>
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <h5 class="form-check-sign">Which of the following Relational Database Management
-                                System
-                                (RDBMS)
-                                are you experienced with?</h5>
-                        </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <h5 class="form-check-sign">Which of the following Relational Database Management
+                                    System
+                                    (RDBMS)
+                                    are you experienced with?</h5>
+                            </label>
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <h5 class="form-check-sign">Which of the following front-end development libraries and
-                                frameworks are you proficient in?</h5>
-                        </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <h5 class="form-check-sign">Which of the following front-end development libraries
+                                    and
+                                    frameworks are you proficient in?</h5>
+                            </label>
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <h5 class="form-check-sign">Have you worked in a role which requires a sound understanding
-                                of the software development lifecycle?</h5>
-                        </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <h5 class="form-check-sign">Have you worked in a role which requires a sound
+                                    understanding
+                                    of the software development lifecycle?</h5>
+                            </label>
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <h5 class="form-check-sign">Do you have experience working within a scrum agile team?</h5>
-                        </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <h5 class="form-check-sign">Do you have experience working within a scrum agile
+                                    team?
+                                </h5>
+                            </label>
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <h5 class="form-check-sign">Do you have experience with Test Driven Development (TDD)?</h5>
-                        </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <h5 class="form-check-sign">Do you have experience with Test Driven Development
+                                    (TDD)?
+                                </h5>
+                            </label>
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" value="">
-                            <h5 class="form-check-sign">Which of the following languages are you fluent in?</h5>
-                        </label>
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" value="">
+                                <h5 class="form-check-sign">Which of the following languages are you fluent in?</h5>
+                            </label>
 
 
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter new question text here"
-                                id="new-question-text">
-                            <button class="btn btn-outline-secondary" type="button" id="add-question">Add
-                                Question</button>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Enter new question text here"
+                                    id="new-question-text">
+                                <button class="btn btn-outline-secondary" type="button" id="add-question">Add
+                                    Question</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <span class="input-icon-addon">
+                                <i class="fa fa-info-circle"></i>
+                            </span>
+                            Your question and answers can't be changed after you post your job ad.
                         </div>
 
+                        <h4 class="mt-5">Internal Job Reference <span class="text-muted">(optional)
+                            </span>
+                        </h4>
+                        <input type="tel" class="form-control" placeholder="">
+                    </div>
+                    <div class="form-group mt-5 mb-5">
+                        <a href="../recruiter/create_jobadPAY.php" class="btn btn-danger" type="button">Continue</a>
                     </div>
                 </div>
 
-                <div>
-                    <div>
-                        <span class="input-icon-addon">
-                            <i class="fa fa-info-circle"></i>
-                        </span>
-                        Your question and answers can't be changed after you post your job ad.
-                    </div>
-
-                    <h4 class="mt-5">Internal Job Reference <span class="text-muted">(optional)
-                        </span>
-                    </h4>
-                    <input type="tel" class="form-control" placeholder="">
-                </div>
-                <div class="form-group mt-5 mb-5">
-                    <a href="../recruiter/create_jobadPAY.php" class="btn btn-danger" type="button">Continue</a>
-                </div>
             </div>
-
         </div>
 
     </div>
@@ -312,7 +319,8 @@
     <script>
     $(document).ready(function() {
         $('#add-question').click(function() {
-            var questionText = $('#new-question-text').val(); // Get the text from the input field
+            var questionText = $('#new-question-text')
+                .val(); // Get the text from the input field
             if (questionText.trim() !== '') { // Check if the input is not just whitespace
                 var newQuestionHtml = `
                 <label class="form-check-label">
@@ -321,7 +329,8 @@
                 </label>
             `;
                 $('#question-container').prepend(newQuestionHtml);
-                $('#new-question-text').val(''); // Clear the input field after adding the question
+                $('#new-question-text').val(
+                    ''); // Clear the input field after adding the question
             } else {
                 alert('Please enter a question text.'); // Alert if input field is empty
             }
