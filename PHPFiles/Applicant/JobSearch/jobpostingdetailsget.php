@@ -44,10 +44,9 @@
             $sQryGetJobPostingDetails = "SELECT
                     cj.JobTitle,
                     ci.CompanyName,
-                    l.City,
-                    l.Province,
-                    l.Country,
-                    l.ZipCode,
+                    city.CityName,
+                    pro.ProvinceName,
+                    co.CountryName,
                     class.Classification,
                     GROUP_CONCAT(DISTINCT subclass.Classification) AS SubClassification,
                     c.Symbol,
@@ -68,7 +67,13 @@
                 INNER JOIN
                     tbl_companyinfo AS ci ON ci.CompanyID = ei.EmployerID
                 INNER JOIN
-                    tbl_location AS l ON l.LocationID = cj.LocationID
+                    tbl_companyjoblocation AS cjl ON cjl.JobID = cj.JobID
+                INNER JOIN
+                    tbl_country AS co ON co.CountryID = cjl.CountryID
+                INNER JOIN
+                    tbl_province AS pro ON pro.ProvinceID = cjl.ProvinceID
+                INNER JOIN
+                    tbl_city AS city ON city.CityID = cjl.CityID
                 INNER JOIN
                     tbl_classification AS class ON class.ClassificationID = cj.ClassificationID
                 INNER JOIN
@@ -90,7 +95,7 @@
                 WHERE
                     cj.Status = '0' AND jquestion.RequirementStatus = '0' AND jp.JobPostingID = ?
                 GROUP BY
-                    cj.JobTitle, ci.CompanyName, l.City, l.Province, l.Country, l.ZipCode,
+                    cj.JobTitle, ci.CompanyName, city.CityName, pro.ProvinceName, co.CountryName,
                     class.Classification, c.Symbol, js.Minimum, js.Maximum, jp.CompanyPrivacyStatus,
                     jp.SalaryPrivacyStatus, cj.Summary;";
             $stmtGetJobPostingDetails = $connection->prepare($sQryGetJobPostingDetails);
@@ -102,7 +107,7 @@
 
                 $dataResult = array();
                     
-                $jobLocation = $rowJobPostDetails['City'].', '.$rowJobPostDetails['Province'].', '.$rowJobPostDetails['Country'].' '.$rowJobPostDetails['ZipCode'];
+                $jobLocation = $rowJobPostDetails['CityName'].', '.$rowJobPostDetails['ProvinceName'].', '.$rowJobPostDetails['CountryName'];
                 $jobSalary = "";
 
                 if(strlen($rowJobPostDetails['Maximum'])){

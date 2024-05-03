@@ -15,13 +15,24 @@
         date_default_timezone_set('Asia/Manila');
         $currentDateTime = date("Y/m/d H:i:s");
 
+        $CredentialID = $_SESSION['CredentialID'];
+
         try{
             $sQryGetJobTitles = "SELECT
-                    JobTitleID,
-                    JobTitleName
+                    j.JobTitleID,
+                    j.JobTitleName
                 FROM
-                    tbl_jobtitle";
+                    tbl_jobtitle j
+                WHERE
+                    j.JobTitleID NOT IN (
+                        SELECT
+                        JobTitleID
+                        FROM
+                        tbl_applicantpreferredjobtitle
+                        WHERE
+                        PreferenceID = (SELECT PreferenceID FROM tbl_applicantpreference WHERE ApplicantID = ?));";
             $stmtGetJobTitles = $connection->prepare($sQryGetJobTitles);
+            $stmtGetJobTitles->bindValue(1, $CredentialID, PDO::PARAM_INT);
             $stmtGetJobTitles->execute();
 
             if($stmtGetJobTitles->rowCount() > 0){ ?>

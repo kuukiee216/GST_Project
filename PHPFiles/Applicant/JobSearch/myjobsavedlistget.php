@@ -25,10 +25,9 @@
                     cj.JobTitle,
                     ci.CompanyName,
                     class.Classification,
-                    l.City,
-                    l.Province,
-                    l.Country,
-                    l.ZipCode,
+                    city.CityName,
+                    pro.ProvinceName,
+                    co.CountryName,
                     c.Symbol,
                     js.Minimum,
                     js.Maximum,
@@ -47,7 +46,13 @@
                 INNER JOIN
                     tbl_classification AS class ON class.ClassificationID = cj.ClassificationID
                 INNER JOIN
-                    tbl_location AS l ON l.LocationID = cj.LocationID
+                    tbl_companyjoblocation AS cjl ON cjl.JobID = cj.JobID
+                INNER JOIN
+                    tbl_country AS co ON co.CountryID = cjl.CountryID
+                INNER JOIN
+                    tbl_province AS pro ON pro.ProvinceID = cjl.ProvinceID
+                INNER JOIN
+                    tbl_city AS city ON city.CityID = cjl.CityID
                 INNER JOIN 
                     tbl_jobsalary AS js ON js.JobID = cj.JobID
                 INNER JOIN
@@ -62,7 +67,7 @@
             if($stmtGetSavedJobPostings->rowCount() > 0){
                 while($rowSavedJobPost = $stmtGetSavedJobPostings->fetch(PDO::FETCH_ASSOC)){ 
                     
-                    $jobLocation = $rowSavedJobPost['City'].', '.$rowSavedJobPost['Province'].', '.$rowSavedJobPost['Country'].' '.$rowSavedJobPost['ZipCode'];
+                    $jobLocation = $rowSavedJobPost['CityName'].', '.$rowSavedJobPost['ProvinceName'].', '.$rowSavedJobPost['CountryName'];
                     $jobSalary = "";
 
                     if(strlen($rowSavedJobPost['Maximum'])){

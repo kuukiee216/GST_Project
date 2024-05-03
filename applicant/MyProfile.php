@@ -205,28 +205,23 @@
                 <h5 class="card-title">My Uploaded Resume</h45>
               </div>
               <div class="card-body">
-                <table class="table">
-                  <thead>
-                    <th>Date</th>
-                    <th>File Name</th>
-                    <th>Action</th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>January 24, 2024</td>
-                      <td>Parungao_Ron Henrick_Cadang_Resume (2).pdf</td>
-                      <td><button class="btn btn-link btn-danger"><i class="fas fa-trash fa-lg"></i></button></td>
-                    </tr>
-                    <tr>
-                      <td>May 04, 2023</td>
-                      <td>Parungao_Ron Henrick_Cadang_Resume.pdf</td>
-                      <td><button class="btn btn-link btn-danger"><i class="fas fa-trash fa-lg"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table text-center">
+                    <thead>
+                      <th>Date</th>
+                      <th>File Name</th>
+                      <th>Action</th>
+                    </thead>
+                    <tbody id="listResumes">
+                      <tr>
+                        <td colspan="3">No Uploaded/Saved Resume.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 <div class="row d-flex justify-content-end px-3 mt-3">
                   <a href="create_resume.html"><button class="btn btn-round btn-danger mr-2"><i class="fas fa-pen-alt fa-lg mr-2"></i> Create a Resume</button></a>
-                  <button class="btn btn-round btn-border btn-danger" data-toggle="modal" data-target="#modalUploadResume"><i class="fas fa-file-upload fa-lg mr-2"></i> Upload a Resume</button>
+                  <button class="btn btn-round btn-border btn-danger" id="btnUploadResumeModel" onclick="openUploadResume();"><i class="fas fa-file-upload fa-lg mr-2"></i> Upload a Resume</button>
                 </div>
                 
               </div>
@@ -251,11 +246,11 @@
               <div class="card-body">
 
                 <div id="listJobTitles">
-                  <button class="btn btn-light btn-border btn-round shadow mx-2 my-2">Software Engineer <i class="fas fa-times text-danger ml-3"></i></button>
+                  <h5><i>No Preferred Job Titles.</i></h5>
                 </div>
                 
                 <div class="row d-flex justify-content-end px-3">
-                  <button class="btn btn-round btn-danger" data-toggle="modal" data-target="#modalPreferredJobTitle"><i class="fas fa-plus fa-lg mr-2"></i> Add</button>
+                  <button class="btn btn-round btn-danger" onclick="openJobTitles();" id="btnEditPreferredJobTitle"><i class="fas fa-plus fa-lg mr-2"></i> Add</button>
                 </div>
                 
               </div>
@@ -280,15 +275,16 @@
             <!--Location-->
             <div class="card">
               <div class="card-header">
-                <h5 class="card-title">Location</h45>
+                <h5 class="card-title">Location</h5>
               </div>
               <div class="card-body">
 
-                <button class="btn btn-light btn-border btn-round shadow mx-2 my-2">Bay, Laguna, Philippines <i class="fas fa-times text-danger ml-3"></i></button>
-                <button class="btn btn-light btn-border btn-round shadow mx-2 my-2">Pasig, City, Philippines <i class="fas fa-times text-danger ml-3"></i></button>
+                <div id="listLocations">
+                  <h5><i>No Preferred Locations.</i></h5>
+                </div>
 
                 <div class="row d-flex justify-content-end px-3">
-                  <button class="btn btn-round btn-danger" data-toggle="modal" data-target="#modalPreferredLocation"><i class="fas fa-plus fa-lg mr-2"></i> Add</button>
+                  <button class="btn btn-round btn-danger" onclick="openLocation();" id="btnEditPreferredLocations"><i class="fas fa-plus fa-lg mr-2"></i> Add</button>
                 </div>
                 
               </div>
@@ -304,7 +300,7 @@
                 <h4>Your selecteed salary range: <span class="font-weight-bold" id="lblSalaryRange">-</span></h4>
                 
                 <div class="row d-flex justify-content-end px-3">
-                  <button class="btn btn-round btn-danger" data-toggle="modal" data-target="#modalPreferredSalaryRange"><i class="fas fa-edit fa-lg mr-2"></i> Edit</button>
+                  <button class="btn btn-round btn-danger" data-toggle="modal" data-target="#modalPreferredSalaryRange" id="btnEditSalaryRange"><i class="fas fa-edit fa-lg mr-2"></i> Edit</button>
                 </div>
                 
               </div>
@@ -397,18 +393,18 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <h3 class="modal-title">Upload a Resume</h3>
             </div>
             <div class="modal-body">
-              ...
+              <div class="form-group form-group-default">
+                <h5>Select Your Resume <span class="font-weight-bold text-danger">*</span></h5>
+                <input type="file" class="form-control" accept=".pdf" id="fdResumeUpload">
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseUploadResume">Close</button>
+              <button type="button" class="btn btn-primary" onclick="uploadResume();" id="btnUploadResume">Upload</button>
+            </div>  
           </div>
         </div>
       </div>
@@ -432,7 +428,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseJobTitle">Close</button>
-              <button type="button" class="btn btn-success" onclick="" id="btnAddJobTitle">Add Job Title</button>
+              <button type="button" class="btn btn-success" onclick="savePreferredJobTitles();" id="btnAddJobTitle">Add Job Title</button>
             </div>
           </div>
         </div>
@@ -474,28 +470,28 @@
             <div class="modal-body">
               <div class="form-group form-group-default">
                 <h5>Country <span class="font-weight-bold text-danger">*</span></h5>
-                <select class="form-control">
+                <select class="form-control" id="cbCountryOption" onchange="fillLocationProvinceOptions();">
                   <option value="0" selected disabled>Select a Country</option>
                 </select>
               </div>
 
               <div class="form-group form-group-default">
                 <h5>Province <span class="font-weight-bold text-danger">*</span></h5>
-                <select class="form-control">
+                <select class="form-control" id="cbProvinceOption" onchange="fillLocationCityOptions();" disabled>
                   <option value="0" selected disabled>Select a Province</option>
                 </select>
               </div>
 
               <div class="form-group form-group-default">
                 <h5>City / Municipality <span class="font-weight-bold text-danger">*</span></h5>
-                <select class="form-control">
+                <select class="form-control" id="cbCityOption" disabled>
                   <option value="0" selected disabled>Select a City/Municipality</option>
                 </select>
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="btnClosePreferredLocation">Close</button>
+              <button type="button" class="btn btn-success" onclick="savePreferredLocation();" id="btnSavePreferredLocation">Add Preferred Location</button>
             </div>
           </div>
         </div>
@@ -509,11 +505,19 @@
               <h3 class="modal-title">Salary Range</h3>
             </div>
             <div class="modal-body">
-              
+              <div class="form-group form-group-default">
+                <h5>Minimum Salary</h5>
+                <input id="txtMinimumSalaryRange" type="number" class="form-control" value="0" min="0" step="1000">
+              </div>
+
+              <div class="form-group form-group-default">
+                <h5>Maximum Salary</h5>
+                <input id="txtMaximumSalaryRange" type="number" class="form-control" value="1000" min="1000" step="1000">
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCloseSalaryRange">Close</button>
+              <button type="button" class="btn btn-primary" onclick="savePreferredSalaryRange();" id="btnSaveSalaryRange">Save changes</button>
             </div>
           </div>
         </div>
@@ -641,7 +645,11 @@
         $(document).ready(function(){ 
           fillJobTitleOptions();
           fillWorkScheduleOptions();
+          fillLocationCountryOptions();
           fillProfileData();
+          fillResumeList();
+          fillPreferredJobTitles();
+          fillPreferredLocations();
         });
       </script>
     </body>

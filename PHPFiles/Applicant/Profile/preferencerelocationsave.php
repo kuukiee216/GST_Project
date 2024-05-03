@@ -16,13 +16,14 @@
         date_default_timezone_set('Asia/Manila');
         $currentDateTime = date("Y/m/d H:i:s");
 
+        $AccountID = $_SESSION['AccountID'];
         $CredentialID = $_SESSION['CredentialID'];
         $flagResult = $_POST['FlagResult'];
 
         try{
             $connection->beginTransaction();
 
-            $sQryUpdatePreferredRelocation = "UPDATE tbl_applicantpreference SET RelocationStatus = ? WHERE Applicant = ?;";
+            $sQryUpdatePreferredRelocation = "UPDATE tbl_applicantpreference SET RelocationStatus = ? WHERE ApplicantID = ?;";
             $stmtUpdatePreferredRelocation = $connection->prepare($sQryUpdatePreferredRelocation);
             $stmtUpdatePreferredRelocation->bindValue(1, $flagResult, PDO::PARAM_INT);
             $stmtUpdatePreferredRelocation->bindValue(2, $CredentialID, PDO::PARAM_STR);
