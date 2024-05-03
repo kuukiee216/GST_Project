@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <!-- Required meta tags -->
@@ -7,280 +8,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tiny.cloud/1/pim866f1vew0kcippaf4iky7els0yt814fxepefptu1w5bq5/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
     <link rel="stylesheet" href="../assets/css/atlantis.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 
     <title>Create Job Ad Page 3</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
+
 <body>
-          <!--Navbar Header-->
-          <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
-            <div class="container-fluid">
-              <div class="collapse" id="search-nav">
-                <div>
-                <form class="navbar-left navbar-form">
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar nav me-auto mb-2 mb-lg-0">
-                    <li>
-                        <a href="/applicant/Landing_Page.html" class="logo">
-                          <img src="../assets/img/JapanJobs.png" alt="navbar brand">
-                        </a>
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Japan Ads</a>
-                      </li>
-                    </ul>
-                  </div>
-                </form>
+    <!--Navbar Header-->
+    <?php include('../PHPFiles/recruiter_header.php')?>
+    <!--End Navbar-->
+
+    <div class="container-fluid">
+        <div class="container flex justify-content-center mt-5" style="width: 50%;">
+            <div class="progress-card">
+                <div class="progress-status">
+                    <a href="../recruiter/create_jobad2.php">
+                        <button type="button" class="btn btn-icon btn-round btn-primary">
+                            <i class="fa fa-arrow-circle-left"></i>
+                        </button>
+                    </a>
+                    <span class="text-muted fw-bold">75%</span>
                 </div>
-              </div>
-              <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
-                <li class="nav-item dropdown hidden-caret">
-                  <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <div class="avatar-sm">
-                      <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
-                    </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-user animated fadeIn">
-                    <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
-                      <li>
-                        <div class="user-box">
-                          <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
-                          <div class="u-text">
-                            <h4>Meow</h4>
-                            <p class="text-muted">Genesis.com</p><a href="/applicant/profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
-                          </div>
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="0"
+                        aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title=""
+                        data-original-title="75%"></div>
+                </div>
+            </div>
+
+            <form>
+
+                <div class="row">
+                    <div class="col">
+                        <h2>Write about your Job</h2>
+                        <br>
+                        <h5>Showcase your Brand</h5>
+                        <div class="text-muted mb-3">Create your first brand by uploading your
+                            company
+                            logo.
+                            Cover images can be added from the success page after payment.
                         </div>
-                      </li>
-                      <li>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
-                      </li>
-                    </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <!--End Navbar-->
 
-    <div class="container flex justify-content-center mt-5" style="width: 50%;">
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                    onchange="previewImage();">
+                            </div>
+                        </div>
+                        <div class="card text-white" style="width: 50%;">
+                            <img id="imagePreview" class="card-img" src="../assets/img/icon.png" alt="Card image">
 
-        <div class="progress-card">
-            <div class="progress-status">
-                <a href="/recruiter/create_jobad2.php">
-                  <button type="button" class="btn btn-icon btn-round btn-primary">
-                    <i class="fa fa-arrow-circle-left"></i>
-                  </button>
-                </a>
-                <span class="text-muted fw-bold">75%</span>
-            </div>
-            <div class="progress" style="height: 6px;">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="75%"></div>
-            </div>
+
+                        </div>
+                    </div>
+
+                    <h5>Job Description</h5>
+                    <div class="text-muted mb-3">Enter your job details.</div>
+
+
+                    <div class="form-group">
+                        <textarea id="mytextarea"></textarea>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h5 class="mt-3">Video <span class="text-muted">(optional)
+                        </span>
+                    </h5>
+                    <div class="form-group">
+                        <label for="videoUpload" class="text-muted">Add a video to your ad. The video will appear at the
+                            bottom of
+                            your
+                            ad.</label>
+                        <div class="text-muted">e.g. myVideoAd.mp4</div>
+                        <div class="mt-2 mb-2">
+                            <input type="file" class="form-control-file" id="videoUpload" accept="video/*">
+                            <video id="videoPreview" controls
+                                style="max-width: 100%; height: auto; display: none; margin-top: 10px;"></video>
+                        </div>
+
+                        <h4 class="mt-5">Candidate Search Result</h4>
+                        <p>Write a compelling statement about your role to entice more candidates.</p>
+                        <textarea id="mytextarea"></textarea>
+                        </textarea>
+
+                        <div class="form-group mt-3 mb-5">
+                            <a href="../recruiter/create_jobad4.php" class="btn btn-danger" type="button">Continue</a>
+                        </div>
+                    </div>
+            </form>
         </div>
-
-        <form>
-
-            <div class="row mt-5">
-                <h4>Write about your Job</h4>
-                <h6>Showcase your brand</h6>
-                <div class="text-muted mb-5" style="width: 70%;">Create your first brand by uploading your company logo. 
-                    Cover images can be added from the success page after payment. 
-                </div>
-
-                <div class="card text-white" style="width: 40%;">
-                    <img class="card-img" src="/assets/img/icon.png" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                    </div>
-                </div>
-
-                <h4>Job Description</h4>
-                <div class="text-muted mb-3">Enter your job details or let us guide you through what to write.</div>
-
-                <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab-nobd" data-toggle="pill" href="#pills-home-nobd" role="tab" aria-controls="pills-home-nobd" aria-selected="true">Write your Own</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab-nobd" data-toggle="pill" href="#pills-profile-nobd" role="tab" aria-controls="pills-profile-nobd" aria-selected="false">Help me write my ad</a>
-                    </li>
-                </ul>
-
-                <div class="tab-content mb-3" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home-nobd" role="tabpanel" aria-labelledby="pills-home-tab-nobd">
-                        <div class="form-group">
-                            <div class="row col-5">
-
-                                <div class="col">
-                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
-                                </div>
-
-                                <div class="col">
-                                    <div for="bold">
-                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="italic">
-                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="left">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="right">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-right"></i></a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <textarea class="form-control" id="comment" rows="5">
-                            </textarea>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-profile-nobd" role="tabpanel" aria-labelledby="pills-profile-tab-nobd">
-                        <div class="form-group">
-                            <div class="row col-5">
-
-                                <div class="col">
-                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
-                                </div>
-
-                                <div class="col">
-                                    <div for="bold">
-                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="italic">
-                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="left">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="right">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-justify"></i></a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <textarea class="form-control" id="comment" rows="5">AI Helper
-                            </textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h4 class="mt-3">Video</h4><div class="text-muted">(optional)</div>
-            <p>Add a video to your ad. The video will appear at the bottom of your ad.</p>
-            <div class="form-group">
-                <input type="file" class="form-control-file" id="exampleFormControlFile2">
-            </div>
-            <div class="text-muted">e.g. myVideoAd.mp4</div>
-
-            <h4 class="mt-5">Candidate search result</h4>
-            <p>Write a compelling statement about your role to entice more candidates.</p>
-            <textarea class="form-control" id="comment" rows="5">
-            </textarea>
-
-            <div class="form-group mt-3 mb-5">   
-              <a href="/GST_Project/recruiter/create_jobad4.php" class="btn btn-danger" type="button">Continue</a>
-            </div>
-            
-        </form>
-
     </div>
 
-
     <!--bottom navbar-->
-    <footer class="footer text-white" style="background-color:#187498">
-      <div class="container-fluid">
-          <nav class="pull-left">
-              <ul class="nav">
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Privacy
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Terms & Condition
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Protect yourself online
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Contact
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="ml-auto">
-              © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-          </div>				
-      </div>
-    </footer>
+    <?php include('../PHPFiles/recruiter_footer.php')?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+        integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-      function test(){
+    function test() {
         var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
-      
-        if(variablename == 'dropdown d-flex justify-content-center gap-3'){ //variablename = class
-          $('#Div-filter').addClass('d-none d-sm-none');
-        }else {
-          $('#Div-filter').removeClass('d-none d-sm-none');
+
+        if (variablename == 'dropdown d-flex justify-content-center gap-3') { //variablename = class
+            $('#Div-filter').addClass('d-none d-sm-none');
+        } else {
+            $('#Div-filter').removeClass('d-none d-sm-none');
         }
-      }
-      </script>
+    }
+    </script>
 
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>
     <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+        integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Vendor JS Files -->
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -329,6 +196,94 @@
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
-      
+    <script>
+    function previewImage() {
+        var file = document.getElementById("exampleFormControlFile1").files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            document.getElementById("imagePreview").src = e.target.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+    tinymce.init({
+        selector: '#mytextarea',
+        menubar: false, // Disables the menu bar
+        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent'
+    });
+
+
+    document.getElementById('videoUpload').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var videoPreview = document.getElementById('videoPreview');
+
+        if (file) {
+            videoPreview.src = URL.createObjectURL(file);
+            videoPreview.style.display = 'block'; // Show the video element
+            videoPreview.onload = function() {
+                URL.revokeObjectURL(videoPreview.src); // Free up memory (revoke the object URL)
+            };
+        }
+    });
+
+
+
+
+
+
+    /*
+    function applyBold() {
+    var textarea = document.getElementById("comment");
+    var button = document.getElementById("boldButton");
+    var isActive = textarea.style.fontWeight === 'bold';
+    textarea.style.fontWeight = isActive ? 'normal' : 'bold';
+    button.classList.toggle('active', !isActive);
+    }
+
+    function applyItalic() {
+    var textarea = document.getElementById("comment");
+    var button = document.getElementById("italicButton");
+    var isActive = textarea.style.fontStyle === 'italic';
+    textarea.style.fontStyle = isActive ? 'normal' : 'italic';
+    button.classList.toggle('active', !isActive);
+    }
+
+    function applyUnderline() {
+    var textarea = document.getElementById("comment");
+    var button = document.getElementById("underlineButton");
+    var isActive = textarea.style.textDecoration === 'underline';
+    textarea.style.textDecoration = isActive ? 'none' : 'underline';
+    button.classList.toggle('active', !isActive);
+    }
+
+    function textAlign(direction) {
+    var textarea = document.getElementById("comment");
+    var buttons = document.querySelectorAll('.align-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    document.getElementById(direction + "Button").classList.add('active');
+    textarea.style.textAlign = direction;
+    }
+    */
+    </script>
+
+    <style>
+    .btn.active,
+    .btn.active i {
+        color: #fff;
+        /* White text */
+        background-color: #007bff;
+        /* Blue background */
+        border-color: #007bff;
+    }
+    </style>
+
+
+
 </body>
+
 </html>

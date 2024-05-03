@@ -9,7 +9,6 @@
   }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +32,7 @@
 		});
 	</script>
 
-    <title>Job Posting</title>
+    <title>Job Classification</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
@@ -177,7 +176,7 @@
 												<h4>Meow</h4>
 												<p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
-										</div>btn
+										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
@@ -187,7 +186,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href=" ../PHPFiles/Applicant/logout.php">Logout</a>
+										<a class="dropdown-item" href="../PHPFiles/Applicant/logout.php">Logout</a>
 									</li>
 								</div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
 							</ul>
@@ -297,118 +296,79 @@
 		</div>
 		<!-- End Sidebar -->
 
+		<!-- Modal -->
+		<div class="modal fade" id="modalAddClassification" tabindex="-1" role="dialog" aria-labelledby="modalAddClassification" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3 class="modal-title">Add Job Classification</h3>
+									<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseAddJobClassification">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<button type="button" class="close" onclick="closeJobClassificationForm();">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form id="formAddJobClassification">
+										<div class="form-group px-5">
+											<label for="txtMainApplication">Main Application <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtMainApplication" id="txtMainApplication" required>
+										</div>
+
+										<div class="form-group px-5">
+											<label for="txtSubClassification">Sub Classification <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtSubClassification" id="txtSubClassification" required>
+										</div>
+
+										<div class="row mx-3 my-3">
+											<button class="btn btn-primary btn-block" id="btnAddJobClassification" onclick="addJobClassification(formAddJobClassification);">Add Classification</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
         <div class="main-panel">
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
-                        <h1 class="text-dark">JOB POSTING</h1>
+                        <h1 class="text-dark">ADD CLASSIFICATION</h1>
                     </div>
                 </div>
-
-                <div class="row px-4">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                    <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Active');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Inactive');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowRequest" onclick="changeTableActive('Request');" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowExpired" onclick="changeTableActive('Expired');" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
+				
+               
+                    <div class="container-fluid flex justify-content-center">
+                        <a href="#" class="btn btn-secondary" onclick="openJobClassificationForm()"><i class="fas fa-folder"></i> Add Classification</a>
+                                <div class="card">
+                                    <div class="card-body">
                                         <div class="table-responsive">
-                                            <table id="tblActiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblInactiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-3-nobd" role="tabpanel" aria-labelledby="pills-3-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblRequestJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-4-nobd" role="tabpanel" aria-labelledby="pills-4-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblExpiredJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
+                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+													<table id="tblJobClassifications" class="display table table-striped table-hover" cellspacing="0" width="100%">
+														<thead>s
+															<tr>
+																<th>#</th>
+																<th>Main Applications</th>
+																<th>Sub Classifications</th>
+																<th>Action</th>
+															</tr>
+														</thead>
+														<tbody>
+															
+														</tbody>
+                                            		</table>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
-                </div>
-
-                <footer class="footer bg-danger text-white fixed-bottom">
+                        
+                <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul class="nav">
@@ -482,45 +442,14 @@
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
 
-    <!-- PHP -->
-    <script src="../ajax/AdminJobListHandler.js"></script>
+	<!-- Scripts -->
+	<script src="../ajax/Admin/AdminSettingsHandler.js"></script>
 
-    <!-- Events -->
-    <script>
-		
-		var activeTable = 1;
+	<script>
 
-        $(document).ready(function() {
-
-            fillJobPostList(activeTable);
-
-            $('#tblActiveJobPosting').DataTable();
-            $('#tblInactiveJobPosting').DataTable();
-            $('#tblRequestJobPosting').DataTable();
-            $('#tblExpiredJobPosting').DataTable();
-        });
-
-
-		function changeTableActive(status){
-			switch(status){
-				case 'Active':
-					activeTable = 1;
-					break;
-				case 'Inactive':
-					activeTable = 2;
-					break;
-				case 'Request':
-					activeTable = 3;
-					break;
-				case 'Expired':
-					activeTable = 4;
-					break;
-			}
-
-			fillJobPostList(activeTable);
-
-		}
-
-    </script>
+		$(document).ready(function(){
+			getJobClassificationList();
+		});
+	</script>
 </body>
 </html>

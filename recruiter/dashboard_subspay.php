@@ -1,12 +1,3 @@
-<?php
-session_start();
-
-if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['Token'] == null)) {
-    header('Location: login.php');
-    exit;
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +5,8 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
     <!-- Required meta tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
-    <link rel="stylesheet" href="../phone-number/build/css/demo.css">
-    <link rel="stylesheet" href="../phone-number/build/css/intlTelInput.css">
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -52,106 +42,19 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
     });
     </script>
 
-    <title>Edit Profile</title>
+    <title>Subscription</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
 <body>
     <!--Navbar Header-->
-
     <?php include('../PHPFiles/recruiter_header.php')?>
+    <!--End Navbar-->
 
-    <div class="container flex justify-content-center" style="width: 50%;">
-
-        <form id="editInfoForms">
-
-            <div class="form-group">
-                <h4 class="pb-3 pt-5">Employer Details</h4>
-                <div>
-                    <i class="fas fa-user fs-4"></i>
-                    <h4>Your Details</h4>
-                </div>
-
-                <div class="form-group">
-                    <label for="email" class="fw-bold">Email</label>
-                    <div class="text-muted" style="text-decoration: underline;" id="email"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="fname">Given Name</label>
-                    <input type="text" class="form-control" name="fname" id="fname" aria-describedby="nameHelp"
-                        placeholder="Enter Name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="lname">Family Name</label>
-                    <input type="text" class="form-control" name="lname" id="lname" placeholder="Family Name" required>
-
-                    <label for="phone" class="pt-3">Phone Number</label>
-                    <div class="input-group">
-                        <input type="tel" id="phone" name="number" placeholder="Phone Number" value="+" required>
-                    </div>
-                </div>
-
-
-                <hr>
-
-                <div class="form-group">
-                    <i class="fas fa-building fs-4"></i>
-                    <h4 class="pb-3"><b>Business Details</b></h4>
-                    <label for="exampleEmail" class="fw-bold">Business Name</label>
-                    <div class="text-muted pb-3">For security purpose, please enter the registered business name.
-                    </div>
-                    <input type="text" class="form-control" name="companyName" aria-describedby="nameHelp"
-                        placeholder="Enter Business Name" required>
-                    <label for="phone1" class="pt-3">Telephone Number</label>
-                    <div class="input-group">
-                        <input type="tel" id="phone1" name="telephone" placeholder="Telephone Number" value="+"
-                            required>
-                    </div>
-
-                    <br><br>
-                    <h4><b>Location</b></h4>
-                    <div class="text-muted pb-3">Please provide the business adress details below.</div>
-
-                    <div class="pt-3">
-                        <label for="country">Country</label>
-                        <input type="text" class="form-control" id="country" name="country" aria-describedby="nameHelp"
-                            placeholder="Enter Country" required>
-                    </div>
-
-                    <div class="pt-3">
-                        <label for="address">Address Line</label>
-                        <input type="text" class="form-control" id="address" name="address" aria-describedby="nameHelp"
-                            placeholder="Enter Address Line (e.g. building number, street, etc...)" required>
-                    </div>
-
-                    <div class="pt-3">
-                        <label for="city">Suburb/Town/City</label>
-                        <input type="text" class="form-control" id="city" name="city" aria-describedby="nameHelp"
-                            placeholder="Enter Suburb/Town/City" required>
-                    </div>
-
-                    <div class="pt-3">
-                        <label for="state">State</label>
-                        <input type="text" class="form-control" id="state" name="state" aria-describedby="nameHelp"
-                            placeholder="Enter State" required>
-                    </div>
-
-                    <div class="pt-3">
-                        <label for="postal">Postal Code</label>
-                        <input type="text" class="form-control" id="postal" name="postal" aria-describedby="nameHelp"
-                            placeholder="Enter Postal Code" required>
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-                    <button class="btn btn-danger mt-3 mb-5 d-flex align-items-center"> Update Account</button>
-                </div>
-        </form>
+    <div class="container">
+        Coming soon uwu
     </div>
+
 
 
     <!--bottom navbar-->
@@ -235,23 +138,9 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
-    <script src="../phone-number/build/js/intlTelInput.js"></script>
-    <script src="../ajax/SettingHandler.js"></script>
-    <script src="../ajax/SettingPassHandler.js"></script>
     <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
-    <script>
-    $(document).ready(function() {
-        GetInfo();
-    });
-    </script>
-
-    <script>
-    var input = document.querySelector("#phone");
-    var inputs = document.querySelector("#phone1");
-    window.intlTelInput(input, {});
-    window.intlTelInput(inputs, {});
-    </script>
+    <script src="../ajax/Recruiter/ChangePassHandler.js"></script>
 </body>
 
 </html>

@@ -9,7 +9,6 @@
   }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +32,7 @@
 		});
 	</script>
 
-    <title>Job Posting</title>
+    <title>System Logs</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
@@ -177,7 +176,7 @@
 												<h4>Meow</h4>
 												<p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
-										</div>btn
+										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
@@ -187,7 +186,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href=" ../PHPFiles/Applicant/logout.php">Logout</a>
+										<a class="dropdown-item" href="../PHPFiles/Applicant/logout.php">Logout</a>
 									</li>
 								</div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
 							</ul>
@@ -301,114 +300,144 @@
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
-                        <h1 class="text-dark">JOB POSTING</h1>
+                        <h1 class="text-dark">SYSTEM LOGS</h1>
                     </div>
                 </div>
+				
+               
+                    <div class="container-fluid flex justify-content-center">
+                                
 
-                <div class="row px-4">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                    <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Active');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Inactive');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowRequest" onclick="changeTableActive('Request');" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowExpired" onclick="changeTableActive('Expired');" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblActiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
+								<div class="card">
+									<div class="card-body">
+
+										<div class="card">
+											<div class="card-body">
+												<div class="table-responsive">
+													<div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+														<div class="row">
+															<div class="col-sm-12 col-md-6">
+																<div class="dataTables_length" id="basic-datatables_length">
+																	<label>Show 
+																	<select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
+																		<option value="10">10</option>
+																		<option value="25">25</option>
+																		<option value="50">50</option>
+																		<option value="100">100</option>
+																	</select> entries</label>
+																</div>
+															</div>
+															<div class="col-sm-12 col-md-6">
+																<div id="basic-datatables_filter" class="dataTables_filter">
+																	<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-sm-12">
+															
+																<table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+														<thead>
+															<tr role="row">
+																<th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">Date and Time</th>
+																<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Actions</th>
+																<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Area</th>
+															</tr>
+														</thead>
+													</table>
+												</div>
+											</div>
+										</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="accordion accordion-secondary">
+											<div class="card">
+												<div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													
+													<div class="span-title">
+														Lorem Ipsum #1
+													</div>
+													<div class="span-mode"></div>
+												</div>
+										
+												<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+													<div class="card-body">
+														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+													
+													<div class="span-title">
+														Lorem Ipsum #2
+													</div>
+													<div class="span-mode"></div>
+												</div>
+												<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+													<div class="card-body">
+														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+													</div>
+												</div>
+											</div>
+											<div class="card">
+												<div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+													
+													<div class="span-title">
+														Lorem Ipsum #3
+													</div>
+													<div class="span-mode"></div>
+												</div>
+												<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+													<div class="card-body">
+														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+                                        <div class="col-sm-12 col-md-5">
+                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-7">
+                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
+                                                <ul class="pagination">
+                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item active">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item ">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item ">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item ">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item ">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item ">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
+                                                    </li>
+                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
+                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblInactiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-3-nobd" role="tabpanel" aria-labelledby="pills-3-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblRequestJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-4-nobd" role="tabpanel" aria-labelledby="pills-4-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblExpiredJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+								</div>
                     </div>
-                </div>
-
-                <footer class="footer bg-danger text-white fixed-bottom">
+      
+                <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul class="nav">
@@ -481,46 +510,5 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
-
-    <!-- PHP -->
-    <script src="../ajax/AdminJobListHandler.js"></script>
-
-    <!-- Events -->
-    <script>
-		
-		var activeTable = 1;
-
-        $(document).ready(function() {
-
-            fillJobPostList(activeTable);
-
-            $('#tblActiveJobPosting').DataTable();
-            $('#tblInactiveJobPosting').DataTable();
-            $('#tblRequestJobPosting').DataTable();
-            $('#tblExpiredJobPosting').DataTable();
-        });
-
-
-		function changeTableActive(status){
-			switch(status){
-				case 'Active':
-					activeTable = 1;
-					break;
-				case 'Inactive':
-					activeTable = 2;
-					break;
-				case 'Request':
-					activeTable = 3;
-					break;
-				case 'Expired':
-					activeTable = 4;
-					break;
-			}
-
-			fillJobPostList(activeTable);
-
-		}
-
-    </script>
 </body>
 </html>

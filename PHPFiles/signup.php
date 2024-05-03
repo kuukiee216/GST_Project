@@ -63,6 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $Token = generateRandomString();
         $expirationTime = time() + 3600;
         $Token .= '_' . $expirationTime;
+        $currrentDateTime = date("Y/m/d");
 
         $connection->beginTransaction();
         $currrentDateTime = date("Y/m/d");
@@ -98,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } catch (PDOException $err) {
         $connection->rollback();
-        echo "4";
+        echo $err;
     }
 } else {
     echo "1";

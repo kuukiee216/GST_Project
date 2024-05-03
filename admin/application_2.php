@@ -9,7 +9,6 @@
   }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +32,7 @@
 		});
 	</script>
 
-    <title>Job Posting</title>
+    <title>Application 2</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
@@ -177,7 +176,7 @@
 												<h4>Meow</h4>
 												<p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
-										</div>btn
+										</div>
 									</li>
 									<li>
 										<div class="dropdown-divider"></div>
@@ -187,7 +186,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href=" ../PHPFiles/Applicant/logout.php">Logout</a>
+										<a class="dropdown-item" href="#">Logout</a>
 									</li>
 								</div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
 							</ul>
@@ -301,114 +300,112 @@
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
-                        <h1 class="text-dark">JOB POSTING</h1>
+                        <h1 class="text-dark">Applications</h1>
                     </div>
                 </div>
-
-                <div class="row px-4">
-                    <div class="col-md-12">
+				
+               
+                    <div class="container-fluid flex justify-content-center">
+                        <h1 class="mt-5">Applicantion Review</h1>
                         <div class="card">
-                            <div class="card-header">
-                                    <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Active');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Inactive');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Inactive</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowRequest" onclick="changeTableActive('Request');" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Request</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="btnShowExpired" onclick="changeTableActive('Expired');" data-toggle="pill" href="#pills-4-nobd" role="tab" aria-controls="pills-4-nobd" aria-selected="false">Expired</a>
-                                    </li>
-                                </ul>
-                            </div>
                             <div class="card-body">
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblActiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                <div class="row">
+                                    <div class="col m-2">
+                                        <h4 id="app-jobTitle"><span>Software Engineer</span></h4>
+                                        <div id="app-jobLocation"><i class="fas fa-map-marker-alt"></i><span> Osaka, Japan</span></div>
+                                        <div id="app-job"><i class="far fa-clone"></i><span>Information and Technology Coommunication</span></div>
+                                        <div id="app-companyName"><i class="fas fa-pen-nib"></i> <span>Created by Samsung Technology Corporation</span></div>
                                     </div>
-                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblInactiveJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+
+                                    <div class="col m-2">
+                                        <div><span>hehe</span></div>
+                                        <div id="app-jobSalary"><i class="fas fa-database"></i> <span>60,000 - 80,000 Yen</span></div>
+                                        <div id="app-jobTime"><i class="far fa-clock"></i> <span>Full-Time</span></div>
                                     </div>
-                                    <div class="tab-pane fade show" id="pills-3-nobd" role="tabpanel" aria-labelledby="pills-3-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblRequestJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                </div>
+
+                                <hr>
+                                <div type="button" data-toggle="collapse" data-target="#test" aria-expanded="false" aria-controls="test">
+                                    <i class="fas fa-angle-down"></i>
+                                </div>
+                                <div class="collapse" id="test">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. <br>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                </div>
+                            </div>
+                        </div>
+
+                            <h2>Applicant's Information</h2>
+                            <div class="card card-body">
+                                <div class="row">
+                                <div class="col">
+                                    <div>Full Name</div>
+                                    <div>Email Address</div>
+                                    <div>Location</div>
+                                    <div>Phone Number</div>
+                                </div>
+
+                                <div class="col">
+                                    <div id="app-aiName"><span>Genesis</span></div>
+                                    <div id="app-aiEmail"><span>genesismarvinmanale12</span></div>
+                                    <div id="app-aiLocation"><span>Pagsanjan, Laguna</span></div>
+                                    <div id="app-aiPhone"><span>+639084746563</span></div>
+                                </div>
+                                </div>
+                            </div>
+
+                            <h2>Resume</h2>
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 style="text-decoration: underline;">MANALE_RESUME.pdf</h4>
                                     </div>
-                                    <div class="tab-pane fade show" id="pills-4-nobd" role="tabpanel" aria-labelledby="pills-4-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblExpiredJobPosting" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Job Title</th>
-                                                        <th>Requested by</th>
-                                                        <th>Status</th>
-                                                        <th>Date Posted</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
+                                    <div class="col">
+                                        <button class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2>Cover Letter</h2>
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Applicant wrote a cover letter for this application.</h4>
+                                    </div>
+                                    <div class="col">
+                                        <button class="btn btn-secondary">View</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2>Employer's Questions</h2>
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4>Applicant answered 5 out of 5 questions.</h4>
+                                        <hr>
+                                        <div type="button" data-toggle="collapse" data-target="#test2" aria-expanded="false" aria-controls="test2">
+                                            <i class="fas fa-angle-down"></i>
+                                        </div>
+                                        <div class="collapse" id="test2">
+                                            <ul>
+                                                <li>test1</li>
+                                                <li>test2</li>
+                                                <li>test3</li>
+                                                <li>test4</li>
+                                                <li>test5</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <footer class="footer bg-danger text-white fixed-bottom">
+                            <div class="-fluid d-flex justify-content-end mb-5">
+                                <button class="btn btn-success">Approved</button>
+                                <button class="btn btn-danger">Reject</button>
+                            </div>
+                    </div>
+                        
+                <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul class="nav">
@@ -482,45 +479,15 @@
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
 
-    <!-- PHP -->
-    <script src="../ajax/AdminJobListHandler.js"></script>
+	<!-- Scripts -->
+	<script src="../ajax/Admin/AdminApplicationListHandler.js"></script>
 
-    <!-- Events -->
-    <script>
-		
-		var activeTable = 1;
+	<script>
 
-        $(document).ready(function() {
+		$(document).ready(function(){
+			getApplicationContents();
+		});
 
-            fillJobPostList(activeTable);
-
-            $('#tblActiveJobPosting').DataTable();
-            $('#tblInactiveJobPosting').DataTable();
-            $('#tblRequestJobPosting').DataTable();
-            $('#tblExpiredJobPosting').DataTable();
-        });
-
-
-		function changeTableActive(status){
-			switch(status){
-				case 'Active':
-					activeTable = 1;
-					break;
-				case 'Inactive':
-					activeTable = 2;
-					break;
-				case 'Request':
-					activeTable = 3;
-					break;
-				case 'Expired':
-					activeTable = 4;
-					break;
-			}
-
-			fillJobPostList(activeTable);
-
-		}
-
-    </script>
+	</script>
 </body>
 </html>
