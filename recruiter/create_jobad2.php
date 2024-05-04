@@ -127,23 +127,151 @@
                 </div>
             </div>
 
-            <div class=" card container-fluid justify-content-center" style="width: 50%;">
-                <div class="card-body">
-                    Ad prices may vary based on a number of factors including the supply of and demand for,
-                    candidates for the role being advertised. Prices may change in response to these factors
-                    changing.
+
+            <br>
+            <br>
+            <h2 class="container d-flex justify-content-center"><b>Seasonal Ad Type</b></h2>
+            <div class="container-fluid" style="width: 50%;">
+                <div class="row">
+                    <div class="col">
+                        <p class="mt-3">Pay upfront and get a discount on ads</p>
+                        <p class="mb-5">Choose an Ad budget and use your balance to post ad jobs</p>
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="container justify-content-center form-group mt-3 mb-5" style="width: 50%;">
-                <a href="../recruiter/create_jobad3.php"><button class="btn btn-danger"
-                        type="button">Continue</button></a>
-            </div>
+                <div class="row justify-content-center align-items-center mb-1">
+                    <div class="col-md-4 pl-md-0">
+                        <div class="card card-pricing">
+                            <div class="card-header">
+                                <h4 class="card-title">Occasional</h4>
+                                <span class="sub-title">2-3 ads over 6 months</span>
+                                <div class="card-price">
+                                    <span class="price">$17,920</span>
+                                    <span class="text">/mo</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="specification-list">
+                                    <li>
+                                        <span class="name-specification">4% off Basic ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">4% off Branded ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">Post any ad type</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">Discount apply for 6 months, even after
+                                            your
+                                            balance is
+                                            used up</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block"><b>Select</b></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pl-md-0 pr-md-0">
+                        <div class="card card-pricing card-pricing-focus card-primary">
+                            <div class="card-header">
+                                <h4 class="card-title">Regular</h4>
+                                <span class="sub-title">2-3 ads over 6 months</span>
+                                <div class="card-price">
+                                    <span class="price">$28,000</span>
+                                    <span class="text">/mo</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="specification-list">
+                                    <li>
+                                        <span class="name-specification">10% off Basic ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">10% off Branded ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">3% off Premium ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">Post any ad type</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">Discount apply for 12 months, even after
+                                            your
+                                            balance
+                                            is used up</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-light btn-block"><b>Select</b></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pr-md-0">
+                        <div class="card card-pricing">
+                            <div class="card-header">
+                                <h4 class="card-title">Frequent</h4>
+                                <span class="sub-title">2-3 ads over 6 months</span>
+                                <div class="card-price">
+                                    <span class="price">$52,640</span>
+                                    <span class="text">/mo</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="specification-list">
+                                    <li>
+                                        <span class="name-specification">20% off Basic ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">20% off Branded ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">10% off Premium ads</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">Post any ad type</span>
+                                    </li>
+                                    <li>
+                                        <span class="name-specification">Discount apply for 12 months, even after
+                                            your
+                                            balance
+                                            is used up</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block"><b>Get Started</b></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class=" card container-fluid justify-content-center">
+                        <div class="card-body">
+                            Ad prices may vary based on a number of factors including the supply of and demand for,
+                            candidates for the role being advertised. Prices may change in response to these factors
+                            changing.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container justify-content-center form-group mt-3 mb-5">
+                        <a href=" ../recruiter/create_jobad3.php"><button class="btn btn-danger"
+                                type="button">Continue</button></a>
+                    </div>
+                </div>
 
         </form>
 
-    </div>
     </div>
 
 

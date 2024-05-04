@@ -43,7 +43,7 @@
     </script>
 
 
-    <title>Dashboard My Billing</title>
+    <title>Billing & Plans</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 

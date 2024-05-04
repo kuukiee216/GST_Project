@@ -18,9 +18,6 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="../recruiter/dashboard_jobads.php">Job Ads</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="../recruiter/dashboard_subscription.php">Plans & Pricing</a>
-                </li>
             </ul>
             <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
                 <li class="nav-item dropdown hidden-caret">
