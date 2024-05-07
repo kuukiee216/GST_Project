@@ -4,8 +4,8 @@ function AddFirst(formID){
     var currency = $('#currencySelect').val();
     var minPay = $('#min').val();
     var maxPay = $('#max').val();
-    var hideSalary = $('input[name=hideSalary]').is(':checked') ? 1 : 0;
-    var advertisePrivately = $('input[name=advertisePrivately]').is(':checked') ? 1 : 0;
+    var hideSalary = $('input[name=hideSalary]').is(':checked') ? 0 : 1;
+    var advertisePrivately = $('input[name=advertisePrivately]').is(':checked') ? 0 : 1;
 
     
     $('#btnAddFirst').addClass('is-loading');
@@ -14,7 +14,7 @@ function AddFirst(formID){
 
     $.ajax({
         type: "POST",
-        url: "../PHPFiles/Recruiter/addFirst.php",
+        url: "../PHPFiles/Recruiter/AddFirst.php",
         data: {
             payType: payType,
             currency: currency,
@@ -23,7 +23,6 @@ function AddFirst(formID){
             hideSalary: hideSalary,
             advertisePrivately: advertisePrivately
         },
-        url: "../PHPFiles/Recruiter/addFirst.php",
         success: function(data){
             if(data == "0"){
                 swal({
@@ -41,7 +40,7 @@ function AddFirst(formID){
                     $('#btnAddFirst').prop('disabled', false);
                     enableForm(formID);
 
-                    location.href = './dashboard_myaccount.php';
+                    location.href = './create_jobad2.php';
                 });
 
             }
@@ -186,18 +185,6 @@ function AddFirst(formID){
     });
 }
 
-
-// $("#pass").keypress(function (event) {
-//     if (event.keyCode === 13) {
-//         $('#btnAddFirst').click();
-//     }
-// });
-
-// $("#rpass").keypress(function (event) {
-//     if (event.keyCode === 13) {
-//         $('#btnAddFirst').click();
-//     }
-// });
 if (window.history.replaceState){
     window.history.replaceState(null, null, window.location.href);
 }

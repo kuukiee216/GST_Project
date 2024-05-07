@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['Token'] == null)) {
+    header('Location: login.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -115,20 +125,21 @@
 
                 <div class="form-check row">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
+                        <input class="form-check-input" id="hideSalary" name="hideSalary" type="checkbox" value="">
                         <h5 class="form-check-sign">Hide Salary on your Ad.</h5>
 
                     </label>
                     <h4 class="mt-2"><b>Advertise Privately</b></h4>
                     <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
+                        <input class="form-check-input" id="advertisePrivately" name="advertisePrivately" type="checkbox" value="">
                         <h5 class="form-check-sign">Hide company Name, reviews, and branding on job ads.</h5>
                     </label>
                 </div>
 
                 <div class="form-group mt-3 mb-5">
-                    <a href="../recruiter/create_jobad2.php" class="btn btn-danger" onclick="AddFirst('firstForm');" id="btnAddFirst" type="submit">Continue</a>
+                    <button class="btn btn-danger" id="btnAddFirst" type="button">Continue</button>
                 </div>
+
 
             </form>
         </div>
