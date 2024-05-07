@@ -3,8 +3,12 @@ SESSION_START();
 
 if (isset($_SESSION['AccountID'])) {
 
+}else {
+    header("Location: ../PHPFiles/Recruiter/logout.php");
+
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
