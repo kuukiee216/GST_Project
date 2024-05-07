@@ -214,10 +214,10 @@
                             Your question and answers can't be changed after you post your job ad.
                         </div>
 
-                        <h4 class="mt-5">Internal Job Reference <span class="text-muted">(optional)
+                        <!-- <h4 class="mt-5">Internal Job Reference <span class="text-muted">(optional)
                             </span>
                         </h4>
-                        <input type="tel" class="form-control" placeholder="">
+                        <input type="tel" class="form-control" placeholder=""> -->
                     </div>
                     <div class="form-group mt-5 mb-5">
                         <a href="../recruiter/create_jobadPAY.php" class="btn btn-danger" type="button">Continue</a>

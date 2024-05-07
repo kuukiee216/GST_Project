@@ -25,10 +25,10 @@
 
 <body>
     <!-- Japan job posting icon href-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
 
     <div class="container flex justify-content-center mt-5" style="width: 70%;">
-        <a href="/recruiter/create_jobadPAY.php">
+        <a href="../recruiter/create_jobadPAY.php">
             <button type="button" class="btn btn-icon btn-round btn-primary">
                 <i class="fa fa-arrow-circle-left"></i>
             </button>
@@ -84,7 +84,7 @@
 
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

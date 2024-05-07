@@ -58,68 +58,60 @@
                 </div>
             </div>
 
-            <form>
+            <form id="firstForm">
                 <h2><b>Classify Your Role</b></h2>
                 <br>
-                <h3>Role Information</h3>
+                <!-- <h3>Role Information</h3>
                 <h4>Location</h4>
                 <input type="tel" class="form-control"
                     placeholder="Enter a Subsurb, City, or Region. (e.g. Tokyo, Japan)">
-                <br>
+                <br> -->
 
                 <h2>Pay Details</h2>
                 <h4>Pay Type</h4>
                 <div class="form-check row cols-4" aria-required="true">
                     <label class="form-radio-label col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
+                        <input class="form-radio-input" type="radio" name="optionsRadios" value="1" checked="">
                         <span class="form-radio-sign">Hourly Rate</span>
                     </label>
 
                     <label class="form-radio-label col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                        <input class="form-radio-input" type="radio" name="optionsRadios" value="2">
                         <span class="form-radio-sign">Monthly Salary</span>
                     </label>
 
                     <label class="form-radio-label col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                        <input class="form-radio-input" type="radio" name="optionsRadios" value="3">
                         <span class="form-radio-sign">Annual Salary</span>
                     </label>
 
                     <label class="form-radio-label col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
+                        <input class="form-radio-input" type="radio" name="optionsRadios" value="4">
                         <span class="form-radio-sign">Annual Plus Commission</span>
                     </label>
                 </div>
 
                 <div class="form-group row">
-                    <h4>Pay Range</h4>
-                    <div class="row">
-                        <div class="col">
-                            <label for="exampleCurrency">Currency:</label>
-                            <div class="input-group-append">
-                                <button class="btn btn-primary btn-border dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select
-                                    Currency</button>
-                                <div class="dropdown-menu" x-placement="bottom-start"
-                                    style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                    <a class="dropdown-item" href="#">test</a>
-                                    <a class="dropdown-item" href="#">test2</a>
-                                    <a class="dropdown-item" href="#">test3</a>
-                                    <a class="dropdown-item" href="#">test4</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <label for="exampleCurrency">From:</label>
-                            <input type="text" class="form-control" id="exampleFamilyName" placeholder="Minimum pay">
-                        </div>
-                        <div class="col">
-                            <label for="exampleCurrency">To:</label>
-                            <input type="text" class="form-control" id="exampleFamilyName" placeholder="Maximum pay">
-                        </div>
+                <h4>Pay Range</h4>
+                <div class="row">
+                    <div class="col">
+                        <label for="currencySelect">Select Currency:</label>
+                        <select class="form-control" id="currencySelect">
+                            <option value="1">Euro (€)</option>
+                            <option value="2">US Dollar ($)</option>
+                            <option value="3">Japanese Yen (¥)</option>
+                        </select>
                     </div>
-
+                    <div class="col">
+                        <label for="min">From:</label>
+                        <input type="text" class="form-control" id="min" name="min" placeholder="Minimum pay">
+                    </div>
+                    <div class="col">
+                        <label for="max">To:</label>
+                        <input type="text" class="form-control" id="max" name="max" placeholder="Maximum pay">
+                    </div>
                 </div>
+            </div>
 
                 <div class="form-check row">
                     <label class="form-check-label">
@@ -135,7 +127,7 @@
                 </div>
 
                 <div class="form-group mt-3 mb-5">
-                    <a href="../recruiter/create_jobad2.php" class="btn btn-danger" type="button">Continue</a>
+                    <a href="../recruiter/create_jobad2.php" class="btn btn-danger" onclick="AddFirst('firstForm');" id="btnAddFirst" type="submit">Continue</a>
                 </div>
 
             </form>
@@ -225,8 +217,15 @@
     <script src="../assets/js/atlantis.min.js"></script>
 
 
+    <script src="../ajax/Recruiter/PostingProcedure.js"></script>
 
-
+    <script>
+    $(document).ready(function() {
+        $('#btnAddFirst').click(function() {
+            AddFirst('firstForm');
+        });
+    });
+    </script>
 
 
 </body>
