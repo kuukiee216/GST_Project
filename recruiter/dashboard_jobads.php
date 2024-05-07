@@ -68,125 +68,16 @@
     </div>
 
     <div class="tab-content mt-2 mb-3" id="pills-without-border-tabContent">
-        <div class="tab-pane fade active show" id="pills-open-nobd" role="tabpanel"
-            aria-labelledby="pills-open-tab-nobd">
-            <div class="container" style="width: 80%;">
-                <h2 class="pt-3">Open</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-6 text-start">
-
-                            <div class="col">Status</div>
-                            <div class="col">Job </div>
-                            <div class="col">candidates</div>
-                            <div class="col">Talent Search</div>
-                            <div class="col">Performance</div>
-                            <div class="col">Job Actions</div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-6 text-start">
-
-                            <div class="col"><span class="badge badge-warning">Pending</span></div>
-                            <div class="col">
-                                <div class="row">
-                                    <div style="text-decoration: underline;">Software Engineer</div>
-                                    <div class="text-muted">Metro Manila</div>
-                                </div>
-                            </div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="pills-expired-nobd" role="tabpanel" aria-labelledby="pills-expired-tab-nobd">
-            <div class="container" style="width: 80%;">
-                <h2 class="pt-3">Expired</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-6 text-start">
-
-                            <div class="col">Status</div>
-                            <div class="col">Job </div>
-                            <div class="col">candidates</div>
-                            <div class="col">Talent Search</div>
-                            <div class="col">Performance</div>
-                            <div class="col">Job Actions</div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-6 text-start">
-
-                            <div class="col"><span class="badge badge-danger">Expired</span></div>
-                            <div class="col">
-                                <div class="row">
-                                    <div style="text-decoration: underline;">Software Engineer</div>
-                                    <div class="text-muted">Metro Manila</div>
-                                </div>
-                            </div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
-            <div class="container" style="width: 80%;">
-                <h2 class="pt-3">Draft</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-6 text-start">
-
-                            <div class="col">Status</div>
-                            <div class="col">Job </div>
-                            <div class="col">candidates</div>
-                            <div class="col">Talent Search</div>
-                            <div class="col">Performance</div>
-                            <div class="col">Job Actions</div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-6 text-start">
-
-                            <div class="col"><span class="badge badge-primary">Draft</span></div>
-                            <div class="col">
-                                <div class="row">
-                                    <div style="text-decoration: underline;">Software Engineer</div>
-                                    <div class="text-muted">Metro Manila</div>
-                                </div>
-                            </div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
+    <div class="tab-pane fade active show" id="pills-open-nobd" role="tabpanel" aria-labelledby="pills-open-tab-nobd">
+        <div id="openJobContainer" class="container" style="width: 80%;"></div>
+    </div>
+    <div class="tab-pane fade" id="pills-expired-nobd" role="tabpanel" aria-labelledby="pills-expired-tab-nobd">
+        <div id="expiredJobContainer" class="container" style="width: 80%;"></div>
+    </div>
+    <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
+        <div id="draftJobContainer" class="container" style="width: 80%;"></div>
+    </div>
+    <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
             aria-labelledby="pills-candidates-tab-nobd">
             <div class="container" style="width: 80%;">
                 <h2 class="pt-3">Your Candidates</h2>
@@ -217,11 +108,12 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
+
 
 
     <!--bottom navbar-->
-    <footer class="footer text-white fixed-bottom" style="background-color:#187498">
+    <!-- <footer class="footer text-white fixed-bottom" style="background-color:#187498">
         <div class="container-fluid">
             <nav class="pull-left">
                 <ul class="nav">
@@ -251,7 +143,7 @@
                 © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -330,7 +222,23 @@
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
+    <script src="../ajax/Recruiter/GetJobStatus.js"></script>
 
+    <script>
+    $(document).ready(function() {
+        GetJobTitles().then(function() {
+            displayJobTitles();
+        });
+
+        GetExpiredJobTitles().then(function() {
+            displayExpiredJobTitles();
+        });
+
+        GetDraftJobTitles().then(function() {
+            displayDraftJobTitles();
+        });
+    });
+    </script>
 </body>
 
 </html>
