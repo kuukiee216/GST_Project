@@ -64,7 +64,7 @@
             <h5 class="text-muted mt-2">To protect candidates and seek from fraud, we verify the business address of
                 all
                 first time hirers .
-                Don’t worry, we only need to do this one.</h5>
+                Don't worry, we only need to do this one.</h5>
 
             <h5 class="mt-3">Country</h5>
             <input type="tel" class="form-control" placeholder="" readonly>

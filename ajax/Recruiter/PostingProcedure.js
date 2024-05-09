@@ -25,23 +25,7 @@ function AddFirst(formID){
         },
         success: function(data){
             if(data == "0"){
-                swal({
-                    title: 'Success!',
-                    text: "Profile Updated Sucessfully!",
-                    icon: 'success',
-                    buttons : {
-                        confirm: {
-                            text: 'Okay',
-                            className: 'btn btn-success'
-                        }
-                    }
-                }).then(function(){
-                    $('#btnAddFirst').removeClass('is-loading');
-                    $('#btnAddFirst').prop('disabled', false);
-                    enableForm(formID);
-
-                    location.href = './create_jobad2.php';
-                });
+                location.href = './create_jobad2.php';
 
             }
             else if(data == "1"){
