@@ -1,3 +1,15 @@
+<?php
+SESSION_START();
+
+if (isset($_SESSION['AccountID'])) {
+
+}else {
+    header("Location: ../PHPFiles/Recruiter/logout.php");
+
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +50,7 @@
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <img src="../assets/img/bg_recruiter.png" style="width:100%;">
@@ -50,7 +62,7 @@
                 </div>
                 <div class="col-12 col-md-4">
                     <div class="pt-3">
-                        <h4 class="fw-bold">Hi Genesis,</h4>
+                        <h4 class="fw-bold">Hi <span id="fullName"></span>,</h4>
                         <p>You're in the right place to find your next hire. Get started by creating your job ad. </p>
                     </div>
                 </div>
@@ -112,116 +124,12 @@
         </div>
 
 
-        <div class="container" style="width: 80%;">
-            <h2 class="pt-3"><b>My Recent Job Ads</b></h2>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row row-cols-5 text-start">
+        <div id="jobContainer" class="container" style="width: 80%;"></div>
 
-                        <div class="col">Status</div>
-                        <div class="col">Job </div>
-                        <div class="col">Candidates</div>
-                        <div class="col">Performance</div>
-                        <div class="col">Job Actions</div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row row-cols-5 text-start">
-
-                        <div class="col"><span class="badge badge-warning">Pending</span></div>
-                        <div class="col">
-                            <div class="row">
-                                <div style="text-decoration: underline;">Software Engineer</div>
-                                <div class="text-muted">Metro Manila</div>
-                            </div>
-                        </div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row row-cols-5 text-start">
-
-                        <div class="col"><span class="badge badge-warning">Pending</span></div>
-                        <div class="col">
-                            <div class="row">
-                                <div style="text-decoration: underline;">Software Engineer</div>
-                                <div class="text-muted">Metro Manila</div>
-                            </div>
-                        </div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row row-cols-5 text-start">
-
-                        <div class="col"><span class="badge badge-warning">Pending</span></div>
-                        <div class="col">
-                            <div class="row">
-                                <div style="text-decoration: underline;">Software Engineer</div>
-                                <div class="text-muted">Metro Manila</div>
-                            </div>
-                        </div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row row-cols-5 text-start">
-
-                        <div class="col"><span class="badge badge-warning">Pending</span></div>
-                        <div class="col">
-                            <div class="row">
-                                <div style="text-decoration: underline;">Software Engineer</div>
-                                <div class="text-muted">Metro Manila</div>
-                            </div>
-                        </div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row row-cols-5 text-start">
-
-                        <div class="col"><span class="badge badge-warning">Pending</span></div>
-                        <div class="col">
-                            <div class="row">
-                                <div style="text-decoration: underline;">Software Engineer</div>
-                                <div class="text-muted">Metro Manila</div>
-                            </div>
-                        </div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                        <div class="col fw-bold">-</div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -301,7 +209,18 @@
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
+    <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
+    <script src="../ajax/Recruiter/GetJobPosting.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        GetInfo();
+        GetJobTitles().then(function() {
+            displayJobTitles();
+        });
+    });
+    </script>
 </body>
 
 </html>

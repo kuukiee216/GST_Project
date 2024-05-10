@@ -16,13 +16,14 @@
         date_default_timezone_set('Asia/Manila');
         $currentDateTime = date("Y/m/d H:i:s");
 
+        $AccountID = $_SESSION['AccountID'];
         $CredentialID = $_SESSION['CredentialID'];
         $flagResult = $_POST['FlagResult'];
 
         try{
             $connection->beginTransaction();
 
-            $sQryUpdatePreferredReadyToWork = "UPDATE tbl_applicantpreference SET ReadyToWorkStatus = ? WHERE Applicant = ?;";
+            $sQryUpdatePreferredReadyToWork = "UPDATE tbl_applicantpreference SET ReadyToWorkStatus = ? WHERE ApplicantID = ?;";
             $stmtUpdatePreferredReadyToWork = $connection->prepare($sQryUpdatePreferredReadyToWork);
             $stmtUpdatePreferredReadyToWork->bindValue(1, $flagResult, PDO::PARAM_INT);
             $stmtUpdatePreferredReadyToWork->bindValue(2, $CredentialID, PDO::PARAM_STR);

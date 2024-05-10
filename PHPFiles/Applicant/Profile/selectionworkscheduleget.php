@@ -15,13 +15,24 @@
         date_default_timezone_set('Asia/Manila');
         $currentDateTime = date("Y/m/d H:i:s");
 
+        $CredentialID = $_SESSION['CredentialID'];
+
         try{
             $sQryGetWorkSchedules = "SELECT
-                    WorkScheduleID,
-                    ScheduleName
+                    ws.WorkScheduleID,
+                    ws.ScheduleName
                 FROM
-                    tbl_workschedule";
+                    tbl_workschedule AS ws
+                WHERE
+                    ws.WorkScheduleID NOT IN (
+                        SELECT
+                          WorkScheduleID
+                        FROM
+                          tbl_applicantpreference
+                        WHERE
+                          PreferenceID = (SELECT PreferenceID FROM tbl_applicantpreference WHERE ApplicantID = ?));";
             $stmtGetWorkSchedules = $connection->prepare($sQryGetWorkSchedules);
+            $stmtGetWorkSchedules->bindValue(1, $CredentialID, PDO::PARAM_INT);
             $stmtGetWorkSchedules->execute();
 
             if($stmtGetWorkSchedules->rowCount() > 0){ ?>

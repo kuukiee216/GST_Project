@@ -4,33 +4,24 @@
 <head>
 
     <!-- Required meta tags -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/atlantis.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tiny.cloud/1/pim866f1vew0kcippaf4iky7els0yt814fxepefptu1w5bq5/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
-    <!-- Fonts and icons -->
-    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
-    <script>
-    WebFont.load({
-        google: {
-            "families": ["Lato:300,400,700,900"]
-        },
-        custom: {
-            "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
-                "simple-line-icons"
-            ],
-            urls: ['../assets/css/fonts.min.css']
-        },
-        active: function() {
-            sessionStorage.fonts = true;
-        }
-    });
-    </script>
+    <link rel="stylesheet" href="../assets/css/atlantis.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 
     <title>Create Job Ad Page 2</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
@@ -55,97 +46,73 @@
                 <div class="progress" style="height: 6px;">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="0"
                         aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title=""
-                        data-original-title="50%"></div>
+                        data-original-title="75%"></div>
                 </div>
             </div>
+
+            <form>
+
+                <div class="row">
+                    <div class="col">
+                        <h2>Write about your Job</h2>
+                        <br>
+                        <h5>Showcase your Brand</h5>
+                        <div class="text-muted mb-3">Create your first brand by uploading your
+                            company
+                            logo.
+                            Cover images can be added from the success page after payment.
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1"
+                                    onchange="previewImage();">
+                            </div>
+                        </div>
+                        <div class="card text-white" style="width: 50%;">
+                            <img id="imagePreview" class="card-img" src="../assets/img/icon.png" alt="Card image">
+
+                        </div>
+                    </div>
+
+                    <h5>Job Description</h5>
+                    <div class="text-muted mb-3">Enter your job details.</div>
+
+                    <div class="form-group">
+                        <textarea id="mytextarea"></textarea>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h5 class="mt-3">Video <span class="text-muted">(optional)
+                        </span>
+                    </h5>
+                    <div class="form-group">
+                        <label for="videoUpload" class="text-muted">Add a video to your ad. The video will appear at the
+                            bottom of
+                            your
+                            ad.</label>
+                        <div class="text-muted">e.g. myVideoAd.mp4</div>
+                        <div class="mt-2 mb-2">
+                            <input type="file" class="form-control-file" id="videoUpload" accept="video/*">
+                            <video id="videoPreview" controls
+                                style="max-width: 100%; height: auto; display: none; margin-top: 10px;"></video>
+                        </div>
+
+                        <h4 class="mt-5">Candidate Search Result</h4>
+                        <p>Write a compelling statement about your role to entice more candidates.</p>
+                        <textarea id="mytextarea"></textarea>
+                        </textarea>
+
+                        <div class="form-group mt-3 mb-5">
+                            <a href="../recruiter/create_jobad3.php" class="btn btn-danger" type="button">Continue</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-
-        <h2 class="container d-flex justify-content-center"><b>Select an Ad Type</b></h2>
-        <form>
-            <div class="row justify-content-center align-items-center mb-5">
-                <div class="col-md-3 pl-md-0 pr-md-0">
-                    <div class="card-pricing2 card-primary" id="basicCard">
-                        <div class="pricing-header">
-                            <h3 class="fw-bold">Basic</h3>
-                            <span class="sub-title">Including VAT</span>
-                        </div>
-                        <div class="price-value">
-                            <div class="value">
-                                <span class="currency">$</span>
-                                <span class="amount">124.<span>20</span></span>
-                                <span class="month">/month</span>
-                            </div>
-                        </div>
-                        <ul class="pricing-content">
-                            <li>30 days listing</li>
-                            <li>Good visibility to candidates</li>
-                            <li>Get candidates fast</li>
-                            <li>Credit to access our talent candidates</li>
-                            <li>Include your company logo</li>
-                        </ul>
-                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select"
-                            type="button">Select</button>
-                    </div>
-                </div>
-                <div class="col-md-3 pr-md-0">
-                    <div class="card-pricing2 card-secondary" id="premiumCard">
-                        <div class="pricing-header">
-                            <h3 class="fw-bold">Premium</h3>
-                            <span class="sub-title">Including VAT</span>
-                        </div>
-                        <div class="price-value">
-                            <div class="value">
-                                <span class="currency">$</span>
-                                <span class="amount">180.<span>98</span></span>
-                                <span class="month">/month</span>
-                            </div>
-                        </div>
-                        <ul class="pricing-content">
-                            <li>30 days listing</li>
-                            <li>Good visibility to candidates</li>
-                            <li>Get candidates fast</li>
-                            <li>Credit to access our talent candidates</li>
-                            <li>Include your company logo</li>
-                        </ul>
-                        <div class="row justify-content-center">
-                            <button class="btn btn-link" type="button" id="seeMoreBtn">
-                                See More <i class="fas fa-chevron-down"></i>
-                            </button>
-
-                        </div>
-                        <div id="additionalDetails" class="collapse">
-                            <ul class="additional-list pricing-content">
-                                <li>Access to analytics and reporting</li>
-                                <li>Add company image to promote your brand</li>
-                                <li>Include 3 key selling points to attract candidates</li>
-                                <li>Priority listing in search</li>
-                            </ul>
-                        </div>
-                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select"
-                            type="button">Select</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class=" card container-fluid justify-content-center" style="width: 50%;">
-                <div class="card-body">
-                    Ad prices may vary based on a number of factors including the supply of and demand for,
-                    candidates for the role being advertised. Prices may change in response to these factors
-                    changing.
-                </div>
-            </div>
-
-
-            <div class="container justify-content-center form-group mt-3 mb-5" style="width: 50%;">
-                <a href="../recruiter/create_jobad3.php"><button class="btn btn-danger"
-                        type="button">Continue</button></a>
-            </div>
-
-        </form>
-
     </div>
-    </div>
-
 
     <!--bottom navbar-->
     <?php include('../PHPFiles/recruiter_footer.php')?>
@@ -169,7 +136,6 @@
         }
     }
     </script>
-
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>
@@ -202,7 +168,6 @@
     <!-- jQuery Scrollbar -->
     <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
-
     <!-- Chart JS -->
     <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
 
@@ -229,158 +194,86 @@
     <script src="../assets/js/atlantis.min.js"></script>
 
     <script>
-    // Get all select buttons
-    const selectButtons = document.querySelectorAll('.btn-select');
+    function previewImage() {
+        var file = document.getElementById("exampleFormControlFile1").files[0];
+        var reader = new FileReader();
 
-    // Add event listener to each select button
-    selectButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove 'selected' class from all buttons
-            selectButtons.forEach(btn => {
-                btn.classList.remove('selected');
-            });
-            // Add 'selected' class to the clicked button
-            this.classList.add('selected');
-        });
+        reader.onload = function(e) {
+            document.getElementById("imagePreview").src = e.target.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    tinymce.init({
+        selector: '#mytextarea',
+        menubar: false, // Disables the menu bar
+        toolbar: 'undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | outdent indent'
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const cards = document.querySelectorAll('.card-pricing2');
+    document.getElementById('videoUpload').addEventListener('change', function(event) {
+        var file = event.target.files[0];
+        var videoPreview = document.getElementById('videoPreview');
 
-        cards.forEach(card => {
-            card.addEventListener('click', function() {
-                // Remove 'selected' class from all other cards
-                cards.forEach(c => c.classList.remove('selected'));
-
-                // Add 'selected' class to this card
-                this.classList.add('selected');
-            });
-        });
+        if (file) {
+            videoPreview.src = URL.createObjectURL(file);
+            videoPreview.style.display = 'block'; // Show the video element
+            videoPreview.onload = function() {
+                URL.revokeObjectURL(videoPreview.src); // Free up memory (revoke the object URL)
+            };
+        }
     });
 
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const seeMoreBtn = document.getElementById("seeMoreBtn");
-        const additionalDetails = document.getElementById("additionalDetails");
 
-        seeMoreBtn.addEventListener("click", function() {
-            const isShown = additionalDetails.classList.contains("show");
-            additionalDetails.classList.toggle("show");
-            if (isShown) {
-                this.innerHTML = 'See More <i class="fas fa-chevron-down"></i>';
-            } else {
-                this.innerHTML = 'See Less <i class="fas fa-chevron-up"></i>';
-            }
-        });
-    });
+
+
+    /*
+    function applyBold() {
+    var textarea = document.getElementById("comment");
+    var button = document.getElementById("boldButton");
+    var isActive = textarea.style.fontWeight === 'bold';
+    textarea.style.fontWeight = isActive ? 'normal' : 'bold';
+    button.classList.toggle('active', !isActive);
+    }
+
+    function applyItalic() {
+    var textarea = document.getElementById("comment");
+    var button = document.getElementById("italicButton");
+    var isActive = textarea.style.fontStyle === 'italic';
+    textarea.style.fontStyle = isActive ? 'normal' : 'italic';
+    button.classList.toggle('active', !isActive);
+    }
+
+    function applyUnderline() {
+    var textarea = document.getElementById("comment");
+    var button = document.getElementById("underlineButton");
+    var isActive = textarea.style.textDecoration === 'underline';
+    textarea.style.textDecoration = isActive ? 'none' : 'underline';
+    button.classList.toggle('active', !isActive);
+    }
+
+    function textAlign(direction) {
+    var textarea = document.getElementById("comment");
+    var buttons = document.querySelectorAll('.align-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    document.getElementById(direction + "Button").classList.add('active');
+    textarea.style.textAlign = direction;
+    }
+    */
     </script>
 
     <style>
-    /* Add this CSS to your existing styles */
-    :root {
-        --btn-primary-color: #007bff !important;
-        --btn-secondary-color: #6861CE !important;
+    .btn.active,
+    .btn.active i {
+        color: #fff;
+        /* White text */
+        background-color: #007bff;
+        /* Blue background */
+        border-color: #007bff;
     }
-
-    .btn-select {
-        transition: background-color 0.3s;
-    }
-
-    .btn-select:hover {
-        background-color: var(--btn-primary-color) !important;
-        color: white !important;
-        border-color: #007bff !important;
-    }
-
-    .btn-select.selected {
-        background-color: var(--btn-primary-color) !important;
-        color: white !important;
-        border-color: #007bff !important;
-    }
-
-
-    .btn-secondary:hover {
-        background-color: var(--btn-secondary-color) !important;
-        color: white !important;
-        border-color: #6861CE !important;
-    }
-
-    .btn-secondary.selected {
-        background-color: var(--btn-secondary-color) !important;
-        color: white !important;
-        border-color: #6861CE !important;
-    }
-
-    /* Add this CSS to your existing styles */
-    .card-pricing2:hover {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
-        /* Example shadow effect */
-        transform: translateY(-10px) !important;
-        /* Example of lifting the card on hover */
-    }
-
-    .card-pricing2.selected {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
-        /* Example shadow effect for selected card */
-        transform: translateY(0) !important;
-        /* Reset transform for selected card */
-    }
-
-
-    .additional-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .additional-list li {
-        display: none !important;
-        /* Initially hide additional list items */
-    }
-
-    .collapse.show .additional-list li {
-        display: block !important;
-        /* Show additional list items when the collapse is shown */
-    }
-
-
-    .additional-list.pricing-content {
-
-        padding-top: 10px;
-        /* Adjust this value as necessary */
-        margin-bottom: 20px;
-        /* Adjust if you also want to lessen the space below the list */
-    }
-
-    #additionalDetails {
-        display: none;
-        /* Hide by default */
-    }
-
-    #additionalDetails.show {
-        display: block;
-        /* Show when class 'show' is added */
-    }
-
-
-
-
-
-    /* Add this CSS to your existing styles */
-    /* .btn-select {
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    }
-
-    .btn-select:hover {
-    background-color: #6c757d;
-    color: white;
-    border-color: #6c757d;
-    }
-
-    .btn-select.selected {
-    background-color: #6c757d !important;
-    color: white !important;
-    border-color: #6c757d !important;
-    } */
     </style>
 
 

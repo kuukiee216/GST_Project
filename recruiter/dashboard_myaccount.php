@@ -42,7 +42,7 @@
     });
     </script>
 
-    <title>Dashboard My Account</title>
+    <title>My Account</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
@@ -111,7 +111,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save email</button>
+                                            <button type="button" class="btn btn-primary" onclick="ChangeEmployerProfile('editForm');" id="btnChangeEmployerProfile" type="submit">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-primary" onclick="ChangeCompanyProfile('companyEditForm');" id="btnChangeCompanyProfile" type="submit">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -349,8 +349,17 @@
     <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
     <script src="../ajax/Recruiter/ChangePassHandler.js"></script>
+    <script src="../ajax/Recruiter/ChangeCompanyProfile.js"></script>
+    <script src="../ajax/Recruiter/ChangeEmployerProfile.js"></script>
+
     <script>
     $(document).ready(function() {
+        $('#btnChangeCompanyProfile').click(function() {
+            ChangeCompanyProfile('companyEditForm');
+        });
+        $('#btnChangeEmployerProfile').click(function() {
+            ChangeEmployerProfile('editForm');
+        });
         $('#btnChangePass').click(function() {
             ChangePass('changePassForm');
         });

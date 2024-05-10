@@ -21,10 +21,9 @@
                     cj.JobTitle,
                     ci.CompanyName,
                     class.Classification,
-                    l.City,
-                    l.Province,
-                    l.Country,
-                    l.ZipCode,
+                    city.CityName,
+                    pro.ProvinceName,
+                    co.CountryName,
                     c.Symbol,
                     js.Minimum,
                     js.Maximum,
@@ -41,13 +40,19 @@
                 INNER JOIN
                     tbl_classification AS class ON class.ClassificationID = cj.ClassificationID
                 INNER JOIN
-                    tbl_location AS l ON l.LocationID = cj.LocationID
-                INNER JOIN 
+                    tbl_companyjoblocation AS cjl ON cjl.JobID = cj.JobID
+                INNER JOIN
+                    tbl_country AS co ON co.CountryID = cjl.CountryID
+                INNER JOIN
+                    tbl_province AS pro ON pro.ProvinceID = cjl.ProvinceID
+                INNER JOIN
+                    tbl_city AS city ON city.CityID = cjl.CityID
+                INNER JOIN
                     tbl_jobsalary AS js ON js.JobID = cj.JobID
                 INNER JOIN
                     tbl_currency AS c ON c.CurrencyID = js.CurrencyID
                 WHERE
-                    cj.Status = '0' AND :currentDateTime BETWEEN jp.DateTimeStamp AND jp.DateTimeStampSpan";
+                    cj.Status = '0' AND :currentDateTime BETWEEN jp.DateTimeStamp AND jp.DateTimeStampSpan;";
             $stmtGetJobPostings = $connection->prepare($sQryGetJobPostings);
             $stmtGetJobPostings->bindValue(":currentDateTime", $currentDateTime, PDO::PARAM_STR);
             $stmtGetJobPostings->execute();
@@ -55,7 +60,7 @@
             if($stmtGetJobPostings->rowCount() > 0){
                 while($rowJobPost = $stmtGetJobPostings->fetch(PDO::FETCH_ASSOC)){ 
                     
-                    $jobLocation = $rowJobPost['City'].', '.$rowJobPost['Province'].', '.$rowJobPost['Country'].' '.$rowJobPost['ZipCode'];
+                    $jobLocation = $rowJobPost['CityName'].', '.$rowJobPost['ProvinceName'].', '.$rowJobPost['CountryName'];
                     $jobSalary = "";
 
                     if(strlen($rowJobPost['Maximum'])){
