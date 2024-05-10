@@ -79,7 +79,12 @@ function viewJobPost(JobPostID){
             // WILL GET BACK TO THIS
             // MUST HAVE AN INTERFACE TO PUT THE DATA
             // AND MUST HAVE A LIST OF WHAT DATA TO DISPLAY
-
+            $('#modalViewJobPosting').modal({
+                backdrop: 'static',
+                keyboard: true,
+                focus: true,
+                show: true
+            });
     
             console.log(data);
         }
@@ -384,5 +389,14 @@ function repostJobPost(JobPostID){
         }
     });
     
+}
+
+function closeJobPostView(){
+
+    $('#txtMainClassification').val('');
+    $('#txtSubClassification').val('');
+
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    $('#btnCloseJobPostView').click();
 }
 

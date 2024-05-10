@@ -1,58 +1,86 @@
 // Classification List Functions
-function getJobClassificationList(){
+function getJobClassificationList(activeTable){
 
-    current_Table = '#tblJobClassifications';
+    var current_Table = "#tblMainClassification";
+    
+    switch(activeTable){
+        case 1:
+            current_Table = "#tblMainClassification";
+            break;
+        case 2:
+            current_Table = "#tblSubClassification";
+            break;
+    }
+    changeModal(activeTable);
     
     $.ajax({
         type: "POST",
         datatype: "html",
+        data:{
+            ActiveTable: activeTable
+        },
         url: "../PHPFiles/Admin/Settings/retrieveJobClassificationList.php",
-        success: function(data) {
-
+        success: function(data){
             console.log(data);
-            if(data == '1'){
-
+            console.log(current_Table);
+            if(data != null){
                 var decodedData = JSON.parse(data);
-
-
-                if($.fn.DataTable.isDataTable(current_Table)){
-                    $(current_Table).DataTable().destroy();
-                }
-
-                $(current_Table).DataTable({
-                    pageLength: 10,
-                    data: decodedData,
-                    columns: [
-                        { data: 'ClassificationID' },
-                        { data: 'Classification' },
-                        { data: 'SubClassification' },
-                        { data: 'Action' }
-                    ]
-                });
                 
-            }else{
-                var decodedData = JSON.parse(data);
-
-
                 if($.fn.DataTable.isDataTable(current_Table)){
                     $(current_Table).DataTable().destroy();
                 }
 
-                $(current_Table).DataTable({
-                    pageLength: 10,
-                    data: decodedData,
-                    columns: [
-                        { data: 'ClassificationID' },
-                        { data: 'Classification' },
-                        { data: 'SubClassification' },
-                        { data: 'Action' }
-                    ]
-                });
+                if(activeTable == 1){
+                    $(current_Table).DataTable({
+                        pageLength: 10,
+                        data: decodedData,
+                        columns: [
+                            { data: 'ClassificationID' },
+                            { data: 'Classification' },
+                            { data: 'Action' }
+                        ]
+                    });
+                }else if(activeTable == 2){
+                    $(current_Table).DataTable({
+                        pageLength: 10,
+                        data: decodedData,
+                        columns: [
+                            { data: 'SubClassificationID' },
+                            { data: 'SubClassification' },
+                            { data: 'Action' }
+                        ]
+                    });
+                }
 
+                //$('#tblActiveJobPosting').DataTable.destroy();
+                //$('#tblexamineelist').html(data);
             }
+
+        }, 
+        error: function(data){
+
+
         }
 
-    }); 
+    });
+}
+
+function changeModal(activeTable){
+    if(activeTable == 1){
+        $("#txtMainClassification").show();
+        $("#txtSubClassification").hide();
+
+        $("#lbMainClassification").show();
+        $("#lbSubClassification").hide();
+
+    }else if(activeTable == 2){
+        $("#txtMainClassification").hide();
+        $("#txtSubClassification").show();
+
+        $("#lbMainClassification").hide();
+        $("#lbSubClassification").show();
+
+    }
 }
 
 function openJobClassificationForm(){
@@ -83,7 +111,7 @@ function closeJobClassificationForm(){
         }
     }).then((Cancel) => {
         if (Cancel) {
-            $('#txtMainApplication').val('');
+            $('#txtMainClassification').val('');
             $('#txtSubClassification').val('');
 
             history.replaceState(null, document.title, window.location.pathname + window.location.search);
@@ -95,87 +123,119 @@ function closeJobClassificationForm(){
     });
 }
 
-function addJobClassification(formID){
+function addJobClassification(activeTable){
     $('#btnAddJobClassification').addClass('is-loading');
     // disableForm(formID);     
 
-    var mainApplication = $('#txtMainApplication').val();
-    var subClassification = $('#txtSubClassification').val();
+    var Classification = '';
 
-    $.ajax({
-        type: "POST",
-        datatype: "html",
-        data: {
-            MainApplication : mainApplication,
-            SubClassification : subClassification
-        },
-        url: "../PHPFiles/Admin/Settings/jobClassificationAdd.php",
-        success: function(data){
-            alert(data);
+    if(activeTable == 1)
+        Classification = $('#txtMainClassification').val();
+    else if(activeTable == 2)
+        Classification = $('#txtSubClassification').val();
 
-            if(data == '1'){
-                swal({
-                    title: 'Job Classification Added!',
-                    text: "Successfully Added the Job Classification",
-                    icon: 'success',
-                    type: 'success',
-                    buttons : {
-                        confirm: {
-                            text : 'Okay',
-                            className : 'btn btn-success'
+    if(Classification != ''){
+        $.ajax({
+            type: "POST",
+            datatype: "html",
+            data: {
+                Classification : Classification,
+                ActiveTable : activeTable
+            },
+            url: "../PHPFiles/Admin/Settings/jobClassificationAdd.php",
+            success: function(data){
+                alert(data);
+                if(data == '1'){
+                    swal({
+                        title: 'Job Classification Added!',
+                        text: "Successfully Added the Job Classification",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
                         }
-                    }
-                }).then(function(){
-                        $('#btnAddJobClassification').removeClass('is-loading');
-                        $("#btnCloseAddJobClassification").click();
+                    }).then(function(){
+                            $('#btnAddJobClassification').removeClass('is-loading');
+                            $("#btnCloseAddJobClassification").click();
 
-                    getJobClassificationList();
-                });
+                        getJobClassificationList();
+                    });
 
-            }else if(data == '2'){
-                swal({
-                    title: 'An Error Has Occured!',
-                    text: "There seems to be trouble when connecting to the server, please try again",
-                    icon: 'error',
-                    buttons : {
-                        confirm: {
-                            text : 'Okay',
-                            className : 'btn btn-success'
+                }else if(data == '2'){
+                    swal({
+                        title: 'An Error Has Occured!',
+                        text: "There seems to be trouble when connecting to the server, please try again",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
                         }
-                    }
-                }).then(function(){
-                        $('#btnAddJobClassification').removeClass('is-loading');
-                        $("#btnCloseAddJobClassification").click();
+                    }).then(function(){
+                            $('#btnAddJobClassification').removeClass('is-loading');
+                            $("#btnCloseAddJobClassification").click();
 
-                    getJobClassificationList();
-                });
-            }else if(data == '3'){
-                swal({
-                    title: 'An Error has Occured!',
-                    text: "An error occured while processing, please try again",
-                    icon: 'error',
-                    buttons : {
-                        confirm: {
-                            text : 'Okay',
-                            className : 'btn btn-success'
+                        getJobClassificationList();
+                    });
+                }else if(data == '3'){
+                    swal({
+                        title: 'An Error has Occured!',
+                        text: "An error occured while processing, please try again",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
                         }
-                    }
-                }).then(function(){
-                        $('#btnAddJobClassification').removeClass('is-loading');
-                        $("#btnCloseAddJobClassification").click();
+                    }).then(function(){
+                            $('#btnAddJobClassification').removeClass('is-loading');
+                            $("#btnCloseAddJobClassification").click();
 
-                    getJobClassificationList();
-                });
-            }else{
+                        getJobClassificationList(activeTable);
+                    });
+                }else if(data == '4'){
+                    swal({
+                        title: 'An Error has Occured!',
+                        text: "The Classification entered already exists",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                            $('#btnAddJobClassification').removeClass('is-loading');
+                            $("#btnCloseAddJobClassification").click();
+
+                        getJobClassificationList(activeTable);
+                    });
+                }else{
+
+                }
 
             }
+        });
+    }else{
+        swal({
+            title: 'Please Fill out Inputs!',
+            text: "There seems to be inputs that hasn't been filled out",
+            icon: 'error',
+            buttons : {
+                confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                }
+            }
+        }).then(function(){
 
-        }
-    });
-    
-
-    
-
+        });
+    }
 }
 
 function viewClassification(ClassificationID){
@@ -260,22 +320,20 @@ function getJobTitleList(){
         datatype: "html",
         url: "../PHPFiles/Admin/Settings/retrieveJobTitleList.php",
         success: function(data) {
-
             console.log(data);
             if(data == '1'){
-
                 var decodedData = JSON.parse(data);
-
 
                 if($.fn.DataTable.isDataTable(current_Table)){
                     $(current_Table).DataTable().destroy();
                 }
 
                 $(current_Table).DataTable({
-                    pageLength: 10,
+
                     data: decodedData,
                     columns: [
-                        { data: 'ClassificationID' },
+                        { data: 'JobDescriptiveID' },
+                        { data: 'JobTitle' },
                         { data: 'Classification' },
                         { data: 'SubClassification' },
                         { data: 'Action' }
@@ -291,10 +349,11 @@ function getJobTitleList(){
                 }
 
                 $(current_Table).DataTable({
-                    pageLength: 10,
+
                     data: decodedData,
                     columns: [
-                        { data: 'ClassificationID' },
+                        { data: 'JobDescriptiveID' },
+                        { data: 'JobTitle' },
                         { data: 'Classification' },
                         { data: 'SubClassification' },
                         { data: 'Action' }
@@ -357,8 +416,12 @@ function populateMainClassificationSelect(){
     $.ajax({
         type: "POST",
         datatype: "html",
+        data:{
+            MainClassification : '1'
+        },
         url: "../PHPFiles/Admin/Settings/retrieveJobClassificationList.php",
         success: function(data){
+            console.log(data);
             if(data == '1'){
                 
             }else{
@@ -386,47 +449,42 @@ function populateMainClassificationSelect(){
 
 }
 
-function populateSubClassificationSelect(selected_value){
-    var lstSubClassification = document.getElementById("lstSubClassifications");
+function populateSubClassificationSelect(){
     var Sub_Classifications = [];
-
-    $('#lstSubClassifications').empty();
-
-    if(lstSubClassification.disabled == true){
-        lstSubClassification.disabled = !lstSubClassification.disabled;
-    }
 
     $.ajax({
         type: "POST",
         datatype: "html",
         data:{
-            SelectedMain : selected_value
+            SubClassification : '1'
         },
-        url: "../PHPFiles/Admin/Settings/jobTitleGetSubClassifications.php",
+        url: "../PHPFiles/Admin/Settings/retrieveJobClassificationList.php",
         success: function(data){
-            
-            var decodedData = JSON.parse(data);
-            console.log(decodedData);
-                for (var i = 0; i < decodedData.length; i++) {  
+            console.log(data);
+            if(data == '1'){
+                
+            }else{
+                var decodedData = JSON.parse(data);
+
+                for (var i = 0; i < decodedData.length; i++) {
                     var jobClassifications = decodedData[i];
-                    console.log('worked');
+
                     Sub_Classifications.push(jobClassifications.SubClassification);
-
-
                 }
-
+                // Get the datalist element
                 var datalist = document.getElementById("lstSubClassifications");
                 console.log(Sub_Classifications);
 
                 // Populate the datalist with options
-                Sub_Classifications.forEach(function(sub_classification) {
+                Sub_Classifications.forEach(function(main_classification) {
                     var option = document.createElement('option');
-                    option.value = sub_classification;
-                    option.textContent = sub_classification; 
+                    option.value = main_classification;
+                    option.textContent = main_classification; 
                     datalist.appendChild(option);
                 });
+            }
         }
-    })
+    });
 }
 
 function submitJobTitle(){
@@ -443,18 +501,27 @@ function submitJobTitle(){
             MainClassification : MainClassification,
             SubClassification : SubClassification
         },
-        url: "../PHPFiles/Admin/Settings/jobTitleGetSubClassifications.php",
+        url: "../PHPFiles/Admin/Settings/jobTitleSubmit.php",
         success: function(data){
+            alert(data);
 
         }
     });
 
 }
 
+function viewJobTitle(JobID){
+
+}
+
+function deleteJobTitle(JobID){
+
+}
+
 
 // Location Settings
 function getLocations(){
-
+    
 }
 
 function openAddLocationsForm(){
@@ -489,6 +556,8 @@ function closeAddLocationsForm(){
             // $('#lstSubClassifications').prop('disabled', true);
             // $('#lstMainClassifications').prop('selectedIndex', -1);
             // $('#lstSubClassifications').prop('selectedIndex', -1);
+
+            $('#selectCountry').prop('selectedIndex', 1);
 
             history.replaceState(null, document.title, window.location.pathname + window.location.search);
             $('#btnCloseAddLocationForm').click();
@@ -538,7 +607,20 @@ function addPromoCode(formAddPromoCode){
         url: '../PHPFiles/Admin/Settings/promoAdd.php',
         success:function(data){
             if(data == '1'){
-                alert('worked');
+                swal({
+                    title: 'Promo Code has been Added!',
+                    text: "Successfully Added the Promo Code.",
+                    icon: 'success',
+                    type: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    fillAdTypeList();
+                });
             }else{
                 alert(data);
             } 
@@ -566,7 +648,20 @@ function addAdType(formAddAdType){
         url: '../PHPFiles/Admin/Settings/adTypeAdd.php',
         success:function(data){
             if(data == '1'){
-                alert('worked');
+                swal({
+                    title: 'Ad Type has been Added!',
+                    text: "Successfully Added the Ad Type.",
+                    icon: 'success',
+                    type: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    fillAdTypeList();
+                });
             }else{
                 alert(data);
             } 
@@ -642,7 +737,7 @@ function closePromoCode(){
 }
 
 function fillAdTypeList(){
-    current_Table = '#tblAdTypes';
+    var current_Table = '#tblAdTypes';
     
     $.ajax({
         type: "POST",
@@ -697,7 +792,7 @@ function fillAdTypeList(){
 }
 
 function fillPromoCodeList(){
-    current_Table = '#tblPromoCodes';
+    var current_Table = '#tblPromoCodes';
     
     $.ajax({
         type: "POST",
@@ -796,7 +891,7 @@ function deleteAdType(AdTypeID){
                             }
                         }
                     }).then(function(){
-                        fillPromoCodeList();
+                        fillAdTypeList();
                     });
                          
                 }else{

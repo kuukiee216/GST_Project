@@ -297,6 +297,30 @@
 		</div>
 		<!-- End Sidebar -->
 
+		<!-- Modal -->
+		<div class="modal fade" id="modalViewJobPosting" tabindex="-1" role="dialog" aria-labelledby="modalViewJobPosting" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title">Job Posting</h3>
+								<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseJobPostView">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<button type="button" class="close" onclick="closeJobPostView();">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<h3  id="lbMainClassification">Put Description Here <span class="text-danger font-weight-bold">*</span></h3>
+								<br />
+								<h3 id="lbMainClassification">Put Description Here <span class="text-danger font-weight-bold">*</span></h3>
+								<br />
+								<h3 id="lbMainClassification">Put Description Here <span class="text-danger font-weight-bold">*</span></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+
         <div class="main-panel">
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">

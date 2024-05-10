@@ -312,17 +312,17 @@
 								<div class="modal-body">
 									<form id="formAddJobClassification">
 										<div class="form-group px-5">
-											<label for="txtMainApplication">Main Application <span class="text-danger font-weight-bold">*</span></label>
-											<input type="text" class="form-control" name="txtMainApplication" id="txtMainApplication" required>
+											<label for="txtMainClassification" id="lbMainClassification">Main Classification <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtMainClassification" id="txtMainClassification">
 										</div>
 
 										<div class="form-group px-5">
-											<label for="txtSubClassification">Sub Classification <span class="text-danger font-weight-bold">*</span></label>
-											<input type="text" class="form-control" name="txtSubClassification" id="txtSubClassification" required>
+											<label for="txtSubClassification" id="lbSubClassification">Sub Classification <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtSubClassification" id="txtSubClassification">
 										</div>
 
 										<div class="row mx-3 my-3">
-											<button class="btn btn-primary btn-block" id="btnAddJobClassification" onclick="addJobClassification(formAddJobClassification);">Add Classification</button>
+											<button class="btn btn-primary btn-block" type="button" id="btnAddJobClassification">Add Classification</button>
 										</div>
 									</form>
 								</div>
@@ -342,26 +342,52 @@
                     <div class="container-fluid flex justify-content-center">
                         <a href="#" class="btn btn-secondary" onclick="openJobClassificationForm()"><i class="fas fa-folder"></i> Add Classification</a>
                                 <div class="card">
+										<div class="card-header">
+											<ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+											<li class="nav-item">
+												<a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Main');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Main Classifications</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Sub');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Sub Classifications</a>
+											</li>
+										</ul>
+									</div>
                                     <div class="card-body">
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
                                         <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-													<table id="tblJobClassifications" class="display table table-striped table-hover" cellspacing="0" width="100%">
-														<thead>s
-															<tr>
-																<th>#</th>
-																<th>Main Applications</th>
-																<th>Sub Classifications</th>
-																<th>Action</th>
-															</tr>
-														</thead>
-														<tbody>
-															
-														</tbody>
-                                            		</table>
+                                            <table id="tblMainClassification" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Main Classification</th>
+														<th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
+                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
+                                        <div class="table-responsive">
+                                            <table id="tblSubClassification" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Sub Classification</th>
+														<th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                                 </div>
                                         </div>
                                     </div>
@@ -447,9 +473,36 @@
 
 	<script>
 
+		var activeTable = 1;
+
 		$(document).ready(function(){
-			getJobClassificationList();
+			getJobClassificationList(activeTable);
+			changeModal(activeTable);
+
+            $('#tblMainClassification').DataTable();
+            $('#tblSubClassification').DataTable();
+
+
 		});
+
+		$("#btnAddJobClassification").click(function() {
+				console.log('worked');
+				addJobClassification(activeTable);
+		});
+
+		function changeTableActive(status){
+			switch(status){
+				case 'Main':
+					activeTable = 1;
+					break;
+				case 'Sub':
+					activeTable = 2;
+					break;
+			}
+
+			getJobClassificationList(activeTable);
+
+		}
 	</script>
 </body>
 </html>

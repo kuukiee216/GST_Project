@@ -414,7 +414,7 @@
 	<script>
 
 		$(document).ready(function(){
-
+			$('#tblApplications').DataTable();
 			getApplicationsList();
 		});
 

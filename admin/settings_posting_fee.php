@@ -529,11 +529,12 @@
 	<script>
 
 		$(document).ready(function(){
-			fillAdTypeList();
+		
 			fillPromoCodeList();
+			fillAdTypeList();
 
-			$('#tblAdTypes').DataTable();
-			$('#tblPromoCodes').DataTable();
+			// $('#tblAdTypes').DataTable();
+			// $('#tblPromoCodes').DataTable();
 		});
 
 	</script>
