@@ -1,3 +1,39 @@
+<?php
+// Initialize promo code variables
+$promoCodeApplied = false;
+$discountAmount = 0;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $adType = $_POST['adType'];
+    // Define your ad prices, ideally this should be retrieved from a database or configuration
+    $prices = [
+        "Basic Ad" => 30,
+        "Premium Ad" => 50,
+        "Occasional Ad" => 60,
+        "Regular Ad" => 80,
+        "Frequent Ad" => 100
+    ];
+    $taxRate = 0.15; // Example tax rate: 15%
+    $discount = 0.10;
+
+    $basePrice = $prices[$adType];
+    $tax = $basePrice * $taxRate;
+
+    // Calculate discount for the selected ad type
+    $discountedPrice = $basePrice * $discount;
+
+    // Check if a promo code has been applied
+    if (isset($_POST['promoCode']) && !empty($_POST['promoCode'])) {
+        $promoCodeApplied = true;
+        // Apply discount from the promo code
+        $discountAmount = 10; // Example discount amount (replace with your calculation)
+    }
+
+    // Calculate total amount after discounts and taxes
+    $total = $basePrice + $tax - $discountedPrice - $discountAmount;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,14 +116,16 @@
 
 
             <hr>
-            <h3 class="mt-5">Apply Promo Code</h3>
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                <div class="input-group-prepend">
-                    <button class="btn btn-secondary btn-border" type="button">Apply</button>
+            <h3 class="mt-5"><b>Apply Promo Code</b></h3>
+            <form action="" method="POST">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="promoCode" placeholder="Enter promo code">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-secondary btn-border" type="submit">Apply</button>
+                    </div>
                 </div>
-            </div>
-            <h3 class="mt-5">Order Summary</h3>
+            </form>
+            <!--           <h3 class="mt-5">Order Summary</h3>
 
             <table class="table table-striped">
                 <thead>
@@ -176,11 +214,54 @@
                         of
                         use.</a></p>
             </div>
-            <div class="mb-5">
-                <a class="btn btn-danger" type="button" id="alert_demo_3_3">Post My Ad</a>
-                <a href="../recruiter/create_jobadPreview.php" class="btn btn-outline-danger">Preview</a>
-            </div>
+            <br> <br> <br> <br> <br> <br> -->
+
+            <br>
+            <h3 class="mt-3"><b>Order Summary</b></h3>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Items</th>
+                        <th scope="col">Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><?php echo htmlspecialchars($adType); ?> Ad</td>
+                        <td>$<?php echo number_format($basePrice, 2); ?></td>
+                    </tr>
+                    <tr>
+                        <td>VAT</td>
+                        <td>$<?php echo number_format($tax, 2); ?></td>
+                    </tr>
+                    <tr>
+                        <?php if ($promoCodeApplied): ?>
+                    <tr>
+                        <td>Discount (Promo Code)</td>
+                        <td>$<?php echo number_format($discountAmount, 2); ?></td>
+                    </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td>Discounted (Ad Type)</td>
+                        <td>$<?php echo number_format($discountedPrice, 2); ?></td>
+                    </tr>
+                    <tr>
+                        <td><b>Total (including VAT)<b></td>
+                        <td><b>$<?php echo number_format($total, 2); ?></b></td>
+                    </tr>
+                </tbody>
+            </table>
+            <form action="create_checkout_session.php" method="POST">
+                <input type="hidden" name="totalAmount" value="<?php echo $total; ?>">
+                <input type="hidden" name="adType" value="<?php echo $adType; ?>">
+
+                <div class="mb-5">
+                    <button class="btn btn-danger" type="submit" id="alert_demo_3_3">Proceed to Payment</button>
+                    <a href="../recruiter/create_jobadPreview.php" class="btn btn-outline-danger">Preview</a>
+            </form>
         </div>
+    </div>
     </div>
 
 
