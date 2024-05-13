@@ -1,6 +1,6 @@
 <?php
 
-require_once '../db_config.php';
+require_once '../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -14,14 +14,14 @@ if(isset($_POST['ApplicantID'])){
     $dataResultArray = array();
 
     try{
-         $sQryGetApplicantHistory = "SELECT
+        $sQryGetApplicantHistory = "SELECT
                                         app.ApplicationID,
                                         jp.JobPostingID,
                                         cj.JobTitle,
                                         cj.Status,
                                         ci.CompanyName,
-                                        loc.Country,
-                                        loc.City
+                                        ct.CityName,
+                                        co.CountryName
                                     FROM
                                         tbl_application as app
                                     INNER JOIN
@@ -31,10 +31,13 @@ if(isset($_POST['ApplicantID'])){
                                     INNER JOIN
                                         tbl_employerinfo as ei ON ei.EmployerID = cj.EmployerID
                                     INNER JOIN
-                                        tbl_companyinfo as ci ON ci.CompanyID = ei.CompanyID       
+                                        tbl_joblocation as jl ON jl.JobPostingID = jp.JobPostingID
                                     INNER JOIN
-                                        tbl_location as loc ON loc.LocationID = cj.LocationID     
-                                        
+                                        tbl_city as ct ON ct.CityID = jl.CityID
+                                    INNER JOIN
+                                        tbl_country as co ON co.CountryID = jl.CountryID
+                                    INNER JOIN
+                                        tbl_companyinfo as ci ON ci.CompanyID = ei.CompanyID       
                                     WHERE 
                                         app.ApplicantID = ?";
 
@@ -52,7 +55,7 @@ if(isset($_POST['ApplicantID'])){
 
                 $AppID = $rowApplicantHistory['ApplicationID'];
                 $JobTitle = $rowApplicantHistory['JobTitle'];
-                $Location = $rowApplicantHistory['City'] . ", " . $rowApplicantHistory['Country'];
+                $Location = $rowApplicantHistory['CityName'] . ", " . $rowApplicantHistory['CountryName'];
                 $Company = $rowApplicantHistory['CompanyName'];
                 $Status = mapStatus($rowApplicantHistory['Status']);
 
@@ -76,7 +79,7 @@ if(isset($_POST['ApplicantID'])){
         
 
     }catch(PDOExeption $err){
-        echo '2';
+        echo $err;
     }
 }else{
     echo '3';

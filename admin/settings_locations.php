@@ -312,7 +312,7 @@
 								<div class="modal-body">
 									<form id="formAddLocations">
 										<div class="form-group px-5">
-											<label for="inputCountr">Country <span class="text-danger font-weight-bold">*</span></label>
+											<label for="inputCountry">Country <span class="text-danger font-weight-bold">*</span></label>
 											<select class="form-control" name="inputCountry" id="selectCountry" onchange="loadStates()" required>
 												<option value="" disabled selected>Select a Country</option>
 											</select> 
@@ -325,14 +325,15 @@
 											<br />
 
 											<label for="inputCity">City <span class="text-danger font-weight-bold">*</span></label>
-											<select class="form-control" name="inputCity" id="selectCity" required>
+											<input class="form-control" type="text" name="inputCity" id="selectCity">
+											<!-- <select class="form-control" name="inputCity" id="selectCity" required>
 												<option value="" disabled selected>Select a City</option>
-											</select>
+											</select> -->
 											<br />
 										</div>
 
 										<div class="row mx-3 my-3">
-											<button class="btn btn-primary btn-block" id="btnAddLocations" onclick="AddLocations(formAddLocations);">Add Location</button>
+											<button class="btn btn-primary btn-block" id="btnAddLocations" onclick="AddLocation(formAddLocations);">Add Location</button>
 										</div>
 									</form>
 								</div>
@@ -452,6 +453,7 @@
 
 	<script>
 		$(document).ready(function(){
+			getLocations();
 			loadCountries();
 			$('#tblLocations').DataTable();
 		});
@@ -523,24 +525,24 @@
 			citySelect.disabled = false
 			citySelect.style.pointerEvents = 'auto'
 
-			const selectedCountryCode = countrySelect.value
-			const selectedStateCode = stateSelect.value
-			// console.log(selectedCountryCode, selectedStateCode);
+			// const selectedCountryCode = countrySelect.value
+			// const selectedStateCode = stateSelect.value
+			// // console.log(selectedCountryCode, selectedStateCode);
 
-			citySelect.innerHTML = '<option value="">Select City</option>' // Clear existing city options
+			// citySelect.innerHTML = '<option value="">Select City</option>' // Clear existing city options
 
-			fetch(`${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities`, {headers: {"X-CSCAPI-KEY": config.ckey}})
-			.then(response => response.json())
-			.then(data => {
-				// console.log(data);
+			// fetch(`${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities`, {headers: {"X-CSCAPI-KEY": config.ckey}})
+			// .then(response => response.json())
+			// .then(data => {
+			// 	// console.log(data);
 
-				data.forEach(city => {
-					const option = document.createElement('option')
-					option.value = city.iso2
-					option.textContent = city.name 
-					citySelect.appendChild(option)
-				})
-			})
+			// 	data.forEach(city => {
+			// 		const option = document.createElement('option')
+			// 		option.value = city.iso2
+			// 		option.textContent = city.name 
+			// 		citySelect.appendChild(option)
+			// 	})
+			// })
 		}
 
 

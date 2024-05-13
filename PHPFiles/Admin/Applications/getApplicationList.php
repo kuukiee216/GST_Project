@@ -1,5 +1,5 @@
 <?php
-require_once '../../db_config.php';
+require_once '../../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 

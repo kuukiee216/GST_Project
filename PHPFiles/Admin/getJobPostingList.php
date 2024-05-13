@@ -1,6 +1,6 @@
 <?php
 
-require_once '../db_config.php';
+require_once '../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -9,37 +9,54 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST"){
 }
 
 if(isset($_POST['ActiveTable'])){
-    // 1 - ACTIVE  2 - INACTIVE  3 - REQUEST  4 - EXPIRED
+    // 1 - ACTIVE  2 - INACTIVE  3 - REQUEST  4 - EXPIRED  5  - Marked Deletion  6 - Rejected
 
     $activeTable = $_POST['ActiveTable'];
-
+    $sQryGetJobList = '';
     try {
-        $sQryGetJobList = "SELECT 
-                                cj.JobID, 
-                                cj.JobTitle, 
-                                cj.Status, 
-                                te.FirstName, 
-                                te.MiddleName, 
-                                te.LastName, 
-                                jp.DateTimeStamp
-                        FROM
-                            tbl_companyjob as cj
-                        INNER JOIN
-                            tbl_employerinfo as te ON te.EmployerID = cj.EmployerID
-                        INNER JOIN
-                            tbl_jobposting as jp ON jp.JobID = cj.JobID
-                        WHERE
-                            cj.Status = ?;";
-        $stmtGetJobList = $connection->prepare($sQryGetJobList);
-        $stmtGetJobList->bindValue(1, $activeTable, PDO::PARAM_INT);
+        if($activeTable >= 4){
+            $sQryGetJobList = "SELECT 
+                                    cj.JobID, 
+                                    cj.JobTitle, 
+                                    cj.Status, 
+                                    te.FirstName, 
+                                    te.MiddleName, 
+                                    te.LastName, 
+                                    jp.DateTimeStamp
+                            FROM
+                                tbl_companyjob as cj
+                            INNER JOIN
+                                tbl_employerinfo as te ON te.EmployerID = cj.EmployerID
+                            INNER JOIN
+                                tbl_jobposting as jp ON jp.JobID = cj.JobID
+                            WHERE
+                                cj.Status IN (4, 5 ,6);";
+            $stmtGetJobList = $connection->prepare($sQryGetJobList);
+        } else{
+            $sQryGetJobList = "SELECT 
+                                    cj.JobID, 
+                                    cj.JobTitle, 
+                                    cj.Status, 
+                                    te.FirstName, 
+                                    te.MiddleName, 
+                                    te.LastName, 
+                                    jp.DateTimeStamp
+                            FROM
+                                tbl_companyjob as cj
+                            INNER JOIN
+                                tbl_employerinfo as te ON te.EmployerID = cj.EmployerID
+                            INNER JOIN
+                                tbl_jobposting as jp ON jp.JobID = cj.JobID
+                            WHERE
+                                cj.Status = ?;";
+            $stmtGetJobList = $connection->prepare($sQryGetJobList);
+            $stmtGetJobList->bindValue(1, $activeTable, PDO::PARAM_INT);
+        }
         $stmtGetJobList->execute();
 
-        
         if($stmtGetJobList->rowCount() > 0){
-
             $dataResultArray = array();
             while($rowJobList = $stmtGetJobList->fetch(PDO::FETCH_ASSOC)){
-                
                 $rowData = array();
 
                 # Join Employer's Name
@@ -73,7 +90,7 @@ if(isset($_POST['ActiveTable'])){
         }
         
     } catch(PDOException $err){
-        echo '3';
+        echo $err;
     }
 }
 
@@ -102,6 +119,13 @@ function mapActionButtons($status, $id){
             <button class="btn-danger" id="btnRejectJob'.$id.'" onclick="rejectJobPost(this.id);" name="btnRejectJob"><i class="fas fa-times"></i></button>
             <button class="btn-warning" id="btnDeleteJob'.$id.'" name="btnDeleteJob" onclick= "deleteJobPost(this.id);"><i class="far fa-trash-alt"></i></button>';
     }
+    else if($status == 5){ // Pending Deletion
+        return '<button class="btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>
+        <button class="btn-success" id="btnRecoverJob'.$id.'" name="btnRecoverJob" onclick= "recoverJobPost(this.id);"><i class="fas fa-sync-alt"></i></button>';
+    }
+    else if($status == 6){ // Rejected
+        return '<button class="btn-secondary" id="btnViewJob'.$id.'" onclick="viewJobPost(this.id);" name="btnViewJob"><i class="far fa-eye"></i></button>';
+    }
 }
 
 function mapStatus($status){
@@ -114,6 +138,10 @@ function mapStatus($status){
             return "Pending";
         case 4: 
             return "Expired";
+        case 5: 
+            return "Pending Deletion";
+        case 6: 
+            return "Rejected";
     }
 }
 

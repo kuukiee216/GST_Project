@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../db_config.php';
+require_once '../../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -9,8 +9,6 @@ $DateTime = date('Y-m-d H:i:s');
 $AccountID = $_SESSION['AccountID'];
 $Area = 'Ad Type';
 $Action = 'Add';
-
-echo 'worked';
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST"){
     exit(); 

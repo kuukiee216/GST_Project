@@ -357,10 +357,10 @@
                             <div class="card card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4 style="text-decoration: underline;">MANALE_RESUME.pdf</h4>
+                                        <h4 id = "documentName"style="text-decoration: underline;">MANALE_RESUME.pdf</h4>
                                     </div>
                                     <div class="col">
-                                        <button class="btn btn-secondary">View</button>
+                                        <button id = "btnViewDocument"class="btn btn-secondary">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -369,10 +369,10 @@
                             <div class="card card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4>Applicant wrote a cover letter for this application.</h4>
+                                        <h4 id="lbCoverLetter">Applicant wrote a cover letter for this application.</h4>
                                     </div>
                                     <div class="col">
-                                        <button class="btn btn-secondary">View</button>
+                                        <button id="btnViewCoverLetter" class="btn btn-secondary">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -486,6 +486,15 @@
 
 		$(document).ready(function(){
 			getApplicationContents();
+
+			$("#btnViewCoverLetter").click(function(){
+				alert("btnViewCoverLetter");
+			});
+
+			$("#btnViewDocument").click(function(){
+				getApplicantResume();
+			});
+
 		});
 
 	</script>

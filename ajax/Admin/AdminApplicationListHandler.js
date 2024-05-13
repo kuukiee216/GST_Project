@@ -81,7 +81,7 @@ function  getApplicationDetails(){
         },
         url: "../PHPFiles/Admin/Applications/applicationGetDetails.php",
         success: function(data){
-            console.log(data);
+            console.log("Current Data : " +  data);
             if(data == '1'){
 
             }else{
@@ -137,3 +137,38 @@ function getApplicantInfo(){
 
     });
 }
+
+function getApplicantResume(){
+
+    var AID = window.location.hash.replace('#','');
+
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        data:{
+            ApplicationID: AID
+        },
+        url: "../PHPFiles/Admin/Applications/applicationGetDocument.php",
+        success: function(data){
+            console.log("Current Data : " +  data);
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+                
+
+                var filePath = "../Documents/Parungao_Ron Henrick_Cadang_Resume(2).pdf";
+
+                window.open(filePath, '_blank');
+            }   
+
+        }, 
+        error: function(data){
+                
+
+        }
+
+    });
+}
+
+
