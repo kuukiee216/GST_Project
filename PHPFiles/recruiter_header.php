@@ -47,7 +47,7 @@
                                     <a class="dropdown-item" href="../recruiter/dashboard_billing.php">Billings &
                                         Plans</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Logout</a>
+                                    <a class="dropdown-item" href="../PHPFiles/Recruiter/logout.php">Logout</a>
                                 </li>
                             </div>
                             <div class="scroll-element scroll-x">
