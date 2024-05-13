@@ -6,8 +6,9 @@ function AddFirst(formID){
     var maxPay = $('#max').val();
     var hideSalary = $('input[name=hideSalary]').is(':checked') ? 0 : 1;
     var advertisePrivately = $('input[name=advertisePrivately]').is(':checked') ? 0 : 1;
+    var advertisePrivately = $('input[name=advertisePrivately]').is(':checked') ? 0 : 1;
+    var jobTitle = $('#jobtitles').val();
 
-    
     $('#btnAddFirst').addClass('is-loading');
     $('#btnAddFirst').prop('disabled', true);
     disableForm(formID);
@@ -21,12 +22,13 @@ function AddFirst(formID){
             minPay: minPay,
             maxPay: maxPay,
             hideSalary: hideSalary,
-            advertisePrivately: advertisePrivately
+            advertisePrivately: advertisePrivately,
+            jobTitle: jobTitle
         },
-        success: function(data){
-            if(data == "0"){
-                location.href = './create_jobad2.php';
-
+        success: function(response){
+            var data = JSON.parse(response);
+            if(data.status == "0"){
+                location.href = './create_jobad2.php?jobID=' + data.jobID;
             }
             else if(data == "1"){
                 swal({

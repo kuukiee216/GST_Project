@@ -47,7 +47,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="container-fluid">
@@ -71,14 +71,27 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
             <form id="firstForm">
                 <h2><b>Classify Your Role</b></h2>
                 <br>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="jobtitles">
+                            <h4>Job Title</h4>
+                        </label>
+                        <select class="form-control" name="jobtitles" id="jobtitles">
+                        </select>
+                    </div>
+                </div>
+                <br>
+
+
                 <!-- <h3>Role Information</h3>
                 <h4>Location</h4>
                 <input type="tel" class="form-control"
                     placeholder="Enter a Subsurb, City, or Region. (e.g. Tokyo, Japan)">
                 <br> -->
 
-                <h2>Pay Details</h2>
-                <h4>Pay Type</h4>
+                <h2><b>Pay Details</b></h2>
+                <h4 class="mt-3">Pay Type</h4>
                 <div class="form-check row cols-4" aria-required="true">
                     <label class="form-radio-label col">
                         <input class="form-radio-input" type="radio" name="optionsRadios" value="1" checked="">
@@ -102,26 +115,26 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                 </div>
 
                 <div class="form-group row">
-                <h4>Pay Range</h4>
-                <div class="row">
-                    <div class="col">
-                        <label for="currencySelect">Select Currency:</label>
-                        <select class="form-control" id="currencySelect">
-                            <option value="1">Euro (€)</option>
-                            <option value="2">US Dollar ($)</option>
-                            <option value="3">Japanese Yen (¥)</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label for="min">From:</label>
-                        <input type="text" class="form-control" id="min" name="min" placeholder="Minimum pay">
-                    </div>
-                    <div class="col">
-                        <label for="max">To:</label>
-                        <input type="text" class="form-control" id="max" name="max" placeholder="Maximum pay">
+                    <h4>Pay Range</h4>
+                    <div class="row">
+                        <div class="col">
+                            <label for="currencySelect">Select Currency:</label>
+                            <select class="form-control" id="currencySelect">
+                                <option value="1">Euro (€)</option>
+                                <option value="2">US Dollar ($)</option>
+                                <option value="3">Japanese Yen (¥)</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="min">From:</label>
+                            <input type="text" class="form-control" id="min" name="min" placeholder="Minimum pay">
+                        </div>
+                        <div class="col">
+                            <label for="max">To:</label>
+                            <input type="text" class="form-control" id="max" name="max" placeholder="Maximum pay">
+                        </div>
                     </div>
                 </div>
-            </div>
 
                 <div class="form-check row">
                     <label class="form-check-label">
@@ -131,7 +144,8 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     </label>
                     <h4 class="mt-2"><b>Advertise Privately</b></h4>
                     <label class="form-check-label">
-                        <input class="form-check-input" id="advertisePrivately" name="advertisePrivately" type="checkbox" value="">
+                        <input class="form-check-input" id="advertisePrivately" name="advertisePrivately"
+                            type="checkbox" value="">
                         <h5 class="form-check-sign">Hide company Name, reviews, and branding on job ads.</h5>
                     </label>
                 </div>
@@ -147,7 +161,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -229,12 +243,14 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
 
     <script src="../ajax/Recruiter/PostingProcedure.js"></script>
+    <script src="../ajax/Recruiter/JobTitle.js"></script>
 
     <script>
     $(document).ready(function() {
         $('#btnAddFirst').click(function() {
             AddFirst('firstForm');
         });
+        GetInfo();
     });
     </script>
 

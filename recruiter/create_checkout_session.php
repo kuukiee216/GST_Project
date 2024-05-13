@@ -1,18 +1,40 @@
 <?php
-require_once('../vendor/autoload.php');
-\Stripe\Stripe::setApiKey('sk_test_51PClCdRtLbUbXSdks7Kk7cNVG8yHOybIMEe9AauA5kc5lwFlqrzvsOgiUjNRB89u11xhWH34V77H5swTxynwDgDI00obVP0vjR');
+require '../vendor/autoload.php';
+require '../recruiter/config.php';
 
-$token = $_POST['stripeToken'];
+$stripe = new \Stripe\StripeClient(STRIPE_SECRET_KEY);
 
-try {
-    $charge = \Stripe\Charge::create([
-        'amount' => round($total * 100), // in cents
-        'currency' => 'usd',
-        'description' => 'Ad Payment',
-        'source' => $token,
-    ]);
-    // Redirect to a success page or handle success
-} catch (\Stripe\Exception\ApiErrorException $e) {
-    // Handle error
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve the total amount and ad type from the POST data
+    $totalAmount = $_POST['totalAmount'];
+    $adType = $_POST['adType'];
+
+    try {
+        // Create a new Price object dynamically based on the total amount
+        $price = $stripe->prices->create([
+            'unit_amount' => $totalAmount * 100, // Total amount in cents
+            'currency' => 'usd', // Currency
+            'product_data' => [
+                'name' => $adType, // Set the ad type as the product name
+            ],
+            'recurring' => ['interval' => 'month'], // Customize recurring billing if needed
+        ]);
+
+        // Create a Checkout Session using the dynamically created Price object
+        $session = $stripe->checkout->sessions->create([
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price' => $price->id,
+                'quantity' => 1,
+            ]],
+            'mode' => 'subscription', // Change mode to 'subscription'
+            'success_url' => 'http://localhost/GST_Project/recruiter/success.php',
+            'cancel_url' => 'http://localhost/GST_Project/recruiter/create_jobadPAY.php',
+        ]);
+        header('Location: ' . $session->url);
+        exit();
+    } catch (Exception $e) {
+        echo 'Error: ' . $e->getMessage();
+    }
 }
 ?>

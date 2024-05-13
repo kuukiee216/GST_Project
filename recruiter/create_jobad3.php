@@ -83,7 +83,8 @@
                         candidates who match your preferred answers.
                     </p>
 
-                    <p class="text-muted">1/8 Questions Selected</p>
+                    <p class="text-muted selected-count">0/8 Questions Selected</p>
+
 
                     <div class="input-icon">
                         <span class="input-icon-addon">
@@ -144,6 +145,14 @@
                         </div>
                     </div>
 
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Enter new question text here"
+                            id="new-question-text">
+                        <button class="btn btn-outline-secondary" type="button" id="add-question">Add
+                            Question</button>
+                    </div>
+
+
                     <div class="container-fluid row">
                         <div class="form-check row" id="question-container">
 
@@ -193,13 +202,6 @@
                                 <input class="form-check-input" type="checkbox" value="">
                                 <h5 class="form-check-sign">Which of the following languages are you fluent in?</h5>
                             </label>
-
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Enter new question text here"
-                                    id="new-question-text">
-                                <button class="btn btn-outline-secondary" type="button" id="add-question">Add
-                                    Question</button>
-                            </div>
 
                         </div>
                     </div>
@@ -316,25 +318,62 @@
     </script>
     <script>
     $(document).ready(function() {
-        $('#add-question').click(function() {
-            var questionText = $('#new-question-text')
-                .val(); // Get the text from the input field
-            if (questionText.trim() !==
-                '') { // Check if the input is not just whitespace
-                var newQuestionHtml = `
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <h5 class="form-check-sign">${questionText}</h5>
-                </label>
-            `;
-                $('#question-container').prepend(newQuestionHtml);
-                $('#new-question-text').val(
-                    ''); // Clear the input field after adding the question
+        // Function to add input box when checkbox is checked
+        function addInputBox($checkbox) {
+            var questionText = $checkbox.siblings('.form-check-sign').text();
+            var newInputHtml = `
+        <div class="form-group">
+            <input type="text" class="form-control" id="${questionText}" placeholder="Enter your answer" maxlength="100"> <!-- Set maximum length to 100 characters -->
+        </div>
+    `;
+            $checkbox.parent().append(newInputHtml);
+            updateSelectedCount(); // Update the count of selected questions
+        }
+
+        // Function to update the count of selected questions
+        function updateSelectedCount() {
+            var selectedCount = $('.form-check-input:checked').length;
+            $('.selected-count').text(selectedCount + '/8 Questions Selected');
+        }
+
+        // Event handler for checkbox change
+        $(document).on('change', '.form-check-input', function() {
+            var selectedCount = $('.form-check-input:checked').length;
+            if ($(this).is(':checked')) {
+                if (selectedCount <= 8) {
+                    addInputBox($(this));
+                } else {
+                    $(this).prop('checked', false); // Uncheck the checkbox if the limit is reached
+                    alert('You can select up to 8 questions only.');
+                }
             } else {
-                alert(
-                    'Please enter a question text.'); // Alert if input field is empty
+                $(this).parent().find('.form-group').remove();
+                updateSelectedCount(); // Update the count of selected questions
             }
         });
+
+        // Event handler for "Add Question" button click
+        $('#add-question').click(function() {
+            var questionText = $('#new-question-text').val().trim();
+            if (questionText !== '') {
+                var newQuestionHtml = `
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input me-4" type="checkbox" value="">
+                    <h5 class="form-check-sign">${questionText}</h5>
+                </label>
+            </div>
+        `;
+                $('#question-container').prepend(newQuestionHtml);
+                $('#new-question-text').val('');
+                updateSelectedCount(); // Update the count of selected questions
+            } else {
+                alert('Please enter your question.');
+            }
+        });
+
+        // Initial update of the count of selected questions
+        updateSelectedCount();
     });
     </script>
 

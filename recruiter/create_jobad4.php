@@ -61,7 +61,7 @@
         </div>
 
         <h2 class="container d-flex justify-content-center"><b>Select an Ad Type</b></h2>
-        <form>
+        <form action="create_jobadPAY.php" method="POST">
             <div class="row justify-content-center align-items-center mb-5">
                 <div class="col-md-3 pl-md-0 pr-md-0">
                     <div class="card-pricing2 card-primary" id="basicCard">
@@ -83,8 +83,10 @@
                             <li>Credit to access our talent candidates</li>
                             <li>Include your company logo</li>
                         </ul>
-                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select"
-                            type="button">Select</button>
+                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="submit"
+                            name="adType" value="Basic Ad">Select</button>
+
+
                     </div>
                 </div>
                 <div class="col-md-3 pr-md-0">
@@ -121,8 +123,8 @@
                                 <li>Priority listing in search</li>
                             </ul>
                         </div>
-                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select"
-                            type="button">Select</button>
+                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="submit"
+                            name="adType" value="Premium Ad">Select</button>
                     </div>
                 </div>
             </div>
@@ -169,7 +171,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-primary btn-block"><b>Select</b></button>
+                                <button class="btn btn-primary btn-block" type="submit" name="adType"
+                                    value="Occasional Ad"><b>Select</b></button>
                             </div>
                         </div>
                     </div>
@@ -206,7 +209,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-light btn-block"><b>Select</b></button>
+                                <button class="btn btn-light btn-block" type="submit" name="adType"
+                                    value="Regular Ad"><b>Select</b></button>
                             </div>
                         </div>
                     </div>
@@ -243,7 +247,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-primary btn-block"><b>Get Started</b></button>
+                                <button class="btn btn-primary btn-block" type="submit" name="adType"
+                                    value="Frequent Ad"><b>Select</b></button>
                             </div>
                         </div>
                     </div>
@@ -260,14 +265,14 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <!--                <div class="row">
                     <div class="container justify-content-center form-group mt-3 mb-5">
                         <a href=" ../recruiter/create_jobadPAY.php"><button class="btn btn-danger"
                                 type="button">Continue</button></a>
-                    </div>
-                </div>
+                    </div> -->
             </div>
-        </form>
+    </div>
+    </form>
 
     </div>
 

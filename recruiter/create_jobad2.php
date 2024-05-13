@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +51,8 @@
                 </div>
             </div>
 
-            <form>
+            <form id="urlForm" enctype="multipart/form-data">
+            <input type="hidden" id="jobID" name="jobID" value="">
 
                 <div class="row">
                     <div class="col">
@@ -65,8 +67,8 @@
 
                         <div class="row">
                             <div class="form-group">
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1"
-                                    onchange="previewImage();">
+                                <input type="file" class="form-control-file" id="logo" name="logo"
+                                    onchange="previewImage();" accept="image/*">
                             </div>
                         </div>
                         <div class="card text-white" style="width: 50%;">
@@ -79,7 +81,7 @@
                     <div class="text-muted mb-3">Enter your job details.</div>
 
                     <div class="form-group">
-                        <textarea id="mytextarea"></textarea>
+                        <textarea id="description" name="description"></textarea>
 
                     </div>
                 </div>
@@ -95,18 +97,18 @@
                             ad.</label>
                         <div class="text-muted">e.g. myVideoAd.mp4</div>
                         <div class="mt-2 mb-2">
-                            <input type="file" class="form-control-file" id="videoUpload" accept="video/*">
+                            <input type="file" class="form-control-file" id="videoUpload" name="videoUpload" accept="video/*">
                             <video id="videoPreview" controls
                                 style="max-width: 100%; height: auto; display: none; margin-top: 10px;"></video>
                         </div>
 
                         <h4 class="mt-5">Candidate Search Result</h4>
                         <p>Write a compelling statement about your role to entice more candidates.</p>
-                        <textarea id="mytextarea"></textarea>
+                        <textarea id="search" name="search"></textarea>
                         </textarea>
 
                         <div class="form-group mt-3 mb-5">
-                            <a href="../recruiter/create_jobad3.php" class="btn btn-danger" type="button">Continue</a>
+                        <button class="btn btn-danger" id="btnAddSecond" type="button">Continue</button>
                         </div>
                     </div>
                 </div>
@@ -193,9 +195,31 @@
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
+    <script src="../ajax/SecondPostingProcedure.js"></script>
+
+    <script>
+        // Function to get the value of a URL parameter by name
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // Set the value of the jobID input field based on the URL parameter
+        document.addEventListener("DOMContentLoaded", function () {
+            var jobID = getParameterByName('jobID');
+            if (jobID !== null) {
+                document.getElementById('jobID').value = jobID;
+            }
+        });
+    </script>
     <script>
     function previewImage() {
-        var file = document.getElementById("exampleFormControlFile1").files[0];
+        var file = document.getElementById("logo").files[0];
         var reader = new FileReader();
 
         reader.onload = function(e) {
@@ -225,10 +249,6 @@
             };
         }
     });
-
-
-
-
 
     /*
     function applyBold() {
@@ -276,7 +296,15 @@
     }
     </style>
 
+    <script>
+    $(document).ready(function() {
+        $('#btnAddSecond').click(function() {
+            AddSecond('urlForm');
+        });
+    });
+    </script>
 
 </body>
 
 </html>
+
