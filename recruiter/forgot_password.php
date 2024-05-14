@@ -138,7 +138,7 @@
 
 
 
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
 
     <!-- Option 1: Bootstrap scripts -->
@@ -219,6 +219,8 @@
         var UserID = $("input[name=InputEmail]").val();
         var emailPattern = /^[a-zA-Z0-9._-]+@(gmail|yahoo)\.com$/;
 
+        console.log("UserID", UserID);
+
         if (!emailPattern.test(UserID)) {
             swal({
                 title: 'Invalid Email Address!',
@@ -244,8 +246,9 @@
             data: {
                 UserID: UserID,
             },
-            url: "../PHPFiles/forgot.php",
+            url: "../PHPFiles/Recruiter/forgot.php",
             success: function(data) {
+                console.log('amats', data);
                 if (data == "0") {
                     swal({
                         title: 'Success!',

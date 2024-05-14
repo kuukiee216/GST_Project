@@ -287,7 +287,7 @@
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
+    <!-- <script>
     function test() {
         var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
 
@@ -297,7 +297,7 @@
             $('#Div-filter').removeClass('d-none d-sm-none');
         }
     }
-    </script>
+    </script> -->
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>

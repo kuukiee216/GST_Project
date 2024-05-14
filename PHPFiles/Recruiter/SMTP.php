@@ -1,7 +1,7 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 
-require '../vendor/autoload.php';
+require '../../vendor/autoload.php';
 
 class SMTPMail{
     public function sendMail($Recipient, $Subject, $Body)
