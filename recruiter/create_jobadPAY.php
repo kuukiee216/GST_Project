@@ -1,35 +1,23 @@
 <?php
-// Initialize promo code variables
 $promoCodeApplied = false;
 $discountAmount = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adType = $_POST['adType'];
-    // Define your ad prices, ideally this should be retrieved from a database or configuration
-    $prices = [
-        "Basic Ad" => 30,
-        "Premium Ad" => 50,
-        "Occasional Ad" => 60,
-        "Regular Ad" => 80,
-        "Frequent Ad" => 100,
-    ];
-    $taxRate = 0.15; // Example tax rate: 15%
+    
+    $taxRate = 0.15; 
     $discount = 0.10;
 
     $basePrice = $prices[$adType];
     $tax = $basePrice * $taxRate;
 
-    // Calculate discount for the selected ad type
     $discountedPrice = $basePrice * $discount;
 
-    // Check if a promo code has been applied
     if (isset($_POST['promoCode']) && !empty($_POST['promoCode'])) {
         $promoCodeApplied = true;
-        // Apply discount from the promo code
-        $discountAmount = 10; // Example discount amount (replace with your calculation)
+        $discountAmount = 10; 
     }
 
-    // Calculate total amount after discounts and taxes
     $total = $basePrice + $tax - $discountedPrice - $discountAmount;
 }
 ?>
