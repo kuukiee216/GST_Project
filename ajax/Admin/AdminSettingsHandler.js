@@ -520,7 +520,38 @@ function deleteJobTitle(JobID){
 
 // Location Settings
 function getLocations(){
-    
+    var current_Table = "#tblLocations";
+
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        url: "../PHPFiles/Admin/Settings/locationGetList.php",
+        success: function(data){
+            console.log(data);
+            if(data == 1){
+               
+
+                //$('#tblActiveJobPosting').DataTable.destroy();
+                //$('#tblexamineelist').html(data);
+            }else{
+                var decodedData = JSON.parse(data);
+                
+                if($.fn.DataTable.isDataTable(current_Table)){
+                    $(current_Table).DataTable().destroy();
+                }
+
+                $(current_Table).DataTable({
+                    data: decodedData,
+                    columns: [
+                        { data: 'Location' }
+                    ]
+                });
+            }
+        }
+
+    });
+
+
 }
 
 function openAddLocationsForm(){
@@ -563,6 +594,47 @@ function closeAddLocationsForm(){
         }
         else{
             // do nothing
+        }
+    });
+}
+
+function AddLocation(formID){
+
+    var CountryInput = $("#selectCountry option:selected").text();
+    var ProvinceInput = $("#selectState option:selected").text();
+    var CityInput = $("#selectCity").val();
+
+    alert(CountryInput + " " + ProvinceInput + " " + CityInput );
+
+    $.ajax({
+        type: 'POST',
+        datatype: 'html',
+        data: {
+            Country : CountryInput,
+            Province : ProvinceInput,
+            City : CityInput
+        },
+        url: '../PHPFiles/Admin/Settings/locationAdd.php',
+        success:function(data){
+            console.log(data);
+            if(data == '1'){
+                swal({
+                    title: 'Location has been Added!',
+                    text: "Successfully Added the Location.",
+                    icon: 'success',
+                    type: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    getLocations();
+                });
+            }else{
+                alert(data);
+            } 
         }
     });
 }
@@ -665,7 +737,7 @@ function addAdType(formAddAdType){
                 alert(data);
             } 
         }
-    })
+    });
 
 }
 

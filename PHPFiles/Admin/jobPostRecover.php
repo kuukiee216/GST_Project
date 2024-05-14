@@ -1,32 +1,36 @@
 <?php
 
-require_once '../../../PHPFiles/Essentials/db_config_local.php';
+require_once '../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
-
-session_start();
-$DateTime = date('Y-m-d H:i:s');
-$AccountID = $_SESSION['AccountID'];
-$Area = 'Ad Type';
-$Action = 'Delete';
-
 
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST"){
     exit(); 
 }
 
-if(isset($_POST['AdTypeID'])){
+$DateTime = date('Y-m-d H:i:s');
+$AccountID = 23;
+$Area = 'Job List';
+$Action = 'Recover Job';
 
-    $AID = $_POST['AdTypeID'];
+
+if(isset($_POST['JobPostID'])){
+    $JID = $_POST['JobPostID'];
 
     try{
         $connection->beginTransaction();
+        $sQryRepostJobPost = "UPDATE 
+                                tbl_companyjob
+                            SET 
+                                Status = ?
+                            WHERE 
+                                JobID = ?";
 
-        $sQryDeletePromo = 'DELETE FROM tbl_adtype WHERE AdTypeID = ?';
-        $stmtDeletePromo = $connection->prepare($sQryDeletePromo);
-        $stmtDeletePromo->bindValue(1, $AID, PDO::PARAM_INT);
-        $stmtDeletePromo->execute();
+        $stmtRepostJobPost = $connection->prepare($sQryRepostJobPost);
+        $stmtRepostJobPost->bindValue(1, 3, PDO::PARAM_INT);
+        $stmtRepostJobPost->bindValue(2, $JID, PDO::PARAM_INT);
+        $stmtRepostJobPost->execute();
 
         $sQrySystemLog = "INSERT INTO tbl_systemlog(DateTimeStamp, Action, Area, AccountID) VALUES(?,?,?,?)";
         $stmtSystemLog = $connection->prepare($sQrySystemLog);
@@ -39,14 +43,15 @@ if(isset($_POST['AdTypeID'])){
         $connection->commit();
         echo '1';
 
+
     }catch(PDOException $err){
-        $connection->rollBack();
-        echo $err; 
+        echo $err;
     }
-}
-else{
+
+}else{
     echo '3';
 }
+
 
 
 ?>

@@ -25,8 +25,8 @@ function fillJobPostList(activeTable){
         },
         url: "../PHPFiles/Admin/getJobPostingList.php",
         success: function(data){
-            console.log(data);
-            console.log(current_Table);
+            console.log("Current Data : " + data);
+            console.log("Current Table : " + current_Table);
             if(data != null){
                 var decodedData = JSON.parse(data);
                 
@@ -379,7 +379,65 @@ function repostJobPost(JobPostID){
                             }
                         }
                     }).then(function(){
-                        fillJobPostList(2);
+                        // fillJobPostList(2);
+                    });
+                         
+                }
+            });
+        }
+        else{
+        }
+    });
+    
+}
+
+function recoverJobPost(JobPostID){
+
+    var JID = JobPostID.replace("btnRecoverJob", "");
+    console.log(JID);
+
+    swal({
+        title: 'Recover Job Post?',
+        text: "Are you sure you want to Recover Job Post #" + JID + "?",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Recover it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Toggle) => {
+        if (Toggle) {
+            
+            // Recover JOB FUNCTION
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: {
+                    JobPostID: JID
+                },
+                url: "../PHPFiles/Admin/jobPostRecover.php",
+                success: function(data){
+                    console.log(data);
+                    swal({
+                        title: 'Job Post Successfuly Recovered!',
+                        text: "Job Post Request has been Recovered! see changes in Active",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        fillJobPostList(4);
                     });
                          
                 }

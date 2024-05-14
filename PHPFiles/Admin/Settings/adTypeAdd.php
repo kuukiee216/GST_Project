@@ -10,20 +10,18 @@ $AccountID = $_SESSION['AccountID'];
 $Area = 'Ad Type';
 $Action = 'Add';
 
-echo 'worked';
-
-if ($_SERVER["REQUEST_METHOD"] !== "POST"){
-    exit(); 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    exit();
 }
 
-if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Discount']) && isset($_POST['Description'])){
+if (isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Discount']) && isset($_POST['Description'])) {
 
     $AdType = $_POST['AdType'];
     $Price = $_POST['Price'];
     $Discount = $_POST['Discount'];
     $Description = $_POST['Description'];
 
-    try{
+    try {
         $connection->beginTransaction();
 
         $sQryAddPromo = 'INSERT INTO tbl_adtype
@@ -48,13 +46,10 @@ if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Discount']
         $connection->commit();
         echo '1';
 
-    }catch(PDOException $err){
+    } catch (PDOException $err) {
         $connection->rollBack();
-        echo $err; 
+        echo $err;
     }
-}
-else{
+} else {
     echo '3';
 }
-
-?>
