@@ -126,7 +126,7 @@ if (!isset($_SESSION['code'])) {
 
 
 
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>
@@ -212,7 +212,7 @@ if (!isset($_SESSION['code'])) {
             data: {
                 code: code,
             },
-            url: "../PHPFiles/passResetCode.php",
+            url: "../PHPFiles/Recruiter/passResetCode.php",
             success: function(data) {
                 if (data == "0") {
                     swal({
