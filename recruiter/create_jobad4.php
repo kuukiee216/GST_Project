@@ -38,7 +38,7 @@
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="container-fluid">
@@ -277,7 +277,7 @@
     </div>
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

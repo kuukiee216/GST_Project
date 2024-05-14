@@ -310,7 +310,6 @@ function deleteClassification(ClassificationID){
 
 }
 
-
 // Job Title List Functions
 function getJobTitleList(){
     current_Table = '#tblJobTitles';
