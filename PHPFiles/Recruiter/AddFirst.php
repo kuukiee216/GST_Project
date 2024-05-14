@@ -89,7 +89,7 @@ if (
 
         $connection->commit();
 
-        echo json_encode(array("status" => "0", "jobID" => $lastInsertedJobID));
+        echo json_encode(array("status" => "0", "jobID" => $lastInsertedJobID, "employerID" => $companyId));
         exit;
     } catch (PDOException $e) {
         $connection->rollBack();

@@ -265,11 +265,11 @@
                     </div>
                 </div>
 
-                <!--                <div class="row">
+                               <div class="row">
                     <div class="container justify-content-center form-group mt-3 mb-5">
                         <a href=" ../recruiter/create_jobadPAY.php"><button class="btn btn-danger"
                                 type="button">Continue</button></a>
-                    </div> -->
+                    </div>
             </div>
     </div>
     </form>

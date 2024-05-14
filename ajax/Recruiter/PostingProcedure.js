@@ -28,7 +28,7 @@ function AddFirst(formID){
         success: function(response){
             var data = JSON.parse(response);
             if(data.status == "0"){
-                location.href = './create_jobad2.php?jobID=' + data.jobID;
+                location.href = './create_jobad2.php?jobID=' + data.jobID + '&employerID=' + data.employerID;
             }
             else if(data == "1"){
                 swal({
