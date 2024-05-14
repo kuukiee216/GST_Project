@@ -1,4 +1,4 @@
-<footer class="footer text-white" style="background-color:#187498">
+<footer class="footer text-white mx-auto" style="background-color:#187498">
     <div class="container-fluid">
         <nav class="pull-left">
             <ul class="nav">
