@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         "Premium Ad" => 50,
         "Occasional Ad" => 60,
         "Regular Ad" => 80,
-        "Frequent Ad" => 100
+        "Frequent Ad" => 100,
     ];
     $taxRate = 0.15; // Example tax rate: 15%
     $discount = 0.10;
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="container-fluid">
@@ -241,7 +241,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <td>Discount (Promo Code)</td>
                         <td>$<?php echo number_format($discountAmount, 2); ?></td>
                     </tr>
-                    <?php endif; ?>
+                    <?php endif;?>
                     <tr>
                         <td>Discounted (Ad Type)</td>
                         <td>$<?php echo number_format($discountedPrice, 2); ?></td>
@@ -266,7 +266,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../PHPFiles/Essentials/db_config_local.php';
+require_once '../../Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -10,8 +10,8 @@ $AccountID = $_SESSION['AccountID'];
 $Area = 'Ad Type';
 $Action = 'Add';
 
-if ($_SERVER["REQUEST_METHOD"] !== "POST"){
-    exit(); 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    exit();
 }
 
 if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Description'])){
@@ -20,7 +20,7 @@ if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Descriptio
     $Price = $_POST['Price'];
     $Description = $_POST['Description'];
 
-    try{
+    try {
         $connection->beginTransaction();
 
         $sQryAddPromo = 'INSERT INTO tbl_adtype
@@ -44,13 +44,10 @@ if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Descriptio
         $connection->commit();
         echo '1';
 
-    }catch(PDOException $err){
+    } catch (PDOException $err) {
         $connection->rollBack();
-        echo $err; 
+        echo $err;
     }
-}
-else{
+} else {
     echo '3';
 }
-
-?>
