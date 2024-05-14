@@ -51,7 +51,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
     </script>
 
     <title>Sign in form</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
 <body>
@@ -88,6 +88,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
     </nav>
     <!--End Navbar-->
 
+    <!--
     <form id="formLogin">
         <div class="card container flex justify-content-center mt-5 mb-5" style="width: 50%;">
             <h1 class="text-center">Sign In</h1>
@@ -101,15 +102,85 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                 <input type="password" class="form-control mb-3" name="txtPassword" id="txtPassword">
                 <button type="submit" class="btn btn-danger mt-4" id="btnLogin" onclick="Login('formLogin');">Sign
                     in</button>
-                <!--    <p>by creating an account bla bla bla Terms and Condition</p> -->
+                <p>by creating an account bla bla bla Terms and Condition</p>
                 <hr>
             </div>
-    </form>
+        </div>
+    </form> -->
 
+
+
+    <!-- try -->
+
+
+    <div class="content">
+        <div class="page-inner" id="main-board">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                    <div class="col-md-5 py-5 px-3">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <form id="formLogin">
+                                        <h1 class="font-weight-bold text-dark px-2">Sign In</h1>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                <span class="input-icon-addon">
+                                                    <i class="fa fa-envelope"></i>
+                                                </span>
+
+                                                <input type="email" id="txtUserID" name="txtUserID" class="form-control"
+                                                    placeholder="Email Address" aria-describedby="emailhelp">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-icon">
+                                                <span class="input-icon-addon">
+                                                    <i class="fa fa-key"></i>
+                                                </span>
+                                                <input type="password" name="txtPassword" id="txtPassword"
+                                                    class="form-control" placeholder="Password" maxlength="30">
+                                                <span class="input-icon-addon">
+                                                    <button type="button" id="btnTogglePassword"
+                                                        class="btn btn-icon btn-default btn-link pl-3"
+                                                        onclick="togglePasswordVisibility();">
+                                                        <i class="fa fa-eye " id="btnTogglePasswordIcon"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+
+
+
+                                    </form>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 d-flex justify-content-end">
+                                        <a href="forgot_password.php">Forgot Password?</a>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-danger btn-round btn-block mt-4" id="btnLogin"
+                                        onclick="Login('formLogin');">Sign In</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+
+
+    <?php include('../PHPFiles/recruiter_footer.php')?>
+
+
+
+
     <!--bottom navbar-->
-    <footer class="footer text-white" style="background-color:#187498">
+    <!-- <footer class="footer text-white" style="background-color:#187498">
         <div class="container-fluid">
             <nav class="pull-left">
                 <ul class="nav">
@@ -139,7 +210,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                 © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>

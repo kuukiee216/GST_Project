@@ -18,8 +18,7 @@ if (!isset($_SESSION['AccountID'])) {
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../assets/css/atlantis.css" rel="stylesheet">
-    <link href="../CSS/password_reset.css" rel="stylesheet">
+    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,64 +26,109 @@ if (!isset($_SESSION['AccountID'])) {
         href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
-    <title>Password Reset</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/atlantis.min.css">
+    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
+
+    <!-- Fonts and icons -->
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+            "families": ["Lato:300,400,700,900"]
+        },
+        custom: {
+            "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
+                "simple-line-icons"
+            ],
+            urls: ['../assets/css/fonts.min.css']
+        },
+        active: function() {
+            sessionStorage.fonts = true;
+        }
+    });
+    </script>
+
+    <title>Sign in form</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
 <body>
 
-    <!-- Japan job posting icon href-->
-
-    <nav class="navbar navbar-expand-sm">
+    <!--Navbar Header-->
+    <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
         <div class="container-fluid">
-            <a class="navbar-brand font-RR text-white" href="/FILES-Applicant Side/Landing_Page.html">
-                <img src="../assets/img/jj_logo.png" alt="logo" style="width:80px;"> Japan Jobs</a>
-        </div>
-    </nav>
-
-    <div class="container-fluid">
-        <form class="mx-auto" id="changePassForm">
-            <h1 class="text-center">Password Reset</h1>
-            <div class="mb-3 mt-5">
-                <div for="pass" class="form-label">New Password</div>
-                <input type="password" class="form-control" id="pass" name="pass" aria-describedby="emailhelp">
-
-                <div class="mb-3">
-                    <div for="rpass" class="form-label">Re-enter Password</div>
-                    <input type="password" class="form-control" id="rpass" name="rpass">
-                    <button onclick="ChangePass('changePassForm');" id="btnChangePass" type="submit"
-                        class="btn btn-danger mt-4">Confirm</button>
-
-                    <a href="/FILES-Applicant Side/password_verification.html"><button type="submit"
-                            class="btn btn-outline-danger mt-4">Back</button></a>
+            <div class="collapse" id="search-nav">
+                <div>
+                    <form class="navbar-left navbar-form">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar nav me-auto mb-2 mb-lg-0">
+                                <li>
+                                    <a href="/applicant/Landing_Page.html" class="logo">
+                                        <img src="../assets/img/JapanJobs.png" alt="navbar brand">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="#">Japan Ads</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </form>
+            <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
+                <li class="nav-item dropdown hidden-caret">
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--End Navbar-->
+
+
+    <div class="content">
+        <div class="page-inner" id="main-board">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                    <div class="col-md-5 py-5 px-3">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <form id="changePassForm">
+                                        <h1 class="font-weight-bold text-dark px-2">Password Reset</h1>
+                                        <div class="form-group">
+                                            <div for="pass" class="form-label">New Password:</div>
+                                            <input type="password" class="form-control" id="pass" name="pass">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div for="rpass" class="form-label">Re-enter Password:</div>
+                                            <input type="password" class="form-control" id="rpass" name="rpass">
+
+
+
+                                    </form>
+
+                                    <div class="d-flex justify-content-end">
+                                        <a href="password_verification.php"><button type="submit"
+                                                class="btn btn-outline-danger mt-3 mr-1">Back</button></a>
+                                        <button type="submit" class="btn btn-danger mt-3 mr-2" id="btnChangePass"
+                                            onclick="ChangePass('changePassForm');">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!--bottom navbar-->
-    <footer class="p-2 navbar text-white">
-
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="form-label nav-link text-white" href="#">Privacy</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="form-label nav-link text-white" href="#">Terms & Condition</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="form-label nav-link text-white" href="#">Protect yourself online</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="form-label nav-link text-white" href="#">Contact</a>
-            </li>
-            <a class="nav-link disabled text-dark">© 2024 JAPAN JOBS.All rights reserved</a>
-        </ul>
-        </div>
-    </footer>
+    <?php include('../PHPFiles/recruiter_footer.php')?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -193,7 +237,7 @@ if (!isset($_SESSION['AccountID'])) {
                         $('#btnChangePass').prop('disabled', false);
                         enableForm(formID);
 
-                        location.href = './Settings.php';
+                        location.href = './dashboard_myaccount.php';
                     });
 
                 } else if (data == "1") {
