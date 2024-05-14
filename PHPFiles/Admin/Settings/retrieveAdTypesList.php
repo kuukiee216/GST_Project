@@ -24,10 +24,8 @@ try{
             $rowData = array();    
 
             $AID = $rowAdTypes['AdTypeID'];
-
             $rowData['AdType'] = $rowAdTypes['AdType'];
             $rowData['Price'] = $rowAdTypes['Price'];
-            $rowData['Discount'] = $rowAdTypes['Discount'];
             $rowData['Description'] = $rowAdTypes['Description'];
 
             $rowData['Action'] = '<button class="btn-secondary" id="btnViewAdType'.$AID.'" onclick="viewAdType(this.id);" name="btnViewAdType"><i class="far fa-eye"></i></button>

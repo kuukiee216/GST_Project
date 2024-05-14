@@ -651,6 +651,16 @@ function openAdTypes(){
     });
 }
 
+function openSeasonal(){
+    $('#modalAddSeasonal').modal({
+        backdrop: 'static',
+        keyboard: true,
+        focus: true,
+        show: true
+    });
+}
+
+
 function openPromoCode(){
     $('#modalAddPromoCode').modal({
         backdrop: 'static',
@@ -678,10 +688,48 @@ function addPromoCode(formAddPromoCode){
         },
         url: '../PHPFiles/Admin/Settings/promoAdd.php',
         success:function(data){
+            console.log(data);
             if(data == '1'){
                 swal({
                     title: 'Promo Code has been Added!',
                     text: "Successfully Added the Promo Code.",
+                    icon: 'success',
+                    type: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    fillPromoCodeList();
+                });
+            }else{
+                
+            } 
+        }
+    })
+}
+
+function addAdType(formAddAdType){
+    var AdType = $('#txtAdType').val();
+    var Price = $('#txtAdPrice').val();
+    var Description = $('#txtAdDescription').val();
+
+    $.ajax({
+        type: 'POST',
+        datatype: 'html',
+        data: {
+            AdType : AdType,
+            Price : Price,
+            Description : Description
+        },
+        url: '../PHPFiles/Admin/Settings/adTypeAdd.php',
+        success:function(data){
+            if(data == '1'){
+                swal({
+                    title: 'Ad Type has been Added!',
+                    text: "Successfully Added the Ad Type.",
                     icon: 'success',
                     type: 'success',
                     buttons : {
@@ -697,31 +745,28 @@ function addPromoCode(formAddPromoCode){
                 alert(data);
             } 
         }
-    })
+    });
+
 }
 
-function addAdType(formAddAdType){
-    var AdType = $('#txtAdType').val();
-    var Price = $('#txtAdPrice').val();
-    var Discount = $('#txtAdDiscount').val();
-    var Description = $('#txtAdDescription').val();
-
-    alert(AdType + ' ' + Price + ' ' + Discount + ' ' + Description);
+function addSeasonal(formAddSeasonal){
+    var Seasonal = $('#txtSeasonalName').val();
+    var Price = $('#txtSeasonalPrice').val();
+    var Description = $('#txtSeasonalDescription').val();
 
     $.ajax({
         type: 'POST',
         datatype: 'html',
         data: {
-            AdType : AdType,
+            Seasonal : Seasonal,
             Price : Price,
-            Discount : Discount,
             Description : Description
         },
-        url: '../PHPFiles/Admin/Settings/adTypeAdd.php',
+        url: '../PHPFiles/Admin/Settings/seasonalAdd.php',
         success:function(data){
             if(data == '1'){
                 swal({
-                    title: 'Ad Type has been Added!',
+                    title: 'Seasonal has been Added!',
                     text: "Successfully Added the Ad Type.",
                     icon: 'success',
                     type: 'success',
@@ -775,6 +820,39 @@ function closeAdTypes(){
     });
 }
 
+function closeSeasonal(){
+    swal({
+        title: 'Discard Changes?',
+        text: "Are you sure you want to close? Take note that this will erase/remove all your inputs.",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Close it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Cancel) => {
+        if (Cancel) {
+            // $('#txtJobTitle').val('');
+            // $('#lstSubClassifications').prop('disabled', true);
+            // $('#lstMainClassifications').prop('selectedIndex', -1);
+            // $('#lstSubClassifications').prop('selectedIndex', -1);
+
+            history.replaceState(null, document.title, window.location.pathname + window.location.search);
+            $('#btnCloseSeasonal').click();
+        }
+        else{
+            // do nothing
+        }
+    });
+}
+
 function closePromoCode(){
     swal({
         title: 'Discard Changes?',
@@ -809,7 +887,7 @@ function closePromoCode(){
 }
 
 function fillAdTypeList(){
-    var current_Table = '#tblAdTypes';
+    var current_Table = '#tblAdType';
     
     $.ajax({
         type: "POST",
@@ -831,7 +909,6 @@ function fillAdTypeList(){
                     columns: [
                         { data: 'AdType' },
                         { data: 'Price' },
-                        { data: 'Discount' },
                         { data: 'Description' },
                         { data: 'Action' }
                     ]
@@ -851,7 +928,6 @@ function fillAdTypeList(){
                     columns: [
                         { data: 'AdType' },
                         { data: 'Price' },
-                        { data: 'Discount' },
                         { data: 'Description' },
                         { data: 'Action' }
                     ]
@@ -863,8 +939,62 @@ function fillAdTypeList(){
     }); 
 }
 
+function fillSeasonalList(){
+    var current_Table = '#tblSeasonal';
+    
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        url: "../PHPFiles/Admin/Settings/retrieveSeasonalList.php",
+        success: function(data) {
+            if(data == '1'){
+
+                var decodedData = JSON.parse(data);
+
+
+                if($.fn.DataTable.isDataTable(current_Table)){
+                    $(current_Table).DataTable().destroy();
+                }
+
+                $(current_Table).DataTable({
+                    pageLength: 10,
+                    data: decodedData,
+                    columns: [
+                        { data: 'SeasonalName' },
+                        { data: 'Price' },
+                        { data: 'Description' },
+                        { data: 'Action' }
+                    ]
+                });
+                
+            }else{
+                var decodedData = JSON.parse(data);
+
+
+                if($.fn.DataTable.isDataTable(current_Table)){
+                    $(current_Table).DataTable().destroy();
+                }
+
+                $(current_Table).DataTable({
+                    pageLength: 10,
+                    data: decodedData,
+                    columns: [
+                        { data: 'SeasonalName' },
+                        { data: 'Price' },
+                        { data: 'Description' },
+                        { data: 'Action' }
+                    ]
+                });
+
+            }
+        }
+
+    }); 
+}
+
+
 function fillPromoCodeList(){
-    var current_Table = '#tblPromoCodes';
+    var current_Table = '#tblPromo';
     
     $.ajax({
         type: "POST",

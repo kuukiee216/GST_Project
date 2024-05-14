@@ -7,28 +7,28 @@ $connection = $clsConnect->dbConnect();
 session_start();
 $DateTime = date('Y-m-d H:i:s');
 $AccountID = $_SESSION['AccountID'];
-$Area = 'Ad Type';
+$Area = 'Seasonal';
 $Action = 'Add';
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST"){
     exit(); 
 }
 
-if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Description'])){
+if(isset($_POST['Seasonal']) && isset($_POST['Price']) && isset($_POST['Description'])){
 
-    $AdType = $_POST['AdType'];
+    $Seasonal = $_POST['Seasonal'];
     $Price = $_POST['Price'];
     $Description = $_POST['Description'];
 
     try{
         $connection->beginTransaction();
 
-        $sQryAddPromo = 'INSERT INTO tbl_adtype
-                            (AdType, Price, Description)
+        $sQryAddPromo = 'INSERT INTO tbl_seasonal
+                            (SeasonalName, Price, Description)
                         VALUES
                             (?,?,?)';
         $stmtAddPromo = $connection->prepare($sQryAddPromo);
-        $stmtAddPromo->bindValue(1, $AdType, PDO::PARAM_STR);
+        $stmtAddPromo->bindValue(1, $Seasonal, PDO::PARAM_STR);
         $stmtAddPromo->bindValue(2, $Price, PDO::PARAM_STR);
         $stmtAddPromo->bindValue(3, $Description, PDO::PARAM_STR);
         $stmtAddPromo->execute();
@@ -45,8 +45,9 @@ if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Descriptio
         echo '1';
 
     }catch(PDOException $err){
+        echo $err;
         $connection->rollBack();
-        echo $err; 
+        
     }
 }
 else{
