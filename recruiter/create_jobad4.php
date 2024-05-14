@@ -265,14 +265,19 @@
                     </div>
                 </div>
 
-                               <div class="row">
+                <div class="row">
                     <div class="container justify-content-center form-group mt-3 mb-5">
                     <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
                     </div>
+                </div>
             </div>
+<<<<<<< Updated upstream
     </div>
             </form>
     
+=======
+        </form>
+>>>>>>> Stashed changes
 
     </div>
 
