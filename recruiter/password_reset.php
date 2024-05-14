@@ -219,7 +219,7 @@ if (!isset($_SESSION['AccountID'])) {
                 pass: pass,
                 rpass: rpass
             },
-            url: "../PHPFiles/changePass.php",
+            url: "../PHPFiles/Recruiter/changePass.php",
             success: function(data) {
                 if (data == "0") {
                     swal({
