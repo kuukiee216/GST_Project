@@ -61,7 +61,7 @@
         </div>
 
         <h2 class="container d-flex justify-content-center"><b>Select an Ad Type</b></h2>
-        <form action="create_jobadPAY.php" method="POST">
+        <form id="basicPlan">
             <div class="row justify-content-center align-items-center mb-5">
                 <div class="col-md-3 pl-md-0 pr-md-0">
                     <div class="card-pricing2 card-primary" id="basicCard">
@@ -83,8 +83,7 @@
                             <li>Credit to access our talent candidates</li>
                             <li>Include your company logo</li>
                         </ul>
-                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="submit"
-                            name="adType" value="Basic Ad">Select</button>
+                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button" name="adType" value="2" data-value="2">Select</button>
 
 
                     </div>
@@ -123,14 +122,15 @@
                                 <li>Priority listing in search</li>
                             </ul>
                         </div>
-                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="submit"
-                            name="adType" value="Premium Ad">Select</button>
+                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button" name="adType" value="1" data-value="1">Select</button>
+
                     </div>
                 </div>
             </div>
-
+            </form>
             <br>
             <br>
+            <form id="seasonalPlan">
             <h2 class="container d-flex justify-content-center"><b>Seasonal Ad Type</b></h2>
             <div class="container-fluid" style="width: 50%;">
                 <div class="row">
@@ -171,8 +171,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-primary btn-block" type="submit" name="adType"
-                                    value="Occasional Ad"><b>Select</b></button>
+                            <button class="btn btn-primary btn-block btn-selected" type="button" name="adType" value="1" data-value="1"><b>Select</b></button>
+
                             </div>
                         </div>
                     </div>
@@ -209,8 +209,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-light btn-block" type="submit" name="adType"
-                                    value="Regular Ad"><b>Select</b></button>
+                            <button class="btn btn-light btn-block btn-selected" type="button" name="adType" value="3" data-value="3"><b>Select</b></button>
+
                             </div>
                         </div>
                     </div>
@@ -247,8 +247,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                                <button class="btn btn-primary btn-block" type="submit" name="adType"
-                                    value="Frequent Ad"><b>Select</b></button>
+                            <button class="btn btn-primary btn-block btn-selected" type="button" name="adType" value="2" data-value="2"><b>Select</b></button>
+
                             </div>
                         </div>
                     </div>
@@ -265,14 +265,19 @@
                     </div>
                 </div>
 
-                <!--                <div class="row">
+                <div class="row">
                     <div class="container justify-content-center form-group mt-3 mb-5">
-                        <a href=" ../recruiter/create_jobadPAY.php"><button class="btn btn-danger"
-                                type="button">Continue</button></a>
-                    </div> -->
+                    <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
+                    </div>
+                </div>
             </div>
+<<<<<<< Updated upstream
     </div>
-    </form>
+            </form>
+    
+=======
+        </form>
+>>>>>>> Stashed changes
 
     </div>
 
@@ -287,7 +292,7 @@
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
+    <!-- <script>
     function test() {
         var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
 
@@ -297,7 +302,7 @@
             $('#Div-filter').removeClass('d-none d-sm-none');
         }
     }
-    </script>
+    </script> -->
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>
@@ -354,26 +359,50 @@
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+    <script src="../ajax/Recruiter/GetAdValue.js"></script>
 
-    <script>
-    // Get all select buttons
-    const selectButtons = document.querySelectorAll('.btn-select');
-
-    // Add event listener to each select button
-    selectButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove 'selected' class from all buttons
-            selectButtons.forEach(btn => {
-                btn.classList.remove('selected');
-            });
-            // Add 'selected' class to the clicked button
-            this.classList.add('selected');
+<script>
+    $(document).ready(function() {
+        $('#continueButton').click(function(e) {
+            e.preventDefault();
+            console.log("click");
+            AddAdType('basicPlan');
+            AddSeasonalType('seasonalPlan');
         });
+
+        
     });
 
+</script>
+    <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const cards = document.querySelectorAll('.card-pricing2');
+        // Function to handle selection logic
+        function handleSelection(buttons, selectedClass) {
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove 'selected' class from all buttons
+                    buttons.forEach(btn => {
+                        btn.classList.remove(selectedClass);
+                    });
+                    // Add 'selected' class to the clicked button
+                    this.classList.add(selectedClass);
+                    
+                    // Console log the selected value
+                    console.log('Selected value:', this.getAttribute('data-value'));
+                });
+            });
+        }
 
+        // Handle selection for btn-select class
+        const selectButtons = document.querySelectorAll('.btn-select');
+        handleSelection(selectButtons, 'selected');
+
+        // Handle selection for btn-selected class
+        const selectedButtons = document.querySelectorAll('.btn-selected');
+        handleSelection(selectedButtons, 'selected');
+
+        // Handle selection for card-pricing2 class
+        const cards = document.querySelectorAll('.card-pricing2');
         cards.forEach(card => {
             card.addEventListener('click', function() {
                 // Remove 'selected' class from all other cards
@@ -383,9 +412,8 @@
                 this.classList.add('selected');
             });
         });
-    });
 
-    document.addEventListener("DOMContentLoaded", function() {
+        // Handle the "See More" button functionality
         const seeMoreBtn = document.getElementById("seeMoreBtn");
         const additionalDetails = document.getElementById("additionalDetails");
 
@@ -399,18 +427,52 @@
             }
         });
     });
-    </script>
+</script>
+
+
 
     <style>
     /* Add this CSS to your existing styles */
     :root {
         --btn-primary-color: #007bff !important;
         --btn-secondary-color: #6861CE !important;
+        --btn-selected-primary-color: #007bff !important;
+        --btn-selected-secondary-color: #6861CE !important;
     }
 
     .btn-select {
-        transition: background-color 0.3s;
+        transition: background-color 0.3s !important;
     }
+
+    .btn-selected {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+}
+
+.btn-selected:hover {
+    background-color: var(--btn-selected-primary-color) !important;
+    color: white !important;
+    border-color: var(--btn-selected-primary-color) !important;
+}
+
+/* Selected state */
+.btn-selected.selected {
+    background-color: var(--btn-selected-primary-color) !important;
+    color: white !important;
+    border-color: var(--btn-selected-primary-color) !important;
+}
+
+/* Adjust hover and selected states for secondary buttons if needed */
+.btn-selected-secondary:hover {
+    background-color: var(--btn-selected-secondary-color) !important;
+    color: white !important;
+    border-color: var(--btn-selected-secondary-color) !important;
+}
+
+.btn-selected-secondary.selected {
+    background-color: var(--btn-selected-secondary-color) !important;
+    color: white !important;
+    border-color: var(--btn-selected-secondary-color) !important;
+}
 
     .btn-select:hover {
         background-color: var(--btn-primary-color) !important;

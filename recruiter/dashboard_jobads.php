@@ -58,7 +58,7 @@ if (isset($_SESSION['AccountID'])) {
     </div>
 
 
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center min-vh-100">
         <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border" role="tablist">
             <li class="nav-item submenu">
                 <a class="nav-link active show" id="pills-open-tab-nobd" data-toggle="pill" href="#pills-open-nobd"
@@ -80,16 +80,17 @@ if (isset($_SESSION['AccountID'])) {
     </div>
 
     <div class="tab-content mt-2 mb-3" id="pills-without-border-tabContent">
-    <div class="tab-pane fade active show" id="pills-open-nobd" role="tabpanel" aria-labelledby="pills-open-tab-nobd">
-        <div id="openJobContainer" class="container" style="width: 80%;"></div>
-    </div>
-    <div class="tab-pane fade" id="pills-expired-nobd" role="tabpanel" aria-labelledby="pills-expired-tab-nobd">
-        <div id="expiredJobContainer" class="container" style="width: 80%;"></div>
-    </div>
-    <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
-        <div id="draftJobContainer" class="container" style="width: 80%;"></div>
-    </div>
-    <!-- <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
+        <div class="tab-pane fade active show" id="pills-open-nobd" role="tabpanel"
+            aria-labelledby="pills-open-tab-nobd">
+            <div id="openJobContainer" class="container" style="width: 80%;"></div>
+        </div>
+        <div class="tab-pane fade" id="pills-expired-nobd" role="tabpanel" aria-labelledby="pills-expired-tab-nobd">
+            <div id="expiredJobContainer" class="container" style="width: 80%;"></div>
+        </div>
+        <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
+            <div id="draftJobContainer" class="container" style="width: 80%;"></div>
+        </div>
+        <!-- <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
             aria-labelledby="pills-candidates-tab-nobd">
             <div class="container" style="width: 80%;">
                 <h2 class="pt-3">Your Candidates</h2>
@@ -120,7 +121,10 @@ if (isset($_SESSION['AccountID'])) {
                 </div>
             </div>
         </div> -->
-</div>
+    </div>
+
+
+    <?php include '../PHPFiles/recruiter_footer.php' ?>
 
 
 

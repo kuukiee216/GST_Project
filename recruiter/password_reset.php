@@ -1,9 +1,9 @@
 <?php
-SESSION_START();
+session_start();
 
-if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
-    header("Location: dashboard_myaccount.php");
-	exit();
+if (!isset($_SESSION['AccountID'])) {
+    header('Location: login.php');
+    exit;
 }
 ?>
 
@@ -88,30 +88,6 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
     </nav>
     <!--End Navbar-->
 
-    <!--
-    <form id="formLogin">
-        <div class="card container flex justify-content-center mt-5 mb-5" style="width: 50%;">
-            <h1 class="text-center">Sign In</h1>
-            <div class="mb-3 mt-5">
-                <label for="txtUserID" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="txtUserID" name="txtUserID" aria-describedby="emailhelp">
-            </div>
-
-            <div class="mb-3">
-                <label for="txtPassword" class="form-label">Password</label>
-                <input type="password" class="form-control mb-3" name="txtPassword" id="txtPassword">
-                <button type="submit" class="btn btn-danger mt-4" id="btnLogin" onclick="Login('formLogin');">Sign
-                    in</button>
-                <p>by creating an account bla bla bla Terms and Condition</p>
-                <hr>
-            </div>
-        </div>
-    </form> -->
-
-
-
-    <!-- try -->
-
 
     <div class="content">
         <div class="page-inner" id="main-board">
@@ -121,48 +97,27 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                         <div class="card p-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <form id="formLogin">
-                                        <h1 class="font-weight-bold text-dark px-2">Sign In</h1>
+                                    <form id="changePassForm">
+                                        <h1 class="font-weight-bold text-dark px-2">Password Reset</h1>
                                         <div class="form-group">
-                                            <div class="input-icon">
-                                                <span class="input-icon-addon">
-                                                    <i class="fa fa-envelope"></i>
-                                                </span>
+                                            <div for="pass" class="form-label">New Password:</div>
+                                            <input type="password" class="form-control" id="pass" name="pass">
+                                        </div>
 
-                                                <input type="email" id="txtUserID" name="txtUserID" class="form-control"
-                                                    placeholder="Email Address" aria-describedby="emailhelp">
-                                            </div>
-                                        </div>
                                         <div class="form-group">
-                                            <div class="input-icon">
-                                                <span class="input-icon-addon">
-                                                    <i class="fa fa-key"></i>
-                                                </span>
-                                                <input type="password" name="txtPassword" id="txtPassword"
-                                                    class="form-control" placeholder="Password" maxlength="30">
-                                                <span class="input-icon-addon">
-                                                    <button type="button" id="btnTogglePassword"
-                                                        class="btn btn-icon btn-default btn-link pl-3"
-                                                        onclick="togglePasswordVisibility();">
-                                                        <i class="fa fa-eye " id="btnTogglePasswordIcon"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </div>
+                                            <div for="rpass" class="form-label">Re-enter Password:</div>
+                                            <input type="password" class="form-control" id="rpass" name="rpass">
 
 
 
                                     </form>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12 d-flex justify-content-end">
-                                        <a href="forgot_password.php">Forgot Password?</a>
+                                    <div class="d-flex justify-content-end">
+                                        <a href="password_verification.php"><button type="submit"
+                                                class="btn btn-outline-danger mt-3 mr-1">Back</button></a>
+                                        <button type="submit" class="btn btn-danger mt-3 mr-2" id="btnChangePass"
+                                            onclick="ChangePass('changePassForm');">Confirm</button>
                                     </div>
-
-                                    <button type="submit" class="btn btn-danger btn-round btn-block mt-4" id="btnLogin"
-                                        onclick="Login('formLogin');">Sign In</button>
-
                                 </div>
                             </div>
                         </div>
@@ -172,49 +127,28 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
         </div>
     </div>
 
-
-
+    <!--bottom navbar-->
     <?php include('../PHPFiles/recruiter_footer.php')?>
 
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+        integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-
-
-    <!--bottom navbar-->
-    <!-- <footer class="footer text-white" style="background-color:#187498">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Privacy
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Terms & Condition
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Protect yourself online
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="ml-auto">
-                © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-            </div>
-        </div>
-    </footer> -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+        integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Option 1: Bootstrap scripts -->
-    <script src="../.../assets/js/atlantis.js"></script>
-    <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="../assets/js/atlantis.js"></script>
+    <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
@@ -265,50 +199,51 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
 
     <!-- Sweet Alert -->
     <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+    <!-- <script src="../JAVASCRIPT/SCRIPTS.js"></script> -->
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
 
     <script>
-    /*
-     * Preloader
-     */
-    const preloader = document.querySelector('#preloader');
-    if (preloader) {
-        window.addEventListener('load', () => {
-            preloader.remove();
-        });
-    }
-
-    function Login(formID) {
-
-        $('#btnLogin').addClass('is-loading');
-        $('#btnLogin').prop('disabled', true);
+    function ChangePass(formID) {
+        var pass = $('input[name=pass]').val();
+        var rpass = $('input[name=rpass]').val();
+        $('#btnChangePass').addClass('is-loading');
+        $('#btnChangePass').prop('disabled', true);
         disableForm(formID);
 
-        var UserID = $("input[name=txtUserID]").val();
-        var Password = $("input[name=txtPassword]").val();
-        console.log(UserID, Password);
         $.ajax({
-            type: "POST",
+            type: "Post",
             dataType: "html",
             data: {
-                UserID: UserID,
-                Password: Password
+                pass: pass,
+                rpass: rpass
             },
-            url: "../PHPFiles/loginvalidation.php",
+            url: "../PHPFiles/Recruiter/changePass.php",
             success: function(data) {
-                alert(data)
                 if (data == "0") {
-                    $('#btnLogin').removeClass('is-loading');
-                    $('#btnLogin').prop('disabled', false);
-                    enableForm(formID);
+                    swal({
+                        title: 'Success!',
+                        text: "Password Updated Sucessfully!",
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function() {
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
+                        enableForm(formID);
 
-                    location.href = "dashboard_myaccount.php";
+                        location.href = './dashboard_myaccount.php';
+                    });
+
                 } else if (data == "1") {
                     swal({
                         title: 'An Error Occurred!',
-                        text: "Something went wrong while trying to login. Please try again.",
+                        text: "Error Updating Password.",
                         icon: 'error',
                         buttons: {
                             confirm: {
@@ -317,14 +252,14 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
                         enableForm(formID);
                     });
                 } else if (data == "2") {
                     swal({
-                        title: 'Empty Username!',
-                        text: "Please enter your username and try again.",
+                        title: 'Empty Password!',
+                        text: "Please enter a password and try again.",
                         icon: 'warning',
                         buttons: {
                             confirm: {
@@ -333,14 +268,14 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
                         enableForm(formID);
                     });
                 } else if (data == "3") {
                     swal({
-                        title: 'Empty Password!',
-                        text: "Please enter your password and try again.",
+                        title: 'Empty Confirmation Password!',
+                        text: "Your confirmation password is empty!",
                         icon: 'warning',
                         buttons: {
                             confirm: {
@@ -349,18 +284,46 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
                         enableForm(formID);
                     });
                 } else if (data == "4") {
-                    location.href = 'edit_profile.php';
+                    swal({
+                        title: 'Password not match!',
+                        text: "Confirmation password and Password isn`t matched!",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function() {
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
+                        enableForm(formID);
+                    });
                 } else if (data == "5") {
-                    location.href = '../admin/admin_dashboard_main.php';
+                    swal({
+                        title: 'Cannot Process the change email request!',
+                        text: "Please check your email",
+                        icon: 'error',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function() {
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
+                        enableForm(formID);
+                    });
                 } else if (data == "6") {
                     swal({
-                        title: 'Invalid Roles!',
-                        text: "No role Existing",
+                        title: 'Invalid Format!',
+                        text: "Please only type valid format!",
                         icon: 'error',
                         buttons: {
                             confirm: {
@@ -369,62 +332,14 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
-                    });
-                } else if (data == "7") {
-                    swal({
-                        title: 'Email not found!',
-                        text: "Incorrect Email.",
-                        icon: 'error',
-                        buttons: {
-                            confirm: {
-                                text: 'Okay',
-                                className: 'btn btn-success'
-                            }
-                        }
-                    }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
-                    });
-                } else if (data == "8") {
-                    swal({
-                        title: 'Cannot Process the login request!',
-                        text: "Please check your credentials",
-                        icon: 'error',
-                        buttons: {
-                            confirm: {
-                                text: 'Okay',
-                                className: 'btn btn-success'
-                            }
-                        }
-                    }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
-                    });
-                } else if (data == "9") {
-                    swal({
-                        title: 'Incorrect Credentiials!',
-                        text: "Password didn`t match",
-                        icon: 'error',
-                        buttons: {
-                            confirm: {
-                                text: 'Okay',
-                                className: 'btn btn-success'
-                            }
-                        }
-                    }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
                         enableForm(formID);
                     });
                 } else {
                     swal({
                         title: 'An Error Occurred!',
-                        text: "Something went wrong while trying to login.",
+                        text: "Something went wrong. Please try again",
                         icon: 'error',
                         buttons: {
                             confirm: {
@@ -433,8 +348,8 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnChangePass').removeClass('is-loading');
+                        $('#btnChangePass').prop('disabled', false);
                         enableForm(formID);
                     });
                 }
@@ -451,25 +366,26 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                         }
                     }
                 }).then(function() {
-                    $('#btnLogin').removeClass('is-loading');
-                    $('#btnLogin').prop('disabled', false);
+                    $('#btnChangePass').removeClass('is-loading');
+                    $('#btnChangePass').prop('disabled', false);
                     enableForm(formID);
                 });
             }
         });
     }
 
-    $("#txtUserID").keypress(function(event) {
+
+    $("#pass").keypress(function(event) {
         if (event.keyCode === 13) {
-            $('#btnLogin').click();
-        }
-    });
-    $("#txtPassword").keypress(function(event) {
-        if (event.keyCode === 13) {
-            $('#btnLogin').click();
+            $('#btnChangePass').click();
         }
     });
 
+    $("#rpass").keypress(function(event) {
+        if (event.keyCode === 13) {
+            $('#btnChangePass').click();
+        }
+    });
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
@@ -478,8 +394,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
         var form = document.getElementById(formID);
         var elements = form.elements;
         for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
-            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName ==
-                'SELECT') {
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
                 elements[elementCounter].disabled = true;
             } else {
                 continue;
@@ -492,8 +407,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
         var elements = form.elements;
         for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
 
-            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName ==
-                'SELECT') {
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
                 elements[elementCounter].disabled = false;
             } else {
                 continue;

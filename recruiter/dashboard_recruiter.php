@@ -46,6 +46,27 @@ if (isset($_SESSION['AccountID'])) {
 
     <title>Japan Jobs Dashboard</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
+
+
+    <style>
+    body,
+    html {
+        height: 100%;
+    }
+
+    .content {
+        min-height: calc(100vh - 56px - 70px);
+        /* Adjust 56px for header and 70px for footer height */
+    }
+
+    footer.footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        /* Footer height */
+    }
+    </style>
 </head>
 
 <body>

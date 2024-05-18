@@ -53,6 +53,7 @@
 
             <form id="urlForm" enctype="multipart/form-data">
             <input type="hidden" id="jobID" name="jobID" value="">
+            <input type="hidden" id="employerID" name="employerID" value="">
 
                 <div class="row">
                     <div class="col">
@@ -198,25 +199,50 @@
     <script src="../ajax/SecondPostingProcedure.js"></script>
 
     <script>
-        // Function to get the value of a URL parameter by name
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
+    // Function to get the value of a URL parameter by name
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
 
-        // Set the value of the jobID input field based on the URL parameter
-        document.addEventListener("DOMContentLoaded", function () {
-            var jobID = getParameterByName('jobID');
-            if (jobID !== null) {
-                document.getElementById('jobID').value = jobID;
-            }
-        });
-    </script>
+    // Set the value of the jobID and employerID input fields based on the URL parameters
+    document.addEventListener("DOMContentLoaded", function () {
+        var jobID = getParameterByName('jobID');
+        if (jobID !== null) {
+            document.getElementById('jobID').value = jobID;
+            console.log("jobID ID from URL:", jobID);
+        }
+    });
+</script>
+
+<script>
+    // Function to get the value of a URL parameter by name
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Set the value of the jobID and employerID input fields based on the URL parameters
+    document.addEventListener("DOMContentLoaded", function () {
+        var employerID = getParameterByName('employerID');
+        if (employerID !== null) {
+            document.getElementById('employerID').value = employerID;
+        }
+        console.log("Employer ID from URL:", employerID);
+
+    });
+</script>
+
     <script>
     function previewImage() {
         var file = document.getElementById("logo").files[0];
@@ -307,4 +333,7 @@
 </body>
 
 </html>
+
+
+
 

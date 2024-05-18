@@ -6,14 +6,17 @@ function AddSecond(formID) {
     var description = $('#description').val();
     var search = $('#search').val();
     var jobID = $('#jobID').val();
+    var employerID = $('#employerID').val();
 
     formData.append('logo', logo); // Append logo to FormData
     formData.append('video', video); // Append video to FormData
     formData.append('description', description);
     formData.append('search', search);
     formData.append('jobID', jobID);
+    formData.append('employerID', employerID);
 
     console.log('logo:', logo.name);
+    console.log('employerID:', employerID);
     console.log('description:', description);
     console.log('search:', search);
     console.log('jobID:', jobID);
@@ -34,7 +37,7 @@ function AddSecond(formID) {
             console.log(data); // Log the response to the console
 
             if(data.status == "0"){
-                location.href = './create_jobad3.php?jobID=' + data.jobID;
+                location.href = './create_jobad3.php?jobID=' + data.jobID + '&employerID=' + data.employerID;
             }
             else if(data == "1"){
                 swal({

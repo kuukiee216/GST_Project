@@ -1,12 +1,3 @@
-<?php
-SESSION_START();
-
-if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
-    header("Location: dashboard_myaccount.php");
-	exit();
-}
-?>
-
 <!doctype html>
 <html lang="en">
 
@@ -56,6 +47,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
 
 <body>
 
+
     <!--Navbar Header-->
     <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
         <div class="container-fluid">
@@ -88,29 +80,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
     </nav>
     <!--End Navbar-->
 
-    <!--
-    <form id="formLogin">
-        <div class="card container flex justify-content-center mt-5 mb-5" style="width: 50%;">
-            <h1 class="text-center">Sign In</h1>
-            <div class="mb-3 mt-5">
-                <label for="txtUserID" class="form-label">Email Address</label>
-                <input type="email" class="form-control" id="txtUserID" name="txtUserID" aria-describedby="emailhelp">
-            </div>
 
-            <div class="mb-3">
-                <label for="txtPassword" class="form-label">Password</label>
-                <input type="password" class="form-control mb-3" name="txtPassword" id="txtPassword">
-                <button type="submit" class="btn btn-danger mt-4" id="btnLogin" onclick="Login('formLogin');">Sign
-                    in</button>
-                <p>by creating an account bla bla bla Terms and Condition</p>
-                <hr>
-            </div>
-        </div>
-    </form> -->
-
-
-
-    <!-- try -->
 
 
     <div class="content">
@@ -121,96 +91,55 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                         <div class="card p-4">
                             <div class="card-body">
                                 <div class="row">
-                                    <form id="formLogin">
-                                        <h1 class="font-weight-bold text-dark px-2">Sign In</h1>
+                                    <form id="forgotPassForm">
+                                        <h1 class="font-weight-bold text-dark px-2">Forgot Password</h1>
+                                        <p class="text-muted mt-1 px-2">Enter your email address and we
+                                            will
+                                            send you a verification code if you have existing JAPAN
+                                            JOBS'
+                                            account.</p>
                                         <div class="form-group">
                                             <div class="input-icon">
                                                 <span class="input-icon-addon">
                                                     <i class="fa fa-envelope"></i>
                                                 </span>
 
-                                                <input type="email" id="txtUserID" name="txtUserID" class="form-control"
-                                                    placeholder="Email Address" aria-describedby="emailhelp">
+                                                <input type="email" id="InputEmail" name="InputEmail"
+                                                    class="form-control" placeholder="Email Address"
+                                                    aria-describedby="emailhelp">
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="input-icon">
-                                                <span class="input-icon-addon">
-                                                    <i class="fa fa-key"></i>
-                                                </span>
-                                                <input type="password" name="txtPassword" id="txtPassword"
-                                                    class="form-control" placeholder="Password" maxlength="30">
-                                                <span class="input-icon-addon">
-                                                    <button type="button" id="btnTogglePassword"
-                                                        class="btn btn-icon btn-default btn-link pl-3"
-                                                        onclick="togglePasswordVisibility();">
-                                                        <i class="fa fa-eye " id="btnTogglePasswordIcon"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </div>
-
-
-
                                     </form>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-md-12 d-flex justify-content-end">
-                                        <a href="forgot_password.php">Forgot Password?</a>
+
+                                    <div class="d-flex justify-content-end">
+                                        <a href="login.php"><button type="button"
+                                                class="btn btn-outline-danger mt-3 mr-1">Back</button></a>
+                                        <button type="button" class="btn btn-danger mt-3 mr-2" id="btnForgot"
+                                            onclick="Forgot('forgotPassForm')">Submit</button>
                                     </div>
-
-                                    <button type="submit" class="btn btn-danger btn-round btn-block mt-4" id="btnLogin"
-                                        onclick="Login('formLogin');">Sign In</button>
 
                                 </div>
                             </div>
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
 
 
 
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
-
-
-
-    <!--bottom navbar-->
-    <!-- <footer class="footer text-white" style="background-color:#187498">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Privacy
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Terms & Condition
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Protect yourself online
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="ml-auto">
-                © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-            </div>
-        </div>
-    </footer> -->
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>
@@ -238,7 +167,8 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
 
     <!-- jQuery UI -->
     <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js">
+    </script>
 
     <!-- jQuery Scrollbar -->
     <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
@@ -280,35 +210,63 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
         });
     }
 
-    function Login(formID) {
+    function Forgot(formID) {
 
-        $('#btnLogin').addClass('is-loading');
-        $('#btnLogin').prop('disabled', true);
+        $('#btnForgot').addClass('is-loading');
+        $('#btnForgot').prop('disabled', true);
         disableForm(formID);
 
-        var UserID = $("input[name=txtUserID]").val();
-        var Password = $("input[name=txtPassword]").val();
-        console.log(UserID, Password);
+        var UserID = $("input[name=InputEmail]").val();
+        var emailPattern = /^[a-zA-Z0-9._-]+@(gmail|yahoo)\.com$/;
+
+        console.log("UserID", UserID);
+
+        if (!emailPattern.test(UserID)) {
+            swal({
+                title: 'Invalid Email Address!',
+                text: "Please enter a valid email address!",
+                icon: 'error',
+                buttons: {
+                    confirm: {
+                        text: 'Okay',
+                        className: 'btn btn-success'
+                    }
+                }
+            }).then(function() {
+                $('#btnForgot').removeClass('is-loading');
+                $('#btnForgot').prop('disabled', false);
+                enableForm(formID);
+            });
+            return;
+        }
+
         $.ajax({
             type: "POST",
             dataType: "html",
             data: {
                 UserID: UserID,
-                Password: Password
             },
-            url: "../PHPFiles/loginvalidation.php",
+            url: "../PHPFiles/Recruiter/forgot.php",
             success: function(data) {
-                alert(data)
+                console.log('amats', data);
                 if (data == "0") {
-                    $('#btnLogin').removeClass('is-loading');
-                    $('#btnLogin').prop('disabled', false);
-                    enableForm(formID);
-
-                    location.href = "dashboard_myaccount.php";
+                    swal({
+                        title: 'Success!',
+                        text: "Verification was sent to your email",
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function() {
+                        window.location.href = "password_verification.php";
+                    });
                 } else if (data == "1") {
                     swal({
                         title: 'An Error Occurred!',
-                        text: "Something went wrong while trying to login. Please try again.",
+                        text: "Something went wrong while sending the verification email. Please try again.",
                         icon: 'error',
                         buttons: {
                             confirm: {
@@ -317,14 +275,14 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
                         enableForm(formID);
                     });
                 } else if (data == "2") {
                     swal({
-                        title: 'Empty Username!',
-                        text: "Please enter your username and try again.",
+                        title: 'Empty Email!',
+                        text: "Please enter your email and try again.",
                         icon: 'warning',
                         buttons: {
                             confirm: {
@@ -333,35 +291,31 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
                         enableForm(formID);
                     });
-                } else if (data == "3") {
-                    swal({
-                        title: 'Empty Password!',
-                        text: "Please enter your password and try again.",
-                        icon: 'warning',
-                        buttons: {
-                            confirm: {
-                                text: 'Okay',
-                                className: 'btn btn-success'
-                            }
-                        }
-                    }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
-                    });
-                } else if (data == "4") {
-                    location.href = 'edit_profile.php';
                 } else if (data == "5") {
-                    location.href = '../admin/admin_dashboard_main.php';
+                    swal({
+                        title: 'Failed to Send Email!',
+                        text: "Failed to send code. Please try again!",
+                        icon: 'warning',
+                        buttons: {
+                            confirm: {
+                                text: 'Okay',
+                                className: 'btn btn-success'
+                            }
+                        }
+                    }).then(function() {
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
+                        enableForm(formID);
+                    });
                 } else if (data == "6") {
                     swal({
-                        title: 'Invalid Roles!',
-                        text: "No role Existing",
-                        icon: 'error',
+                        title: 'Error Finding Email!',
+                        text: "Email doesn`t exist!",
+                        icon: 'warning',
                         buttons: {
                             confirm: {
                                 text: 'Okay',
@@ -369,62 +323,14 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
-                    });
-                } else if (data == "7") {
-                    swal({
-                        title: 'Email not found!',
-                        text: "Incorrect Email.",
-                        icon: 'error',
-                        buttons: {
-                            confirm: {
-                                text: 'Okay',
-                                className: 'btn btn-success'
-                            }
-                        }
-                    }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
-                    });
-                } else if (data == "8") {
-                    swal({
-                        title: 'Cannot Process the login request!',
-                        text: "Please check your credentials",
-                        icon: 'error',
-                        buttons: {
-                            confirm: {
-                                text: 'Okay',
-                                className: 'btn btn-success'
-                            }
-                        }
-                    }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
-                        enableForm(formID);
-                    });
-                } else if (data == "9") {
-                    swal({
-                        title: 'Incorrect Credentiials!',
-                        text: "Password didn`t match",
-                        icon: 'error',
-                        buttons: {
-                            confirm: {
-                                text: 'Okay',
-                                className: 'btn btn-success'
-                            }
-                        }
-                    }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
                         enableForm(formID);
                     });
                 } else {
                     swal({
                         title: 'An Error Occurred!',
-                        text: "Something went wrong while trying to login.",
+                        text: "Something went wrong while trying to send the verification email. Please try again.",
                         icon: 'error',
                         buttons: {
                             confirm: {
@@ -433,8 +339,8 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                             }
                         }
                     }).then(function() {
-                        $('#btnLogin').removeClass('is-loading');
-                        $('#btnLogin').prop('disabled', false);
+                        $('#btnForgot').removeClass('is-loading');
+                        $('#btnForgot').prop('disabled', false);
                         enableForm(formID);
                     });
                 }
@@ -442,7 +348,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
             error: function(xhr, status, error) {
                 swal({
                     title: 'Failed to Connect to Server!',
-                    text: "Something went wrong while trying to connect to the server. Please",
+                    text: "Something went wrong while trying to connect to the server. Please try again later.",
                     icon: 'error',
                     buttons: {
                         confirm: {
@@ -451,22 +357,17 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
                         }
                     }
                 }).then(function() {
-                    $('#btnLogin').removeClass('is-loading');
-                    $('#btnLogin').prop('disabled', false);
+                    $('#btnForgot').removeClass('is-loading');
+                    $('#btnForgot').prop('disabled', false);
                     enableForm(formID);
                 });
             }
         });
     }
 
-    $("#txtUserID").keypress(function(event) {
+    $("#InputEmail").keypress(function(event) {
         if (event.keyCode === 13) {
-            $('#btnLogin').click();
-        }
-    });
-    $("#txtPassword").keypress(function(event) {
-        if (event.keyCode === 13) {
-            $('#btnLogin').click();
+            $('#btnForgot').click();
         }
     });
 
@@ -478,8 +379,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
         var form = document.getElementById(formID);
         var elements = form.elements;
         for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
-            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName ==
-                'SELECT') {
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
                 elements[elementCounter].disabled = true;
             } else {
                 continue;
@@ -492,8 +392,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
         var elements = form.elements;
         for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
 
-            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName ==
-                'SELECT') {
+            if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
                 elements[elementCounter].disabled = false;
             } else {
                 continue;
@@ -501,6 +400,9 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
         }
     }
     </script>
+
+
+
 </body>
 
 </html>
