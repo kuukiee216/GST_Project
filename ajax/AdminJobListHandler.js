@@ -65,8 +65,6 @@ function fillJobPostList(activeTable){
 function viewJobPost(JobPostID){
 
     var JID = JobPostID.replace("btnViewJob", "");
-    console.log(JID);   
-
 
     $.ajax({
         type: "POST",
@@ -76,21 +74,70 @@ function viewJobPost(JobPostID){
         },
         url: "../PHPFiles/Admin/jobPostViewContent.php",
         success: function(data){
+            var decodedData = JSON.parse(data);
+
+            changeModal(decodedData['Status'], decodedData);
+
             // WILL GET BACK TO THIS
             // MUST HAVE AN INTERFACE TO PUT THE DATA
             // AND MUST HAVE A LIST OF WHAT DATA TO DISPLAY
+            $('#jobTitle').text(decodedData['JobTitle']);
+            $('#jobStatus').text(' (' + decodedData['Status'] + ')');
+            $('#employerName').text(decodedData['EmployerName']);
+            $('#companyName').text(' (' + decodedData['CompanyName'] + ')');
+            $('#lbDatePosted').text(decodedData['Date']);
+            $('#jobDescription').text(decodedData['Description']);
+
             $('#modalViewJobPosting').modal({
                 backdrop: 'static',
                 keyboard: true,
                 focus: true,
                 show: true
             });
-    
+
             console.log(data);
         }
         
     });
+}
 
+function changeModal(status, decodedData){
+
+    $DateDuration = '20 Days';
+    $RejectionReason = 'Pinagpalit sa malapit';
+
+    switch(status){
+        case 'Active':
+            $('#jobStatus').addClass("text-success font-weight-bold");
+            $('#footerSubject').text('Will be Expire in : ');
+            $('#remainingTime').text($DateDuration);
+            break;
+        case 'Inactive':
+            $('#jobStatus').removeClass();
+            $('#viewFooter').hide();
+            break;
+        case 'Pending':
+            $('#viewFooter').hide();
+            break;
+        case 'Expired':
+            $('#jobStatus').addClass("text-danger font-weight-bold");
+            $('#viewFooter').hide();
+            break;
+        case 'Rejected':
+            $('#jobStatus').addClass("text-danger font-weight-bold");
+            $('#footerSubject').addClass("text-danger font-weight-bold");
+            $('#footerSubject').text('Reason for Rejection : ');
+            $('#remainingTime').text($RejectionReason);
+            break;
+        case 'Pending Deletion':
+            $('#jobStatus').addClass("text-danger font-weight-bold");
+            $('#footerSubject').addClass("text-danger font-weight-bold");
+            $('#footerSubject').text('Will be Deleted in : ');
+            $('#remainingTime').text($DateDuration);
+            break;
+ 
+            
+    }
 
 }
 

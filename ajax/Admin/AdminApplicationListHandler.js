@@ -67,6 +67,7 @@ function getApplicationsList(){
 function getApplicationContents(){
     getApplicationDetails();
     getApplicantInfo();
+    getApplicantResume();
 }
 
 function  getApplicationDetails(){
@@ -92,7 +93,10 @@ function  getApplicationDetails(){
                 $('#app-companyName').text(decodedData['CompanyName']);
                 $('#app-jobSalary span').text(decodedData['Salary']);
 
-                
+                if(decodedData['Status'] == 1 || decodedData['Status'] == 2){
+                    $('#btnApplicationApprove').hide();
+                    $('#btnApplicationReject').hide();
+                }
             }
 
         }, 
@@ -150,14 +154,51 @@ function getApplicantResume(){
         },
         url: "../PHPFiles/Admin/Applications/applicationGetDocument.php",
         success: function(data){
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+                var filePath = '';
+
+                if(decodedData['Location'] == null){
+                    $('#documentName').text('Applicant has not yet submitted a Resume');
+                }else{
+                    filePath = decodedData['Location'];
+                    var parts = filePath.split('/');
+                    var filename = parts[parts.length - 1];
+                    
+                    $('#documentName').text(filename);
+                }
+            }   
+        }
+
+    });
+}
+
+function showApplicantResume(){
+
+    var AID = window.location.hash.replace('#','');
+
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        data:{
+            ApplicationID: AID
+        },
+        url: "../PHPFiles/Admin/Applications/applicationGetDocument.php",
+        success: function(data){
             console.log("Current Data : " +  data);
             if(data == '1'){
 
             }else{
                 var decodedData = JSON.parse(data);
-                
+                var filePath = '';
 
-                var filePath = "../Documents/Parungao_Ron Henrick_Cadang_Resume(2).pdf";
+                if(decodedData['Location'] == null){
+                    $('#documentName').text('Applicant has not yet submitted a Resume');
+                }else{
+                    filePath = decodedData['Location'];
+                }
 
                 window.open(filePath, '_blank');
             }   
@@ -171,4 +212,134 @@ function getApplicantResume(){
     });
 }
 
+function showCoverLetter(){
+    
+}
+
+function approveApplication(){
+
+    var AID = window.location.hash.replace('#','');
+
+    swal({
+        title: 'Approve Application?',
+        text: "Are you sure you want to Approve this Application?",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Approve it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Toggle) => {
+        if (Toggle) {
+
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: {
+                    ApplicationID: AID
+                },
+                //Change this
+                url: "../PHPFiles/Admin/Applications/applicationApprove.php",
+                success: function(data){
+                    console.log(data);
+
+                if(data == '1'){ 
+                    swal({
+                        title: 'Application Approved!',
+                        text: "Successfully Approved the Applicant's Application.",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = '../admin/application.php';
+                    });
+                         
+                }else{
+                
+                }
+            }
+            });
+        }
+        else{
+        }
+    });
+
+
+}
+
+function rejectApplication(){
+
+    var AID = window.location.hash.replace('#','');
+
+    swal({
+        title: 'Reject Application?',
+        text: "Are you sure you want to Reject this Application?",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Reject it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Toggle) => {
+        if (Toggle) {
+
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: {
+                    ApplicationID: AID
+                },
+                //Change this
+                url: "../PHPFiles/Admin/Applications/applicationReject.php",
+                success: function(data){
+                    console.log(data);
+
+                if(data == '1'){ 
+                    swal({
+                        title: 'Application Rejectd!',
+                        text: "Successfully Rejectd the Applicant's Application.",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        location.href = '../admin/application.php';
+                    });
+                         
+                }else{
+                
+                }
+            }
+            });
+        }
+        else{
+        }
+    });
+
+
+
+}
 

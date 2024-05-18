@@ -13,6 +13,7 @@ if(isset($_POST['ApplicationID'])){
     
     try{
         $sQryGetApplicationDetails = "SELECT
+                                    app.Status,
                                     cj.JobTitle,
                                     ci.CompanyName,
                                     ct.CityName,
@@ -46,6 +47,7 @@ if(isset($_POST['ApplicationID'])){
         if($stmtGetApplicationDetails->rowCount() == 1){
             $rowApplicationDetails = $stmtGetApplicationDetails->fetch(PDO::FETCH_ASSOC);
 
+            $dataResultArray['Status'] = $rowApplicationDetails['Status'];
             $dataResultArray['JobTitle'] = $rowApplicationDetails['JobTitle'];
             $dataResultArray['Location'] = $rowApplicationDetails['CityName'] . ", " . $rowApplicationDetails['CountryName'];
             $dataResultArray['CompanyName'] = $rowApplicationDetails['CompanyName'];

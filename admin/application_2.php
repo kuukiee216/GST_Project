@@ -400,8 +400,8 @@
                             </div>
 
                             <div class="-fluid d-flex justify-content-end mb-5">
-                                <button class="btn btn-success">Approved</button>
-                                <button class="btn btn-danger">Reject</button>
+                                <button id="btnApplicationApprove" onclick="approveApplication()" class="btn btn-success">Approved</button>
+                                <button id="btnApplicationReject" onclick="rejectApplication()" class="btn btn-danger">Reject</button>
                             </div>
                     </div>
                         
@@ -492,7 +492,7 @@
 			});
 
 			$("#btnViewDocument").click(function(){
-				getApplicantResume();
+				showApplicantResume();
 			});
 
 		});

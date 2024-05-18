@@ -11,25 +11,27 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST"){
 if(isset($_POST['JobPostID'])){
 
     $JID = $_POST['JobPostID'];
-    echo $JID;
     $dataResultArray = array();
 
     $sQryGetJobContents = "SELECT 
-                            cj.JobID, 
                             cj.JobTitle, 
                             cj.Status, 
-                            te.FirstName, 
-                            te.MiddleName, 
-                            te.LastName, 
+                            cj.Description,
+                            ci.CompanyName,
+                            ei.FirstName, 
+                            ei.MiddleName, 
+                            ei.LastName, 
                             jp.DateTimeStamp
                         FROM
-                        tbl_companyjob as cj
+                            tbl_companyjob as cj
                         INNER JOIN
-                        tbl_employerinfo as te ON te.EmployerID = cj.EmployerID
+                            tbl_employerinfo as ei ON ei.EmployerID = cj.EmployerID
                         INNER JOIN
-                        tbl_jobposting as jp ON jp.JobID = cj.JobID
+                            tbl_companyinfo as ci ON ci.CompanyID = ei.CompanyID
+                        INNER JOIN
+                            tbl_jobposting as jp ON jp.JobID = cj.JobID
                         WHERE
-                        cj.JobID = ?;";
+                            cj.JobID = ?;";
     $stmtGetJobContents = $connection->prepare($sQryGetJobContents);
     $stmtGetJobContents->bindValue(1, $JID, PDO::PARAM_STR);
     $stmtGetJobContents->execute();
@@ -50,11 +52,12 @@ if(isset($_POST['JobPostID'])){
             $EmployerName = $rowJobContent['LastName'].", ".$rowJobContent['FirstName'];
         }    
 
-        $dataResultArray['JobID'] = $rowJobContent['JobID'];
         $dataResultArray['JobTitle'] = $rowJobContent['JobTitle'];
         $dataResultArray['EmployerName'] = $EmployerName;
+        $dataResultArray['CompanyName'] = $rowJobContent['CompanyName'];
         $dataResultArray['Status'] = $JobStatus;
         $dataResultArray['Date'] = $rowJobContent['DateTimeStamp'];
+        $dataResultArray['Description'] = $rowJobContent['Description'];
 
         $jsonDataResult = json_encode($dataResultArray);
         echo $jsonDataResult;
@@ -68,16 +71,18 @@ if(isset($_POST['JobPostID'])){
 
 function mapStatus($status){
     switch($status){
-        case 0:
-            return "Active";
         case 1:
-            return "Hidden";
+            return "Active";
         case 2:
             return "Inactive";
         case 3:
-            return "Request";
-        case 4:
+            return "Pending";
+        case 4: 
             return "Expired";
+        case 5: 
+            return "Pending Deletion";
+        case 6: 
+            return "Rejected";
     }
 }
 

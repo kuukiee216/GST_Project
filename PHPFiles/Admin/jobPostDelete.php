@@ -7,8 +7,8 @@ $connection = $clsConnect->dbConnect();
 session_start();
 $DateTime = date('Y-m-d H:i:s');
 $AccountID = $_SESSION['AccountID'];
-$Area = 'Ad Type';
-$Action = 'Delete';
+$Area = 'Job Post';
+$Action = 'Pending Delete';
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST"){
     exit(); 
@@ -57,6 +57,7 @@ if(isset($_POST['JobPostID'])){
         
 
     } catch(PDOException $err){
+        $connection->rollback();
         echo '2';
     }
 

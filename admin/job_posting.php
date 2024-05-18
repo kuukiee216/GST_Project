@@ -302,7 +302,7 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h3 class="modal-title">Job Posting</h3>
+								<h3 class="modal-title"><span id="jobTitle">Job Posting</span><span id="jobStatus" >(Status)</span></h3>
 								<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseJobPostView">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -311,11 +311,34 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<h3  id="lbMainClassification">Put Description Here <span class="text-danger font-weight-bold">*</span></h3>
-								<br />
-								<h3 id="lbMainClassification">Put Description Here <span class="text-danger font-weight-bold">*</span></h3>
-								<br />
-								<h3 id="lbMainClassification">Put Description Here <span class="text-danger font-weight-bold">*</span></h3>
+								<div class="container">
+									<div class="row">
+										<div class="col-8">
+											<label for="employerName">Posted By: <span class="text-danger font-weight-bold"></span></label>
+											<h5><span id="employerName"></span><span id="companyName">(Company)</span> <span class="text-danger font-weight-bold"></span></h5>
+										</div>
+
+										<div class="col">
+											<label for="lbDatePosted">Date Posted: <span class="text-danger font-weight-bold"></span></label>
+											<h5 id="lbDatePosted">12/12/2024 <span class="text-danger font-weight-bold"></span></h5>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<br />
+											<h3 id="lbMainClassification">Description <span class="text-danger font-weight-bold"></span></h3>
+												<p id="jobDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+													magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+													 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+													Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+										</div>
+									</div>
+									<div class="row" id="viewFooter">
+										<div class="col">
+											<h3><span id="footerSubject" class="text-danger font-weight-bold">Remaining Duration : </span><span id="remainingTime">20 Days</span></h3>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -659,6 +659,35 @@ function openSeasonal(){
     });
 }
 
+function viewAdType(){
+    postingFeeModal();
+}
+
+function viewPromoCode(){
+    postingFeeModal();
+}
+
+function viewSeasonal(){
+    postingFeeModal();
+}
+
+function postingFeeModal(){
+    $('#modalViewPostingFee').modal({
+        backdrop: 'static',
+        keyboard: true,
+        focus: true,
+        show: true
+    });
+}
+
+function closePostingFeeView(){
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    $('#btnClosePostingFeeView').click();
+}
+
+
+
+
 
 function openPromoCode(){
     $('#modalAddPromoCode').modal({
@@ -1188,6 +1217,48 @@ function deletePromoCode(PromoID){
             });
         }
         else{
+        }
+    });
+}
+
+function showVAT(){
+    $('#modalVAT').modal({
+        backdrop: 'static',
+        keyboard: true,
+        focus: true,
+        show: true
+    });
+}
+
+function closeVAT(){
+    swal({
+        title: 'Discard Changes?',
+        text: "Are you sure you want to close? Take note that this will erase/remove all your inputs.",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Close it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Cancel) => {
+        if (Cancel) {
+            // $('#txtJobTitle').val('');
+            // $('#lstSubClassifications').prop('disabled', true);
+            // $('#lstMainClassifications').prop('selectedIndex', -1);
+            // $('#lstSubClassifications').prop('selectedIndex', -1);
+
+            history.replaceState(null, document.title, window.location.pathname + window.location.search);
+            $('#btnCloseVAT').click();
+        }
+        else{
+            // do nothing
         }
     });
 }

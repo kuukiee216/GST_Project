@@ -63,13 +63,11 @@ try {
 function mapStatus($status)
 {
     switch ($status) {
-        case 1:
-            return "Active";
-        case 2:
-            return "Inactive";
-        case 3:
+        case 0:
             return "Pending";
-        case 4:
-            return "Expired";
+        case 1:
+            return "Rejected";
+        case 2:
+            return "Approved";
     }
 }

@@ -486,7 +486,6 @@
 		});
 
 		$("#btnAddJobClassification").click(function() {
-				console.log('worked');
 				addJobClassification(activeTable);
 		});
 
