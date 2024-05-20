@@ -1,5 +1,5 @@
 <?php
-$localConfigPath = '../../Essentials/db_config_local.php';
+$localConfigPath = '../Essentials/db_config_local.php';
 // Check if the file exists before including
 if (file_exists($localConfigPath)) {
     try {

@@ -305,43 +305,24 @@
 												<div class="table-responsive">
 													<div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 														<div class="row">
-															<div class="col-sm-12 col-md-6">
-																<div class="dataTables_length" id="basic-datatables_length">
-																	<label>Show 
-																	<select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-																		<option value="10">10</option>
-																		<option value="25">25</option>
-																		<option value="50">50</option>
-																		<option value="100">100</option>
-																	</select> entries</label>
-																</div>
-															</div>
-															<div class="col-sm-12 col-md-6">
-																<div id="basic-datatables_filter" class="dataTables_filter">
-																	<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-																	</label>
-																</div>
+															<div class="col-sm-12">
+																<table id="tblSystemLogs" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+																	<thead>
+																		<tr>
+																			<th>Log ID</th>
+																			<th>Time Stamp</th>
+																			<th>Action</th>
+																			<th>Area</th>
+																			<th>Account ID</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		
+																	</tbody>
+																</table>
 															</div>
 														</div>
-														<div class="row">
-    <div class="col-sm-12">
-        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-            <thead>
-                <tr role="row">
-                    <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Log ID: activate to sort column descending" style="width: 166.837px;">Log ID</th>
-                    <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Time Stamp: activate to sort column descending" style="width: 166.837px;">Time Stamp</th>
-                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 261.05px;">Action</th>
-                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Area: activate to sort column ascending" style="width: 261.05px;">Area</th>
-                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Account ID: activate to sort column ascending" style="width: 261.05px;">Account ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Data will be dynamically inserted here -->
-            </tbody>
-        </table>
-    </div>
-</div>
->
+
 										</div>
 												</div>
 											</div>
@@ -424,6 +405,7 @@
     <!-- Data Retrieval ng System Logs -->
 	<script>
 		$(document).ready(function(){
+			$('#tblSystemLogs').DataTable();
 			fillsystemlogs();
 		});
 
@@ -433,6 +415,7 @@
 				url: '../PHPFiles/Admin/Dashboardsettingsystemlogs.php',
 				datatype: 'html',
 				success: function(response){
+					console.log(response);
 					if(response == '1'){
 						$.notify({
 							// options
@@ -467,8 +450,25 @@
 						});
 					}
 					else{
-						var decoderesponse = JSON.parse(response);
-						$('#basic-datatables').text(decoderesponse.systemlogs);
+						var current_Table = "#tblSystemLogs";
+						var decodedResponse = JSON.parse(response);
+						
+						if($.fn.DataTable.isDataTable(current_Table)){
+							$(current_Table).DataTable().destroy();
+						}
+
+						$(current_Table).DataTable({
+							pageLength: 10,
+							data: decodedResponse,
+							columns: [
+								{ data: 'LogID' },
+								{ data: 'DateTimeStamp' },
+								{ data: 'Action' },
+								{ data: 'Area' },
+								{ data: 'AccountID' }
+							]
+						});
+
 					}
 				},
 				error: function(){
