@@ -183,7 +183,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="/admin/settings_system_logs.html">System Logs</a>
+										<a class="dropdown-item" href="settings_system_logs.php">System Logs</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
@@ -247,7 +247,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="application.html">
+							<a href="application.php">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -261,27 +261,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="/admin/settings_job_classification.html">
+										<a href="settings_job_classification.php">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_job_title.html">
+										<a href="settings_job_title.php">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_locations.html">
+										<a href="settings_locations.php">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_posting_fee.html">
+										<a href="settings_posting_fee.php">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_system_logs.html">
+										<a href="settings_system_logs.php">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -296,6 +296,53 @@
 			</div>
 		</div>
 		<!-- End Sidebar -->
+
+		<!-- Modal -->
+		<div class="modal fade" id="modalViewJobPosting" tabindex="-1" role="dialog" aria-labelledby="modalViewJobPosting" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title"><span id="jobTitle">Job Posting</span><span id="jobStatus" >(Status)</span></h3>
+								<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseJobPostView">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<button type="button" class="close" onclick="closeJobPostView();">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="container">
+									<div class="row">
+										<div class="col-8">
+											<label for="employerName">Posted By: <span class="text-danger font-weight-bold"></span></label>
+											<h5><span id="employerName"></span><span id="companyName">(Company)</span> <span class="text-danger font-weight-bold"></span></h5>
+										</div>
+
+										<div class="col">
+											<label for="lbDatePosted">Date Posted: <span class="text-danger font-weight-bold"></span></label>
+											<h5 id="lbDatePosted">12/12/2024 <span class="text-danger font-weight-bold"></span></h5>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<br />
+											<h3 id="lbMainClassification">Description <span class="text-danger font-weight-bold"></span></h3>
+												<p id="jobDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+													magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+													 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+													Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+										</div>
+									</div>
+									<div class="row" id="viewFooter">
+										<div class="col">
+											<h3><span id="footerSubject" class="text-danger font-weight-bold">Remaining Duration : </span><span id="remainingTime">20 Days</span></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
         <div class="main-panel">
 			<div class="content">
@@ -517,7 +564,7 @@
 					break;
 			}
 
-			fillApplicantList(activeTable);
+			fillJobPostList(activeTable);
 
 		}
 

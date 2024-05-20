@@ -1,13 +1,14 @@
 <?php
-  SESSION_START();
+SESSION_START();
 
-  date_default_timezone_set('Asia/Manila');
-  $currentDateTime = time();
+date_default_timezone_set('Asia/Manila');
+$currentDateTime = time();
 
-//   if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
-//       header ("Location: ../PHPFiles/Applicant/logout.php");
-//   }
+if (!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])) {
+    header("Location: ../PHPFiles/Applicant/logout.php");
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +19,7 @@
     <!-- CSS Files -->
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
-    
+
 
     <!-- Fonts and icons -->
 	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -40,7 +41,7 @@
         <div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header bg-danger">
-				
+
 				<a href="admin_dashboard_main.php" class="logo">
 					<img src="../assets/img/JapanJobs.png" alt="navbar brand" class="navbar-brand">
 				</a>
@@ -97,7 +98,7 @@
 													<span class="block">
 														New user registered
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -182,7 +183,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="../admin/settings_system_logs.html">System Logs</a>
+										<a class="dropdown-item" href="../admin/settings_system_logs.php">System Logs</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
@@ -198,7 +199,7 @@
         <!-- End Navbar -->
 
         <!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">			
+		<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -240,13 +241,13 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="applicant_list.php">	
+							<a href="applicant_list.php">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="application.html">
+							<a href="application.php">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -260,27 +261,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="settings_job_classification.html">
+										<a href="settings_job_classification.php">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_job_title.html">
+										<a href="settings_job_title.php">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_locations.html">
+										<a href="settings_locations.php">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_posting_fee.html">
+										<a href="settings_posting_fee.php">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_system_logs.html">
+										<a href="settings_system_logs.php">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -288,7 +289,7 @@
 							</div>
 						</li>
 						<li class="mx-3 mt-3">
-							<a href="#" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a> 
+							<a href="../PHPFiles/Applicant/logout.php" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a>
 						</li>
 					</ul>
 				</div>
@@ -496,7 +497,7 @@
                         </nav>
                         <div class="ml-auto">
                             © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-                        </div>				
+                        </div>
                     </div>
                 </footer>
 		    </div>

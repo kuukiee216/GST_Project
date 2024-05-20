@@ -5,6 +5,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
     header('Location: login.php');
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
     <!-- Required meta tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
     <link rel="stylesheet" href="../phone-number/build/css/demo.css">
     <link rel="stylesheet" href="../phone-number/build/css/intlTelInput.css">
     <!-- Bootstrap CSS -->
@@ -59,7 +60,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 <body>
     <!--Navbar Header-->
 
-    <?php include('../PHPFiles/header.php')?>
+    <?php include('../PHPFiles/recruiter_header.php')?>
 
     <div class="container flex justify-content-center" style="width: 50%;">
 
@@ -102,11 +103,12 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     <label for="exampleEmail" class="fw-bold">Business Name</label>
                     <div class="text-muted pb-3">For security purpose, please enter the registered business name.
                     </div>
-                    <input type="text" class="form-control" name="companyName" aria-describedby="nameHelp"
+                    <input type="text" class="form-control" name="companyName" id="companyName" aria-describedby="nameHelp"
                         placeholder="Enter Business Name" required>
                     <label for="phone1" class="pt-3">Telephone Number</label>
                     <div class="input-group">
-                        <input type="tel" id="phone1" name="telephone" placeholder="Telephone Number" value="+" required>
+                        <input type="tel" id="phone1" name="telephone" placeholder="Telephone Number" value="+"
+                            required>
                     </div>
 
                     <br><br>
@@ -147,44 +149,14 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
 
                 <div class="form-group">
-                    <button class="btn btn-danger mt-3 mb-5 d-flex align-items-center" > Update Account</button>
+                    <button class="btn btn-danger mt-3 mb-5 d-flex align-items-center" onclick="ChangeProfile('editInfoForms');" id="btnChangeProfile" type="submit"> Update Account</button>
                 </div>
         </form>
     </div>
 
 
     <!--bottom navbar-->
-    <footer class=" footer text-white" style="background-color:#187498">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Privacy
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Terms & Condition
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Protect yourself online
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="ml-auto">
-                © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-            </div>
-        </div>
-    </footer>
+    <?php include('../PHPFiles/recruiter_footer.php')?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -268,16 +240,20 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
     <script src="../ajax/SettingHandler.js"></script>
     <script src="../ajax/SettingPassHandler.js"></script>
     <script src="../ajax/Recruiter/ProfileHandler.js"></script>
+    <script src="../ajax/Recruiter/EditProfile.js"></script>
 
     <script>
     $(document).ready(function() {
+        $('#btnChangeProfile').click(function() {
+            ChangeProfile('editInfoForms');
+        });
         GetInfo();
     });
     </script>
 
     <script>
     var input = document.querySelector("#phone");
-    var inputs =document.querySelector("#phone1");
+    var inputs = document.querySelector("#phone1");
     window.intlTelInput(input, {});
     window.intlTelInput(inputs, {});
     </script>

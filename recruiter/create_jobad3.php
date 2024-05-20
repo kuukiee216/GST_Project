@@ -1,334 +1,341 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+    <!DOCTYPE html>
+    <html lang="en">
 
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../assets/css/atlantis.css">
-    <link href="../CSS-RECRUITER/dashboard_recruiter.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <!-- Required meta tags -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 
-    <title>Create Job Ad Page 3</title>
-    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
-</head>
-<body>
-          <!--Navbar Header-->
-          <nav class="navbar navbar-header navbar-expand-lg" style="background-color:#187498">
-            <div class="container-fluid">
-              <div class="collapse" id="search-nav">
-                <div>
-                <form class="navbar-left navbar-form">
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar nav me-auto mb-2 mb-lg-0">
-                    <li>
-                        <a href="/applicant/Landing_Page.html" class="logo">
-                          <img src="../assets/img/JapanJobs.png" alt="navbar brand">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="../assets/css/atlantis.css">
+        <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet">
+
+        <!-- CSS Files -->
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/atlantis.min.css">
+        <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
+
+        <!-- Fonts and icons -->
+        <script src="../assets/js/plugin/webfont/webfont.min.js"></script>
+        <script>
+        WebFont.load({
+            google: {
+                "families": ["Lato:300,400,700,900"]
+            },
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
+                    "simple-line-icons"
+                ],
+                urls: ['../assets/css/fonts.min.css']
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+        </script>
+
+        <title>Create Job Ad Page 3</title>
+        <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
+    </head>
+
+    <body>
+        <!--Navbar Header-->
+        <?php include('../PHPFiles/recruiter_header.php')?>
+        <!--End Navbar-->
+
+        <div class="container-fluid">
+            <div class="container justify-content-center mt-5" style="width: 50%;">
+
+                <div class="progress-card">
+                    <div class="progress-status">
+                        <a href="../recruiter/create_jobad2.php">
+                            <button type="button" class="btn btn-icon btn-round btn-primary">
+                                <i class="fa fa-arrow-circle-left"></i>
+                            </button>
                         </a>
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="/recruiter/dashboard_recruiter.php">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Japan Ads</a>
-                      </li>
-                    </ul>
-                  </div>
-                </form>
-                </div>
-              </div>
-              <ul class="navbar-nav topbar-nav ml-md-auto align-items-justify">
-                <li class="nav-item dropdown hidden-caret">
-                  <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                    <div class="avatar-sm">
-                      <img src="../assets/img/icon.png" alt="..." class="avatar-img rounded-circle">
+                        <span class="text-muted fw-bold">75%</span>
                     </div>
-                  </a>
-                  <ul class="dropdown-menu dropdown-user animated fadeIn">
-                    <div class="scroll-wrapper dropdown-user-scroll scrollbar-outer" style="position: relative;"><div class="dropdown-user-scroll scrollbar-outer scroll-content" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 0px;">
-                      <li>
-                        <div class="user-box">
-                          <div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
-                          <div class="u-text">
-                            <h4>Meow</h4>
-                            <p class="text-muted">Genesis.com</p><a href="/applicant/profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
-                          </div>
+                    <div class="progress" style="height: 6px;">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="0"
+                            aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title=""
+                            data-original-title="100%"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <h2 class="mt-3"><b>Manage Candidate Applications </b><span class="text-muted">(optional)
+                            </span>
+                        </h2>
+                        <div class="row mt-3">
+                            <h5><b>Questions for Candidates</b></h5>
                         </div>
-                      </li>
-                      <li>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="dashboard_myaccount.php">My Account</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="dashboard_billing.php">My Billing</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
-                      </li>
-                    </div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <!--End Navbar-->
+                        <p>Include up to 8 easy-to-answer questions in your job ad.
+                            When reviewing candidates, you will be able to easily filter
+                            candidates who match your preferred answers.
+                        </p>
 
-    <div class="container flex justify-content-center mt-5" style="width: 50%;">
+                        <p class="text-muted selected-count">0/8 Questions Selected</p>
 
-        <div class="progress-card">
-            <div class="progress-status">
-                <a href="/recruiter/create_jobad2.php">
-                  <button type="button" class="btn btn-icon btn-round btn-primary">
-                    <i class="fa fa-arrow-circle-left"></i>
-                  </button>
-                </a>
-                <span class="text-muted fw-bold">75%</span>
+
+                        <div class="input-icon">
+                            <span class="input-icon-addon">
+                                <i class="fa fa-search"></i>
+                            </span>
+                            <input type="search" class="form-control" placeholder="Find a Question" id="search-question-text">
+                        </div>
+
+
+                        <form id="questionForm" class="input-group mt-3 mb-3">
+                            <input type="text" class="form-control" placeholder="Enter new question text here"
+                                id="new-question-text" name="new-question">
+                            <button class="btn btn-outline-secondary" type="submit" id="add-question">Add
+                                Question</button>
+                        </form>
+
+                        <h4 class="mt-3"><b>Recommended questions</b></h4>
+
+                       <form id="questionDatabase">
+                       <input type="hidden" id="jobID" name="jobID" value="">
+                        <input type="hidden" id="employerID" name="employerID" value="">
+
+                       <div class="container-fluid row">
+                            <div class="form-check row" id="question-container">
+                            </div>
+                        </div>
+
+                        <div>
+                            <div>
+                                <span class="input-icon-addon">
+                                    <i class="fa fa-info-circle"></i>
+                                </span>
+                                Your question and answers can't be changed after you post your job ad.
+                            </div>
+
+                            <div class="form-group mt-5 mb-5">
+                                <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
+                            </div>
+                        </div>
+                       </form>
+                    </div>
+                </div>
             </div>
-            <div class="progress" style="height: 6px;">
-                <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="75%"></div>
-            </div>
+
         </div>
 
-        <form>
+        <!--bottom navbar-->
+        <?php include('../PHPFiles/recruiter_footer.php')?>
 
-            <div class="row mt-5">
-                <h4>Write about your Job</h4>
-                <h6>Showcase your brand</h6>
-                <div class="text-muted mb-5" style="width: 70%;">Create your first brand by uploading your company logo. 
-                    Cover images can be added from the success page after payment. 
-                </div>
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+            integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+        function test() {
+            var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
 
-                <div class="card text-white" style="width: 40%;">
-                    <img class="card-img" src="/assets/img/icon.png" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div class="form-group">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
-                    </div>
-                </div>
-
-                <h4>Job Description</h4>
-                <div class="text-muted mb-3">Enter your job details or let us guide you through what to write.</div>
-
-                <ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab-nobd" data-toggle="pill" href="#pills-home-nobd" role="tab" aria-controls="pills-home-nobd" aria-selected="true">Write your Own</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab-nobd" data-toggle="pill" href="#pills-profile-nobd" role="tab" aria-controls="pills-profile-nobd" aria-selected="false">Help me write my ad</a>
-                    </li>
-                </ul>
-
-                <div class="tab-content mb-3" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home-nobd" role="tabpanel" aria-labelledby="pills-home-tab-nobd">
-                        <div class="form-group">
-                            <div class="row col-5">
-
-                                <div class="col">
-                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
-                                </div>
-
-                                <div class="col">
-                                    <div for="bold">
-                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="italic">
-                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="left">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="right">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-right"></i></a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <textarea class="form-control" id="comment" rows="5">
-                            </textarea>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="pills-profile-nobd" role="tabpanel" aria-labelledby="pills-profile-tab-nobd">
-                        <div class="form-group">
-                            <div class="row col-5">
-
-                                <div class="col">
-                                    <a href="#" class="text-dark"><label for="comment">Paragraph</label></a>
-                                </div>
-
-                                <div class="col">
-                                    <div for="bold">
-                                        <a href="#" class="text-dark"><i class="fa fa-bold"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="italic">
-                                        <a href="#" class="text-dark"><i class="fa fa-italic"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="left">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-left"></i></a>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div for="right">
-                                        <a href="#" class="text-dark"><i class="fa fa-align-justify"></i></a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <textarea class="form-control" id="comment" rows="5">AI Helper
-                            </textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h4 class="mt-3">Video</h4><div class="text-muted">(optional)</div>
-            <p>Add a video to your ad. The video will appear at the bottom of your ad.</p>
-            <div class="form-group">
-                <input type="file" class="form-control-file" id="exampleFormControlFile2">
-            </div>
-            <div class="text-muted">e.g. myVideoAd.mp4</div>
-
-            <h4 class="mt-5">Candidate search result</h4>
-            <p>Write a compelling statement about your role to entice more candidates.</p>
-            <textarea class="form-control" id="comment" rows="5">
-            </textarea>
-
-            <div class="form-group mt-3 mb-5">   
-              <a href="/GST_Project/recruiter/create_jobad4.php" class="btn btn-danger" type="button">Continue</a>
-            </div>
-            
-        </form>
-
-    </div>
-
-
-    <!--bottom navbar-->
-    <footer class="footer text-white" style="background-color:#187498">
-      <div class="container-fluid">
-          <nav class="pull-left">
-              <ul class="nav">
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Privacy
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Terms & Condition
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Protect yourself online
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link">
-                          Contact
-                      </a>
-                  </li>
-              </ul>
-          </nav>
-          <div class="ml-auto">
-              © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-          </div>				
-      </div>
-    </footer>
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-      function test(){
-        var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
-      
-        if(variablename == 'dropdown d-flex justify-content-center gap-3'){ //variablename = class
-          $('#Div-filter').addClass('d-none d-sm-none');
-        }else {
-          $('#Div-filter').removeClass('d-none d-sm-none');
+            if (variablename == 'dropdown d-flex justify-content-center gap-3') { //variablename = class
+                $('#Div-filter').addClass('d-none d-sm-none');
+            } else {
+                $('#Div-filter').removeClass('d-none d-sm-none');
+            }
         }
-      }
-      </script>
+        </script>
+
+        <!-- Option 1: Bootstrap scripts -->
+        <script src="../.../assets/js/atlantis.js"></script>
+        <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+            integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- Vendor JS Files -->
+        <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="../assets/vendor/aos/aos.js"></script>
+        <script src="../assets/vendor/php-email-form/validate.js"></script>
+
+        <!--   Core JS Files   -->
+        <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
+        <script src="../assets/js/core/popper.min.js"></script>
+        <script src="../assets/js/core/bootstrap.min.js"></script>
+
+        <!-- jQuery UI -->
+        <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+        <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+        <!-- jQuery Scrollbar -->
+        <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+        <!-- Chart JS -->
+        <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
+
+        <!-- jQuery Sparkline -->
+        <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+        <!-- Chart Circle -->
+        <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
+
+        <!-- Datatables -->
+        <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
+
+        <!-- Bootstrap Notify -->
+        <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+        <!-- jQuery Vector Maps -->
+        <script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+        <script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+        <!-- Sweet Alert -->
+        <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+        <!-- Atlantis JS -->
+        <script src="../assets/js/atlantis.min.js"></script>
+
+        <!-- jQuery for easy DOM manipulation -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap Bundle includes Popper for dropdowns, popovers, and tooltips -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
+        </script>
+
+    <script src="../ajax/Recruiter/QuestionHandler.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#add-question').click(function(e) {
+                e.preventDefault();
+                AddQuestion('questionForm');
+            });
+
+            $('#continueButton').click(function(e) {
+                e.preventDefault();
+                console.log("click");
+                AddQuestionDatabases('questionDatabase');
+            });
+
+            $('#search-question-text').on('input', function() {
+                var searchQuery = $(this).val();
+                if (searchQuery) {
+                    SearchQuestions(searchQuery);
+                } else {
+                    GetQuestions();
+                }
+            });
+
+            GetQuestions();
+        });
+
+    </script>
+    <script>
+    // Function to get the value of a URL parameter by name
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Set the value of the jobID and employerID input fields based on the URL parameters
+    document.addEventListener("DOMContentLoaded", function () {
+        var jobID = getParameterByName('jobID');
+        if (jobID !== null) {
+            document.getElementById('jobID').value = jobID;
+            console.log("jobID ID from URL:", jobID);
+        }
+    });
+</script>
+
+<script>
+    // Function to get the value of a URL parameter by name
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Set the value of the jobID and employerID input fields based on the URL parameters
+    document.addEventListener("DOMContentLoaded", function () {
+        var employerID = getParameterByName('employerID');
+        if (employerID !== null) {
+            document.getElementById('employerID').value = employerID;
+        }
+        console.log("Employer ID from URL:", employerID);
+
+    });
+</script>
+       <script>
+    $(document).ready(function() {
+        // Function to add input box when checkbox is checked
+        function addInputBox($checkbox) {
+            var questionText = $checkbox.siblings('.form-check-sign').text();
+            var newInputHtml = `
+                <div class="form-group">
+                    <input type="text" class="form-control" id="${questionText}" placeholder="Enter your answer" maxlength="100"> <!-- Set maximum length to 100 characters -->
+                </div>
+            `;
+            $checkbox.parent().append(newInputHtml);
+            updateSelectedCount(); // Update the count of selected questions
+        }
+
+        // Function to update the count of selected questions
+        function updateSelectedCount() {
+            var selectedCount = $('.form-check-input:checked').length;
+            $('.selected-count').text(selectedCount + '/8 Questions Selected');
+        }
+
+        // Event handler for checkbox change
+        $(document).on('change', '.form-check-input', function() {
+            var selectedCount = $('.form-check-input:checked').length;
+            if ($(this).is(':checked')) {
+                if (selectedCount <= 8) {
+                    addInputBox($(this));
+                } else {
+                    swal({
+                        icon: 'warning',
+                        title: 'Limit Reached',
+                        text: 'You can select up to 8 questions only.',
+                        confirmButtonText: 'OK'
+                    });
+                    $(this).prop('checked', false); // Uncheck the checkbox if the limit is reached
+                    
+                }
+            } else {
+                $(this).parent().find('.form-group').remove();
+                updateSelectedCount(); // Update the count of selected questions
+            }
+        });
+
+        // Initial update of the count of selected questions
+        updateSelectedCount();
+    });
+</script>
 
 
-    <!-- Option 1: Bootstrap scripts -->
-    <script src="../.../assets/js/atlantis.js"></script>
-    <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
 
-    <!-- Vendor JS Files -->
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../assets/vendor/aos/aos.js"></script>
-    <script src="../assets/vendor/php-email-form/validate.js"></script>
-
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/jquery.3.2.1.min.js"></script>
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-
-    <!-- jQuery UI -->
-    <script src="../assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-    <script src="../assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-
-    <!-- jQuery Scrollbar -->
-    <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
-
-
-    <!-- Chart JS -->
-    <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
-
-    <!-- jQuery Sparkline -->
-    <script src="../assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
-
-    <!-- Chart Circle -->
-    <script src="../assets/js/plugin/chart-circle/circles.min.js"></script>
-
-    <!-- Datatables -->
-    <script src="../assets/js/plugin/datatables/datatables.min.js"></script>
-
-    <!-- Bootstrap Notify -->
-    <script src="../assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
-
-    <!-- jQuery Vector Maps -->
-    <script src="../assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-    <script src="../assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
-
-    <!-- Sweet Alert -->
-    <script src="../assets/js/plugin/sweetalert/sweetalert.min.js"></script>
-
-    <!-- Atlantis JS -->
-    <script src="../assets/js/atlantis.min.js"></script>
-
-      
-</body>
-</html>
+    </html>

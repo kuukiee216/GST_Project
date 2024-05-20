@@ -1,6 +1,6 @@
 <?php
 
-require_once '../db_config.php';
+require_once '../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -16,7 +16,7 @@ if(isset($_POST['JobPostID'])){
         $sQryArchiveJobPost = "UPDATE 
                                     tbl_companyjob
                                 SET 
-                                    Status = 4 
+                                    Status = 2 
                                 WHERE 
                                     JobID = ?";
         $stmtArchiveJobPost = $connection->prepare($sQryArchiveJobPost);

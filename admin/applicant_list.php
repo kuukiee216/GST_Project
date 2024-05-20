@@ -240,13 +240,13 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="applicant_list.html">
+							<a href="applicant_list.php">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="application.html">
+							<a href="application.php">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -260,27 +260,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="settings_job_classification.html">
+										<a href="settings_job_classification.php">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_job_title.html">
+										<a href="settings_job_title.php">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_locations.html">
+										<a href="settings_locations.php">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_posting_fee.html">
+										<a href="settings_posting_fee.php">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_system_logs.html">
+										<a href="settings_system_logs.php">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>

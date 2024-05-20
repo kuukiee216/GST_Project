@@ -3,7 +3,8 @@ require_once 'db_config (online database)/db_config.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 session_start();
-error_reporting(0);
+error_reporting(E_ALL); // Enable error reporting for debugging
+ini_set('display_errors', 1);
 
 require_once 'SMTP.php';
 $sendEmail = new SMTPMail();

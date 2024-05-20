@@ -1,6 +1,6 @@
 <?php
 
-require_once '../db_config.php';
+require_once '../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -21,18 +21,19 @@ if(isset($_POST['ApplicantID'])){
                                     ai.LastName,
                                     ai.EmailAddress,
                                     ai.Phone,
-                                    loc.Country,
-                                    loc.ZipCode,
-                                    loc.Province,
-                                    loc.City,
-                                    loc.AddressLine2,
-                                    loc.StreetAddress,
+                                    ct.CityName,
+                                    pr.ProvinceName,
+                                    co.CountryName,
                                     acc.RegistrationDate
                                 FROM 
                                     tbl_applicantinfo as ai
-                                INNER JOIN
-                                    tbl_location as loc ON loc.LocationID = ai.LocationID
-                                INNER JOIn
+                                LEFT JOIN
+                                    tbl_city as ct ON ct.CityID = ai.CityID
+                                LEFT JOIN
+                                    tbl_province as pr ON pr.ProvinceID = ct.ProvinceID
+                                LEFT JOIN
+                                    tbl_country as co ON co.CountryID = pr.CountryID        
+                                LEFT JOIN
                                     tbl_account as acc ON acc.AccountID = ai.AccountID
                                 WHERE
                                     ai.ApplicantID = ?";
@@ -58,16 +59,15 @@ if(isset($_POST['ApplicantID'])){
             $dataResultArray['ApplicantName'] = $ApplicantName;
             $dataResultArray['EmailAddress'] = $rowApplicantInfo['EmailAddress'];
             $dataResultArray['Phone'] = $rowApplicantInfo['Phone'];
-            $dataResultArray['Province'] = $rowApplicantInfo['Province'];
-            $dataResultArray['Country'] = $rowApplicantInfo['Country'];
-            $dataResultArray['ZipCode'] = $rowApplicantInfo['ZipCode'];
-            $dataResultArray['City'] = $rowApplicantInfo['City'];
-            $dataResultArray['AddressLine2'] = $rowApplicantInfo['AddressLine2'];
-            $dataResultArray['StreetAddress'] = $rowApplicantInfo['StreetAddress'];
+            $dataResultArray['ProvinceName'] = $rowApplicantInfo['ProvinceName'];
+            $dataResultArray['CountryName'] = $rowApplicantInfo['CountryName'];
+            $dataResultArray['CityName'] = $rowApplicantInfo['CityName'];
             $dataResultArray['RegistrationDate'] = $rowApplicantInfo['RegistrationDate'];
 
             $jsonDataResult = json_encode($dataResultArray);
             echo $jsonDataResult;
+        }else{
+            echo "here";
         }
         
 

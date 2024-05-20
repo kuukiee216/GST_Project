@@ -1,32 +1,39 @@
-document.getElementById('myForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-    
-    // Validate form data
-    let test1 = document.getElementById('test1').value.trim();
-    let test2 = document.getElementById('test2').value.trim();
-    let test3 = document.getElementById('test3').value.trim();
-    let test4 = document.getElementById('test4').value.trim();
-    let test5 = document.getElementById('test5').value.trim();
-    let test6 = document.getElementById('test6').value.trim();
-    let test7 = document.getElementById('test7').value.trim();
-    
-    
-    if (test1 === '' || test2 === '' || test3 === '' || test4 === '' || test5 === '' || test6 === '' || test7 === '') {
-      // Display SweetAlert for validation message
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Please fill out all fields!',
-      });
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("myForm").addEventListener("submit", function (event) {
+    var name = document.getElementById("name").value.trim();
+    var email = document.getElementById("email").value.trim();
+    var nameError = document.getElementById("nameError");
+    var emailError = document.getElementById("emailError");
+    var isValid = true;
+
+    // Reset error messages
+    nameError.textContent = "";
+    emailError.textContent = "";
+
+    // Validate name field
+    if (name === "") {
+      nameError.textContent = "Name is required";
+      isValid = false;
     }
-    else {
-      // Submit the form if validation passes
-      Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: 'Form submitted successfully.',
-      });
-      // You can also submit the form using AJAX here
+
+    // Validate email field
+    if (email === "") {
+      emailError.textContent = "Email is required";
+      isValid = false;
+    } else if (!isValidEmail(email)) {
+      emailError.textContent = "Invalid email format";
+      isValid = false;
     }
-    });
-  
+
+    // Prevent form submission if not valid
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
+
+  function isValidEmail(email) {
+    // Regular expression for validating email format
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+});

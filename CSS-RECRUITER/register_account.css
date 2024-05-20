@@ -9,4 +9,15 @@
     }
 }
 
+
+
 /*to add pa yung ibang design*/
+
+@media (max-width: 991px) {
+    .navbar-brand {
+        position: absolute;
+        left: 50%;
+        transform: translateY(-50%);
+    }
+}
+

@@ -4,7 +4,7 @@
   date_default_timezone_set('Asia/Manila');
   $currentDateTime = time();
 
-  if(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire']){
+  if((isset($_SESSION['AccountID']) && isset($_SESSION['Role'])) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire']){
       header ("Location: ../admin/admin_dashboard_main.php");
   }
 ?>
@@ -127,11 +127,9 @@
     <script>
 	function Login(formID){
 
-		alert('worked');
-
-		// $('#btnLogin').addClass('is-loading');
-		// $('#btnLogin').prop('disabled', true);
-		// disableForm(formID);
+		$('#btnLogin').addClass('is-loading');
+		$('#btnLogin').prop('disabled', true);
+		disableForm(formID);
 
 		var UserID = $("input[name=txtUserID]").val();
 		var Password = $("input[name=txtPassword]").val();
@@ -147,6 +145,8 @@
 			},
 			url: "../PHPFiles/loginvalidation.php",
 			success: function(data){
+				alert(data);
+				console.log(data);
 				if(data == "0"){
 						$('#btnLogin').removeClass('is-loading');
 						$('#btnLogin').prop('disabled', false);

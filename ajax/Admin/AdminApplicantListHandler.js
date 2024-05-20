@@ -77,11 +77,9 @@ function getApplicantContent(){
                 $('#pf-name span').text(decodedData['ApplicantName']);
                 $('#pf-contact-number span').text(decodedData['Phone']);
                 $('#pf-email span').text(decodedData['EmailAddress']);
-                $('#pf-country span').text(decodedData['Country']);
-                $('#pf-street-address span').text(decodedData['StreetAddress']);
-                $('#pf-city span').text(decodedData['City']);
-                $('#pf-state span').text('test');
-                $('#pf-postal-card span').text(decodedData['ZipCode']);
+                $('#pf-country span').text(decodedData['CountryName']);
+                $('#pf-city span').text(decodedData['CityName']);
+                $('#pf-state span').text(decodedData['ProvinceName']);
                 $('#pf-registration-date span').text(decodedData['RegistrationDate']);
             }
 
@@ -102,6 +100,7 @@ function getApplicationHistory(){
         },
         url: "../PHPFiles/Admin/getApplicantHistory.php",
         success: function(data){
+            console.log(data);
             if(data == '1'){
                 console.log('No Application History Found');
             }

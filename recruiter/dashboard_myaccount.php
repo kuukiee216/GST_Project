@@ -42,13 +42,13 @@
     });
     </script>
 
-    <title>Dashboard My Account</title>
+    <title>My Account</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/header.php')?>
+    <?php include('../PHPFiles/recruiter_header.php')?>
     <!--End Navbar-->
 
     <div class="container pt-5">
@@ -79,40 +79,43 @@
 
                         <!-- Modal -->
                         <form id="editForm">
-                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenter" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalChangeEmail">Change Personal Details
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenter" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Personal Details
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
 
-                                    <div class="modal-body">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" name="fname" placeholder="Enter First Name">
+                                        <div class="modal-body">
+                                            <label>First Name</label>
+                                            <input type="text" class="form-control" name="fname"
+                                                placeholder="Enter First Name">
 
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" name="lname" placeholder="Enter Last Name">
-                                        <label class="pt-2">Email</label>
-                                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
-                                        <label class="pt-2">Phone Number</label>
-                                        <input type="tel" class="form-control" id="number" name="number"
-                                            placeholder="Enter Phone Number">
-                                    </div>
+                                            <label>Last Name</label>
+                                            <input type="text" class="form-control" name="lname"
+                                                placeholder="Enter Last Name">
+                                            <label class="pt-2">Email</label>
+                                            <input type="text" class="form-control" id="email" name="email"
+                                                placeholder="Enter Email">
+                                            <label class="pt-2">Phone Number</label>
+                                            <input type="tel" class="form-control" id="number" name="number"
+                                                placeholder="Enter Phone Number">
+                                        </div>
 
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save email</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" onclick="ChangeEmployerProfile('editForm');" id="btnChangeEmployerProfile" type="submit">Save</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </form>
                     </div>
                 </div>
@@ -157,44 +160,47 @@
 
                         <!-- Modal -->
                         <form id="companyEditForm">
-                        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenter2" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalChangeEmail">Change Company Details</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                            <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenter2" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Company Details
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
 
-                                    <div class="modal-body">
-                                        <label>Telephone Number</label>
-                                        <input type="tel" class="form-control" name="telephone"
-                                            placeholder="Enter Telephone Number">
-                                        <label class="pt-2">Country</label>
-                                        <input type="text" class="form-control" name="country" placeholder="Enter Country">
-                                        <label class="pt-2">Address Line</label>
-                                        <input type="text" class="form-control" name="address"
-                                            placeholder="Enter Address Line (e.g. building number, street, etc...)">
-                                        <label class="pt-2">Suburb/Town/City</label>
-                                        <input type="text" class="form-control" name="city"
-                                            placeholder="Enter Suburb/Town/City">
-                                        <label class="pt-2">State</label>
-                                        <input type="text" class="form-control" name="state" placeholder="Enter State">
-                                        <label class="pt-2">Postal Code</label>
-                                        <input type="number" class="form-control" name="postal"
-                                            placeholder="Enter Postal Code">
-                                    </div>
+                                        <div class="modal-body">
+                                            <label>Telephone Number</label>
+                                            <input type="tel" class="form-control" name="telephone"
+                                                placeholder="Enter Telephone Number">
+                                            <label class="pt-2">Country</label>
+                                            <input type="text" class="form-control" name="country"
+                                                placeholder="Enter Country">
+                                            <label class="pt-2">Address Line</label>
+                                            <input type="text" class="form-control" name="address"
+                                                placeholder="Enter Address Line (e.g. building number, street, etc...)">
+                                            <label class="pt-2">Suburb/Town/City</label>
+                                            <input type="text" class="form-control" name="city"
+                                                placeholder="Enter Suburb/Town/City">
+                                            <label class="pt-2">State</label>
+                                            <input type="text" class="form-control" name="state"
+                                                placeholder="Enter State">
+                                            <label class="pt-2">Postal Code</label>
+                                            <input type="number" class="form-control" name="postal"
+                                                placeholder="Enter Postal Code">
+                                        </div>
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" onclick="ChangeCompanyProfile('companyEditForm');" id="btnChangeCompanyProfile" type="submit">Save</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </form>
                     </div>
                 </div>
@@ -223,34 +229,35 @@
 
                         <!-- Modal -->
                         <form id="changePassForm">
-                        <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenter3" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalChangeEmail">Change Password</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                            <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalCenter3" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalChangeEmail">Change Password</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
 
-                                    <div class="modal-body">
-                                        <label class="pt-2">New Password</label>
-                                        <input type="password" class="form-control" id="pass"
-                                            placeholder="Enter your new password" name="pass">
-                                        <label class="pt-2">Re-enter Password</label>
-                                        <input type="password" class="form-control" id="rpass" name="rpass"
-                                            placeholder="Re-enter your new password">
-                                    </div>
+                                        <div class="modal-body">
+                                            <label class="pt-2">New Password</label>
+                                            <input type="password" class="form-control" id="pass"
+                                                placeholder="Enter your new password" name="pass">
+                                            <label class="pt-2">Re-enter Password</label>
+                                            <input type="password" class="form-control" id="rpass" name="rpass"
+                                                placeholder="Re-enter your new password">
+                                        </div>
 
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button class="btn btn-primary" onclick="ChangePass('changePassForm');" id="btnChangePass" type="submit">Save Password</button>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button class="btn btn-primary" onclick="ChangePass('changePassForm');"
+                                                id="btnChangePass" type="submit">Save Password</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </form>
                     </div>
                 </div>
@@ -259,37 +266,7 @@
     </div>
 
     <!--bottom navbar-->
-    <footer class="footer text-white" style="background-color:#187498">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Privacy
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Terms & Condition
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Protect yourself online
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="ml-auto">
-                © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-            </div>
-        </div>
-    </footer>
+    <?php include('../PHPFiles/recruiter_footer.php')?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -372,11 +349,20 @@
     <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
     <script src="../ajax/Recruiter/ChangePassHandler.js"></script>
+    <script src="../ajax/Recruiter/ChangeCompanyProfile.js"></script>
+    <script src="../ajax/Recruiter/ChangeEmployerProfile.js"></script>
+
     <script>
     $(document).ready(function() {
+        $('#btnChangeCompanyProfile').click(function() {
+            ChangeCompanyProfile('companyEditForm');
+        });
+        $('#btnChangeEmployerProfile').click(function() {
+            ChangeEmployerProfile('editForm');
+        });
         $('#btnChangePass').click(function() {
             ChangePass('changePassForm');
-            });
+        });
         GetInfo();
     });
     </script>

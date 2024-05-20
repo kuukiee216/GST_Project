@@ -12,7 +12,6 @@ function GetInfo() {
                 return;
             }
             var fullName = data.FirstName + " " + data.LastName;
-            
             // input type
             $("input[name='name']").val(fullName);
             $("input[name='fname']").val(data.FirstName);

@@ -38,7 +38,11 @@
                     jp.SalaryPrivacyStatus,
                     ad.Location AS ResumeLocation,
                     acl.Location AS CoverLetterLocation,
-                    acl.CoverLetter
+                    acl.CoverLetter,
+                    GROUP_CONCAT(DISTINCT q.QuestionnaireID SEPARATOR '|') AS QuestionnaireIDs,
+                    GROUP_CONCAT(DISTINCT q.Question SEPARATOR '|') AS Questionnaires,
+                    GROUP_CONCAT(DISTINCT qa.QuestionnaireID SEPARATOR '|')AS QAnswerIDs,
+                    GROUP_CONCAT(DISTINCT qa.Answer SEPARATOR '|')AS QAnswers
                 FROM
                     tbl_application AS a
                 INNER JOIN
@@ -61,6 +65,12 @@
                     tbl_applicantdocuments AS ad ON ad.ApplicantDocumentID = a.ApplicantDocumentID
                 LEFT JOIN
                     tbl_applicationcoverletter AS acl ON acl.CoverLetterID = a.CoverLetterID
+                INNER JOIN
+                    tbl_jobquestionnaire AS jq ON jq.JobID = jp.JobID
+                INNER JOIN 
+                    tbl_questionnaire AS q ON q.QuestionnaireID = jq.QuestionnaireID
+                INNER JOIN
+                    tbl_questionnaireanswer AS qa ON qa.ApplicationID = a.ApplicationID
                 WHERE
                     a.ApplicationID = :ApplicationID AND a.Status = '0';";
             $stmtGetAppliedJobPostings = $connection->prepare($sQryGetAppliedJobPostings);
@@ -90,6 +100,48 @@
                 $dataResult['ResumeLocation'] = (strlen($rowAppliedJobPost['ResumeLocation']) > 0) ? basename($rowAppliedJobPost['ResumeLocation']) : '';
                 $dataResult['CoverLetterLocation'] = (strlen($rowAppliedJobPost['CoverLetterLocation']) > 0) ? basename($rowAppliedJobPost['CoverLetterLocation']) : '';
                 $dataResult['CoverLetter'] = (strlen($rowAppliedJobPost['CoverLetter']) > 0) ? basename($rowAppliedJobPost['CoverLetter']) : '';
+                
+                $QAs = "";
+
+                if (str_contains($rowAppliedJobPost['QuestionnaireIDs'], '|')) {
+                    $QuestionID = explode('|', $rowAppliedJobPost['QuestionnaireIDs']);
+                    $Question = explode('|', $rowAppliedJobPost['Questionnaires']);
+
+                    if (str_contains($rowAppliedJobPost['QAnswerIDs'], '|')) {
+                        $AnswerQuestionID = explode('|', $rowAppliedJobPost['QAnswerIDs']);
+                        $Answer = explode('|', $rowAppliedJobPost['QAnswers']);
+
+                        for ($counter = 0; $counter < count($QuestionID); $counter++) {
+                            $QAs .= '<div class="form-group form-group-default">
+                                        <h5 class="font-weight-bold">' . ($counter + 1) . '. ' . $Question[$counter] . '</h5>
+                                        <h4><b>Your Answer:</b> ' . (($AnswerQuestionID[$counter] == $QuestionID[$counter]) ? $Answer[$counter] : 'No Answer.') . '</h4>
+                                    </div>';
+                        }
+                    } else {
+                        $AnswerQuestionID = $rowAppliedJobPost['QAnswerIDs'];
+                        $Answer = $rowAppliedJobPost['QAnswers'];
+                        for ($counter = 0; $counter < count($QuestionID); $counter++) {
+                            $QAs .= '<div class="form-group form-group-default">
+                                        <h5 class="font-weight-bold">' . ($counter + 1) . '. ' . $Question[$counter] . '</h5>
+                                        <h4><b>Your Answer:</b> ' . (($AnswerQuestionID == $QuestionID[$counter]) ? $Answer : 'No Answer.') . '</h4>
+                                    </div>';
+                        }
+                    }
+                } else if (strlen($rowAppliedJobPost['Questionnaires']) > 0) {
+                    $QuestionID = $rowAppliedJobPost['QuestionnaireIDs'];
+                    $Question = $rowAppliedJobPost['Questionnaires'];
+                    $AnswerQuestionID = $rowAppliedJobPost['QAnswerIDs'];
+                    $Answer = $rowAppliedJobPost['QAnswers'];
+
+                    $QAs = '<div class="form-group form-group-default">
+                                <h5 class="font-weight-bold">1. ' . $Question . '</h5>
+                                <h4><b>Your Answer:</b> ' . (($AnswerQuestionID == $QuestionID) ? $Answer : 'No Answer.') . '</h4>
+                            </div>';
+                } else {
+                    $QAs = "Job Posting has no employer questionnaires.";
+                }
+
+                $dataResult['QAs'] = $QAs;
 
                 $jsonResult = json_encode($dataResult);
                 ECHO $jsonResult;
