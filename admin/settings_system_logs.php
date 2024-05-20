@@ -21,7 +21,7 @@
 		});
 	</script>
 
-    <title>Employer List</title>
+    <title>System Logs</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
@@ -249,27 +249,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="/admin/settings_job_classification.html">
+										<a href="settings_job_classification.html">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_job_title.html">
+										<a href="settings_job_title.html">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_locations.html">
+										<a href="settings_locations.html">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_posting_fee.html">
+										<a href="settings_posting_fee.html">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_system_logs.html">
+										<a href="settings_system_logs.html">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -289,119 +289,64 @@
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
-                        <h1 class="text-dark"> EMPLOYER LIST</h1>
+                        <h1 class="text-dark">SYSTEM LOGS</h1>
                     </div>
                 </div>
 				
                
                     <div class="container-fluid flex justify-content-center">
-                        <a href="#" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Add Emploer Account</a>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="basic-datatables_length">
-                                                            <label>Show 
-                                                            <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select> entries</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div id="basic-datatables_filter" class="dataTables_filter">
-                                                            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">#</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Company Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.025px;">Representative's Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46.9375px;">Email</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 112.8px;">Status</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Registration Date</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th rowspan="1" colspan="1">#</th>
-                                                        <th rowspan="1" colspan="1">Company Name</th>
-                                                        <th rowspan="1" colspan="1">Representative's Name</th>
-                                                        <th rowspan="1" colspan="1">Email</th>
-                                                        <th rowspan="1" colspan="1">Status</th>
-                                                        <th rowspan="1" colspan="1">Registration Date</th>
-                                                        <th rowspan="1" colspan="1">Action</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <tr role="row" >
-                                                        <td>ID</td>
-                                                        <td>CompanyName</td>
-														<td>EmployerFirstName</td>
-                                                        <td>email here</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </div>
-                        
+                                
+
+								<div class="card">
+									<div class="card-body">
+
+										<div class="card">
+											<div class="card-body">
+												<div class="table-responsive">
+													<div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+														<div class="row">
+															<div class="col-sm-12 col-md-6">
+																<div class="dataTables_length" id="basic-datatables_length">
+																	<label>Show 
+																	<select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
+																		<option value="10">10</option>
+																		<option value="25">25</option>
+																		<option value="50">50</option>
+																		<option value="100">100</option>
+																	</select> entries</label>
+																</div>
+															</div>
+															<div class="col-sm-12 col-md-6">
+																<div id="basic-datatables_filter" class="dataTables_filter">
+																	<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
+																	</label>
+																</div>
+															</div>
+														</div>
+														<div class="row">
+    <div class="col-sm-12">
+        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+            <thead>
+                <tr role="row">
+                    <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Log ID: activate to sort column descending" style="width: 166.837px;">Log ID</th>
+                    <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Time Stamp: activate to sort column descending" style="width: 166.837px;">Time Stamp</th>
+                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 261.05px;">Action</th>
+                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Area: activate to sort column ascending" style="width: 261.05px;">Area</th>
+                    <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Account ID: activate to sort column ascending" style="width: 261.05px;">Account ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+>
+										</div>
+												</div>
+											</div>
+										</div>
+      
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">
@@ -475,5 +420,71 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
+
+    <!-- Data Retrieval ng System Logs -->
+	<script>
+		$(document).ready(function(){
+			fillsystemlogs();
+		});
+
+		function fillsystemlogs(){
+			$.ajax({
+				type: 'GET',
+				url: '../PHPFiles/Admin/Dashboardsettingsystemlogs.php',
+				datatype: 'html',
+				success: function(response){
+					if(response == '1'){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve Total Employers!',
+							message: 'Something went wrong while retrieving saved total employers. Data handling failed, please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+					else if(response == '2'){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve Total Employers!',
+							message: 'Something went wrong while retrieving total employers. Please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+					else if(response == '3'){
+						$.notify({
+							// options
+							icon: 'flaticon-exclamation',
+							title: 'No Registered Employers Found!',
+							message: 'Currently, there is no registered employers. Please try and check again later.'
+						},{
+							// settings
+							type: 'info'
+						});
+					}
+					else{
+						var decoderesponse = JSON.parse(response);
+						$('#basic-datatables').text(decoderesponse.systemlogs);
+					}
+				},
+				error: function(){
+					$.notify({
+						// options
+						icon: 'flaticon-error',
+						title: 'Failed to Connect to Server!',
+						message: 'Something went wrong while connecting to server. Please try again later.'
+					},{
+						// settings
+						type: 'danger'
+					});
+				}
+			});
+		}
+	</script>
+
 </body>
 </html>

@@ -383,7 +383,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Registered Employers</p>
-                                            <h4 id="lblTotalRegisteredEmployers" class="card-title">30</h4>
+                                            <h4 id="lblTotalRegisteredEmployers" class="card-title"></h4>
                                         </div>
                                     </div>
                                 </div>

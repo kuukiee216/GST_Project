@@ -290,6 +290,7 @@
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
                         <h1 class="text-dark">SYSTEM LOGS</h1>
+						<h1 class="card-title" id="lblSystemLog"></h1>
                     </div>
                 </div>
 				
@@ -325,106 +326,48 @@
 														</div>
 														<div class="row">
 															<div class="col-sm-12">
-															
 																<table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-														<thead>
-															<tr role="row">
-																<th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">Date and Time</th>
-																<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Actions</th>
-																<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Area</th>
-															</tr>
-														</thead>
-													</table>
-												</div>
-											</div>
+																	<thead>
+																		<tr role="row">
+																			<th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Log ID: activate to sort column descending" style="width: 166.837px;">Log ID</th>
+																			<th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Time Stamp: activate to sort column descending" style="width: 166.837px;">Time Stamp</th>
+																			<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 261.05px;">Action</th>
+																			<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Area: activate to sort column ascending" style="width: 261.05px;">Area</th>
+																			<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Account ID: activate to sort column ascending" style="width: 261.05px;">Account ID</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<!-- Data will be dynamically inserted here -->
+																	</tbody>
+																</table>
+															</div>
+														</div>
+														
 										</div>
 												</div>
 											</div>
 										</div>
 
-										<div class="accordion accordion-secondary">
-											<div class="card">
-												<div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-													
-													<div class="span-title">
-														Lorem Ipsum #1
-													</div>
-													<div class="span-mode"></div>
-												</div>
-										
-												<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-													</div>
-												</div>
-											</div>
-											<div class="card">
-												<div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-													
-													<div class="span-title">
-														Lorem Ipsum #2
-													</div>
-													<div class="span-mode"></div>
-												</div>
-												<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-													</div>
-												</div>
-											</div>
-											<div class="card">
-												<div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-													
-													<div class="span-title">
-														Lorem Ipsum #3
-													</div>
-													<div class="span-mode"></div>
-												</div>
-												<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-								</div>
-                    </div>
+										<br>
+									</br>
+
+									<br>
+									</br>
+
+									<br>
+									</br>
+
+									<br>
+									</br>
+
+									<br>
+									</br>
+
+									<br>
+									</br>
+
+									<br>
+									</br>
       
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
@@ -499,5 +442,70 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
+
+	<!-- Data Retrieval ng System Logs -->
+	<script>
+		$(document).ready(function(){
+			fillSystemLog();
+		});
+	
+		function fillSystemLog(){
+			$.ajax({
+				type: 'GET',
+				url: '../PHPFiles/Admin/Dashboardsettingsystemlogs.php',
+				dataType: 'json', 
+				success: function(response){
+					if(response.status === '1'){
+						$.notify({
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve System Log!',
+							message: 'Something went wrong while retrieving saved System Log. Data handling failed, please try again later.'
+						},{
+							type: 'danger'
+						});
+					} else if(response.status === '2'){
+						$.notify({
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve System Log!',
+							message: 'Something went wrong while retrieving System Log. Please try again later.'
+						},{
+							type: 'danger'
+						});
+					} else if(response.status === '3'){
+						$.notify({
+							icon: 'flaticon-exclamation',
+							title: 'No Registered System Log Found!',
+							message: 'Currently, there is no registered System Log. Please try and check again later.'
+						},{
+							type: 'info'
+						});
+					} else {
+						let tableBody = $('#basic-datatables tbody');
+						tableBody.empty(); // Clear existing data
+						response.forEach(function(log){
+							let row = `<tr>
+								<td>${log.LogID}</td>
+								<td>${log.DateTimeStamp}</td>
+								<td>${log.Action}</td>
+								<td>${log.Area}</td>
+								<td>${log.AccountID}</td>
+							</tr>`;
+							tableBody.append(row);
+						});
+					}
+				},
+				error: function(){
+					$.notify({
+						icon: 'flaticon-error',
+						title: 'Failed to Connect to Server!',
+						message: 'Something went wrong while connecting to server. Please try again later.'
+					},{
+						type: 'danger'
+					});
+				}
+			});
+		}       
+	</script>
+
 </body>
 </html>
