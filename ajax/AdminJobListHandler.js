@@ -103,14 +103,15 @@ function viewJobPost(JobPostID){
 
 function changeModal(status, decodedData){
 
-    $DateDuration = '20 Days';
-    $RejectionReason = 'Pinagpalit sa malapit';
+    var DateDuration = '20 Days';
+    var RejectionReason = '';
+    
 
     switch(status){
         case 'Active':
             $('#jobStatus').addClass("text-success font-weight-bold");
             $('#footerSubject').text('Will be Expire in : ');
-            $('#remainingTime').text($DateDuration);
+            $('#remainingTime').text(DateDuration);
             break;
         case 'Inactive':
             $('#jobStatus').removeClass();
@@ -124,16 +125,17 @@ function changeModal(status, decodedData){
             $('#viewFooter').hide();
             break;
         case 'Rejected':
+            RejectionReason = decodedData['RejectionReason'];
             $('#jobStatus').addClass("text-danger font-weight-bold");
             $('#footerSubject').addClass("text-danger font-weight-bold");
             $('#footerSubject').text('Reason for Rejection : ');
-            $('#remainingTime').text($RejectionReason);
+            $('#remainingTime').text(RejectionReason);
             break;
         case 'Pending Deletion':
             $('#jobStatus').addClass("text-danger font-weight-bold");
             $('#footerSubject').addClass("text-danger font-weight-bold");
             $('#footerSubject').text('Will be Deleted in : ');
-            $('#remainingTime').text($DateDuration);
+            $('#remainingTime').text(DateDuration);
             break;
  
             
@@ -322,59 +324,10 @@ function rejectJobPost(JobPostID){
 
     var JID = JobPostID.replace("btnRejectJob", "");
     console.log(JID);
-
+    openRejectStatus(JID);
 
                                                     // EDIT THIS
-    swal({
-        title: 'Reject Pending Job?',
-        text: "Are you sure you want to REJECT Job Post #" + JID + "?",
-        icon: 'warning',
-        type: 'warning',
-        buttons:{
-            confirm: {
-                text : 'Yes, Reject it!',
-                className : 'btn btn-primary'
-            },
-            cancel: {
-                visible: true,
-                text : 'Cancel',
-                className: 'btn btn-danger'
-            }
-        }
-    }).then((Toggle) => {
-        if (Toggle) {
 
-            // REJECT FUNCTION
-            $.ajax({
-                type: "POST",
-                dataType: "html",
-                data: {
-                    JobPostID: JID
-                },
-                url: "../PHPFiles/Admin/jobPostRequestReject.php",
-                success: function(data){
-                    console.log(data);
-                    swal({
-                        title: 'Job Post has been Rejected!',
-                        text: "Successfully Deleted Job Post #" + JID + ".",
-                        icon: 'success',
-                        type: 'success',
-                        buttons : {
-                            confirm: {
-                                text : 'Okay',
-                                className : 'btn btn-success'
-                            }
-                        }
-                    }).then(function(){
-                        fillJobPostList(3);
-                    });
-                         
-                }
-            });
-        }
-        else{
-        }
-    });
 
     
 }
@@ -503,5 +456,87 @@ function closeJobPostView(){
 
     history.replaceState(null, document.title, window.location.pathname + window.location.search);
     $('#btnCloseJobPostView').click();
+}
+
+function openRejectStatus(JID){
+
+    $('#rejectFormGroup').find('button').attr('id', 'btnSubmitRejection' + JID);
+
+    $('#modalRejecStatus').modal({
+        backdrop: 'static',
+        keyboard: true,
+        focus: true,
+        show: true
+    });
+}
+
+function closeRejectStatus(){
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+
+    $('#rejectFormGroup').find('button').removeAttr('id');
+    $('txtRejection').val('');
+    $('#btnCloseRejectStatus').click();
+
+}
+
+function SubmitRejection(JobPostID){
+
+    var JID = JobPostID.replace("btnSubmitRejection", "");
+    var RejectionReason = $('#txtRejection').val();
+    console.log(JID);
+
+    swal({
+        title: 'Reject Pending Job?',
+        text: "Are you sure you want to REJECT Job Post #" + JID + "?",
+        icon: 'warning',
+        type: 'warning',
+        buttons:{
+            confirm: {
+                text : 'Yes, Reject it!',
+                className : 'btn btn-primary'
+            },
+            cancel: {
+                visible: true,
+                text : 'Cancel',
+                className: 'btn btn-danger'
+            }
+        }
+    }).then((Toggle) => {
+        if (Toggle) {
+            
+            // REJECT FUNCTION
+            $.ajax({
+                type: "POST",
+                dataType: "html",
+                data: {
+                    JobPostID: JID,
+                    Reason: RejectionReason 
+                },
+                url: "../PHPFiles/Admin/jobPostRequestReject.php",
+                success: function(data){
+                    console.log(data);
+                    swal({
+                        title: 'Job Post has been Rejected!',
+                        text: "Successfully Deleted Job Post #" + JID + ".",
+                        icon: 'success',
+                        type: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        closeRejectStatus();
+                        fillJobPostList(3);
+                    });
+                         
+                }
+            });
+        }
+        else{
+        }
+    });
+
 }
 

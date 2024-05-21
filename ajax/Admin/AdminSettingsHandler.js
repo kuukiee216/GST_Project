@@ -659,17 +659,88 @@ function openSeasonal(){
     });
 }
 
-function viewAdType(){
-    postingFeeModal();
+function viewAdType(AdTypeID){
+
+    var AID = AdTypeID.replace("btnViewAdType", "");
+
+
+    $.ajax({
+        type: "POST",
+        dataype: "html",
+        data:{
+            AID: AID
+        },
+        url: "../PHPFiles/Admin/Settings/getViewAdTypeContent.php",
+        success: function(data){
+            console.log(data);
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+
+                $('#postingPrice').text(decodedData['Price']);
+                $('#postingTitle').text(decodedData['AdType']);
+                $('#postingDescription').text(decodedData['Description']);
+                postingFeeModal();
+            }
+        }
+    });
 }
 
-function viewPromoCode(){
-    postingFeeModal();
+function viewSeasonal(SeasonalID){
+
+    var SID = SeasonalID.replace("btnViewSeasonal", "");
+
+
+    $.ajax({
+        type: "POST",
+        dataype: "html",
+        data:{
+            SID: SID
+        },
+        url: "../PHPFiles/Admin/Settings/getViewSeasonalContent.php",
+        success: function(data){
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+
+                $('#postingPrice').text(decodedData['Price']);
+                $('#postingTitle').text(decodedData['SeasonalName']);
+                $('#postingDescription').text(decodedData['Description']);
+                postingFeeModal();
+            }
+        }
+    });
 }
 
-function viewSeasonal(){
-    postingFeeModal();
+function viewPromoCode(PromoID){
+
+    var PID = PromoID.replace("btnViewPromo", "");
+
+    $.ajax({
+        type: "POST",
+        dataype: "html",
+        data:{
+            PID: PID
+        },
+        url: "../PHPFiles/Admin/Settings/getViewPromoContent.php",
+        success: function(data){
+            console.log(data);
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+
+                $('#postingPrice').text(decodedData['Price']);
+                $('#postingTitle').text(decodedData['PromoCode']);
+                $('#postingDescription').text(decodedData['Description']);
+                postingFeeModal();
+            }
+        }
+    });
 }
+
 
 function postingFeeModal(){
     $('#modalViewPostingFee').modal({
@@ -1261,6 +1332,28 @@ function closeVAT(){
             // do nothing
         }
     });
+}
+
+function updateVAT(formUpdateVAT){
+
+    var VAT = $('#txtVAT').val();
+
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        data: {
+            VAT: VAT
+        },
+        url: "",
+        success: function(){
+
+        }
+    });
+
+}
+
+function retrieveCurrentVAT(){
+
 }
 
 // General Functions

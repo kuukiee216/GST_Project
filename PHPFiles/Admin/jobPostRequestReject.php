@@ -13,20 +13,24 @@ $AccountID = 23;
 $Area = 'Job List';
 $Action = 'Reject Job';
 
-if(isset($_POST['JobPostID'])){
+if(isset($_POST['JobPostID']) && isset($_POST['Reason'])){
 
     $JID = $_POST['JobPostID'];
+    $Reason = $_POST['Reason'];
+
 
     try{
         $connection->beginTransaction();
         $sQryUpdateJobStatus = "UPDATE 
                                     tbl_companyjob as cj
+                                INNER JOIN tbl_jobposting AS jp ON cj.JobID = jp.JobID
                                 SET 
-                                    cj.Status = 6
+                                    cj.Status = 6, jp.RejectionReason = ?
                                 WHERE 
                                     cj.JobID = ?";
         $stmtUpdateJobStatus = $connection->prepare($sQryUpdateJobStatus);
-        $stmtUpdateJobStatus->bindValue(1, $JID, PDO::PARAM_INT);
+        $stmtUpdateJobStatus->bindValue(1, $Reason, PDO::PARAM_STR);
+        $stmtUpdateJobStatus->bindValue(2, $JID, PDO::PARAM_INT);
         $stmtUpdateJobStatus->execute();
 
         $sQrySystemLog = "INSERT INTO tbl_systemlog(DateTimeStamp, Action, Area, AccountID) VALUES(?,?,?,?)";

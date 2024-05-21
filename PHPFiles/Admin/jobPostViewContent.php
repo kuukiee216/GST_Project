@@ -21,7 +21,8 @@ if(isset($_POST['JobPostID'])){
                             ei.FirstName, 
                             ei.MiddleName, 
                             ei.LastName, 
-                            jp.DateTimeStamp
+                            jp.DateTimeStamp,
+                            jp.RejectionReason
                         FROM
                             tbl_companyjob as cj
                         INNER JOIN
@@ -52,6 +53,7 @@ if(isset($_POST['JobPostID'])){
             $EmployerName = $rowJobContent['LastName'].", ".$rowJobContent['FirstName'];
         }    
 
+        $dataResultArray['RejectionReason'] = $rowJobContent['RejectionReason'];
         $dataResultArray['JobTitle'] = $rowJobContent['JobTitle'];
         $dataResultArray['EmployerName'] = $EmployerName;
         $dataResultArray['CompanyName'] = $rowJobContent['CompanyName'];

@@ -344,6 +344,37 @@
 					</div>
 				</div>
 
+		<!-- Modal -->
+		<div class="modal fade" id="modalRejecStatus" tabindex="-1" role="dialog" aria-labelledby="modalRejecStatus" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title">Rejection Reason</h3>
+								<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseRejectStatus">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<button type="button" class="close" onclick="closeRejectStatus();">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="container">
+									<div class="row">
+										<div class="col">
+											<div id="rejectFormGroup" class="form-group">
+												<label for="txtSubClassification" id="lbSubClassification">Reason for Rejection: <span class="text-danger font-weight-bold">*</span></label>
+												<textarea id="txtRejection"type="text" class="form-control"></textarea>
+													<br />
+												<button type="button" class="btn btn-primary btn-block" onclick="SubmitRejection(this.id)">Confirm Rejection</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
         <div class="main-panel">
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
