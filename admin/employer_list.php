@@ -292,41 +292,83 @@
                         <h1 class="text-dark"> EMPLOYER LIST</h1>
                     </div>
                 </div>
-				
-               
-                    <div class="container-fluid flex justify-content-center">
-                        <a href="#" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Add Emploer Account</a>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="tblEmployerList" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-															<thead>
-																<tr role="row">
-																	<th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">#</th>
-																	<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Company Name</th>
-																	<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.025px;">Representative's Name</th>
-																	<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46.9375px;">Email</th>
-																	<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 112.8px;">Status</th>
-																	<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Registration Date</th>
-																	<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Action</th>
-																</tr>
-															</thead>
+				<div class="container-fluid flex justify-content-center">
+    <a href="#" id="add-employer-btn" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Add Employer Account</a>
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid">
+                    <thead>
+                        <tr role="row">
+                            <th>#</th>
+                            <th>Company Name</th>
+                            <th>Representative's Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Registration Date</th>
+                            <th>Action</th>
+                        </tr>
+						</thead>
+                    <tbody>
+                        <!-- Table rows will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
-															<tbody>   
-																
-															</tbody>
-                                            			</table>
-                                        </div>
-                                    </div>
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!-- Modal for Adding Employer -->
+<div class="modal fade" id="addEmployerModal" tabindex="-1" aria-labelledby="addEmployerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addEmployerModalLabel">Add Employer Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-employer-form">
+                    <div class="form-group">
+                        <label for="company-name">Company Name</label>
+                        <input type="text" class="form-control" id="company-name" required>
                     </div>
-                        
+                    <div class="form-group">
+                        <label for="rep-name">Representative's Name</label>
+                        <input type="text" class="form-control" id="rep-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Employer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Viewing Employer -->
+<div class="modal fade" id="viewEmployerModal" tabindex="-1" aria-labelledby="viewEmployerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewEmployerModalLabel">View Employer Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Company Name:</strong> <span id="view-company-name"></span></p>
+                <p><strong>Representative's Name:</strong> <span id="view-rep-name"></span></p>
+                <p><strong>Email:</strong> <span id="view-email"></span></p>
+                <p><strong>Status:</strong> <span id="view-status"></span></p>
+                <p><strong>Registration Date:</strong> <span id="view-reg-date"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">
@@ -401,12 +443,66 @@
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
 
-
+	<!-- Add Employer Account -->
 	<script>
-		$(document).ready(function(){
-			$('#tblEmployerList').DataTable();
-		});
+		$(document).ready(function() {
+    // Existing code...
 
-	</script>
+    // Additional AJAX request for fetching employer details
+    $('#basic-datatables').on('click', '.view-btn', function() {
+        const id = $(this).data('id');
+
+        $.ajax({
+            type: 'GET',
+            url: '../PHPFiles/Admin/getEmployerDetails.php',
+            data: { id: id },
+            dataType: 'json',  // Specify the expected response type
+            success: function(response) {
+                if (response.error) {
+                    alert(response.error);
+                } else {
+                    $('#view-company-name').text(response.CompanyName);
+                    $('#view-rep-name').text(response.RepresentativeName);
+                    $('#view-email').text(response.Email);
+                    $('#view-status').text(response.Status);
+                    $('#view-reg-date').text(response.RegistrationDate);
+
+                    $('#viewEmployerModal').modal('show');
+                }
+            },
+            error: function(error) {
+                console.log(error);
+                alert('An error occurred while fetching the employer details');
+            }
+        });
+    });
+
+    // Additional AJAX request for deleting employer
+    $('#basic-datatables').on('click', '.delete-btn', function() {
+        const id = $(this).data('id');
+
+        if (confirm('Are you sure you want to delete this employer?')) {
+            $.ajax({
+                type: 'POST',
+                url: '../PHPFiles/Admin/deleteEmployer.php',
+                data: { id: id },
+                dataType: 'json',  // Specify the expected response type
+                success: function(response) {
+                    if (response.error) {
+                        alert(response.error);
+                    } else {
+                        alert('Employer deleted successfully');
+                        table.row($(this).closest('tr')).remove().draw();
+                    }
+                },
+                error: function(error) {
+                    console.log(error);
+                    alert('An error occurred while deleting the employer');
+                }
+            });
+        }
+    });
+});
+</script>
 </body>
 </html>
