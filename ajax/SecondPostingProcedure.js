@@ -1,5 +1,22 @@
 
 function AddSecond(formID) {
+
+    if (!validateJobAndEmployerID()) {
+        swal({
+            title: 'Missing Parameters!',
+            text: "Job ID or Employer ID is missing from the URL.",
+            icon: 'warning',
+            buttons: {
+                confirm: {
+                    text: 'Okay',
+                    className: 'btn btn-warning'
+                }
+            }
+        });
+        return;
+    }
+
+    
     var formData = new FormData();
     var logo = $('#logo').prop('files')[0]; // Get the logo file object
     var video = $('#videoUpload').prop('files')[0]; // Get the video file object
@@ -33,6 +50,7 @@ function AddSecond(formID) {
         processData: false, // Prevent jQuery from automatically processing the data
         contentType: false,
         success: function(response){
+            console.log('Server response:', response);  // Log the raw response
             var data = JSON.parse(response);
             console.log(data); // Log the response to the console
 

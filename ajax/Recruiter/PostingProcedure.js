@@ -1,14 +1,33 @@
-
-function AddFirst(formID){
+function AddFirst(formID) {
+    
     var payType = $('input[name=optionsRadios]:checked').val();
     var currency = $('#currencySelect').val();
     var minPay = $('#min').val();
     var maxPay = $('#max').val();
     var hideSalary = $('input[name=hideSalary]').is(':checked') ? 0 : 1;
     var advertisePrivately = $('input[name=advertisePrivately]').is(':checked') ? 0 : 1;
-    var advertisePrivately = $('input[name=advertisePrivately]').is(':checked') ? 0 : 1;
     var jobTitle = $('#jobtitles').val();
+    var countryID = $('#country').val();
+    var provinceID = $('#province').val();
+    var cityID = $('#city').val(); // Retrieve city ID
 
+    if (currency.trim() === '' || minPay.trim() === '' || maxPay.trim() === '') {
+        // If any of the fields are empty, show an error message
+        swal({
+            title: 'Error!',
+            text: 'Please fill out the Pay Range fields.',
+            icon: 'error',
+            buttons: {
+                confirm: {
+                    text: 'OK',
+                    className: 'btn btn-success'
+                }
+            }
+        });
+        return; // Exit the function without proceeding
+    }
+
+    
     $('#btnAddFirst').addClass('is-loading');
     $('#btnAddFirst').prop('disabled', true);
     disableForm(formID);
@@ -23,25 +42,27 @@ function AddFirst(formID){
             maxPay: maxPay,
             hideSalary: hideSalary,
             advertisePrivately: advertisePrivately,
-            jobTitle: jobTitle
+            jobTitle: jobTitle,
+            countryID: countryID,
+            provinceID: provinceID,
+            cityID: cityID
         },
-        success: function(response){
+        success: function(response) {
             var data = JSON.parse(response);
-            if(data.status == "0"){
+            if (data.status == "0") {
                 location.href = './create_jobad2.php?jobID=' + data.jobID + '&employerID=' + data.employerID;
-            }
-            else if(data == "1"){
+            } else if (data == "1") {
                 swal({
                     title: 'An Error Occurred!',
                     text: "Error Updating Profile.",
                     icon: 'error',
-                    buttons : {
+                    buttons: {
                         confirm: {
-                            text : 'Okay',
-                            className : 'btn btn-success'
+                            text: 'Okay',
+                            className: 'btn btn-success'
                         }
                     }
-                }).then(function(){
+                }).then(function() {
                     $('#btnAddFirst').removeClass('is-loading');
                     $('#btnAddFirst').prop('disabled', false);
                     enableForm(formID);
@@ -151,51 +172,49 @@ function AddFirst(formID){
                 });
             }
         },
-        error: function(xhr, status, error){
+        error: function(xhr, status, error) {
             swal({
                 title: 'Failed to Connect to Server!',
                 text: "Something went wrong while trying to connect to the server. Please",
                 icon: 'error',
-                buttons : {
+                buttons: {
                     confirm: {
-                        text : 'Okay',
-                        className : 'btn btn-success'
+                        text: 'Okay',
+                        className: 'btn btn-success'
                     }
                 }
-            }).then(function(){
+            }).then(function() {
                 $('#btnAddFirst').removeClass('is-loading');
-                    $('#btnAddFirst').prop('disabled', false);
-                    enableForm(formID);
+                $('#btnAddFirst').prop('disabled', false);
+                enableForm(formID);
             });
         }
     });
 }
 
-if (window.history.replaceState){
+if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
 }
 
-function disableForm(formID){
+function disableForm(formID) {
     var form = document.getElementById(formID);
     var elements = form.elements;
     for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
-        if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+        if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
             elements[elementCounter].disabled = true;
-        }
-        else{
+        } else {
             continue;
         }
     }
 }
-function enableForm(formID){
+
+function enableForm(formID) {
     var form = document.getElementById(formID);
     var elements = form.elements;
     for (var elementCounter = 0; elementCounter < elements.length; elementCounter++) {
-
-        if(elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT'){
+        if (elements[elementCounter].tagName == 'INPUT' || elements[elementCounter].tagName == 'SELECT') {
             elements[elementCounter].disabled = false;
-        }
-        else{
+        } else {
             continue;
         }
     }

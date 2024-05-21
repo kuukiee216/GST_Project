@@ -82,8 +82,6 @@ function AddQuestion(formID) {
                 showAlert('Successful!', 'The question was added successfully.', 'success', formID);
                 GetQuestions();
                 $('#new-question-text').val('');
-            } else if (response === "2") {
-                showAlert('Empty Question!', 'Please enter a question and try again.', 'warning', formID);
             } else {
                 showAlert('An Error Occurred!', 'Something went wrong. Please try again.', 'error', formID);
             }
@@ -108,7 +106,6 @@ function AddQuestionDatabases(formID) {
         var questionID = $(this).val();
         var answer = $(this).parent().find('.form-group input').val().trim(); // Get the associated answer
         var requirementStatus = answer === "" ? 0 : 1; // Determine requirement status
-        
 
         selectedQuestions.push({
             QuestionnaireID: questionID,
@@ -118,35 +115,36 @@ function AddQuestionDatabases(formID) {
     });
 
     var jobID = $('#jobID').val();
-        var employerID = $('#employerID').val();
+    var employerID = $('#employerID').val();
 
+    // Check if selectedQuestions is empty
     if (selectedQuestions.length === 0) {
-        showAlert('No Questions Selected!', 'Please select at least one question and try again.', 'warning', formID);
-        return;
-    }
-
-    $.ajax({
-        type: "POST",
-        url: "../PHPFiles/Recruiter/AddQuestionDatabase.php",
-        data: {
-            selectedQuestions: selectedQuestions,
-            JobID: jobID, // Assuming jobID is available as a hidden input field or global variable
-            EmployerID: employerID // Assuming employerID is available as a hidden input field or global variable
-        },
-        success: function(response) {
-            var data = JSON.parse(response);
-            if (data.status === "0") {
-                location.href = './create_jobad4.php?jobID=' + data.jobID + '&employerID=' + data.employerID;
-            } else {
-                showAlert('An Error Occurred!', 'Something went wrong. Please try again.', 'error', formID);
+        // If no questions are selected, redirect to the next page
+        location.href = './create_jobad4.php?jobID=' + jobID + '&employerID=' + employerID;
+    } else {
+        // If questions are selected, proceed with the AJAX request
+        $.ajax({
+            type: "POST",
+            url: "../PHPFiles/Recruiter/AddQuestionDatabase.php",
+            data: {
+                selectedQuestions: selectedQuestions,
+                JobID: jobID, // Assuming jobID is available as a hidden input field or global variable
+                EmployerID: employerID // Assuming employerID is available as a hidden input field or global variable
+            },
+            success: function(response) {
+                var data = JSON.parse(response);
+                if (data.status === "0") {
+                    location.href = './create_jobad4.php?jobID=' + data.jobID + '&employerID=' + data.employerID;
+                } else {
+                    showAlert('An Error Occurred!', 'Something went wrong. Please try again.', 'error', formID);
+                }
+            },
+            error: function(xhr, status, error) {
+                showAlert('Failed to Connect to Server!', 'Something went wrong while trying to connect to the server. Please try again.', 'error', formID);
             }
-        },
-        error: function(xhr, status, error) {
-            showAlert('Failed to Connect to Server!', 'Something went wrong while trying to connect to the server. Please try again.', 'error', formID);
-        }
-    });
+        });
+    }
 }
-
 
 
 function showAlert(title, text, icon, formID) {

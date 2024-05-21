@@ -10,9 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adType = $_POST['adType'];
 
     try {
+        // Convert totalAmount to integer cents
+        $totalAmountInCents = intval(round($totalAmount * 100));
+
         // Create a new Price object dynamically based on the total amount
         $price = $stripe->prices->create([
-            'unit_amount' => $totalAmount * 100, // Total amount in cents
+            'unit_amount' => $totalAmountInCents, // Total amount in cents
             'currency' => 'usd', // Currency
             'product_data' => [
                 'name' => $adType, // Set the ad type as the product name
@@ -31,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'success_url' => 'http://localhost/GST_Project/recruiter/success.php',
             'cancel_url' => 'http://localhost/GST_Project/recruiter/create_jobadPAY.php',
         ]);
+
         header('Location: ' . $session->url);
         exit();
     } catch (Exception $e) {

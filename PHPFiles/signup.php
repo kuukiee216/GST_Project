@@ -68,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $connection->beginTransaction();
         $currrentDateTime = date("Y/m/d");
 
-
         $sQrySignUp = "INSERT INTO tbl_account (UserID, Password, Token, RegistrationDate) VALUES (?, ?, ?, ?)";
         $stmtSignUp = $connection->prepare($sQrySignUp);
         $stmtSignUp->bindValue(1, $Email, PDO::PARAM_STR);
@@ -87,7 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $connection->commit();
 
-        
         $recipient = $Email;
         $subject = "Email Verification";
         $verificationLink = "http://localhost/GST_Project/applicant/almost_done.php?Token=$Token";
