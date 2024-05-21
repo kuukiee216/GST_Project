@@ -446,63 +446,95 @@
 	<!-- Add Employer Account -->
 	<script>
 		$(document).ready(function() {
-    // Existing code...
+    var table = $('#basic-datatables').DataTable();
 
-    // Additional AJAX request for fetching employer details
+    $('#add-employer-btn').on('click', function(e) {
+        e.preventDefault();
+        $('#addEmployerModal').modal('show');
+    });
+
+    $('#add-employer-form').on('submit', function(e) {
+        e.preventDefault();
+
+        const companyName = $('#company-name').val();
+        const repName = $('#rep-name').val();
+        const email = $('#email').val();
+
+        $.ajax({
+            type: 'POST',
+            url: '../PHPFiles/Admin/Dashboardemployerlist.php',
+            data: {
+                companyName: companyName,
+                repName: repName,
+                email: email
+            },
+            success: function(response) {
+                alert('Employer added successfully');
+                $('#addEmployerModal').modal('hide');
+
+                table.row.add([
+                    response.id,
+                    companyName,
+                    repName,
+                    email,
+                    'Active',
+                    response.registrationDate,
+                    '<button class="btn btn-sm btn-secondary view-btn" data-id="' + response.id + '"><i class="far fa-eye"></i></button>' +
+                    '<button class="btn btn-sm btn-danger delete-btn" data-id="' + response.id + '"><i class="far fa-trash-alt"></i></button>'
+                ]).draw();
+
+                $('#company-name').val('');
+                $('#rep-name').val('');
+                $('#email').val('');
+            },
+            error: function(error) {
+                alert('An error occurred while adding the employer');
+            }
+        });
+    });
+
     $('#basic-datatables').on('click', '.view-btn', function() {
         const id = $(this).data('id');
-
+        
         $.ajax({
             type: 'GET',
             url: '../PHPFiles/Admin/getEmployerDetails.php',
             data: { id: id },
-            dataType: 'json',  // Specify the expected response type
             success: function(response) {
-                if (response.error) {
-                    alert(response.error);
-                } else {
-                    $('#view-company-name').text(response.CompanyName);
-                    $('#view-rep-name').text(response.RepresentativeName);
-                    $('#view-email').text(response.Email);
-                    $('#view-status').text(response.Status);
-                    $('#view-reg-date').text(response.RegistrationDate);
+                $('#view-company-name').text(response.companyName);
+                $('#view-rep-name').text(response.repName);
+                $('#view-email').text(response.email);
+                $('#view-status').text(response.status);
+                $('#view-reg-date').text(response.registrationDate);
 
-                    $('#viewEmployerModal').modal('show');
-                }
+                $('#viewEmployerModal').modal('show');
             },
             error: function(error) {
-                console.log(error);
                 alert('An error occurred while fetching the employer details');
             }
         });
     });
 
-    // Additional AJAX request for deleting employer
     $('#basic-datatables').on('click', '.delete-btn', function() {
         const id = $(this).data('id');
-
+        
         if (confirm('Are you sure you want to delete this employer?')) {
             $.ajax({
                 type: 'POST',
                 url: '../PHPFiles/Admin/deleteEmployer.php',
                 data: { id: id },
-                dataType: 'json',  // Specify the expected response type
                 success: function(response) {
-                    if (response.error) {
-                        alert(response.error);
-                    } else {
-                        alert('Employer deleted successfully');
-                        table.row($(this).closest('tr')).remove().draw();
-                    }
+                    alert('Employer deleted successfully');
+                    table.row($(this).closest('tr')).remove().draw();
                 },
                 error: function(error) {
-                    console.log(error);
                     alert('An error occurred while deleting the employer');
                 }
             });
         }
     });
 });
+
 </script>
 </body>
 </html>
