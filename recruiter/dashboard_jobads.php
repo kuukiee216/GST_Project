@@ -72,10 +72,10 @@ if (isset($_SESSION['AccountID'])) {
                 <a class="nav-link" id="pills-draft-tab-nobd" data-toggle="pill" href="#pills-draft-nobd" role="tab"
                     aria-controls="pills-draft-nobd" aria-selected="false">Draft</a>
             </li>
-            <!-- <li class="nav-item submenu">
+            <li class="nav-item submenu">
                 <a class="nav-link" id="pills-candidates-tab-nobd" data-toggle="pill" href="#pills-candidates-nobd"
                     role="tab" aria-controls="pills-candidates-nobd" aria-selected="false">Your Candidates</a>
-            </li> -->
+            </li>
         </ul>
     </div>
 
@@ -90,7 +90,7 @@ if (isset($_SESSION['AccountID'])) {
         <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
             <div id="draftJobContainer" class="container" style="width: 80%;"></div>
         </div>
-        <!-- <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
+        <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
             aria-labelledby="pills-candidates-tab-nobd">
             <div class="container" style="width: 80%;">
                 <h2 class="pt-3">Your Candidates</h2>
@@ -103,6 +103,7 @@ if (isset($_SESSION['AccountID'])) {
                             <div class="col">Most Recent Role</div>
                             <div class="col">Most Recent Application</div>
                             <div class="col">Previous Application</div>
+                            <div class="col">Action</div>
 
                         </div>
                     </div>
@@ -120,7 +121,7 @@ if (isset($_SESSION['AccountID'])) {
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 
 

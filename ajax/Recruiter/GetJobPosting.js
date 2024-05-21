@@ -34,7 +34,6 @@ function displayJobTitles() {
         '<div class="col">Status</div>' +
         '<div class="col">Job </div>' +
         '<div class="col">Candidates</div>' +
-        '<div class="col">Performance</div>' +
         '<div class="col">Job Actions</div>' +
         '</div>' +
         '</div>' +
@@ -62,8 +61,7 @@ function displayJobTitles() {
             '<div style="text-decoration: underline;">' + job.JobTitle + '</div><br>' +
             '</div>' +
             '</div>' +
-            '<div class="col fw-bold">-</div>' +
-            '<div class="col fw-bold">-</div>' +
+            '<div class="col fw-bold">1</div>' +
             '<div class="col fw-bold">-</div>' +
             '</div>' +
             '</div>' +

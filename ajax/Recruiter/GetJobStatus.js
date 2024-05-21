@@ -36,7 +36,6 @@ function displayJobTitles() {
         '<div class="col">Status</div>' +
         '<div class="col">Job </div>' +
         '<div class="col">Candidates</div>' +
-        '<div class="col">Performance</div>' +
         '<div class="col">Job Actions</div>' +
         '</div>' +
         '</div>' +
@@ -112,7 +111,6 @@ function displayExpiredJobTitles() {
         '<div class="col">Status</div>' +
         '<div class="col">Job </div>' +
         '<div class="col">Candidates</div>' +
-        '<div class="col">Performance</div>' +
         '<div class="col">Job Actions</div>' +
         '</div>' +
         '</div>' +
@@ -184,7 +182,6 @@ function displayDraftJobTitles() {
         '<div class="col">Status</div>' +
         '<div class="col">Job </div>' +
         '<div class="col">Candidates</div>' +
-        '<div class="col">Performance</div>' +
         '<div class="col">Job Actions</div>' +
         '</div>' +
         '</div>' +
