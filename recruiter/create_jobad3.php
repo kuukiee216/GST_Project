@@ -227,7 +227,6 @@
 
             $('#continueButton').click(function(e) {
                 e.preventDefault();
-                console.log("click");
                 AddQuestionDatabases('questionDatabase');
             });
 
@@ -314,6 +313,9 @@
             if ($(this).is(':checked')) {
                 if (selectedCount <= 8) {
                     addInputBox($(this));
+                    // Store checked question in localStorage
+                    var questionText = $(this).siblings('.form-check-sign').text();
+                    localStorage.setItem(questionText, true);
                 } else {
                     swal({
                         icon: 'warning',
@@ -327,12 +329,24 @@
             } else {
                 $(this).parent().find('.form-group').remove();
                 updateSelectedCount(); // Update the count of selected questions
+                // Remove checked question from localStorage
+                var questionText = $(this).siblings('.form-check-sign').text();
+                localStorage.removeItem(questionText);
             }
         });
 
         // Initial update of the count of selected questions
         updateSelectedCount();
-    });
+    // Retrieve checked questions from localStorage
+    for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key !== 'jobID' && key !== 'employerID') {
+            $('#' + key).prop('checked', true);
+            addInputBox($('#' + key));
+        }
+    }
+
+});
 </script>
 
 

@@ -180,12 +180,9 @@ $total = $basePrice + $seasonalPrice + $tax - $discountedPrice;
     <input type="hidden" name="jobID" id="jobID" value="<?php echo $jobID; ?>">
     <input type="hidden" name="employerID" id="employerID" value="<?php echo $employerID; ?>">
     <input type="hidden" name="adType" id="adType" value="<?php echo $adType; ?>">
-    <input type="hidden" name="locationID" id="locationID" value="<?php echo $locationID; ?>"> <!-- Add this line -->
-    <input type="hidden" name="countryID" id="countryID" value="<?php echo $countryID; ?>"> <!-- Add this line -->
-    <input type="hidden" name="provinceID" id="provinceID" value="<?php echo $provinceID; ?>"> <!-- Add this line -->
     <div class="mb-5">
         <button class="btn btn-danger" type="submit" id="alert_demo_3_3">Proceed to Payment</button>
-        <a href="../recruiter/create_jobadPreview.php?jobID=<?php echo $jobID; ?>&employerID=<?php echo $employerID; ?>&AdType=<?php echo $adTypePrice; ?>&Seasonal=<?php echo $seasonalPrice; ?>&adTypeID=<?php echo $Type; ?>&seasonalID=<?php echo $seasonalType; ?>&locationID=<?php echo $locationID; ?>&countryID=<?php echo $countryID; ?>&provinceID=<?php echo $provinceID; ?>" class="btn btn-outline-danger">Preview</a>
+        <a href="../recruiter/create_jobadPreview.php?jobID=<?php echo $jobID; ?>&employerID=<?php echo $employerID; ?>&AdType=<?php echo $adTypePrice; ?>&Seasonal=<?php echo $seasonalPrice; ?>&adTypeID=<?php echo $Type; ?>&seasonalID=<?php echo $seasonalType; ?>" class="btn btn-outline-danger">Preview</a>
 
     </div>
 </form>

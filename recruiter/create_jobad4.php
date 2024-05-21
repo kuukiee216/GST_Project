@@ -271,13 +271,9 @@
                     </div>
                 </div>
             </div>
-<<<<<<< Updated upstream
     </div>
             </form>
     
-=======
-        </form>
->>>>>>> Stashed changes
 
     </div>
 

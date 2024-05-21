@@ -50,6 +50,7 @@ function AddSecond(formID) {
         processData: false, // Prevent jQuery from automatically processing the data
         contentType: false,
         success: function(response){
+            console.log('Server response:', response);  // Log the raw response
             var data = JSON.parse(response);
             console.log(data); // Log the response to the console
 

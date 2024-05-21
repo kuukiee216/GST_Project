@@ -312,6 +312,72 @@ function validateJobAndEmployerID() {
     });
     </script>
 
+<script>
+// Function to store form data in localStorage
+function storeFormDataToLocalStorage() {
+    // Store video
+    var videoFile = document.getElementById('videoUpload').files[0];
+    if (videoFile) {
+        var videoDataURL = URL.createObjectURL(videoFile);
+        localStorage.setItem('videoDataURL', videoDataURL);
+    }
+
+    // Store image
+    var logoFile = document.getElementById('logo').files[0];
+    if (logoFile) {
+        var logoDataURL = URL.createObjectURL(logoFile);
+        localStorage.setItem('logoDataURL', logoDataURL);
+    }
+
+    // Store description
+    var description = document.getElementById('description').value;
+    localStorage.setItem('description', description);
+
+    // Store search
+    var search = document.getElementById('search').value;
+    localStorage.setItem('search', search);
+}
+
+// Function to retrieve form data from localStorage and populate form fields
+function retrieveFormDataFromLocalStorage() {
+    // Retrieve video
+    var videoDataURL = localStorage.getItem('videoDataURL');
+    if (videoDataURL) {
+        document.getElementById('videoPreview').src = videoDataURL;
+        document.getElementById('videoPreview').style.display = 'block';
+    }
+
+    // Retrieve image
+    var logoDataURL = localStorage.getItem('logoDataURL');
+    if (logoDataURL) {
+        document.getElementById('imagePreview').src = logoDataURL;
+    }
+
+    // Retrieve description
+    var description = localStorage.getItem('description');
+    if (description) {
+        document.getElementById('description').value = description;
+    }
+
+    // Retrieve search
+    var search = localStorage.getItem('search');
+    if (search) {
+        document.getElementById('search').value = search;
+    }
+}
+
+// Store form data to localStorage when the Continue button is clicked
+document.getElementById('btnAddSecond').addEventListener('click', function() {
+    storeFormDataToLocalStorage();
+});
+
+// Retrieve form data from localStorage when the document is loaded
+document.addEventListener("DOMContentLoaded", function() {
+    retrieveFormDataFromLocalStorage();
+});
+</script>
+
+
 </body>
 
 </html>
