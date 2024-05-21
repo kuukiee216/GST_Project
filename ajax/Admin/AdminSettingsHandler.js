@@ -1293,6 +1293,7 @@ function deletePromoCode(PromoID){
 }
 
 function showVAT(){
+    getVAT();
     $('#modalVAT').modal({
         backdrop: 'static',
         keyboard: true,
@@ -1334,6 +1335,23 @@ function closeVAT(){
     });
 }
 
+function getVAT(){
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        url: "../PHPFiles/Admin/Settings/getVat.php",
+        success: function(data){
+            console.log(data);
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+                $('#txtVAT').val(decodedData['VAT']);
+            }
+        }
+    });
+}
+
 function updateVAT(formUpdateVAT){
 
     var VAT = $('#txtVAT').val();
@@ -1344,9 +1362,27 @@ function updateVAT(formUpdateVAT){
         data: {
             VAT: VAT
         },
-        url: "",
-        success: function(){
-
+        url: "../PHPFiles/Admin/Settings/updateVat.php",
+        success: function(data){
+            console.log(data);
+            if(data == '1'){
+                swal({
+                    title: 'VAT has been Updated!',
+                    text: "Successfully updated VAT percentage.",
+                    icon: 'success',
+                    type: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    location.reload();
+                });
+            }else{
+                
+            }
         }
     });
 

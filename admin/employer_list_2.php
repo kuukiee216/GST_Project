@@ -1,14 +1,3 @@
-<?php
-  SESSION_START();
-
-  date_default_timezone_set('Asia/Manila');
-  $currentDateTime = time();
-
-  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
-      header ("Location: ../PHPFiles/Applicant/logout.php");
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +21,7 @@
 		});
 	</script>
 
-    <title>Application 2</title>
+    <title>Employer List 2</title>
     <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
 </head>
 <body>
@@ -41,7 +30,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header bg-danger">
 				
-				<a href="admin_dashboard_main.php" class="logo">
+				<a href="admin_dashboard_main.html" class="logo">
 					<img src="../assets/img/JapanJobs.png" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -182,7 +171,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="settings_system_logs.php">System Logs</a>
+										<a class="dropdown-item" href="/admin/settings_system_logs.html">System Logs</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
@@ -222,31 +211,31 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a href="admin_dashboard_main.php">
+							<a href="/admin/admin_dashboard_main.html">
 								<i class="fas fa-th-list"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="job_posting.php">
+							<a href="/admin/job_posting.html">
 								<i class="fas fa-briefcase"></i>
 								<p>Job Posting</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="employer_list.php">
+							<a href="/admin/employer_list.html">
 								<i class="fas fa-building"></i>
 								<p>Employer List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="applicant_list.php">
+							<a href="/admin/applicant_list.html">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="application.php">
+							<a href="/admin/application.html">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -260,27 +249,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="settings_job_classification.php">
+										<a href="/admin/settings_job_classification.html">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_job_title.php">
+										<a href="/admin/settings_job_title.html">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_locations.php">
+										<a href="/admin/settings_locations.html">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_posting_fee.php">
+										<a href="/admin/settings_posting_fee.html">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_system_logs.php">
+										<a href="/admin/settings_system_logs.html">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -296,133 +285,125 @@
 		</div>
 		<!-- End Sidebar -->
 
-		<!-- Modal -->
-		<div class="modal fade" id="modalCoverLetter" tabindex="-1" role="dialog" aria-labelledby="modalCoverLetter" aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h3 class="modal-title">Change CoverLetter</h3>
-									<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseCoverLetter">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<button type="button" class="close" onclick="closeCoverLetter();">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<form id="formCoverLetter">
-										<div class="form-group px-5">
-											<label for="txtCoverLetter">CoverLetter: <span class="text-danger font-weight-bold">*</span></label>
-											<p id="txtCoverLetter" class="text-wrap"></p>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-
         <div class="main-panel">
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
                     <div class="card-body">
-                        <h1 class="text-dark">Applications</h1>
+                        <h1 class="text-dark"> Employer List</h1>
                     </div>
                 </div>
 				
                
                     <div class="container-fluid flex justify-content-center">
-                        <h1 class="mt-5">Applicantion Review</h1>
+                        <a href="#" class="btn btn-secondary">Back</a>
+                        <h2 class="mt-5">Employer's Details</h2>
+                        <h4 class="mt-3">Representative's Details</h4>
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col m-2">
-                                        <h4 id="app-jobTitle"><span>Software Engineer</span></h4>
-                                        <div id="app-jobLocation"><i class="fas fa-map-marker-alt"></i><span> Osaka, Japan</span></div>
-                                        <div id="app-job"><i class="far fa-clone"></i><span>Information and Technology Coommunication</span></div>
-                                        <div id="app-companyName"><i class="fas fa-pen-nib"></i> <span>Created by Samsung Technology Corporation</span></div>
+                                    <div class="col">
+                                        <div>Representative's Name:</div>
+                                        <div>Password:</div>
+                                        <div>Email:</div>
+                                        <div>Phone Number:</div>
                                     </div>
 
-                                    <div class="col m-2">
-                                        <div><span>hehe</span></div>
-                                        <div id="app-jobSalary"><i class="fas fa-database"></i> <span>60,000 - 80,000 Yen</span></div>
-                                        <div id="app-jobTime"><i class="far fa-clock"></i> <span>Full-Time</span></div>
+                                    <div class="col">
+                                        <div>Genesis</div>
+                                        <div>test123</div>
+                                        <div>genesismarvinmanale12@gmail.com</div>
+                                        <div>+639084746563</div>
                                     </div>
-                                </div>
-
-                                <hr>
-                                <div type="button" data-toggle="collapse" data-target="#test" aria-expanded="false" aria-controls="test">
-                                    <i class="fas fa-angle-down"></i>
-                                </div>
-                                <div class="collapse" id="test">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. <br>Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
                                 </div>
                             </div>
                         </div>
 
-                            <h2>Applicant's Information</h2>
-                            <div class="card card-body">
-                                <div class="row">
-                                <div class="col">
-                                    <div>Full Name</div>
-                                    <div>Email Address</div>
-                                    <div>Location</div>
-                                    <div>Phone Number</div>
-                                </div>
-
-                                <div class="col">
-                                    <div id="app-aiName"><span>Genesis</span></div>
-                                    <div id="app-aiEmail"><span>genesismarvinmanale12</span></div>
-                                    <div id="app-aiLocation"><span>Pagsanjan, Laguna</span></div>
-                                    <div id="app-aiPhone"><span>+639084746563</span></div>
-                                </div>
-                                </div>
-                            </div>
-
-                            <h2>Resume</h2>
-                            <div class="card card-body">
+                        <h4 class="mt-3">Company Details</h4>
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4 id = "documentName"style="text-decoration: underline;">MANALE_RESUME.pdf</h4>
+                                        <div>Company Name:</div>
+                                        <div>Business Address:</div>
+                                        <div>Country:</div>
+                                        <div>Address Line:</div>
+                                        <div>Suburb/Town/City</div>
+                                        <div>Postal Code</div>
                                     </div>
+
                                     <div class="col">
-                                        <button id = "btnViewDocument"class="btn btn-secondary">View</button>
+                                        <div>Laguna University</div>
+                                        <div>Sta Cruz, Laguna</div>
+                                        <div>Philippines</div>
+                                        <div>Line?</div>
+                                        <div>Cabanbanan, Pagsanjan, Laguna</div>
+                                        <div>4008</div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <h2>Cover Letter</h2>
-                            <div class="card card-body">
+                        <h4 class="mt-3">Offering Jobs</h4>
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4 id="lbCoverLetterTitle">Applicant wrote a cover letter for this application.</h4>
+                                        <div><i class="fas fa-map-marker-alt"></i> Osaka, Japan</div>
+                                        <div><i class="far fa-clone"></i> Information and Communication Technology</div>
                                     </div>
+
                                     <div class="col">
-                                        <button id="btnViewCoverLetter" class="btn btn-secondary">View</button>
+                                        <div><i class="fas fa-database"></i> 60,000 - 80,000 Yen</div>
+                                        <div><i class="far fa-clock"></i> Full-Time</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <span class="badge badge-success">Approved</span>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <h2>Employer's Questions</h2>
-                            <div class="card card-body">
+                        <div class="card">
+                            <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4>Applicant answered <span id="answersCount"></span> out of <span id="questionsCount"></span> questions.</h4>
-                                        <hr>
-                                        <div type="button" data-toggle="collapse" data-target="#test2" aria-expanded="false" aria-controls="test2">
-                                            <i class="fas fa-angle-down"></i>
-                                        </div>
-                                        <div class="collapse" id="test2">
-                                            <ul id="holderQA">
-                                            </ul>
-                                        </div>
+                                        <div><i class="fas fa-map-marker-alt"></i> Osaka, Japan</div>
+                                        <div><i class="far fa-clone"></i> Information and Communication Technology</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div><i class="fas fa-database"></i> 60,000 - 80,000 Yen</div>
+                                        <div><i class="far fa-clock"></i> Full-Time</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <span class="badge badge-warning">Pending</span>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="-fluid d-flex justify-content-end mb-5">
-                                <button id="btnApplicationApprove" onclick="approveApplication()" class="btn btn-success">Approved</button>
-                                <button id="btnApplicationReject" onclick="rejectApplication()" class="btn btn-danger">Reject</button>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div><i class="fas fa-map-marker-alt"></i> Osaka, Japan</div>
+                                        <div><i class="far fa-clone"></i> Information and Communication Technology</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div><i class="fas fa-database"></i> 60,000 - 80,000 Yen</div>
+                                        <div><i class="far fa-clock"></i> Full-Time</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <span class="badge badge-warning">Pending</span>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
                     </div>
                         
                 <footer class="footer bg-danger text-white">
@@ -498,25 +479,5 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
-
-	<!-- Scripts -->
-	<script src="../ajax/Admin/AdminApplicationListHandler.js"></script>
-
-	<script>
-
-		$(document).ready(function(){
-			getApplicationContents();
-
-			$("#btnViewCoverLetter").click(function(){
-				showCoverLetter();
-			});
-
-			$("#btnViewDocument").click(function(){
-				showApplicantResume();
-			});
-
-		});
-
-	</script>
 </body>
 </html>

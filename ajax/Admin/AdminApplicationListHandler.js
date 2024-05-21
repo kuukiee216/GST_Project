@@ -68,6 +68,8 @@ function getApplicationContents(){
     getApplicationDetails();
     getApplicantInfo();
     getApplicantResume();
+    getQuestionsAnswers();
+    setCountQA();
 }
 
 function  getApplicationDetails(){
@@ -198,9 +200,9 @@ function showApplicantResume(){
                     $('#documentName').text('Applicant has not yet submitted a Resume');
                 }else{
                     filePath = decodedData['Location'];
+                    window.open(filePath, '_blank');
                 }
-
-                window.open(filePath, '_blank');
+                
             }   
 
         }, 
@@ -213,7 +215,71 @@ function showApplicantResume(){
 }
 
 function showCoverLetter(){
-    
+    var AID = window.location.hash.replace('#','');
+
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        data:{
+            ApplicationID: AID
+        },
+        url: "../PHPFiles/Admin/Applications/applicationGetCoverLetter.php",
+        success: function(data){
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+                var filePath = '';
+                var isExist = 0;
+
+                console.log(decodedData);
+
+                if(!(decodedData['Location'] == null && decodedData['CoverLetter'] == null)){
+                    if(decodedData['Location'] != null){
+                        setCoverLetter(0, decodedData);
+                    }else if(decodedData['CoverLetter'] != null){
+                        setCoverLetter(1, decodedData);
+                    }
+                }else{
+                   
+                }
+
+            }   
+
+        }, 
+        error: function(data){
+                
+
+        }
+
+    });
+}
+
+function setCoverLetter(inSet, decodedData){
+
+    if(inSet == 0){
+        var filePath = decodedData['Location'];
+        window.open(filePath, '_blank');
+    }else if(inSet == 1){
+        $('#txtCoverLetter').text(decodedData['CoverLetter']);
+        showModalCoverLetter();
+    }
+}
+
+function showModalCoverLetter(){
+    $('#modalCoverLetter').modal({
+        backdrop: 'static',
+        keyboard: true,
+        focus: true,
+        show: true
+    });
+}
+
+function closeCoverLetter(){
+    $('#txtCoverLetter').text('');
+
+    history.replaceState(null, document.title, window.location.pathname + window.location.search);
+    $('#btnCloseCoverLetter').click();
 }
 
 function approveApplication(){
@@ -341,5 +407,85 @@ function rejectApplication(){
 
 
 
+}
+
+function getQuestionsAnswers(){
+    var AID = window.location.hash.replace('#','');
+
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        data:{
+            ApplicationID: AID
+        },
+        url: "../PHPFiles/Admin/Applications/applicationGetQA.php",
+        success: function(data){
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+                setApplicationQA(decodedData);
+            }
+
+        }, 
+        error: function(data){
+                
+
+        }
+
+    });
+}
+
+function setApplicationQA(decodedData){
+
+    for (var i = 0; i < decodedData.length; i++) {
+
+        var newLi = $("<li>").append(
+            $("<span>").attr("id", "employerQ1-1").text(decodedData[i].Question),
+            $("<br>"),
+            "Answer : ",
+            $("<span>").attr("id", "applicationA1").text(decodedData[i].Answer),
+            $("<br>"),
+            $("<br>")
+        );
+
+        $("#holderQA").append(newLi);
+        console.log("Question:", decodedData[i].Question);
+        console.log("Answer:", decodedData[i].Answer);
+    }
+
+    
+
+    // Append the new list item to the ul element
+    
+}
+
+function setCountQA(){
+    var AID = window.location.hash.replace('#','');
+
+    $.ajax({
+        type: "POST",
+        datatype: "html",
+        data:{
+            ApplicationID: AID
+        },
+        url: "../PHPFiles/Admin/Applications/applicationGetQACount.php",
+        success: function(data){
+            if(data == '1'){
+
+            }else{
+                var decodedData = JSON.parse(data);
+
+                $('#answersCount').text(decodedData['AnswerCount']);
+                $('#questionsCount').text(decodedData['QuestionCount']);
+            }
+
+        }, 
+        error: function(data){
+                
+
+        }
+
+    });
 }
 

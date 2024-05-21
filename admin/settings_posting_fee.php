@@ -433,14 +433,14 @@
 									</button>
 								</div>
 								<div class="modal-body">
-									<form id="formVAT">
+									<form id="formUpdateVAT">
 										<div class="form-group px-5">
 											<label for="txtVAT">VAT: <span class="text-danger font-weight-bold">*</span></label>
 											<input type="text" class="form-control" name="txtVAT" id="txtVAT" required>
 										</div>
 
 										<div class="row mx-3 my-3">
-											<button class="btn btn-primary btn-block" id="btnUpdateVAT" onclick="updateVAT(formUpdateVAT);">Update VAT</button>
+											<button class="btn btn-primary btn-block" type="button"id="btnUpdateVAT" onclick="updateVAT(formUpdateVAT);">Update VAT</button>
 										</div>
 									</form>
 								</div>
