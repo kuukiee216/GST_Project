@@ -18,15 +18,16 @@ function validate($data)
     return $data;
 }
 
-if (
-    isset($_POST['payType']) &&
+if (isset($_POST['payType']) &&
     isset($_POST['currency']) &&
     isset($_POST['minPay']) &&
     isset($_POST['maxPay']) &&
     isset($_POST['hideSalary']) &&
-    isset($_POST['advertisePrivately'])&&
-    isset($_POST['jobTitle'])
-) {
+    isset($_POST['advertisePrivately']) &&
+    isset($_POST['jobTitle']) && 
+    isset($_POST['countryID']) &&
+    isset($_POST['provinceID']) &&
+    isset($_POST['cityID'])) {
     $payType = $_POST['payType'];
     $currency = $_POST['currency'];
     $minPay = $_POST['minPay'];
@@ -34,6 +35,9 @@ if (
     $hideSalary = $_POST['hideSalary'];
     $advertisePrivately = $_POST['advertisePrivately'];
     $jobTitle = $_POST['jobTitle'];
+    $countryID = $_POST['countryID'];
+    $provinceID = $_POST['provinceID'];
+    $cityID = $_POST['cityID'];
 
     try {
         $connection->beginTransaction();
@@ -50,13 +54,12 @@ if (
         $selectJobTitleStatement->execute();
         $jobTitleName = $selectJobTitleStatement->fetch(PDO::FETCH_ASSOC)['JobTitleName'];
 
-
         $insertCompanyJobQuery = "INSERT INTO tbl_companyjob (EmployerID, JobTitle, Status)
         VALUES (:employerID,:jobTitle, :status)";
         $insertCompanyJobStatement = $connection->prepare($insertCompanyJobQuery);
         $insertCompanyJobStatement->bindValue(':employerID', $companyId, PDO::PARAM_STR);
         $insertCompanyJobStatement->bindValue(':jobTitle', $jobTitleName, PDO::PARAM_STR);
-        $insertCompanyJobStatement->bindValue(':status', 4, PDO::PARAM_INT); 
+        $insertCompanyJobStatement->bindValue(':status', 4, PDO::PARAM_INT);
         $insertCompanyJobStatement->execute();
 
         $lastInsertedJobID = $connection->lastInsertId();
@@ -87,13 +90,33 @@ if (
         $insertJobPostingStatement->bindValue(':salaryPrivacyStatus', $hideSalary, PDO::PARAM_INT);
         $insertJobPostingStatement->execute();
 
+        $lastInsertedJobPostingID = $connection->lastInsertId();
+
+        $insertJobLocationQuery = "INSERT INTO tbl_joblocation (JobPostingID, CountryID, ProvinceID, CityID) 
+                           VALUES (:jobPostingID, :countryID, :provinceID, :cityID)";
+        $insertJobLocationStatement = $connection->prepare($insertJobLocationQuery);
+        $insertJobLocationStatement->bindValue(':jobPostingID', $lastInsertedJobPostingID, PDO::PARAM_INT);
+        $insertJobLocationStatement->bindValue(':countryID', $countryID, PDO::PARAM_INT);
+        $insertJobLocationStatement->bindValue(':provinceID', $provinceID, PDO::PARAM_INT);
+        $insertJobLocationStatement->bindValue(':cityID', $cityID, PDO::PARAM_INT);
+        $insertJobLocationStatement->execute();
+
+
+        $lastInsertedLocationID = $connection->lastInsertId();
+
+        // Update tbl_companyjob with LocationID
+        $updateCompanyJobLocationQuery = "UPDATE tbl_companyjob SET LocationID = :locationID WHERE JobID = :jobID";
+        $updateCompanyJobLocationStatement = $connection->prepare($updateCompanyJobLocationQuery);
+        $updateCompanyJobLocationStatement->bindValue(':locationID', $lastInsertedLocationID, PDO::PARAM_INT);
+        $updateCompanyJobLocationStatement->bindValue(':jobID', $lastInsertedJobID, PDO::PARAM_INT);
+        $updateCompanyJobLocationStatement->execute();
         $connection->commit();
 
         echo json_encode(array("status" => "0", "jobID" => $lastInsertedJobID, "employerID" => $companyId));
         exit;
     } catch (PDOException $e) {
         $connection->rollBack();
-        echo "1"; 
+        echo "1";
         exit;
     }
 } else {

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!(isset($_GET['jobID']) && isset($_GET['employerID']))) {
+    exit;
+}
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,14 +39,14 @@
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="container-fluid">
         <div class="container flex justify-content-center mt-5" style="width: 50%;">
             <div class="progress-card">
                 <div class="progress-status">
-                    <a href="../recruiter/create_jobad.php">
+                <a href="../recruiter/create_jobad.php<?php echo isset($_GET['jobID']) ? '?jobID=' . $_GET['jobID'] : ''; ?>">
                         <button type="button" class="btn btn-icon btn-round btn-primary">
                             <i class="fa fa-arrow-circle-left"></i>
                         </button>
@@ -118,7 +127,7 @@
     </div>
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -200,15 +209,21 @@
 
     <script>
     // Function to get the value of a URL parameter by name
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
+    function getParameterByName(name) {
+    var url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function validateJobAndEmployerID() {
+    var jobID = getParameterByName('jobID');
+    var employerID = getParameterByName('employerID');
+    return jobID !== null && employerID !== null;
+}
 
     // Set the value of the jobID and employerID input fields based on the URL parameters
     document.addEventListener("DOMContentLoaded", function () {
@@ -276,39 +291,6 @@
         }
     });
 
-    /*
-    function applyBold() {
-    var textarea = document.getElementById("comment");
-    var button = document.getElementById("boldButton");
-    var isActive = textarea.style.fontWeight === 'bold';
-    textarea.style.fontWeight = isActive ? 'normal' : 'bold';
-    button.classList.toggle('active', !isActive);
-    }
-
-    function applyItalic() {
-    var textarea = document.getElementById("comment");
-    var button = document.getElementById("italicButton");
-    var isActive = textarea.style.fontStyle === 'italic';
-    textarea.style.fontStyle = isActive ? 'normal' : 'italic';
-    button.classList.toggle('active', !isActive);
-    }
-
-    function applyUnderline() {
-    var textarea = document.getElementById("comment");
-    var button = document.getElementById("underlineButton");
-    var isActive = textarea.style.textDecoration === 'underline';
-    textarea.style.textDecoration = isActive ? 'none' : 'underline';
-    button.classList.toggle('active', !isActive);
-    }
-
-    function textAlign(direction) {
-    var textarea = document.getElementById("comment");
-    var buttons = document.querySelectorAll('.align-btn');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    document.getElementById(direction + "Button").classList.add('active');
-    textarea.style.textAlign = direction;
-    }
-    */
     </script>
 
     <style>

@@ -3,7 +3,7 @@ SESSION_START();
 
 if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
     header("Location: dashboard_myaccount.php");
-	exit();
+    exit();
 }
 ?>
 
@@ -174,7 +174,7 @@ if (isset($_SESSION['AccountID']) && $_SESSION['Role'] == 2) {
 
 
 
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
 
 
