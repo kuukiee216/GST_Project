@@ -53,7 +53,7 @@
     <!--End Navbar-->
 
     <div class="container pt-4 pb-5" style="width: 50%;">
-        <h2><b>Billing & Plans</b></h2>
+        <h2><b>My Billing</b></h2>
         <h4 class="pt-4"><b>Billing Details</b></h4>
 
         <div class="card">

@@ -6,7 +6,7 @@ require_once '../PHPFiles/Essentials/db_config_local.php';
 require_once '../vendor/stripe/stripe-php/init.php';
 
 // Initialize Stripe with your API keys
-\Stripe\Stripe::setApiKey('sk_test_51PFDxmCkPh52z8OSVcAFZKSDs23OkoXC9AFfqsGbusDNjARsYG7zhiJkBXXL9HsZjPgK7fFUyM5SYU9EmiY4JTfv00zsiiKvtX');
+\Stripe\Stripe::setApiKey('sk_test_51PIlazFcYOGlOU21k42cm7ZnReCbUpgiOp0tEik7q7hGxp7Vt06KIBq4GYU3r411NEQQIvOZj1F5D6mZX6hKa8vA00CEeP5bvu');
 
 // Retrieve the request's body and parse it as JSON
 $input = @file_get_contents("php://input");
@@ -20,7 +20,7 @@ try {
     $event = \Stripe\Webhook::constructEvent(
         $input,
         $signature_header,
-        'your_webhook_secret' // Replace 'your_webhook_secret' with your actual webhook secret
+        'whsec_caa195e8fba4186663fcef79674b0c7958d4361e348c1c9209a7a8794ffd65aa' // Replace 'your_webhook_secret' with your actual webhook secret
     );
 } catch (\UnexpectedValueException $e) {
     // Invalid payload
@@ -49,7 +49,9 @@ switch ($event->type) {
         // For demonstration purposes, you can echo the details
         echo "Email: $email\n";
         echo "Cardholder Name: $cardholderName\n";
-        echo "Card Number: **** **** **** $cardNumber\n";
+        echo "Card Number: **
+**
+** $cardNumber\n";
         echo "Expiry Date: $cardExpiryMonth/$cardExpiryYear\n";
         break;
     // Handle other event types as needed

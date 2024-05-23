@@ -83,7 +83,8 @@
                             <li>Credit to access our talent candidates</li>
                             <li>Include your company logo</li>
                         </ul>
-                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button" name="adType" value="2" data-value="2">Select</button>
+                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button"
+                            name="adType" value="2" data-value="2">Select</button>
 
 
                     </div>
@@ -122,15 +123,16 @@
                                 <li>Priority listing in search</li>
                             </ul>
                         </div>
-                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button" name="adType" value="1" data-value="1">Select</button>
+                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button"
+                            name="adType" value="1" data-value="1">Select</button>
 
                     </div>
                 </div>
             </div>
-            </form>
-            <br>
-            <br>
-            <form id="seasonalPlan">
+        </form>
+        <br>
+        <br>
+        <form id="seasonalPlan">
             <h2 class="container d-flex justify-content-center"><b>Seasonal Ad Type</b></h2>
             <div class="container-fluid" style="width: 50%;">
                 <div class="row">
@@ -171,7 +173,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                            <button class="btn btn-primary btn-block btn-selected" type="button" name="adType" value="1" data-value="1"><b>Select</b></button>
+                                <button class="btn btn-primary btn-block btn-selected" type="button" name="adType"
+                                    value="1" data-value="1"><b>Select</b></button>
 
                             </div>
                         </div>
@@ -209,7 +212,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                            <button class="btn btn-light btn-block btn-selected" type="button" name="adType" value="3" data-value="3"><b>Select</b></button>
+                                <button class="btn btn-light btn-block btn-selected" type="button" name="adType"
+                                    value="3" data-value="3"><b>Select</b></button>
 
                             </div>
                         </div>
@@ -247,7 +251,8 @@
                                 </ul>
                             </div>
                             <div class="card-footer">
-                            <button class="btn btn-primary btn-block btn-selected" type="button" name="adType" value="2" data-value="2"><b>Select</b></button>
+                                <button class="btn btn-primary btn-block btn-selected" type="button" name="adType"
+                                    value="2" data-value="2"><b>Select</b></button>
 
                             </div>
                         </div>
@@ -267,13 +272,13 @@
 
                 <div class="row">
                     <div class="container justify-content-center form-group mt-3 mb-5">
-                    <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
+                        <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
                     </div>
                 </div>
             </div>
     </div>
-            </form>
-    
+    </form>
+
 
     </div>
 
@@ -357,7 +362,7 @@
     <script src="../assets/js/atlantis.min.js"></script>
     <script src="../ajax/Recruiter/GetAdValue.js"></script>
 
-<script>
+    <script>
     $(document).ready(function() {
         $('#continueButton').click(function(e) {
             e.preventDefault();
@@ -366,10 +371,9 @@
             AddSeasonalType('seasonalPlan');
         });
 
-        
-    });
 
-</script>
+    });
+    </script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Function to handle selection logic
@@ -382,7 +386,7 @@
                     });
                     // Add 'selected' class to the clicked button
                     this.classList.add(selectedClass);
-                    
+
                     // Console log the selected value
                     console.log('Selected value:', this.getAttribute('data-value'));
                 });
@@ -423,7 +427,7 @@
             }
         });
     });
-</script>
+    </script>
 
 
 
@@ -441,34 +445,34 @@
     }
 
     .btn-selected {
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
-}
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+    }
 
-.btn-selected:hover {
-    background-color: var(--btn-selected-primary-color) !important;
-    color: white !important;
-    border-color: var(--btn-selected-primary-color) !important;
-}
+    .btn-selected:hover {
+        background-color: var(--btn-selected-primary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-primary-color) !important;
+    }
 
-/* Selected state */
-.btn-selected.selected {
-    background-color: var(--btn-selected-primary-color) !important;
-    color: white !important;
-    border-color: var(--btn-selected-primary-color) !important;
-}
+    /* Selected state */
+    .btn-selected.selected {
+        background-color: var(--btn-selected-primary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-primary-color) !important;
+    }
 
-/* Adjust hover and selected states for secondary buttons if needed */
-.btn-selected-secondary:hover {
-    background-color: var(--btn-selected-secondary-color) !important;
-    color: white !important;
-    border-color: var(--btn-selected-secondary-color) !important;
-}
+    /* Adjust hover and selected states for secondary buttons if needed */
+    .btn-selected-secondary:hover {
+        background-color: var(--btn-selected-secondary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-secondary-color) !important;
+    }
 
-.btn-selected-secondary.selected {
-    background-color: var(--btn-selected-secondary-color) !important;
-    color: white !important;
-    border-color: var(--btn-selected-secondary-color) !important;
-}
+    .btn-selected-secondary.selected {
+        background-color: var(--btn-selected-secondary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-secondary-color) !important;
+    }
 
     .btn-select:hover {
         background-color: var(--btn-primary-color) !important;

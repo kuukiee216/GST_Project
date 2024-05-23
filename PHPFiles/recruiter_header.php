@@ -45,11 +45,11 @@
                             </li>
                             <li>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">My Account</a>
+                                <a class="dropdown-item" href="../recruiter/dashboard_myaccount.php">Account</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">My Billing</a>
+                                <a class="dropdown-item" href="../recruiter/dashboard_billing.php">My Billing</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" href="../PHPFiles/Recruiter/logout.php">Logout</a>
                             </li>
                         </div>
                         <div class="scroll-element scroll-x">
