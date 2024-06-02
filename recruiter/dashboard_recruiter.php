@@ -88,7 +88,8 @@ if (isset($_SESSION['AccountID'])) {
                     </div>
                 </div>
                 <div class="col-12 col-md-4 text-center pt-3">
-                    <a href="../recruiter/create_jobad.php" class="btn btn-danger" id="createJobAdBtn">Create a Job Ad</a>
+                    <a href="../recruiter/create_jobad.php" class="btn btn-danger" id="createJobAdBtn">Create a Job
+                        Ad</a>
                 </div>
             </div>
         </div>
@@ -173,7 +174,10 @@ if (isset($_SESSION['AccountID'])) {
 
     document.getElementById('createJobAdBtn').addEventListener('click', function() {
         var jobAdKey = 'jobAd_' + new Date().getTime();
-        localStorage.setItem(jobAdKey, JSON.stringify({ title: '', description: '' }));
+        localStorage.setItem(jobAdKey, JSON.stringify({
+            title: '',
+            description: ''
+        }));
     });
     </script>
 

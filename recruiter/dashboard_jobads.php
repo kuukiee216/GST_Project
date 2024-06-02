@@ -46,6 +46,29 @@ if (isset($_SESSION['AccountID'])) {
 
     <title>Japan Jobs Dashboard</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
+
+
+
+
+    <style>
+    body,
+    html {
+        height: 100%;
+    }
+
+    .content {
+        min-height: calc(100vh - 56px - 70px);
+        /* Adjust 56px for header and 70px for footer height */
+    }
+
+    footer.footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        height: 70px;
+        /* Footer height */
+    }
+    </style>
 </head>
 
 <body>
@@ -57,53 +80,60 @@ if (isset($_SESSION['AccountID'])) {
         <img src="../assets/img/bg_recruiter.png" style="width:100%">
     </div>
 
+    <div class="content">
+        <div class="container-fluid">
+            <div class="container d-flex justify-content-center min-vh-100">
+                <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border" role="tablist">
+                    <li class="nav-item submenu">
+                        <a class="nav-link active show" id="pills-open-tab-nobd" data-toggle="pill"
+                            href="#pills-open-nobd" role="tab" aria-controls="pills-open-nobd"
+                            aria-selected="false">Open</a>
+                    </li>
+                    <li class="nav-item submenu">
+                        <a class="nav-link" id="pills-expired-tab-nobd" data-toggle="pill" href="#pills-expired-nobd"
+                            role="tab" aria-controls="pills-expried-nobd" aria-selected="false">Expired</a>
+                    </li>
+                    <li class="nav-item submenu">
+                        <a class="nav-link" id="pills-draft-tab-nobd" data-toggle="pill" href="#pills-draft-nobd"
+                            role="tab" aria-controls="pills-draft-nobd" aria-selected="false">Draft</a>
+                    </li>
+                    <li class="nav-item submenu">
+                        <a class="nav-link" id="pills-candidates-tab-nobd" data-toggle="pill"
+                            href="#pills-candidates-nobd" role="tab" aria-controls="pills-candidates-nobd"
+                            aria-selected="false">Your Candidates</a>
+                    </li>
+                </ul>
+            </div>
 
-    <div class="container d-flex justify-content-center min-vh-100">
-        <ul class="nav nav-pills nav-secondary nav-pills-no-bd" id="pills-tab-without-border" role="tablist">
-            <li class="nav-item submenu">
-                <a class="nav-link active show" id="pills-open-tab-nobd" data-toggle="pill" href="#pills-open-nobd"
-                    role="tab" aria-controls="pills-open-nobd" aria-selected="false">Open</a>
-            </li>
-            <li class="nav-item submenu">
-                <a class="nav-link" id="pills-expired-tab-nobd" data-toggle="pill" href="#pills-expired-nobd" role="tab"
-                    aria-controls="pills-expried-nobd" aria-selected="false">Expired</a>
-            </li>
-            <li class="nav-item submenu">
-                <a class="nav-link" id="pills-draft-tab-nobd" data-toggle="pill" href="#pills-draft-nobd" role="tab"
-                    aria-controls="pills-draft-nobd" aria-selected="false">Draft</a>
-            </li>
-            <li class="nav-item submenu">
-                <a class="nav-link" id="pills-candidates-tab-nobd" data-toggle="pill" href="#pills-candidates-nobd"
-                    role="tab" aria-controls="pills-candidates-nobd" aria-selected="false">Your Candidates</a>
-            </li>
-        </ul>
+            <div class="tab-content mt-2 mb-3" id="pills-without-border-tabContent">
+                <div class="tab-pane fade active show" id="pills-open-nobd" role="tabpanel"
+                    aria-labelledby="pills-open-tab-nobd">
+                    <div id="openJobContainer" class="container" style="width: 80%;"></div>
+                </div>
+                <div class="tab-pane fade" id="pills-expired-nobd" role="tabpanel"
+                    aria-labelledby="pills-expired-tab-nobd">
+                    <div id="expiredJobContainer" class="container" style="width: 80%;"></div>
+                </div>
+                <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
+                    <div id="draftJobContainer" class="container" style="width: 80%;"></div>
+                </div>
+                <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
+                    aria-labelledby="pills-candidates-tab-nobd">
+                    <div id="candidate" class="container" style="width: 80%;"></div>
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="tab-content mt-2 mb-3" id="pills-without-border-tabContent">
-        <div class="tab-pane fade active show" id="pills-open-nobd" role="tabpanel"
-            aria-labelledby="pills-open-tab-nobd">
-            <div id="openJobContainer" class="container" style="width: 80%;"></div>
-        </div>
-        <div class="tab-pane fade" id="pills-expired-nobd" role="tabpanel" aria-labelledby="pills-expired-tab-nobd">
-            <div id="expiredJobContainer" class="container" style="width: 80%;"></div>
-        </div>
-        <div class="tab-pane fade" id="pills-draft-nobd" role="tabpanel" aria-labelledby="pills-draft-tab-nobd">
-            <div id="draftJobContainer" class="container" style="width: 80%;"></div>
-        </div>
-        <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
-            aria-labelledby="pills-candidates-tab-nobd">
-            <div id="candidate" class="container" style="width: 80%;"></div>
 
-           
-        </div>
-    </div>
-
-
-    <?php include '../PHPFiles/recruiter_footer.php' ?>
+    <!--bottom navbar-->
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
 
 
-    
+
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
