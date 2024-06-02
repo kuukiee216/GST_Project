@@ -128,7 +128,6 @@ function confirmStopJobPosting(jobID) {
     });
 }
 
-
 // Stop job posting
 function stopJobPosting(jobID) {
     return $.ajax({
@@ -162,7 +161,6 @@ function stopJobPosting(jobID) {
 }
 
 //expired
-
 function GetExpiredJobTitles() {
     return $.ajax({
         type: "POST",
@@ -175,7 +173,8 @@ function GetExpiredJobTitles() {
             $.each(data, function(index, job) {
                 expiredJobTitle.push({ 
                     'JobTitle': job.JobTitle,
-                    'Status': job.Status
+                    'Status': job.Status,
+                    'ApplicationCount': job.ApplicationCount
                 });
             });
         } else {
@@ -226,9 +225,8 @@ function displayExpiredJobTitles() {
                 '<div style="text-decoration: underline;">' + job.JobTitle + '</div><br>' +
                 '</div>' +
                 '</div>' +
-                '<div class="col fw-bold">-</div>' +
-                '<div class="col fw-bold">-</div>' +
-                '<div class="col fw-bold">-</div>' +
+                '<div class="col fw-bold">' + job.ApplicationCount + '</div>' +
+                '<div class="col fw-bold">' + '<i class="fa fa-redo" data-job-id="' + job.JobID + '"></i>' +'</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
@@ -239,7 +237,6 @@ function displayExpiredJobTitles() {
 }
 
 //draft
-
 function GetDraftJobTitles() {
     return $.ajax({
         type: "POST",
@@ -312,8 +309,6 @@ function displayDraftJobTitles() {
         });
     }
 }
-
-
 
 // Candidate
 function GetCandidate() {

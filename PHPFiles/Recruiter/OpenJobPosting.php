@@ -11,25 +11,25 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 try {
     $dataResultArray = array();
 
-    $sQryRetrieveApplicantList = " SELECT 
+    $sQryRetrieveApplicantList = " SELECT
     c.JobID,
-    c.JobTitle, 
+    c.JobTitle,
     c.Status,
-    j.ViewCount, 
+    j.ViewCount,
     COUNT(a.ApplicationID) AS ApplicationCount
-FROM
-    tbl_companyjob c
-INNER JOIN
-    tbl_jobposting j ON j.JobID = c.JobID
-LEFT JOIN
-    tbl_application a ON a.JobPostingID = j.JobPostingID
-WHERE
-    c.Status IN (1, 2)
-GROUP BY
-    j.JobPostingID
-ORDER BY
-    j.DateTimeStamp DESC
-LIMIT 5;";
+    FROM
+        tbl_companyjob c
+    INNER JOIN
+        tbl_jobposting j ON j.JobID = c.JobID
+    LEFT JOIN
+        tbl_application a ON a.JobPostingID = j.JobPostingID
+    WHERE
+        c.Status IN (1, 2)
+    GROUP BY
+        j.JobPostingID
+    ORDER BY
+        j.DateTimeStamp DESC
+    LIMIT 5;";
 
     $stmtRetrieveApplicantList = $connection->prepare($sQryRetrieveApplicantList);
     $stmtRetrieveApplicantList->execute();

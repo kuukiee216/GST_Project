@@ -3,7 +3,7 @@ SESSION_START();
 
 if (isset($_SESSION['AccountID'])) {
 
-}else {
+} else {
     header("Location: ../PHPFiles/Recruiter/logout.php");
 
 }
@@ -73,7 +73,7 @@ if (isset($_SESSION['AccountID'])) {
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="pb-3">
