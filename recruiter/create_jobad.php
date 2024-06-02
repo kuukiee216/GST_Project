@@ -157,7 +157,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     </div>
                 </div>
 
-               
+
 
                 <div class="form-check row">
                     <label class="form-check-label">
@@ -298,12 +298,12 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                 console.log(data.error);
                 return;
             }
-            var select = $("#jobtitles"); 
-            select.empty(); 
-            
+            var select = $("#jobtitles");
+            select.empty();
+
             $.each(data, function(index, jobTitle) {
                 select.append($("<option>", {
-                    value: jobTitle.JobTitleID, 
+                    value: jobTitle.JobTitleID,
                     text: jobTitle.JobTItleName
                 }));
             });
@@ -565,7 +565,6 @@ function loadCities(provinceID) {
         if (formData.country != null && formData.country != undefined) {
             localStorage.setItem('formData', JSON.stringify(formData));
         }
-        AddFirst('firstForm');
     });
 });
 function loadCountries() {

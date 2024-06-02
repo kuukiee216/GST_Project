@@ -3,7 +3,7 @@ SESSION_START();
 
 if (isset($_SESSION['AccountID'])) {
 
-}else {
+} else {
     header("Location: ../PHPFiles/Recruiter/logout.php");
 
 }
@@ -88,7 +88,7 @@ if (isset($_SESSION['AccountID'])) {
                     </div>
                 </div>
                 <div class="col-12 col-md-4 text-center pt-3">
-                    <a href="../recruiter/create_jobad.php" class="btn btn-danger">Create a Job Ad</a>
+                    <a href="../recruiter/create_jobad.php" class="btn btn-danger" id="createJobAdBtn">Create a Job Ad</a>
                 </div>
             </div>
         </div>
@@ -170,6 +170,11 @@ if (isset($_SESSION['AccountID'])) {
             $('#Div-filter').removeClass('d-none d-sm-none');
         }
     }
+
+    document.getElementById('createJobAdBtn').addEventListener('click', function() {
+        var jobAdKey = 'jobAd_' + new Date().getTime();
+        localStorage.setItem(jobAdKey, JSON.stringify({ title: '', description: '' }));
+    });
     </script>
 
 

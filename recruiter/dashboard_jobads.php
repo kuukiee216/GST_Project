@@ -92,35 +92,9 @@ if (isset($_SESSION['AccountID'])) {
         </div>
         <div class="tab-pane fade" id="pills-candidates-nobd" role="tabpanel"
             aria-labelledby="pills-candidates-tab-nobd">
-            <div class="container" style="width: 80%;">
-                <h2 class="pt-3">Your Candidates</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-5 text-start">
+            <div id="candidate" class="container" style="width: 80%;"></div>
 
-                            <div class="col">Name</div>
-                            <div class="col">Status</div>
-                            <div class="col">Most Recent Role</div>
-                            <div class="col">Most Recent Application</div>
-                            <div class="col">Previous Application</div>
-                            <div class="col">Action</div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row row-cols-5 text-start">
-                            <div class="col fw-bold" style="text-decoration: underline;">Genesis P. Manale</div>
-                            <div class="col"><span class="badge badge-success">Hired</span></div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                            <div class="col fw-bold">-</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </div>
 
@@ -129,39 +103,7 @@ if (isset($_SESSION['AccountID'])) {
 
 
 
-    <!--bottom navbar-->
-    <!-- <footer class="footer text-white fixed-bottom" style="background-color:#187498">
-        <div class="container-fluid">
-            <nav class="pull-left">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Privacy
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Terms & Condition
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Protect yourself online
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="ml-auto">
-                © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-            </div>
-        </div>
-    </footer> -->
-
+    
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -253,6 +195,10 @@ if (isset($_SESSION['AccountID'])) {
 
         GetDraftJobTitles().then(function() {
             displayDraftJobTitles();
+        });
+
+        GetCandidate().then(function() {
+            displayCandidate();
         });
     });
     </script>
