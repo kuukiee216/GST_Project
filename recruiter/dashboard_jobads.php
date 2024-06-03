@@ -126,7 +126,6 @@ if (isset($_SESSION['AccountID'])) {
         </div>
     </div>
 
-
     <!--bottom navbar-->
     <?php include '../PHPFiles/recruiter_footer.php'?>
 

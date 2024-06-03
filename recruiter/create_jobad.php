@@ -36,7 +36,7 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
             urls: ['../assets/css/fonts.min.css']
         },
         active: function() {
-            sessionStorage.fonts = true;
+            sionStorage.fonts = true;
         }
     });
     </script>
@@ -83,10 +83,10 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                 </div>
                 <br>
                 <h3 class="mt-3">Business Address</h3>
-            <h5 class="text-muted mt-2">To protect candidates and seek from fraud, we verify the business address of
-                all
-                first time hirers .
-                Don't worry, we only need to do this one.</h5>
+                <h5 class="text-muted mt-2">To protect candidates and seek from fraud, we verify the business address of
+                    all
+                    first time hirers .
+                    Don't worry, we only need to do this one.</h5>
 
                 <h5 class="mt-3">Country</h5>
                 <select id="country" name="country" class="form-control" required>
@@ -159,19 +159,25 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
 
 
-                <div class="form-check row">
-                    <label class="form-check-label">
-                        <input class="form-check-input" id="hideSalary" name="hideSalary" type="checkbox" value="" >
-                        <h5 class="form-check-sign">Hide Salary on your Ad.</h5>
-
-                    </label>
-                    <h4 class="mt-2"><b>Advertise Privately</b></h4>
-                    <label class="form-check-label">
-                        <input class="form-check-input" id="advertisePrivately" name="advertisePrivately"
-                            type="checkbox" value="" >
-                        <h5 class="form-check-sign">Hide company Name, reviews, and branding on job ads.</h5>
-                    </label>
+                <div class="row mt-3">
+                    <div class="col-12 ml-3">
+                        <label class="form-check-label">
+                            <input class="form-check-input" id="hideSalary" name="hideSalary" type="checkbox" value="">
+                            <span class="form-check-sign">Hide Salary on your Ad.</span>
+                        </label>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <h4><b>Advertise Privately</b></h4>
+                        <label class="form-check-label ml-3">
+                            <input class="form-check-input" id="advertisePrivately" name="advertisePrivately"
+                                type="checkbox" value="">
+                            <span class="form-check-sign">Hide company Name, reviews, and branding on job ads.</span>
+                        </label>
+                    </div>
                 </div>
+
+
+
 
                 <div class="form-group mt-3 mb-5">
                     <button class="btn btn-danger" id="btnAddFirst" type="button">Continue</button>
@@ -274,202 +280,124 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
         });
         GetInfo();
         $('#country').change(function() {
-        var countryID = $(this).val();
-        console.log("Selected Country ID:", countryID);
-    });
+            var countryID = $(this).val();
+            console.log("Selected Country ID:", countryID);
+        });
 
-    $('#province').change(function() {
-        var provinceID = $(this).val();
-        console.log("Selected Province ID:", provinceID);
-    });
+        $('#province').change(function() {
+            var provinceID = $(this).val();
+            console.log("Selected Province ID:", provinceID);
+        });
 
-    $('#city').change(function() {
-        var cityID = $(this).val();
-        console.log("Selected City ID:", cityID);
-    });
+        $('#city').change(function() {
+            var cityID = $(this).val();
+            console.log("Selected City ID:", cityID);
+        });
 
-    function GetInfo() {
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../PHPFiles/Recruiter/getJobTitle.php",
-        success: function(data) {
-            if (data.error) {
-                console.log(data.error);
-                return;
-            }
-            var select = $("#jobtitles");
-            select.empty();
+        function GetInfo() {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "../PHPFiles/Recruiter/getJobTitle.php",
+                success: function(data) {
+                    if (data.error) {
+                        console.log(data.error);
+                        return;
+                    }
+                    var select = $("#jobtitles");
+                    select.empty();
 
-            $.each(data, function(index, jobTitle) {
-                select.append($("<option>", {
-                    value: jobTitle.JobTitleID,
-                    text: jobTitle.JobTItleName
-                }));
+                    $.each(data, function(index, jobTitle) {
+                        select.append($("<option>", {
+                            value: jobTitle.JobTitleID,
+                            text: jobTitle.JobTItleName
+                        }));
+                    });
+                    var formData = localStorage.getItem('formData');
+                    if (formData) {
+                        // Parse the stored data
+                        var storedData = JSON.parse(formData);
+
+                        // Set the selected job title based on the stored form data
+                        var storedJobTitleValue = storedData.jobtitles;
+                        $('#jobtitles').val(storedJobTitleValue);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error fetching data: " + error);
+                }
             });
-            var formData = localStorage.getItem('formData');
-            if (formData) {
-                // Parse the stored data
-                var storedData = JSON.parse(formData);
-
-                // Set the selected job title based on the stored form data
-                var storedJobTitleValue = storedData.jobtitles;
-                $('#jobtitles').val(storedJobTitleValue);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching data: " + error);
         }
     });
-}
-});
     </script>
 
 
-<script>
+    <script>
     $(document).ready(function() {
-    loadCountries();
+        loadCountries();
 
-    $('#country').change(function() {
-        var countryID = $(this).val();
-        if (countryID) {
-            loadProvinces(countryID);
-        } else {
-            $('#provinceDiv').hide();
-            $('#cityDiv').hide();
-            $('#province').empty();
-            $('#city').empty();
-        }
+        $('#country').change(function() {
+            var countryID = $(this).val();
+            if (countryID) {
+                loadProvinces(countryID);
+            } else {
+                $('#provinceDiv').hide();
+                $('#cityDiv').hide();
+                $('#province').empty();
+                $('#city').empty();
+            }
+        });
+
+        $('#province').change(function() {
+            var provinceID = $(this).val();
+            if (provinceID) {
+                loadCities(provinceID);
+            } else {
+                $('#cityDiv').hide();
+                $('#city').empty();
+            }
+        });
     });
 
-    $('#province').change(function() {
-        var provinceID = $(this).val();
-        if (provinceID) {
-            loadCities(provinceID);
-        } else {
-            $('#cityDiv').hide();
-            $('#city').empty();
-        }
-    });
-});
+    function loadCountries() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "../PHPFiles/Recruiter/getCountry.php",
+            success: function(data) {
+                var countrySelect = $("#country");
+                countrySelect.empty().append('<option value="">Select Country</option>');
+                $.each(data, function(index, country) {
+                    countrySelect.append($('<option>', {
+                        value: country.CountryID,
+                        text: country.CountryName
+                    }));
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log("Error fetching countries: " + error);
+            }
+        });
+    }
 
-function loadCountries() {
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../PHPFiles/Recruiter/getCountry.php",
-        success: function(data) {
-            var countrySelect = $("#country");
-            countrySelect.empty().append('<option value="">Select Country</option>');
-            $.each(data, function(index, country) {
-                countrySelect.append($('<option>', {
-                    value: country.CountryID,
-                    text: country.CountryName
-                }));
-            });
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching countries: " + error);
-        }
-    });
-}
-
-function loadProvinces(countryID) {
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../PHPFiles/Recruiter/getProvince.php",
-        data: { countryID: countryID },
-        success: function(data) {
-            var provinceSelect = $("#province");
-            provinceSelect.empty().append('<option value="">Select Province</option>');
-            $.each(data, function(index, province) {
-                provinceSelect.append($('<option>', {
-                    value: province.ProvinceID,
-                    text: province.ProvinceName
-                }));
-            });
-            $('#provinceDiv').show();
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching provinces: " + error);
-        }
-    });
-}
-
-function loadCities(provinceID) {
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../PHPFiles/Recruiter/getCity.php",
-        data: { provinceID: provinceID },
-        success: function(data) {
-            var citySelect = $("#city");
-            citySelect.empty().append('<option value="">Select City</option>');
-            $.each(data, function(index, city) {
-                citySelect.append($('<option>', {
-                    value: city.CityID,
-                    text: city.CityName
-                }));
-            });
-            $('#cityDiv').show();
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching cities: " + error);
-        }
-    });
-}
-
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const countrySelect = document.getElementById('country');
-    const provinceDiv = document.getElementById('provinceDiv');
-    const provinceSelect = document.getElementById('province');
-    const cityDiv = document.getElementById('cityDiv');
-    const citySelect = document.getElementById('city');
-
-    countrySelect.addEventListener('change', function () {
-        const selectedCountry = countrySelect.value;
-        if (selectedCountry) {
-            loadProvinces(selectedCountry); // Call function to load provinces
-            provinceDiv.style.display = 'block';
-            cityDiv.style.display = 'none'; // Hide city until a province is selected
-        } else {
-            provinceDiv.style.display = 'none';
-            cityDiv.style.display = 'none';
-        }
-        document.getElementById('country').value = selectedCountry;
-    });
-
-    provinceSelect.addEventListener('change', function () {
-        const selectedProvince = provinceSelect.value;
-        if (selectedProvince) {
-            loadCities(selectedProvince); // Call function to load cities
-            cityDiv.style.display = 'block';
-        } else {
-            cityDiv.style.display = 'none';
-        }
-        document.getElementById('province').value = selectedProvince;
-    });
-
-    // Function to load provinces dynamically from the database
     function loadProvinces(countryID) {
         $.ajax({
             type: "POST",
             dataType: "json",
             url: "../PHPFiles/Recruiter/getProvince.php",
-            data: { countryID: countryID },
+            data: {
+                countryID: countryID
+            },
             success: function(data) {
-                provinceSelect.innerHTML = '<option value="">Select Province</option>'; // Reset options
-                data.forEach(function (province) {
-                    const option = document.createElement('option');
-                    option.value = province.ProvinceID;
-                    option.textContent = province.ProvinceName;
-                    provinceSelect.appendChild(option);
+                var provinceSelect = $("#province");
+                provinceSelect.empty().append('<option value="">Select Province</option>');
+                $.each(data, function(index, province) {
+                    provinceSelect.append($('<option>', {
+                        value: province.ProvinceID,
+                        text: province.ProvinceName
+                    }));
                 });
-                provinceDiv.style.display = 'block';
+                $('#provinceDiv').show();
             },
             error: function(xhr, status, error) {
                 console.log("Error fetching provinces: " + error);
@@ -482,168 +410,258 @@ function loadCities(provinceID) {
             type: "POST",
             dataType: "json",
             url: "../PHPFiles/Recruiter/getCity.php",
-            data: { provinceID: provinceID },
+            data: {
+                provinceID: provinceID
+            },
             success: function(data) {
-                citySelect.innerHTML = '<option value="">Select City</option>'; // Reset options
-                data.forEach(function (city) {
-                    const option = document.createElement('option');
-                    option.value = city.CityID;
-                    option.textContent = city.CityName;
-                    citySelect.appendChild(option);
+                var citySelect = $("#city");
+                citySelect.empty().append('<option value="">Select City</option>');
+                $.each(data, function(index, city) {
+                    citySelect.append($('<option>', {
+                        value: city.CityID,
+                        text: city.CityName
+                    }));
                 });
-                cityDiv.style.display = 'block';
+                $('#cityDiv').show();
             },
             error: function(xhr, status, error) {
                 console.log("Error fetching cities: " + error);
             }
         });
     }
-});
-</script>
+    </script>
 
-<script>
-   var storedData;
-   $(document).ready(function() {
-    loadCountries();
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const countrySelect = document.getElementById('country');
+        const provinceDiv = document.getElementById('provinceDiv');
+        const provinceSelect = document.getElementById('province');
+        const cityDiv = document.getElementById('cityDiv');
+        const citySelect = document.getElementById('city');
 
-    // Check if there is stored form data
-    var formData = localStorage.getItem('formData');
-    console.log("Stored form data:", formData); // Log the stored form data
-    if (formData) {
-        // Parse the stored data and populate the form fields
-        var storedData = JSON.parse(formData);
-        var storedJobTitleValue = storedData.jobtitles;
-        $('#jobtitles').val(storedJobTitleValue);
+        countrySelect.addEventListener('change', function() {
+            const selectedCountry = countrySelect.value;
+            if (selectedCountry) {
+                loadProvinces(selectedCountry); // Call function to load provinces
+                provinceDiv.style.display = 'block';
+                cityDiv.style.display = 'none'; // Hide city until a province is selected
+            } else {
+                provinceDiv.style.display = 'none';
+                cityDiv.style.display = 'none';
+            }
+            document.getElementById('country').value = selectedCountry;
+        });
 
-        if (storedData.country) {
-            // Load countries and set the selected value
-            loadCountries(function() {
-                $('#country').val(storedData.country).change();
+        provinceSelect.addEventListener('change', function() {
+            const selectedProvince = provinceSelect.value;
+            if (selectedProvince) {
+                loadCities(selectedProvince); // Call function to load cities
+                cityDiv.style.display = 'block';
+            } else {
+                cityDiv.style.display = 'none';
+            }
+            document.getElementById('province').value = selectedProvince;
+        });
+
+        // Function to load provinces dynamically from the database
+        function loadProvinces(countryID) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "../PHPFiles/Recruiter/getProvince.php",
+                data: {
+                    countryID: countryID
+                },
+                success: function(data) {
+                    provinceSelect.innerHTML =
+                        '<option value="">Select Province</option>'; // Reset options
+                    data.forEach(function(province) {
+                        const option = document.createElement('option');
+                        option.value = province.ProvinceID;
+                        option.textContent = province.ProvinceName;
+                        provinceSelect.appendChild(option);
+                    });
+                    provinceDiv.style.display = 'block';
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error fetching provinces: " + error);
+                }
             });
         }
-        if (storedData.country) {
-            // Load provinces and set the selected value
-            loadProvinces(storedData.country, function() {
-                $('#province').val(storedData.province);
+
+        function loadCities(provinceID) {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "../PHPFiles/Recruiter/getCity.php",
+                data: {
+                    provinceID: provinceID
+                },
+                success: function(data) {
+                    citySelect.innerHTML = '<option value="">Select City</option>'; // Reset options
+                    data.forEach(function(city) {
+                        const option = document.createElement('option');
+                        option.value = city.CityID;
+                        option.textContent = city.CityName;
+                        citySelect.appendChild(option);
+                    });
+                    cityDiv.style.display = 'block';
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error fetching cities: " + error);
+                }
             });
         }
-        if (storedData.province) {
-            // Load cities and set the selected value
-            loadCities(storedData.province, function() {
-                $('#city').val(storedData.city);
-            });
-        }
-        $('input[name=optionsRadios][value=' + storedData.optionsRadios + ']').prop('checked', true);
-        $('#currencySelect').val(storedData.currencySelect);
-        $('#min').val(storedData.min);
-        $('#max').val(storedData.max);
-        if (storedData.hideSalary) {
-            $('#hideSalary').prop('checked', true);
-        }
-        if (storedData.advertisePrivately) {
-            $('#advertisePrivately').prop('checked', true);
+    });
+    </script>
+
+    <script>
+    var storedData;
+    $(document).ready(function() {
+        loadCountries();
+
+        // Check if there is stored form data
+        var formData = localStorage.getItem('formData');
+        console.log("Stored form data:", formData); // Log the stored form data
+        if (formData) {
+            // Parse the stored data and populate the form fields
+            var storedData = JSON.parse(formData);
+            var storedJobTitleValue = storedData.jobtitles;
+            $('#jobtitles').val(storedJobTitleValue);
+
+            if (storedData.country) {
+                // Load countries and set the selected value
+                loadCountries(function() {
+                    $('#country').val(storedData.country).change();
+                });
+            }
+            if (storedData.country) {
+                // Load provinces and set the selected value
+                loadProvinces(storedData.country, function() {
+                    $('#province').val(storedData.province);
+                });
+            }
+            if (storedData.province) {
+                // Load cities and set the selected value
+                loadCities(storedData.province, function() {
+                    $('#city').val(storedData.city);
+                });
+            }
+            $('input[name=optionsRadios][value=' + storedData.optionsRadios + ']').prop('checked', true);
+            $('#currencySelect').val(storedData.currencySelect);
+            $('#min').val(storedData.min);
+            $('#max').val(storedData.max);
+            if (storedData.hideSalary) {
+                $('#hideSalary').prop('checked', true);
+            }
+            if (storedData.advertisePrivately) {
+                $('#advertisePrivately').prop('checked', true);
+            }
+
+            // Trigger change event for country select to load provinces
+            $('#country').change();
         }
 
-        // Trigger change event for country select to load provinces
-        $('#country').change();
+        $('#btnAddFirst').click(function() {
+            // Store form data in local storage
+            var formData = {
+                jobtitles: $('#jobtitles').val(),
+                country: $('#country').val(),
+                province: $('#province').val(),
+                city: $('#city').val(),
+                optionsRadios: $('input[name=optionsRadios]:checked').val(),
+                currencySelect: $('#currencySelect').val(),
+                min: $('#min').val(),
+                max: $('#max').val(),
+                hideSalary: $('#hideSalary').prop('checked'),
+                advertisePrivately: $('#advertisePrivately').prop('checked')
+            };
+            if (formData.country != null && formData.country != undefined) {
+                localStorage.setItem('formData', JSON.stringify(formData));
+            }
+        });
+    });
+
+    function loadCountries() {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "../PHPFiles/Recruiter/getCountry.php",
+            success: function(data) {
+                var countrySelect = $("#country");
+                countrySelect.empty().append('<option value="">Select Country</option>');
+                $.each(data, function(index, country) {
+                    countrySelect.append($('<option>', {
+                        value: country.CountryID,
+                        text: country.CountryName
+                    }));
+                });
+                var storedCountryValue = storedData.country;
+                $('#country').val(storedCountryValue);
+            },
+            error: function(xhr, status, error) {
+                console.log("Error fetching countries: " + error);
+            }
+        });
     }
 
-    $('#btnAddFirst').click(function() {
-        // Store form data in local storage
-        var formData = {
-            jobtitles: $('#jobtitles').val(),
-            country: $('#country').val(),
-            province: $('#province').val(),
-            city: $('#city').val(),
-            optionsRadios: $('input[name=optionsRadios]:checked').val(),
-            currencySelect: $('#currencySelect').val(),
-            min: $('#min').val(),
-            max: $('#max').val(),
-            hideSalary: $('#hideSalary').prop('checked'),
-            advertisePrivately: $('#advertisePrivately').prop('checked')
-        };
-        if (formData.country != null && formData.country != undefined) {
-            localStorage.setItem('formData', JSON.stringify(formData));
-        }
-    });
-});
-function loadCountries() {
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../PHPFiles/Recruiter/getCountry.php",
-        success: function(data) {
-            var countrySelect = $("#country");
-            countrySelect.empty().append('<option value="">Select Country</option>');
-            $.each(data, function(index, country) {
-                countrySelect.append($('<option>', {
-                    value: country.CountryID,
-                    text: country.CountryName
-                }));
-            });
-            var storedCountryValue = storedData.country;
-            $('#country').val(storedCountryValue);
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching countries: " + error);
-        }
-    });
-}
-
-// Adjusted loadProvinces and loadCities to accept a callback function
-function loadProvinces(countryID, callback) {
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../PHPFiles/Recruiter/getProvince.php",
-        data: { countryID: countryID },
-        success: function(data) {
-            var provinceSelect = $("#province");
-            provinceSelect.empty().append('<option value="">Select Province</option>');
-            $.each(data, function(index, province) {
-                provinceSelect.append($('<option>', {
-                    value: province.ProvinceID,
-                    text: province.ProvinceName
-                }));
-            });
-            $('#provinceDiv').show();
-            if (typeof callback === 'function') {
-                callback(); // Execute the callback function
+    // Adjusted loadProvinces and loadCities to accept a callback function
+    function loadProvinces(countryID, callback) {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "../PHPFiles/Recruiter/getProvince.php",
+            data: {
+                countryID: countryID
+            },
+            success: function(data) {
+                var provinceSelect = $("#province");
+                provinceSelect.empty().append('<option value="">Select Province</option>');
+                $.each(data, function(index, province) {
+                    provinceSelect.append($('<option>', {
+                        value: province.ProvinceID,
+                        text: province.ProvinceName
+                    }));
+                });
+                $('#provinceDiv').show();
+                if (typeof callback === 'function') {
+                    callback(); // Execute the callback function
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Error fetching provinces: " + error);
             }
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching provinces: " + error);
-        }
-    });
-}
+        });
+    }
 
-function loadCities(provinceID, callback) {
-    $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "../PHPFiles/Recruiter/getCity.php",
-        data: { provinceID: provinceID },
-        success: function(data) {
-            var citySelect = $("#city");
-            citySelect.empty().append('<option value="">Select City</option>');
-            $.each(data, function(index, city) {
-                citySelect.append($('<option>', {
-                    value: city.CityID,
-                    text: city.CityName
-                }));
-            });
-            $('#cityDiv').show();
-            if (typeof callback === 'function') {
-                callback(); // Execute the callback function
+    function loadCities(provinceID, callback) {
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "../PHPFiles/Recruiter/getCity.php",
+            data: {
+                provinceID: provinceID
+            },
+            success: function(data) {
+                var citySelect = $("#city");
+                citySelect.empty().append('<option value="">Select City</option>');
+                $.each(data, function(index, city) {
+                    citySelect.append($('<option>', {
+                        value: city.CityID,
+                        text: city.CityName
+                    }));
+                });
+                $('#cityDiv').show();
+                if (typeof callback === 'function') {
+                    callback(); // Execute the callback function
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Error fetching cities: " + error);
             }
-        },
-        error: function(xhr, status, error) {
-            console.log("Error fetching cities: " + error);
-        }
-    });
-}
-
-</script>
+        });
+    }
+    </script>
 </body>
 
 </html>
