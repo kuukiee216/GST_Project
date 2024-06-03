@@ -140,6 +140,7 @@ if (isset($_SESSION['AccountID'])) {
 
         <div id="jobContainer" class="container" style="width: 80%;"></div>
 
+
     </div>
 
 
@@ -240,7 +241,9 @@ if (isset($_SESSION['AccountID'])) {
     <script>
     $(document).ready(function() {
         GetInfo();
-        
+        GetJobTitles().then(function() {
+            displayJobTitles();
+        });
     });
     </script>
 </body>

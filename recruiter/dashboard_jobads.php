@@ -126,6 +126,26 @@ if (isset($_SESSION['AccountID'])) {
         </div>
     </div>
 
+       <!-- Modal for viewing resume -->
+<div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resumeModalLabel">View Resume</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeResumeModal">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+            </div>
+            <div class="modal-body">
+                <iframe id="pdfViewer" width="100%" height="600px" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
     <!--bottom navbar-->
     <?php include '../PHPFiles/recruiter_footer.php'?>
 
@@ -231,6 +251,10 @@ if (isset($_SESSION['AccountID'])) {
         });
         GetInfo();
     });
+
+    $('#closeResumeModal').on('click', function() {
+    $('#resumeModal').modal('hide'); // Hide the modal
+});
     </script>
 </body>
 

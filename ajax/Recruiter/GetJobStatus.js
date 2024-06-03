@@ -411,19 +411,23 @@ function GetCandidate() {
         if (data && data.length > 0) {
             candidates = [];
 
-            $.each(data, function(index, job) {
+            $.each(data, function(index, candidate) {
+                console.log("candidate: ", candidate);
                 candidates.push({ 
-                    'JobTitle': job.JobTitle,
-                    'Status': job.Status,
-                    'JobID': job.JobID  // Assuming JobID is also part of the response
+                    'ApplicantID': candidate.ApplicantID,
+                    'ApplicantName': candidate.ApplicantName,
+                    'Status': candidate.Status,
+                    'MostRecentDate': candidate.MostRecentDate,
+                    'SecondMostRecentDate': candidate.SecondMostRecentDate || 'N/A',
+                    'ApplicationID': candidate.ApplicationID,
                 });
             });
             displayCandidate();
         } else {
-            console.log("No job titles found.");
+            console.log("No candidates found.");
         }
     }).fail(function(xhr, status, error) {
-        console.log("Error fetching job titles: " + error);
+        console.log("Error fetching candidates: " + error);
     });
 }
 
@@ -438,7 +442,6 @@ function displayCandidate() {
         '<div class="row row-cols-5 text-start">' +
         '<div class="col">Name</div>' +
         '<div class="col">Status</div>' +
-        '<div class="col">Most Recent Role</div>' +
         '<div class="col">Most Recent Application</div>' +
         '<div class="col">Previous Application</div>' +
         '<div class="col">Job Action</div>' +
@@ -458,33 +461,120 @@ function displayCandidate() {
             '</div>';
         jobContainer.append(noDataHtml);
     } else {
-        $.each(candidates, function(index, job) {
-            var statusBadgeHtml = job.Status === 4 ? '<span class="badge badge-primary">Draft</span>' : '';
+        $.each(candidates, function(index, candidate) {
+            var statusBadgeHtml;
+            switch (candidate.Status) {
+                case 0:
+                    statusBadgeHtml = '<span class="badge badge-warning">Pending</span>';
+                    break;
+                case 1:
+                    statusBadgeHtml = '<span class="badge badge-success">Hired</span>';
+                    break;
+                case 2:
+                    statusBadgeHtml = '<span class="badge badge-danger">Rejected</span>';
+                    break;
+                default:
+                    statusBadgeHtml = '<span class="badge badge-secondary">Unknown</span>';
+            }
 
-            var jobTitleRowHtml = '<div class="card">' +
+            var candidateRowHtml = '<div class="card">' +
                 '<div class="card-body">' +
                 '<div class="row row-cols-5 text-start">' +
+                '<div class="col">' + candidate.ApplicantName + '</div>' +
                 '<div class="col">' + statusBadgeHtml + '</div>' +
+                '<div class="col">' + candidate.MostRecentDate + '</div>' +
+                '<div class="col">' + candidate.SecondMostRecentDate + '</div>' +
                 '<div class="col">' +
-                '<div class="row">' +
-                '<div style="text-decoration: underline;">' + job.JobTitle + '</div><br>' +
-                '</div>' +
-                '</div>' +
-                '<div class="col fw-bold"><i class="fa fa-pen" data-job-id="' + job.JobID + '"></i>' +
+                '<i class="fa fa-eye" title="View Details" style="margin-right: 10px" data-applicant-id="' + candidate.ApplicantID + '"></i>&nbsp;' +
+                '<select class="status-select" data-application-id="' + candidate.ApplicationID + '">' +
+                '<option value="" >Select Status</option>' +
+                '<option value="1"' + (candidate.Status === 1 ? ' selected' : '') + '>Hired</option>' +
+                '<option value="2"' + (candidate.Status === 2 ? ' selected' : '') + '>Rejected</option>' +
+                '</select>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
 
-            jobContainer.append(jobTitleRowHtml);
+            jobContainer.append(candidateRowHtml);
         });
     }
+
+    // Event handler for changing status
+    $('.status-select').on('change', function() {
+        var applicationID = $(this).data('application-id');
+        var newStatus = $(this).val();
+        changeCandidateStatus(applicationID, newStatus);
+    });
 }
 
-// Document ready function
+
+
+function changeCandidateStatus(applicationID, newStatus) {
+    swal({
+        title: 'Are you sure?',
+        text: "Do you want to change the status of this candidate?",
+        icon: 'warning',
+        buttons: {
+            cancel: {
+                text: "No, keep it",
+                value: null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Yes, change it!",
+                value: true,
+                visible: true,
+                closeModal: true
+            }
+        }
+    }).then((confirmed) => {
+        if (confirmed) {
+            // If confirmed, proceed with the status change
+            $.ajax({
+                type: "POST",
+                url: "../PHPFiles/Recruiter/Status.php",
+                data: { applicationID: applicationID, status: newStatus },
+                success: function(response) {
+                    console.log('Status updated successfully for application ID: ' + applicationID);
+                    GetCandidate(); // Refresh the candidates list
+                },
+                error: function(xhr, status, error) {
+                    console.log('Error updating status for application ID: ' + applicationID + ' - ' + error);
+                }
+            });
+        }
+    });
+}
+
+$(document).on('click', '.fa-eye', function() {
+    var applicantID = $(this).data('applicant-id');
+    
+    // AJAX call to fetch the PDF file path
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "../PHPFiles/Recruiter/GetResume.php",
+        data: { applicantID: applicantID },
+        success: function(data) {
+            // Set the PDF file path in the iframe source
+            $('#pdfViewer').attr('src', '../' + data.filePath);
+            $('#resumeModal').modal('show'); // Show the modal
+        },
+        error: function(xhr, status, error) {
+            console.log('Error fetching resume: ' + error);
+            // You can display an error message or handle it as required
+        }
+    });
+});
+
+
+
+
 $(document).ready(function() {
     GetJobTitles().then(displayJobTitles);
     GetExpiredJobTitles().then(displayExpiredJobTitles);
     GetDraftJobTitles().then(displayDraftJobTitles);
-    GetCandidates().then(displayCandidates);
+    GetCandidate().then(displayCandidate);
 });
