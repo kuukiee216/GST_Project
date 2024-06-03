@@ -132,6 +132,8 @@
         </form>
         <br>
         <br>
+
+
         <form id="seasonalPlan">
             <h2 class="container d-flex justify-content-center"><b>Seasonal Ad Type</b></h2>
             <div class="container-fluid" style="width: 50%;">
@@ -155,27 +157,16 @@
                             </div>
                             <div class="card-body">
                                 <ul class="specification-list">
-                                    <li>
-                                        <span class="name-specification">4% off Basic ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">4% off Branded ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">Post any ad type</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">Discount apply for 6 months, even after
-                                            your
-                                            balance is
-                                            used up</span>
-                                    </li>
+                                    <li><span class="name-specification">4% off Basic ads</span></li>
+                                    <li><span class="name-specification">4% off Branded ads</span></li>
+                                    <li><span class="name-specification">Post any ad type</span></li>
+                                    <li><span class="name-specification">Discount apply for 6 months, even after your
+                                            balance is used up</span></li>
                                 </ul>
                             </div>
                             <div class="card-footer">
                                 <button class="btn btn-primary btn-block btn-selected" type="button" name="adType"
                                     value="1" data-value="1"><b>Select</b></button>
-
                             </div>
                         </div>
                     </div>
@@ -191,30 +182,17 @@
                             </div>
                             <div class="card-body">
                                 <ul class="specification-list">
-                                    <li>
-                                        <span class="name-specification">10% off Basic ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">10% off Branded ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">3% off Premium ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">Post any ad type</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">Discount apply for 12 months, even after
-                                            your
-                                            balance
-                                            is used up</span>
-                                    </li>
+                                    <li><span class="name-specification">10% off Basic ads</span></li>
+                                    <li><span class="name-specification">10% off Branded ads</span></li>
+                                    <li><span class="name-specification">3% off Premium ads</span></li>
+                                    <li><span class="name-specification">Post any ad type</span></li>
+                                    <li><span class="name-specification">Discount apply for 12 months, even after your
+                                            balance is used up</span></li>
                                 </ul>
                             </div>
                             <div class="card-footer">
                                 <button class="btn btn-light btn-block btn-selected" type="button" name="adType"
                                     value="3" data-value="3"><b>Select</b></button>
-
                             </div>
                         </div>
                     </div>
@@ -230,35 +208,21 @@
                             </div>
                             <div class="card-body">
                                 <ul class="specification-list">
-                                    <li>
-                                        <span class="name-specification">20% off Basic ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">20% off Branded ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">10% off Premium ads</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">Post any ad type</span>
-                                    </li>
-                                    <li>
-                                        <span class="name-specification">Discount apply for 12 months, even after
-                                            your
-                                            balance
-                                            is used up</span>
-                                    </li>
+                                    <li><span class="name-specification">20% off Basic ads</span></li>
+                                    <li><span class="name-specification">20% off Branded ads</span></li>
+                                    <li><span class="name-specification">10% off Premium ads</span></li>
+                                    <li><span class="name-specification">Post any ad type</span></li>
+                                    <li><span class="name-specification">Discount apply for 12 months, even after your
+                                            balance is used up</span></li>
                                 </ul>
                             </div>
                             <div class="card-footer">
                                 <button class="btn btn-primary btn-block btn-selected" type="button" name="adType"
                                     value="2" data-value="2"><b>Select</b></button>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
 
                 <div class="row">
                     <div class=" card container-fluid justify-content-center">
@@ -276,8 +240,16 @@
                     </div>
                 </div>
             </div>
+        </form>
+
+
+
+
+
+
+
+
     </div>
-    </form>
 
 
     </div>
@@ -431,6 +403,40 @@
 
 
 
+    <script>
+    $(document).ready(function() {
+        // Add click event listener to buttons with class .btn-select
+        $('.btn-select').click(function() {
+            // Remove .card-selected from all cards
+            $('.card-pricing').removeClass('card-selected');
+            // Add .card-selected to the parent card of the clicked button
+            $(this).closest('.card-pricing').addClass('card-selected');
+        });
+    });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.btn-selected').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.card-pricing').forEach(card => {
+                    card.classList.remove('card-selected');
+                    card.querySelector('.btn').classList.remove('btn-selected');
+                });
+
+                this.closest('.card-pricing').classList.add('card-selected');
+            });
+        });
+    });
+    </script>
+
+
+
+
+
+
+
+
     <style>
     /* Add this CSS to your existing styles */
     :root {
@@ -545,6 +551,52 @@
         display: block;
         /* Show when class 'show' is added */
     }
+
+
+    /*  */
+
+    .card-pricing {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card-pricing:not(.card-selected):hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-selected {
+        transform: none !important;
+        box-shadow: none !important;
+        border: 2px solid lightblue;
+    }
+
+    .btn-selected:hover {
+        background-color: lightblue !important;
+        border-color: lightblue !important;
+        color: white !important;
+        /* Ensure text color remains white on hover */
+    }
+
+    .btn:hover {
+        background-color: lightblue;
+        border-color: lightblue;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
