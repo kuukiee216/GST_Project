@@ -10,7 +10,8 @@
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="../assets/css/atlantis.css">
@@ -32,7 +33,8 @@
                 "families": ["Lato:300,400,700,900"]
             },
             custom: {
-                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands",
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands",
                     "simple-line-icons"
                 ],
                 urls: ['../assets/css/fonts.min.css']
@@ -90,7 +92,8 @@
                             <span class="input-icon-addon">
                                 <i class="fa fa-search"></i>
                             </span>
-                            <input type="search" class="form-control" placeholder="Find a Question" id="search-question-text">
+                            <input type="search" class="form-control" placeholder="Find a Question"
+                                id="search-question-text">
                         </div>
 
 
@@ -103,28 +106,34 @@
 
                         <h4 class="mt-3"><b>Recommended questions</b></h4>
 
-                       <form id="questionDatabase">
-                       <input type="hidden" id="jobID" name="jobID" value="">
-                        <input type="hidden" id="employerID" name="employerID" value="">
+                        <form id="questionDatabase">
+                            <input type="hidden" id="jobID" name="jobID" value="">
+                            <input type="hidden" id="employerID" name="employerID" value="">
 
-                       <div class="container-fluid row">
-                            <div class="form-check row" id="question-container">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-check" id="question-container">
+                                            <!-- Your recommended questions content goes here -->
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div>
+
                             <div>
-                                <span class="input-icon-addon">
-                                    <i class="fa fa-info-circle"></i>
-                                </span>
-                                Your question and answers can't be changed after you post your job ad.
-                            </div>
+                                <div class="alert alert-info mt-3" role="alert">
+                                    <i class="fa fa-info-circle"></i> Your question and answers can't be changed after
+                                    you post your job
+                                    ad.
+                                </div>
 
-                            <div class="form-group mt-5 mb-5">
-                                <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
+
+                                <div class="form-group mt-5 mb-5">
+                                    <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
+                                </div>
                             </div>
-                        </div>
-                       </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -216,9 +225,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
         </script>
 
-    <script src="../ajax/Recruiter/QuestionHandler.js"></script>
+        <script src="../ajax/Recruiter/QuestionHandler.js"></script>
 
-    <script>
+        <script>
         $(document).ready(function() {
             $('#add-question').click(function(e) {
                 e.preventDefault();
@@ -241,113 +250,112 @@
 
             GetQuestions();
         });
-
-    </script>
-    <script>
-    // Function to get the value of a URL parameter by name
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
-    // Set the value of the jobID and employerID input fields based on the URL parameters
-    document.addEventListener("DOMContentLoaded", function () {
-        var jobID = getParameterByName('jobID');
-        if (jobID !== null) {
-            document.getElementById('jobID').value = jobID;
-            console.log("jobID ID from URL:", jobID);
+        </script>
+        <script>
+        // Function to get the value of a URL parameter by name
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-    });
-</script>
 
-<script>
-    // Function to get the value of a URL parameter by name
-    function getParameterByName(name, url) {
-        if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, "\\$&");
-        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-            results = regex.exec(url);
-        if (!results) return null;
-        if (!results[2]) return '';
-        return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
+        // Set the value of the jobID and employerID input fields based on the URL parameters
+        document.addEventListener("DOMContentLoaded", function() {
+            var jobID = getParameterByName('jobID');
+            if (jobID !== null) {
+                document.getElementById('jobID').value = jobID;
+                console.log("jobID ID from URL:", jobID);
+            }
+        });
+        </script>
 
-    // Set the value of the jobID and employerID input fields based on the URL parameters
-    document.addEventListener("DOMContentLoaded", function () {
-        var employerID = getParameterByName('employerID');
-        if (employerID !== null) {
-            document.getElementById('employerID').value = employerID;
+        <script>
+        // Function to get the value of a URL parameter by name
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
         }
-        console.log("Employer ID from URL:", employerID);
 
-    });
-</script>
-       <script>
-    $(document).ready(function() {
-        // Function to add input box when checkbox is checked
-        function addInputBox($checkbox) {
-            var questionText = $checkbox.siblings('.form-check-sign').text();
-            var newInputHtml = `
+        // Set the value of the jobID and employerID input fields based on the URL parameters
+        document.addEventListener("DOMContentLoaded", function() {
+            var employerID = getParameterByName('employerID');
+            if (employerID !== null) {
+                document.getElementById('employerID').value = employerID;
+            }
+            console.log("Employer ID from URL:", employerID);
+
+        });
+        </script>
+        <script>
+        $(document).ready(function() {
+            // Function to add input box when checkbox is checked
+            function addInputBox($checkbox) {
+                var questionText = $checkbox.siblings('.form-check-sign').text();
+                var newInputHtml = `
                 <div class="form-group">
                     <input type="text" class="form-control" id="${questionText}" placeholder="Enter your answer" maxlength="100"> <!-- Set maximum length to 100 characters -->
                 </div>
             `;
-            $checkbox.parent().append(newInputHtml);
-            updateSelectedCount(); // Update the count of selected questions
-        }
-
-        // Function to update the count of selected questions
-        function updateSelectedCount() {
-            var selectedCount = $('.form-check-input:checked').length;
-            $('.selected-count').text(selectedCount + '/8 Questions Selected');
-        }
-
-        // Event handler for checkbox change
-        $(document).on('change', '.form-check-input', function() {
-            var selectedCount = $('.form-check-input:checked').length;
-            if ($(this).is(':checked')) {
-                if (selectedCount <= 8) {
-                    addInputBox($(this));
-                    // Store checked question in localStorage
-                    var questionText = $(this).siblings('.form-check-sign').text();
-                    localStorage.setItem(questionText, true);
-                } else {
-                    swal({
-                        icon: 'warning',
-                        title: 'Limit Reached',
-                        text: 'You can select up to 8 questions only.',
-                        confirmButtonText: 'OK'
-                    });
-                    $(this).prop('checked', false); // Uncheck the checkbox if the limit is reached
-
-                }
-            } else {
-                $(this).parent().find('.form-group').remove();
+                $checkbox.parent().append(newInputHtml);
                 updateSelectedCount(); // Update the count of selected questions
-                // Remove checked question from localStorage
-                var questionText = $(this).siblings('.form-check-sign').text();
-                localStorage.removeItem(questionText);
             }
+
+            // Function to update the count of selected questions
+            function updateSelectedCount() {
+                var selectedCount = $('.form-check-input:checked').length;
+                $('.selected-count').text(selectedCount + '/8 Questions Selected');
+            }
+
+            // Event handler for checkbox change
+            $(document).on('change', '.form-check-input', function() {
+                var selectedCount = $('.form-check-input:checked').length;
+                if ($(this).is(':checked')) {
+                    if (selectedCount <= 8) {
+                        addInputBox($(this));
+                        // Store checked question in localStorage
+                        var questionText = $(this).siblings('.form-check-sign').text();
+                        localStorage.setItem(questionText, true);
+                    } else {
+                        swal({
+                            icon: 'warning',
+                            title: 'Limit Reached',
+                            text: 'You can select up to 8 questions only.',
+                            confirmButtonText: 'OK'
+                        });
+                        $(this).prop('checked', false); // Uncheck the checkbox if the limit is reached
+
+                    }
+                } else {
+                    $(this).parent().find('.form-group').remove();
+                    updateSelectedCount(); // Update the count of selected questions
+                    // Remove checked question from localStorage
+                    var questionText = $(this).siblings('.form-check-sign').text();
+                    localStorage.removeItem(questionText);
+                }
+            });
+
+            // Initial update of the count of selected questions
+            updateSelectedCount();
+            // Retrieve checked questions from localStorage
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key !== 'jobID' && key !== 'employerID') {
+                    $('#' + key).prop('checked', true);
+                    addInputBox($('#' + key));
+                }
+            }
+
         });
-
-        // Initial update of the count of selected questions
-        updateSelectedCount();
-    // Retrieve checked questions from localStorage
-    for (var i = 0; i < localStorage.length; i++) {
-        var key = localStorage.key(i);
-        if (key !== 'jobID' && key !== 'employerID') {
-            $('#' + key).prop('checked', true);
-            addInputBox($('#' + key));
-        }
-    }
-
-});
-</script>
+        </script>
 
 
     </body>

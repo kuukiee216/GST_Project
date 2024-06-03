@@ -3,7 +3,7 @@ SESSION_START();
 
 if (isset($_SESSION['AccountID'])) {
 
-}else {
+} else {
     header("Location: ../PHPFiles/Recruiter/logout.php");
 
 }
@@ -58,14 +58,6 @@ if (isset($_SESSION['AccountID'])) {
         min-height: calc(100vh - 56px - 70px);
         /* Adjust 56px for header and 70px for footer height */
     }
-
-    footer.footer {
-        position: relative;
-        bottom: 0;
-        width: 100%;
-        height: 70px;
-        /* Footer height */
-    }
     </style>
 </head>
 
@@ -88,7 +80,8 @@ if (isset($_SESSION['AccountID'])) {
                     </div>
                 </div>
                 <div class="col-12 col-md-4 text-center pt-3">
-                    <a href="../recruiter/create_jobad.php" class="btn btn-danger">Create a Job Ad</a>
+                    <a href="../recruiter/create_jobad.php" class="btn btn-danger" id="createJobAdBtn">Create a Job
+                        Ad</a>
                 </div>
             </div>
         </div>
@@ -147,10 +140,13 @@ if (isset($_SESSION['AccountID'])) {
 
         <div id="jobContainer" class="container" style="width: 80%;"></div>
 
+
     </div>
+
 
     <!--bottom navbar-->
     <?php include '../PHPFiles/recruiter_footer.php'?>
+
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -170,6 +166,14 @@ if (isset($_SESSION['AccountID'])) {
             $('#Div-filter').removeClass('d-none d-sm-none');
         }
     }
+
+    document.getElementById('createJobAdBtn').addEventListener('click', function() {
+        var jobAdKey = 'jobAd_' + new Date().getTime();
+        localStorage.setItem(jobAdKey, JSON.stringify({
+            title: '',
+            description: ''
+        }));
+    });
     </script>
 
 

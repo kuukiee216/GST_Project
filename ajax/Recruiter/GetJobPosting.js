@@ -12,7 +12,9 @@ function GetJobTitles() {
             $.each(data, function(index, job) {
                 jobTitlesArray.push({ 
                     'JobTitle': job.JobTitle,
-                    'Status': job.Status
+                    'Status': job.Status,
+                    'ViewCount': job.ViewCount,
+                    'ApplicationCount': job.ApplicationCount
                 });
             });
         } else {
@@ -34,7 +36,7 @@ function displayJobTitles() {
         '<div class="col">Status</div>' +
         '<div class="col">Job </div>' +
         '<div class="col">Candidates</div>' +
-        '<div class="col">Job Actions</div>' +
+        '<div class="col">Reach</div>' +
         '</div>' +
         '</div>' +
         '</div>';
@@ -43,30 +45,38 @@ function displayJobTitles() {
 
     $.each(jobTitlesArray, function(index, job) {
         var statusBadgeHtml;
-        
-        if (job.Status === 1) {
-            statusBadgeHtml = '<span class="badge badge-warning">Pending</span>';
-        } else if (job.Status === 2) {
-            statusBadgeHtml = '<span class="badge badge-success">Posted</span>';
-        } else {
-            statusBadgeHtml = '<span class="badge badge-secondary">Unknown</span>';
-        }
-    
-        var jobTitleRowHtml = '<div class="card">' +
-            '<div class="card-body">' +
-            '<div class="row row-cols-5 text-start">' +
-            '<div class="col">' + statusBadgeHtml + '</div>' +
-            '<div class="col">' +
-            '<div class="row">' +
-            '<div style="text-decoration: underline;">' + job.JobTitle + '</div><br>' +
-            '</div>' +
-            '</div>' +
-            '<div class="col fw-bold">1</div>' +
-            '<div class="col fw-bold">-</div>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-    
+var applicationCountHtml;
+var viewCountHtml;
+
+if (job.Status === 1) {
+    statusBadgeHtml = '<span class="badge badge-warning">Pending</span>';
+    applicationCountHtml = '-';
+    viewCountHtml = '-';
+} else if (job.Status === 2) {
+    statusBadgeHtml = '<span class="badge badge-success">Posted</span>';
+    applicationCountHtml = job.ApplicationCount;
+    viewCountHtml = job.ViewCount;
+} else {
+    statusBadgeHtml = '<span class="badge badge-secondary">Unknown</span>';
+    applicationCountHtml = '-';
+    viewCountHtml = '-';
+}
+
+var jobTitleRowHtml = '<div class="card">' +
+    '<div class="card-body">' +
+    '<div class="row row-cols-5 text-start">' +
+    '<div class="col">' + statusBadgeHtml + '</div>' +
+    '<div class="col">' +
+    '<div class="row">' +
+    '<div style="text-decoration: underline;">' + job.JobTitle + '</div><br>' +
+    '</div>' +
+    '</div>' +
+    '<div class="col fw-bold">' + applicationCountHtml + '</div>' +
+    '<div class="col fw-bold">' + viewCountHtml + '</div>' +
+    '</div>' +
+    '</div>' +
+    '</div>';
+
         jobContainer.append(jobTitleRowHtml);
     });
     

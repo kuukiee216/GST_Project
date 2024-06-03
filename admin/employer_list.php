@@ -458,26 +458,26 @@
     </div>
 </div>
 
-<!-- Modal for Viewing Employer -->
-<div class="modal fade" id="viewEmployerModal" tabindex="-1" aria-labelledby="viewEmployerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="viewEmployerModalLabel">View Employer Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p><strong>Company Name:</strong> <span id="view-company-name"></span></p>
-                <p><strong>Representative's Name:</strong> <span id="view-rep-name"></span></p>
-                <p><strong>Email:</strong> <span id="view-email"></span></p>
-                <p><strong>Status:</strong> <span id="view-status"></span></p>
-                <p><strong>Registration Date:</strong> <span id="view-reg-date"></span></p>
-            </div>
-        </div>
-    </div>
-</div>
+				<!-- Modal for Viewing Employer -->
+				<div class="modal fade" id="viewEmployerModal" tabindex="-1" aria-labelledby="viewEmployerModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="viewEmployerModalLabel">View Employer Account</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p><strong>Company Name:</strong> <span id="view-company-name"></span></p>
+								<p><strong>Representative's Name:</strong> <span id="view-rep-name"></span></p>
+								<p><strong>Email:</strong> <span id="view-email"></span></p>
+								<p><strong>Status:</strong> <span id="view-status"></span></p>
+								<p><strong>Registration Date:</strong> <span id="view-reg-date"></span></p>
+							</div>
+						</div>
+					</div>
+				</div>
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">

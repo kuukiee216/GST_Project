@@ -103,8 +103,8 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
                     <label for="exampleEmail" class="fw-bold">Business Name</label>
                     <div class="text-muted pb-3">For security purpose, please enter the registered business name.
                     </div>
-                    <input type="text" class="form-control" name="companyName" id="companyName" aria-describedby="nameHelp"
-                        placeholder="Enter Business Name" required>
+                    <input type="text" class="form-control" name="companyName" id="companyName"
+                        aria-describedby="nameHelp" placeholder="Enter Business Name" required>
                     <label for="phone1" class="pt-3">Telephone Number</label>
                     <div class="input-group">
                         <input type="tel" id="phone1" name="telephone" placeholder="Telephone Number" value="+"
@@ -149,9 +149,12 @@ if (!(isset($_SESSION['AccountID']) && isset($_SESSION['UserID']) && $_SESSION['
 
 
                 <div class="form-group">
-                    <button class="btn btn-danger mt-3 mb-5 d-flex align-items-center" onclick="ChangeProfile('editInfoForms');" id="btnChangeProfile" type="submit"> Update Account</button>
+                    <button class="btn btn-danger mt-3 mb-5 d-flex align-items-center"
+                        onclick="ChangeProfile('editInfoForms');" id="btnChangeProfile" type="submit"> Update
+                        Account</button>
                 </div>
         </form>
+    </div>
     </div>
 
 

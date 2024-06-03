@@ -53,7 +53,7 @@
     <!--End Navbar-->
 
     <div class="container pt-4 pb-5" style="width: 50%;">
-        <h2><b>Billing & Plans</b></h2>
+        <h2><b>My Billing</b></h2>
         <h4 class="pt-4"><b>Billing Details</b></h4>
 
         <div class="card">
@@ -116,75 +116,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="container pt-4 pb-4">
-            <h4 class="pt-3"><b>Payment Method</b></h4>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row row-cols-3 text-start">
-
-                        <div class="col">
-                            <img src="../assets/img/image7.png" style="height: 60px;">
-                        </div>
-                        <div class="col">
-                            <h3 class="pb-5">Billing Details</h3>
-                            <div class="row">
-                                <div>Billing Address</div>
-                                <div class="text-muted pb-5" id="addressText"></div>
-                                <hr>
-                                <div class="fw-bold">Billing Email</div>
-                                <div class="text-primary" id="companyEmail"></div>
-                                <div class="text-muted">ALL JAPAN JOBS invoices for your company will be sent to
-                                    your
-                                    billing email.</div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <a class="text-primary float-right" style="text-decoration: underline;" type="button"
-                                data-toggle="modal" data-target="#exampleModalCenter">Edit</a>
-
-                            <!-- Modal -->
-                            <form id="changeBillingForm">
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalCenter" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalChangeEmail">Change Billing
-                                                    Address
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-
-                                            <div class="modal-body">
-                                                <label>Billing Address</label>
-                                                <input type="text" class="form-control" id="address" name="address"
-                                                    placeholder="address">
-                                                <label>Billing Email</label>
-                                                <input type="text" class="form-control" id="emailadd" name="emailadd"
-                                                    placeholder="email">
-                                            </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button onclick="ChangeAccountDetails('changeBillingForm');"
-                                                    id="btnChangeAcount" type="submit"
-                                                    class="btn btn-primary">Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
     </div>
 
