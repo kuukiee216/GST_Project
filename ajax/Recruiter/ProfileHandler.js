@@ -30,8 +30,11 @@ function GetInfo() {
             // Para sa not input type
             $("#email").text(data.UserID);
             $("#emails").text(data.UserID);
+            $("#emailss").text(data.UserID);
             $("#companyEmail").text(data.EmailAddress);
             $("#fullName").text(fullName);
+            $("#names").text(fullName);
+            $("#namess").text(fullName);
             $("#companyName").text(data.CompanyName);
             $("#phoneNum").text(data.Phone);
             $("#phoneCompany").text(data.ContactNumber1);

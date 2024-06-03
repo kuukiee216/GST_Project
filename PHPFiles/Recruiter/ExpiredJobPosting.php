@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 try {
     $dataResultArray = array();
 
-    $sQryRetrieveApplicantList = " SELECT  c.JobTitle, c.Status, j.DateTimeStamp, COUNT(a.ApplicationID) AS ApplicationCount
+    $sQryRetrieveApplicantList = " SELECT c.JobID, c.JobTitle, c.Status, j.DateTimeStamp, COUNT(a.ApplicationID) AS ApplicationCount
     FROM
         tbl_companyjob c
     INNER JOIN
@@ -20,7 +20,7 @@ try {
     tbl_application a ON a.JobPostingID = j.JobPostingID
     WHERE
         c.status = 3
-    GROUP BY 
+    GROUP BY
         j.JobPostingID
     ORDER BY
         j.DateTimeStamp DESC;";
@@ -28,25 +28,21 @@ try {
     $stmtRetrieveApplicantList = $connection->prepare($sQryRetrieveApplicantList);
     $stmtRetrieveApplicantList->execute();
 
-    if ($stmtRetrieveApplicantList->rowCount() > 0) {
+    while ($rowJob = $stmtRetrieveApplicantList->fetch(PDO::FETCH_ASSOC)) {
+        $rowData = array();
+        $rowData['JobID'] = $rowJob['JobID'];
+        $rowData['JobTitle'] = $rowJob['JobTitle'];
+        $rowData['Status'] = $rowJob['Status'];
+        $rowData['ApplicationCount'] = $rowJob['ApplicationCount'];
+        $dataResultArray[] = $rowData;
+    }
 
-        while ($rowJob = $stmtRetrieveApplicantList->fetch(PDO::FETCH_ASSOC)) {
-            $rowData = array();
-
-            $rowData['JobTitle'] = $rowJob['JobTitle'];
-            $rowData['Status'] = $rowJob['Status'];
-            $rowData['ApplicationCount'] = $rowJob['ApplicationCount'];
-
-            $dataResultArray[] = $rowData;
-        }
-
-        $jsonDataResult = json_encode($dataResultArray);
-        echo $jsonDataResult;
-
+    if (empty($dataResultArray)) {
+        echo json_encode([]);
     } else {
-        echo 'No records found.';
+        echo json_encode($dataResultArray);
     }
 
 } catch (PDOException $err) {
-    echo 'Error: ' . $err->getMessage();
+    echo json_encode(array('error' => $err->getMessage()));
 }

@@ -1,7 +1,7 @@
 var openJobTitle = [];
 var expiredJobTitle = [];
 var draftJobTitle = [];
-var candidate = [];
+var candidates = [];
 
 // Fetch open job titles
 function GetJobTitles() {
@@ -11,18 +11,14 @@ function GetJobTitles() {
         url: "../PHPFiles/Recruiter/OpenJobPosting.php"
     }).then(function(data) {
         if (data && data.length > 0) {
-            openJobTitle = [];
-
-            $.each(data, function(index, job) {
-                openJobTitle.push({ 
-                    'JobID': job.JobID, // Ensure this field is returned by the PHP script
-                    'JobTitle': job.JobTitle,
-                    'Status': job.Status,
-                    'ApplicationCount': job.ApplicationCount
-                });
-            });
+            openJobTitle = data.map(job => ({
+                'JobID': job.JobID,
+                'JobTitle': job.JobTitle,
+                'Status': job.Status,
+                'ApplicationCount': job.ApplicationCount
+            }));
         } else {
-            console.log("No job titles found.");
+            openJobTitle = [];
         }
     }).fail(function(xhr, status, error) {
         console.log("Error fetching job titles: " + error);
@@ -32,7 +28,7 @@ function GetJobTitles() {
 // Display open job titles
 function displayJobTitles() {
     var jobContainer = $('#openJobContainer');
-    jobContainer.empty(); // Clear the container before appending
+    jobContainer.empty();
 
     var headerRowHtml = '<h2 class="pt-3"><b>OPEN</b></h2>' +
         '<div class="card">' +
@@ -52,7 +48,7 @@ function displayJobTitles() {
         var noDataHtml = '<div class="card">' +
             '<div class="card-body">' +
             '<div class="row text-start">' +
-            '<div class="col-12">No data available</div>' +
+            '<div class="col-12 text-center">No data available</div>' +
             '</div>' +
             '</div>' +
             '</div>';
@@ -74,6 +70,7 @@ function displayJobTitles() {
             } else {
                 statusBadgeHtml = '<span class="badge badge-secondary">Unknown</span>';
                 applicationCountHtml = '-';
+                jobActionsHtml = '-';
             }
 
             var jobTitleRowHtml = '<div class="card">' +
@@ -160,7 +157,7 @@ function stopJobPosting(jobID) {
     });
 }
 
-//expired
+// Fetch expired job titles
 function GetExpiredJobTitles() {
     return $.ajax({
         type: "POST",
@@ -168,26 +165,24 @@ function GetExpiredJobTitles() {
         url: "../PHPFiles/Recruiter/ExpiredJobPosting.php"
     }).then(function(data) {
         if (data && data.length > 0) {
-            expiredJobTitle = [];
-
-            $.each(data, function(index, job) {
-                expiredJobTitle.push({ 
-                    'JobTitle': job.JobTitle,
-                    'Status': job.Status,
-                    'ApplicationCount': job.ApplicationCount
-                });
-            });
+            expiredJobTitle = data.map(job => ({
+                'JobID': job.JobID,
+                'JobTitle': job.JobTitle,
+                'Status': job.Status,
+                'ApplicationCount': job.ApplicationCount
+            }));
         } else {
-            console.log("No job titles found.");
+            expiredJobTitle = [];
         }
     }).fail(function(xhr, status, error) {
         console.log("Error fetching job titles: " + error);
     });
 }
 
+// Display expired job titles
 function displayExpiredJobTitles() {
     var jobContainer = $('#expiredJobContainer');
-    jobContainer.empty(); // Clear the container before appending
+    jobContainer.empty();
 
     var headerRowHtml = '<h2 class="pt-3"><b>Expired</b></h2>' +
         '<div class="card">' +
@@ -207,7 +202,7 @@ function displayExpiredJobTitles() {
         var noDataHtml = '<div class="card">' +
             '<div class="card-body">' +
             '<div class="row text-start">' +
-            '<div class="col-12">No data available</div>' +
+            '<div class="col-12 text-center">No data available</div>' +
             '</div>' +
             '</div>' +
             '</div>';
@@ -226,17 +221,81 @@ function displayExpiredJobTitles() {
                 '</div>' +
                 '</div>' +
                 '<div class="col fw-bold">' + job.ApplicationCount + '</div>' +
-                '<div class="col fw-bold">' + '<i class="fa fa-redo" data-job-id="' + job.JobID + '"></i>' +'</div>' +
+                '<div class="col fw-bold">' + '<i class="fa fa-redo" data-job-id="' + job.JobID + '"></i>' + '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
 
             jobContainer.append(jobTitleRowHtml);
         });
+
+        jobContainer.on('click', '.fa-redo', function() {
+            var jobID = $(this).data('job-id');
+            confirmRedoJobPosting(jobID);
+        });
     }
 }
 
-//draft
+// Confirm redo job posting
+function confirmRedoJobPosting(jobID) {
+    swal({
+        title: 'Are you sure?',
+        text: "Do you want to reopen this job posting?",
+        icon: 'warning',
+        buttons: {
+            cancel: {
+                text: "No, keep it expired",
+                value: null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Yes, reopen it!",
+                value: true,
+                visible: true,
+                closeModal: true
+            }
+        }
+    }).then((confirmed) => {
+        if (confirmed) {
+            redoJobPosting(jobID);
+        }
+    });
+}
+
+// Redo job posting
+function redoJobPosting(jobID) {
+    return $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "../PHPFiles/Recruiter/RedoPosting.php", 
+        data: { JobID: jobID }
+    }).then(function(response) {
+        if (response.success) {
+            swal({
+                title: 'Success!',
+                text: 'Job posting reopened successfully.',
+                icon: 'success'
+            });
+            // Optionally refresh the job titles
+            window.location.reload();
+        } else {
+            swal({
+                title: 'Error!',
+                text: 'Error reopening job posting: ' + response.message,
+                icon: 'error'
+            });
+        }
+    }).fail(function(xhr, status, error) {
+        swal({
+            title: 'Error!',
+            text: 'Error reopening job posting: ' + error,
+            icon: 'error'
+        });
+    });
+}
+
+// Fetch draft job titles
 function GetDraftJobTitles() {
     return $.ajax({
         type: "POST",
@@ -244,31 +303,29 @@ function GetDraftJobTitles() {
         url: "../PHPFiles/Recruiter/DraftJobPosting.php"
     }).then(function(data) {
         if (data && data.length > 0) {
-            draftJobTitle = [];
-
-            $.each(data, function(index, job) {
-                draftJobTitle.push({ 
-                    'JobTitle': job.JobTitle,
-                    'Status': job.Status
-                });
-            });
+            draftJobTitle = data.map(job => ({
+                'JobID': job.JobID,
+                'JobTitle': job.JobTitle,
+                'Status': job.Status,
+                'ApplicationCount': job.ApplicationCount
+            }));
         } else {
-            console.log("No job titles found.");
+            draftJobTitle = [];
         }
     }).fail(function(xhr, status, error) {
         console.log("Error fetching job titles: " + error);
     });
 }
 
+// Display draft job titles
 function displayDraftJobTitles() {
     var jobContainer = $('#draftJobContainer');
-    jobContainer.empty(); // Clear the container before appending
+    jobContainer.empty();
 
     var headerRowHtml = '<h2 class="pt-3"><b>Draft</b></h2>' +
         '<div class="card">' +
         '<div class="card-body">' +
         '<div class="row row-cols-5 text-start">' +
-        '<div class="col">Status</div>' +
         '<div class="col">Job</div>' +
         '<div class="col">Job Actions</div>' +
         '</div>' +
@@ -281,36 +338,70 @@ function displayDraftJobTitles() {
         var noDataHtml = '<div class="card">' +
             '<div class="card-body">' +
             '<div class="row text-start">' +
-            '<div class="col-12">No data available</div>' +
+            '<div class="col-12 text-center">No data available</div>' +
             '</div>' +
             '</div>' +
             '</div>';
         jobContainer.append(noDataHtml);
     } else {
         $.each(draftJobTitle, function(index, job) {
-            var statusBadgeHtml = job.Status === 4 ? '<span class="badge badge-primary">Draft</span>' : '';
 
             var jobTitleRowHtml = '<div class="card">' +
                 '<div class="card-body">' +
                 '<div class="row row-cols-5 text-start">' +
-                '<div class="col">' + statusBadgeHtml + '</div>' +
                 '<div class="col">' +
                 '<div class="row">' +
                 '<div style="text-decoration: underline;">' + job.JobTitle + '</div><br>' +
                 '</div>' +
                 '</div>' +
-                '<div class="col fw-bold"><i class="fa fa-pen" data-job-id="' + job.JobID + '"></i>' +
-                '</div>' +
+                '<div class="col fw-bold">' + '<i class="fa fa-edit" data-job-id="' + job.JobID + '"></i>' + '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
 
             jobContainer.append(jobTitleRowHtml);
         });
+
+        jobContainer.on('click', '.fa-edit', function() {
+            var jobID = $(this).data('job-id');
+            confirmEditJobPosting(jobID);
+        });
     }
 }
 
-// Candidate
+// Confirm edit job posting
+function confirmEditJobPosting(jobID) {
+    swal({
+        title: 'Are you sure?',
+        text: "Do you want to edit this job posting?",
+        icon: 'warning',
+        buttons: {
+            cancel: {
+                text: "No, keep it as draft",
+                value: null,
+                visible: true,
+                closeModal: true,
+            },
+            confirm: {
+                text: "Yes, edit it!",
+                value: true,
+                visible: true,
+                closeModal: true
+            }
+        }
+    }).then((confirmed) => {
+        if (confirmed) {
+            editJobPosting(jobID);
+        }
+    });
+}
+
+// Edit job posting
+function editJobPosting(jobID) {
+    window.location.href = 'create_jobad.php?JobID=' + jobID;
+}
+
+// Fetch candidates
 function GetCandidate() {
     return $.ajax({
         type: "POST",
@@ -336,9 +427,10 @@ function GetCandidate() {
     });
 }
 
+// Display candidates
 function displayCandidate() {
     var jobContainer = $('#candidate');
-    jobContainer.empty(); // Clear the container before appending new content
+    jobContainer.empty(); 
 
     var headerRowHtml = '<h2 class="pt-3"><b>Candidate</b></h2>' +
         '<div class="card">' +
@@ -389,5 +481,10 @@ function displayCandidate() {
     }
 }
 
-
-
+// Document ready function
+$(document).ready(function() {
+    GetJobTitles().then(displayJobTitles);
+    GetExpiredJobTitles().then(displayExpiredJobTitles);
+    GetDraftJobTitles().then(displayDraftJobTitles);
+    GetCandidates().then(displayCandidates);
+});

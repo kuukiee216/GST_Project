@@ -246,9 +246,7 @@ if (isset($_SESSION['AccountID'])) {
     <script>
     $(document).ready(function() {
         GetInfo();
-        GetJobTitles().then(function() {
-            displayJobTitles();
-        });
+        
     });
     </script>
 </body>

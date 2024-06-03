@@ -58,7 +58,6 @@ if (isset($_SESSION['AccountID'])) {
 
     .content {
         min-height: calc(100vh - 56px - 70px);
-        /* Adjust 56px for header and 70px for footer height */
     }
 
     footer.footer {
@@ -155,7 +154,7 @@ if (isset($_SESSION['AccountID'])) {
     </script>
 
     <!-- Option 1: Bootstrap scripts -->
-    <script src="../.../assets/js/atlantis.js"></script>
+    <script src="../assets/js/atlantis.js"></script>
     <script src="../../assets/js/plugin/webfont/webfont.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
@@ -210,6 +209,7 @@ if (isset($_SESSION['AccountID'])) {
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+    <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
     <script src="../ajax/Recruiter/GetJobStatus.js"></script>
 
@@ -230,6 +230,7 @@ if (isset($_SESSION['AccountID'])) {
         GetCandidate().then(function() {
             displayCandidate();
         });
+        GetInfo();
     });
     </script>
 </body>
