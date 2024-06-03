@@ -292,31 +292,60 @@
                         <h1 class="text-dark"> EMPLOYER LIST</h1>
                     </div>
                 </div>
-				<div class="container-fluid flex justify-content-center">
-    <a href="#" id="add-employer-btn" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Add Employer Account</a>
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid">
-                    <thead>
-                        <tr role="row">
-                            <th>#</th>
-                            <th>Company Name</th>
-                            <th>Representative's Name</th>
-                            <th>Email</th>
-                            <th>Status</th>
-                            <th>Registration Date</th>
-                            <th>Action</th>
-                        </tr>
-						</thead>
-                    <tbody>
-                        <!-- Table rows will be populated dynamically -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+	<div class="container-fluid flex justify-content-center">
+		<a href="#" id="btnAddEmployerCompany" onclick="showAddModal();" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Add <span id="btnName">Employer Account</span> </a>
+		<div class="card">
+				<div class="card-header">
+					<ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Employers');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Employers List</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Companies');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Companies List</a>
+						</li>
+					</ul>
+				</div>
+			<div class="card-body">
+				<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
+						<div class="table-responsive">
+							<table id="tblEmployers" class="display table table-striped table-hover" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>Company Name</th>
+										<th>Representative's Name</th>
+										<th>Email</th>
+										<th>Status</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
+						<div class="table-responsive">
+							<table id="tblCompanies" class="display table table-striped table-hover" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>Company Name</th>
+										<th>Contact Number</th>
+										<th>Company Location</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <!-- Modal for Adding Employer -->
 <div class="modal fade" id="addEmployerModal" tabindex="-1" aria-labelledby="addEmployerModalLabel" aria-hidden="true">
@@ -324,25 +353,105 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addEmployerModalLabel">Add Employer Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseAddEmployer">
+					<span aria-hidden="true">&times;</span>
+				</button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeAddEmployer();">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form id="add-employer-form">
-                    <div class="form-group">
-                        <label for="company-name">Company Name</label>
-                        <input type="text" class="form-control" id="company-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="rep-name">Representative's Name</label>
-                        <input type="text" class="form-control" id="rep-name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Add Employer</button>
+					<div class="row" id="divFormCompanyInfo">
+						<div class="col-12">
+							<h5>Company Details</h5>
+							<div class="form-group" style="background-color: #F7F7F7">
+								<label for="txtCompanyName">Company Name</label>
+								<input type="text" class="form-control" id="txtCompanyName" required>
+								<label for="txtCompanyEmail">Company Email</label>
+								<input type="email" class="form-control" id="txtCompanyEmail" required>
+								<label for="txtCompanyContact">Company Contact Number</label>
+								<input type="tel" class="form-control" id="txtCompanyContact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+								<label for="txtCompanyWebsite">Company Website Url</label>
+								<input type="text" class="form-control" id="txtCompanyWebsite" required>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+										<label for="selectCountry">Country</label>
+										<select class="form-control" id="selectCountry">
+											<option value=""></option>
+										</select>	
+									</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+										<label for="selectState">State</label>
+										<select class="form-control" id="selectState">
+											<option value=""></option>
+										</select>	
+									</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+										<label for="selectCity">City</label>
+										<select class="form-control" id="selectCity">
+											<option value=""></option>
+										</select>	
+									</div>
+							</div>
+						</div>
+					</div>
+					<br />
+						<br />
+					
+					<div class="row row-cols-3" id="divFormEmployerInfo" style="background-color: #F7F7F7">
+					<h5 class="mx-auto mt-1">Company Representative Details</h5>
+						<div class="col-12">
+							<div class="form-group">
+									<label for="selectCompany">Company Associated</label>
+									<select class="form-control" id="selectCompany">
+										<option value=""></option>
+									</select>	
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="email">First Name</label>
+								<input type="email" class="form-control" id="txtEmployerFname" required>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="email">Middle Name</label>
+								<input type="email" class="form-control" id="txtEmployerMname" required>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="email">Last Name</label>
+								<input type="email" class="form-control" id="txtEmployerLname" required>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" class="form-control" id="txtEmployerEmail" required>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
+								<label for="email">Contact Number</label>
+								<input type="tel" class="form-control" id="txtEmployerContact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+							</div>
+						</div>
+					</div>
+
+					<br />
+
+					<button type="button" class="btn btn-primary" id="btnSubmitAddCompany" onclick="submitAddCompany();">Add Company</button>
+                    <button type="button" class="btn btn-primary" id="btnSubmitAddEmployer" onclick="submitAddEmployer();">Add Employer</button>
                 </form>
             </div>
         </div>
@@ -442,99 +551,158 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
+	
+	<script src="../ajax/Admin/AdminEmployerListHandler.js"></script>
 
 	<!-- Add Employer Account -->
 	<script>
+		var currentList = 1;
+
 		$(document).ready(function() {
-    var table = $('#basic-datatables').DataTable();
+			$('#tblCompanies').DataTable();
+			$('#tblEmployers').DataTable();
 
-    $('#add-employer-btn').on('click', function(e) {
-        e.preventDefault();
-        $('#addEmployerModal').modal('show');
-    });
+			changeTableActive('Employers');
+			fillCurrentList(currentList);
 
-    $('#add-employer-form').on('submit', function(e) {
-        e.preventDefault();
+			populateCompanies();
+			populateCountry();
 
-        const companyName = $('#company-name').val();
-        const repName = $('#rep-name').val();
-        const email = $('#email').val();
-
-        $.ajax({
-            type: 'POST',
-            url: '../PHPFiles/Admin/Dashboardemployerlist.php',
-            data: {
-                companyName: companyName,
-                repName: repName,
-                email: email
-            },
-            success: function(response) {
-                alert('Employer added successfully');
-                $('#addEmployerModal').modal('hide');
-
-                table.row.add([
-                    response.id,
-                    companyName,
-                    repName,
-                    email,
-                    'Active',
-                    response.registrationDate,
-                    '<button class="btn btn-sm btn-secondary view-btn" data-id="' + response.id + '"><i class="far fa-eye"></i></button>' +
-                    '<button class="btn btn-sm btn-danger delete-btn" data-id="' + response.id + '"><i class="far fa-trash-alt"></i></button>'
-                ]).draw();
-
-                $('#company-name').val('');
-                $('#rep-name').val('');
-                $('#email').val('');
-            },
-            error: function(error) {
-                alert('An error occurred while adding the employer');
-            }
-        });
-    });
-
-    $('#basic-datatables').on('click', '.view-btn', function() {
-        const id = $(this).data('id');
-        
-        $.ajax({
-            type: 'GET',
-            url: '../PHPFiles/Admin/getEmployerDetails.php',
-            data: { id: id },
-            success: function(response) {
-                $('#view-company-name').text(response.companyName);
-                $('#view-rep-name').text(response.repName);
-                $('#view-email').text(response.email);
-                $('#view-status').text(response.status);
-                $('#view-reg-date').text(response.registrationDate);
-
-                $('#viewEmployerModal').modal('show');
-            },
-            error: function(error) {
-                alert('An error occurred while fetching the employer details');
-            }
-        });
-    });
-
-    $('#basic-datatables').on('click', '.delete-btn', function() {
-        const id = $(this).data('id');
-        
-        if (confirm('Are you sure you want to delete this employer?')) {
-            $.ajax({
-                type: 'POST',
-                url: '../PHPFiles/Admin/deleteEmployer.php',
-                data: { id: id },
-                success: function(response) {
-                    alert('Employer deleted successfully');
-                    table.row($(this).closest('tr')).remove().draw();
-                },
-                error: function(error) {
-                    alert('An error occurred while deleting the employer');
-                }
+			$('#selectCountry').on('change', function() {
+                var selectedCountry = $(this).val();
+                console.log('Selected country ID:', selectedCountry);
+				
+				$('#selectState').empty();
+				populateState(selectedCountry);
             });
-        }
-    });
-});
 
-</script>
+			$('#selectState').on('change', function() {
+				console.log('test');
+                var selectedProvince = $(this).val();
+                console.log('Selected Province ID:', selectedProvince);
+				
+				$('#selectCity').empty();
+				populateCity(selectedProvince);
+            });
+		});
+
+		function populateCountry(){	
+			$.ajax({
+					type: "POST",
+					dataType: "json", 
+					url: "../PHPFiles/Admin/EmployerList/modalPopulateCountry.php",
+					success: function(data) {
+						console.log(data);
+						var $selectCountry = $('#selectCountry');
+						$selectCountry.empty();
+						if (Array.isArray(data) && data.length > 0) {
+							$.each(data, function(index, value) {
+								$selectCountry.append('<option value="' + value.CountryID + '">' + value.CountryName + '</option>');
+							});
+							$selectCountry.val("");
+						} else {
+							$selectCountry.append('<option value="">No Countries available</option>');
+						}
+					},
+					error: function() {
+						alert('Error retrieving data.');
+					}
+				});
+		}
+
+		function populateState(country){
+			$.ajax({
+				type: "POST",
+				dataType: "json", 
+				data: {
+					CountryID: country
+				},
+				url: "../PHPFiles/Admin/EmployerList/modalPopulateState.php",
+				success: function(data) {
+					console.log(data);
+					var $selectProvince = $('#selectState');
+					$selectProvince.empty();
+					$('#selectCity').empty();
+					if (Array.isArray(data) && data.length > 0) {
+						$.each(data, function(index, value) {
+							$selectProvince.append('<option value="' + value.ProvinceID + '">' + value.ProvinceName + '</option>');
+						});
+						$selectProvince.val("");
+					} else {
+						$selectProvince.append('<option value="">No Province available</option>');
+					}
+				},
+				error: function() {
+					alert('Error retrieving data.');
+				}
+			});
+		}
+
+		function populateCity(province){
+			console.log('test');
+			$.ajax({
+				type: "POST",
+				dataType: "json", 
+				data: {
+					ProvinceID: province
+				},
+				url: "../PHPFiles/Admin/EmployerList/modalPopulateCity.php",
+				success: function(data) {
+					console.log(data);
+					var $selectCity = $('#selectCity');
+					$selectCity.empty(); 
+					if (Array.isArray(data) && data.length > 0) {
+						$.each(data, function(index, value) {
+							$selectCity.append('<option value="' + value.CityID + '">' + value.CityName + '</option>');
+						});
+					} else {
+						$selectProvince.append('<option value="">No City available</option>');
+					}
+				},
+				error: function() {
+					alert('Error retrieving data.');
+				}
+			});
+		}
+
+		function populateCompanies(){
+			$.ajax({
+					type: "POST",
+					dataType: "json", 
+					url: "../PHPFiles/Admin/EmployerList/modalPopulateCompanies.php",
+					success: function(data) {
+						var $selectCompany = $('#selectCompany');
+						$selectCompany.empty();
+						if (Array.isArray(data) && data.length > 0) {
+							$.each(data, function(index, value) {
+								$selectCompany.append('<option value="' + value.CompanyID + '">' + value.CompanyName + '</option>');
+							});
+						} else {
+							$selectCompany.append('<option value="">No Companies available</option>');
+						}
+					},
+					error: function() {
+						alert('Error retrieving data.');
+					}
+				});
+		}
+
+		function changeTableActive(currentTab){
+			switch(currentTab){
+				case 'Employers':
+					currentList = 1;
+					changeInterface('Add Employer', 'Employers');
+					break;
+				case 'Companies':
+					currentList = 2;
+					changeInterface('Add Company', 'Companies');
+					break;
+			}
+
+			fillCurrentList(currentList);
+		}	
+
+
+	</script>
 </body>
 </html>

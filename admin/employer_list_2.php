@@ -30,7 +30,7 @@
 			<!-- Logo Header -->
 			<div class="logo-header bg-danger">
 				
-				<a href="admin_dashboard_main.html" class="logo">
+				<a href="admin_dashboard_main.php" class="logo">
 					<img src="../assets/img/JapanJobs.png" alt="navbar brand" class="navbar-brand">
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -163,7 +163,7 @@
 											<div class="avatar-lg"><img src="../assets/img/icon.png" alt="image profile" class="avatar-img rounded"></div>
 											<div class="u-text">
 												<h4>Meow</h4>
-												<p class="text-muted">Genesis.com</p><a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
+												<p class="text-muted">Genesis.com</p><a href="profile.php" class="btn btn-xs btn-secondary btn-sm">View Profile</a>
 											</div>
 										</div>
 									</li>
@@ -171,7 +171,7 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="/admin/settings_system_logs.html">System Logs</a>
+										<a class="dropdown-item" href="/admin/settings_system_logs.php">System Logs</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
@@ -211,31 +211,31 @@
 							<h4 class="text-section">Menu</h4>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/admin_dashboard_main.html">
+							<a href="/admin/admin_dashboard_main.php">
 								<i class="fas fa-th-list"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/job_posting.html">
+							<a href="/admin/job_posting.php">
 								<i class="fas fa-briefcase"></i>
 								<p>Job Posting</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/employer_list.html">
+							<a href="/admin/employer_list.php">
 								<i class="fas fa-building"></i>
 								<p>Employer List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/applicant_list.html">
+							<a href="/admin/applicant_list.php">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/application.html">
+							<a href="/admin/application.php">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -249,27 +249,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="/admin/settings_job_classification.html">
+										<a href="/admin/settings_job_classification.php">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_job_title.html">
+										<a href="/admin/settings_job_title.php">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_locations.html">
+										<a href="/admin/settings_locations.php">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_posting_fee.html">
+										<a href="/admin/settings_posting_fee.php">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="/admin/settings_system_logs.html">
+										<a href="/admin/settings_system_logs.php">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -295,7 +295,7 @@
 				
                
                     <div class="container-fluid flex justify-content-center">
-                        <a href="#" class="btn btn-secondary">Back</a>
+                        <a href="../admin/employer_list.php" class="btn btn-secondary">Back</a>
                         <h2 class="mt-5">Employer's Details</h2>
                         <h4 class="mt-3">Representative's Details</h4>
                         <div class="card">
@@ -309,10 +309,10 @@
                                     </div>
 
                                     <div class="col">
-                                        <div>Genesis</div>
-                                        <div>test123</div>
-                                        <div>genesismarvinmanale12@gmail.com</div>
-                                        <div>+639084746563</div>
+                                        <div><span id="EmployerName"></span></div>
+                                        <div><span id="EmployerPassword"></span></div>
+                                        <div><span id="EmployerEmail"></span></div>
+                                        <div><span id="EmployerPhone"></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -324,85 +324,23 @@
                                 <div class="row">
                                     <div class="col">
                                         <div>Company Name:</div>
-                                        <div>Business Address:</div>
                                         <div>Country:</div>
-                                        <div>Address Line:</div>
                                         <div>Suburb/Town/City</div>
-                                        <div>Postal Code</div>
                                     </div>
 
                                     <div class="col">
-                                        <div>Laguna University</div>
-                                        <div>Sta Cruz, Laguna</div>
-                                        <div>Philippines</div>
-                                        <div>Line?</div>
-                                        <div>Cabanbanan, Pagsanjan, Laguna</div>
-                                        <div>4008</div>
+                                        <div><span id="CompanyName"></span></div>
+                                        <div><span id="CompanyCountry"></span></div>
+                                        <div><span id="CompanyStateCity"></span></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <h4 class="mt-3">Offering Jobs</h4>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <div><i class="fas fa-map-marker-alt"></i> Osaka, Japan</div>
-                                        <div><i class="far fa-clone"></i> Information and Communication Technology</div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div><i class="fas fa-database"></i> 60,000 - 80,000 Yen</div>
-                                        <div><i class="far fa-clock"></i> Full-Time</div>
-                                    </div>
-
-                                    <div class="col">
-                                        <span class="badge badge-success">Approved</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <div><i class="fas fa-map-marker-alt"></i> Osaka, Japan</div>
-                                        <div><i class="far fa-clone"></i> Information and Communication Technology</div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div><i class="fas fa-database"></i> 60,000 - 80,000 Yen</div>
-                                        <div><i class="far fa-clock"></i> Full-Time</div>
-                                    </div>
-
-                                    <div class="col">
-                                        <span class="badge badge-warning">Pending</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <div><i class="fas fa-map-marker-alt"></i> Osaka, Japan</div>
-                                        <div><i class="far fa-clone"></i> Information and Communication Technology</div>
-                                    </div>
-
-                                    <div class="col">
-                                        <div><i class="fas fa-database"></i> 60,000 - 80,000 Yen</div>
-                                        <div><i class="far fa-clock"></i> Full-Time</div>
-                                    </div>
-
-                                    <div class="col">
-                                        <span class="badge badge-warning">Pending</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+						<div id="jobHolder">
+							
+						</div>
 
                     </div>
                         
@@ -479,5 +417,12 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
+
+	<script src="../ajax/Admin/AdminEmployerListHandler.js"></script>
+
+	<script>
+		setEmployerInfo();
+		setEmployerCompanyJobs();
+	</script>
 </body>
 </html>

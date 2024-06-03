@@ -344,50 +344,50 @@
                                 <div class="card">
 										<div class="card-header">
 											<ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
-											<li class="nav-item">
-												<a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Main');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Main Classifications</a>
-											</li>
-											<li class="nav-item">
-												<a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Sub');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Sub Classifications</a>
-											</li>
-										</ul>
-									</div>
+												<li class="nav-item">
+													<a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Main');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Main Classifications</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Sub');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Sub Classifications</a>
+												</li>
+											</ul>
+										</div>
                                     <div class="card-body">
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblMainClassification" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Main Classification</th>
-														<th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
-                                        <div class="table-responsive">
-                                            <table id="tblSubClassification" class="display table table-striped table-hover" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Sub Classification</th>
-														<th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+										<div class="tab-content" id="pills-tabContent">
+											<div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
+												<div class="table-responsive">
+													<table id="tblMainClassification" class="display table table-striped table-hover" cellspacing="0" width="100%">
+														<thead>
+															<tr>
+																<th>#</th>
+																<th>Main Classification</th>
+																<th>Action</th>
+															</tr>
+														</thead>
+														<tbody>
+															
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
+												<div class="table-responsive">
+													<table id="tblSubClassification" class="display table table-striped table-hover" cellspacing="0" width="100%">
+														<thead>
+															<tr>
+																<th>#</th>
+																<th>Sub Classification</th>
+																<th>Action</th>
+															</tr>
+														</thead>
+														<tbody>
+															
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+                            		</div>
                                 </div>
                                         </div>
                                     </div>

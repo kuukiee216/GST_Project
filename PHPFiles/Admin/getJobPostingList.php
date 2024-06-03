@@ -66,7 +66,10 @@ if(isset($_POST['ActiveTable'])){
                 $JobStatus = mapStatus($rowJobList['Status']);
                 $ButtonAction = mapActionButtons($rowJobList['Status'], $rowJobList['JobID']);
 
-                if(strlen($rowJobList['MiddleName']) > 0){
+                if($rowJobList['MiddleName'] == NULL)
+                    $rowJobList['MiddleName'] = '';
+
+                if(strlen($rowJobList['MiddleName']) > 0 ){
                     $EmployerName = $rowJobList['LastName'].", ".$rowJobList['FirstName']." ".substr($rowJobList['MiddleName'], 0, 1).".";
                 }
                 else{
