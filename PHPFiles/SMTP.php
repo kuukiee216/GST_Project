@@ -1,10 +1,11 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
 require '../vendor/autoload.php';
 
-class SMTPMail{
+class SMTPMailConnection{
     public function sendMail($Recipient, $Subject, $Body)
     {
         try {

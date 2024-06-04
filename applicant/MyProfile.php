@@ -220,7 +220,7 @@
                   </table>
                 </div>
                 <div class="row d-flex justify-content-end px-3 mt-3">
-                  <a href="create_resume.html"><button class="btn btn-round btn-danger mr-2"><i class="fas fa-pen-alt fa-lg mr-2"></i> Create a Resume</button></a>
+                  <a href="CreateResume.php"><button class="btn btn-round btn-danger mr-2"><i class="fas fa-pen-alt fa-lg mr-2"></i> Create a Resume</button></a>
                   <button class="btn btn-round btn-border btn-danger" id="btnUploadResumeModel" onclick="openUploadResume();"><i class="fas fa-file-upload fa-lg mr-2"></i> Upload a Resume</button>
                 </div>
                 

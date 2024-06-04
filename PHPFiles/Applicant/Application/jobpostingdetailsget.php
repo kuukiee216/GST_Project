@@ -19,10 +19,9 @@
             $sQryGetJobPostingDetails = "SELECT
                     cj.JobTitle,
                     ci.CompanyName,
-                    l.City,
-                    l.Province,
-                    l.Country,
-                    l.ZipCode,
+                    co.CountryName,
+                    pro.ProvinceName,
+                    city.CityName,
                     class.Classification,
                     GROUP_CONCAT(DISTINCT subclass.Classification) AS SubClassification,
                     c.Symbol,
@@ -43,14 +42,20 @@
                 INNER JOIN
                     tbl_companyinfo AS ci ON ci.CompanyID = ei.EmployerID
                 INNER JOIN
-                    tbl_location AS l ON l.LocationID = cj.LocationID
+                    tbl_joblocation AS jl ON jp.JobPostingID = jp.JobPostingID
+                INNER JOIN
+                    tbl_country AS co ON co.CountryID = jl.CountryID
+                INNER JOIN
+                    tbl_province AS pro ON pro.ProvinceID = jl.ProvinceID
+                INNER JOIN
+                    tbl_city AS city ON city.CityID = jl.CityID
                 INNER JOIN
                     tbl_classification AS class ON class.ClassificationID = cj.ClassificationID
                 INNER JOIN
                     tbl_jobclassification AS jc ON jc.JobID = cj.JobID 
                 INNER JOIN
                     tbl_subclassification AS subclass ON subclass.ClassificationID = jc.SubClassificationID
-                INNER JOIN 
+                INNER JOIN
                     tbl_jobsalary AS js ON js.JobID = cj.JobID
                 INNER JOIN
                     tbl_currency AS c ON c.CurrencyID = js.CurrencyID
@@ -65,9 +70,7 @@
                 WHERE
                     cj.Status = '0' AND jquestion.RequirementStatus = '0' AND jp.JobPostingID = ?
                 GROUP BY
-                    cj.JobTitle, ci.CompanyName, l.City, l.Province, l.Country, l.ZipCode,
-                    class.Classification, c.Symbol, js.Minimum, js.Maximum, jp.CompanyPrivacyStatus,
-                    jp.SalaryPrivacyStatus, cj.Summary;";
+                    cj.JobID;";
             $stmtGetJobPostingDetails = $connection->prepare($sQryGetJobPostingDetails);
             $stmtGetJobPostingDetails->bindValue(1, $JobPostingID, PDO::PARAM_INT);
             $stmtGetJobPostingDetails->execute();
@@ -125,8 +128,8 @@
         catch(PDOException $e){
             ECHO "2";
         }
-    // }
-    // else{
-    //     ECHO "1";
-    // }
+    }
+    else{
+        ECHO "1";
+    }
 ?>

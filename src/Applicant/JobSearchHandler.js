@@ -346,6 +346,11 @@ function searchJobPosting(){
                 }
                 else{
                     $('#divJobPostList').html(response);
+
+                    $('#btnSearchJobPosting').removeClass('is-loading');
+                    $('#btnSearchJobPosting').prop('disabled', false);
+                    $('#btnSearchFilterJobPosting').removeClass('is-Loading');
+                    $('#btnSearchFilterJobPosting').prop('disabled', false);
                 }
             },
             error: function(){

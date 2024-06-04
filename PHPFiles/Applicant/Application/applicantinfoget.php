@@ -23,14 +23,19 @@
                     ai.EmailAddress,
                     ai.ContactNumber,
                     ai.StreetAddress,
-                    al.Country,
-                    al.ZipCode,
-                    al.Province,
-                    al.City
+                    co.CountryName,
+                    pro.ProvinceName,
+                    ci.CityName
                 FROM
                     tbl_applicantinfo AS ai
                 INNER JOIN
                     tbl_applicantlocation AS al ON al.ApplicantLocationID = ai.ApplicantLocationID
+                INNER JOIN
+                    tbl_country AS co ON co.CountryID = al.CountryID
+                INNER JOIN
+                    tbl_province AS pro ON pro.ProvinceID = al.ProvinceID
+                INNER JOIN
+                    tbl_city AS ci ON ci.CityID = al.CityID
                 WHERE
                     ai.ApplicantID = :ApplicantID;";
             $stmtGetApplicantInformation = $connection->prepare($sQryGetApplicantInformation);
@@ -62,7 +67,7 @@
                     $completeAddress = $rowApplicantInformation['StreetAddress'].' ';
                 }
 
-                $completeAddress .= $rowApplicantInformation['City'].', '.$rowApplicantInformation['Province'].', '.$rowApplicantInformation['Country'].' '.$rowApplicantInformation['ZipCode'];
+                $completeAddress .= $rowApplicantInformation['CityName'].', '.$rowApplicantInformation['ProvinceName'].', '.$rowApplicantInformation['CountryName'];
 
                 $dataResult['CompleteAddress'] = $completeAddress;
 

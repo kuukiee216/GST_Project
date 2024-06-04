@@ -111,14 +111,34 @@
               </div>
 
               <div class="col-md-3 d-flex justify-content-center align-items-center">
-                <div class="form-group">
+                <button class="btn btn-light dropdown-toggle w-100 text-left text-muted shadow" type="button" id="btnDatePostedDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-suitcase mr-3"></i>
+                  Date posted
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnDatePostedDD">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="">
+                      <span class="form-check-sign">Agree with terms and conditions</span>
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="">
+                      <span class="form-check-sign">Agree with terms and conditions</span>
+                    </label>
+                  </div>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a> 
+                </div>
+                <!--<div class="form-group">
                   <div class="input-icon">
                     <span class="input-icon-addon"> 
                       <i class="fa fa-suitcase"></i>
                     </span>
-                    <input id="txtSearchClassification" type="text" class="form-control ps-5 shadow" placeholder="Classification" />
+                     <input id="txtSearchClassification" type="text" class="form-control ps-5 shadow" placeholder="Classification" />
                   </div>
-                </div>
+                </div> -->
               </div>
 
               <div class="col-md-3 d-flex justify-content-center align-items-center">

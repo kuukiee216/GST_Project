@@ -2062,3 +2062,475 @@ function isResumeExist(){
 
     return resume_exists;
 }
+
+function DeleteAccount(){
+    $('#btnDeleteAccount').addClass('is-loading');
+    $('#btnChangePassword').prop('disabled', true);
+    $('#btnDeleteAccount').prop('disabled', true);
+
+    $.ajax({
+        type: "GET",
+        url: "../../PHPFiles/accountdelete.php",
+        dataType: "html",
+        success: function(dataResult){
+            if(dataResult.trim() == 0){
+                swal({
+                    title: 'Account Deleted Successfully!',
+                    text: "Your account has been deleted. You will be redirected to login page.",
+                    icon: 'success',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnDeleteAccount').removeClass('is-loading');
+                    $('#btnChangePassword').prop('disabled', false);
+                    $('#btnDeleteAccount').prop('disabled', false);
+                    
+                    location.href="logout.php";
+                });
+            }
+            else if(dataResult.trim() == 1){
+                swal({
+                    title: 'Failed to Delete Account!',
+                    text: "Something went wrong while trying to delete your account. Data handling failed, please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnDeleteAccount').removeClass('is-loading');
+                    $('#btnChangePassword').prop('disabled', false);
+                    $('#btnDeleteAccount').prop('disabled', false);
+                });
+            }
+            else{
+                swal({
+                    title: 'Failed to Delete Account!',
+                    text: "Something went wrong while trying to delete your account. Please try again.",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnDeleteAccount').removeClass('is-loading');
+                    $('#btnChangePassword').prop('disabled', false);
+                    $('#btnDeleteAccount').prop('disabled', false);
+                });
+            }
+        },
+        error: function(xhr, status, error){
+            swal({
+                title: 'Failed to Connect to Server!',
+                text: "Something went wrong while trying to connect to the server. Please",
+                icon: 'error',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#btnDeleteAccount').removeClass('is-loading');
+                $('#btnChangePassword').prop('disabled', false);
+                $('#btnDeleteAccount').prop('disabled', false);
+            });
+        }
+    });
+}
+
+function changePasswordForm(){
+    $('#modalChangePassword').modal({
+        backdrop: 'static',
+        keyboard: true,
+        focus: true,
+        show: true
+    });
+}
+
+function ValidateChangePass(formID){
+    event.preventDefault();
+
+    $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3').addClass('btn btn-primary btn-block my-3 is-loading');
+    disableForm(formID);
+
+    var txtCurrentPassword = $("#txtCurrentPassword").val();
+    var txtNewPassword = $("#txtNewPassword").val();
+    var txtConfirmNewPassword = $("#txtConfirmNewPassword").val();
+
+    if((txtCurrentPassword.length >= 8 && txtCurrentPassword.length <= 16) && 
+        (txtNewPassword.length >= 8 && txtNewPassword.length <= 16) && 
+        (txtConfirmNewPassword.length >= 8 && txtConfirmNewPassword.length <= 16)){
+        if(txtNewPassword === txtConfirmNewPassword){
+            if(txtCurrentPassword !== txtConfirmNewPassword){
+                $.ajax({
+                    type: "POST",
+                    url: "../PHPFiles/sendChangePassOTP.php",
+                    dataType: "html",
+                    data: {
+                        CurrentPassword: txtCurrentPassword,
+                    },
+                    success: function(dataResult){
+                        if(dataResult.trim() == 0){
+                            swal({
+                                title: 'OTP Verified Successfully!',
+                                text: "OTP has been verified. You can now change your account's password.",
+                                icon: 'success',
+                                buttons : {
+                                    confirm: {
+                                        text : 'Okay',
+                                        className : 'btn btn-success'
+                                    }
+                                }
+                            }).then(function(){
+                                $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                                enableForm(formID);
+                                $('#formPassword').addClass('d-none d-sm-none');
+                                $('#formOTPValidation').removeClass('d-none d-sm-none');
+                            });
+                        }
+                        else if(dataResult.trim() == 1){
+                            swal({
+                                title: 'Failed to Verify Current Password!',
+                                text: "Something went wrong while trying to verify your current password. Data handling failed, please try again later.",
+                                icon: 'error',
+                                buttons : {
+                                    confirm: {
+                                        text : 'Okay',
+                                        className : 'btn btn-success'
+                                    }
+                                }
+                            }).then(function(){
+                                $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                                enableForm(formID);
+                            });
+                        }
+                        else if(dataResult.trim() == 2){
+                            swal({
+                                title: 'Failed to Send Email!',
+                                text: "Something went wrong while trying to send OTP. Please try again later.",
+                                icon: 'error',
+                                buttons : {
+                                    confirm: {
+                                        text : 'Okay',
+                                        className : 'btn btn-success'
+                                    }
+                                }
+                            }).then(function(){
+                                $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                                enableForm(formID);
+                            });
+                        }
+                        else if(dataResult.trim() == 3){
+                            swal({
+                                title: 'Failed to Retrieve Email Address!',
+                                text: "Something went wrong while trying to retrieve your account's email address. Please try again later.",
+                                icon: 'error',
+                                buttons : {
+                                    confirm: {
+                                        text : 'Okay',
+                                        className : 'btn btn-success'
+                                    }
+                                }
+                            }).then(function(){
+                                $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                                enableForm(formID);
+                            });
+                        }
+                        else if(dataResult.trim() == 4){
+                            swal({
+                                title: 'Incorrect Current Password!',
+                                text: "You have entered an incorrect password.",
+                                icon: 'error',
+                                buttons : {
+                                    confirm: {
+                                        text : 'Okay',
+                                        className : 'btn btn-success'
+                                    }
+                                }
+                            }).then(function(){
+                                $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                                enableForm(formID);
+                            });
+                        }
+                        else{
+                            swal({
+                                title: 'Failed to Verify Current Password!',
+                                text: "Something went wrong while trying to verify your current password.",
+                                icon: 'error',
+                                buttons : {
+                                    confirm: {
+                                        text : 'Okay',
+                                        className : 'btn btn-success'
+                                    }
+                                }
+                            }).then(function(){
+                                $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                                enableForm(formID);
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        swal({
+                            title: 'Failed to Connect to Server!',
+                            text: "Something went wrong while trying to connect to the server. Please",
+                            icon: 'error',
+                            buttons : {
+                                confirm: {
+                                    text : 'Okay',
+                                    className : 'btn btn-success'
+                                }
+						    }
+                        }).then(function(){
+                            $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                            enableForm(formID);
+                        });
+                    }
+                });
+            }
+            else{
+                swal({
+                    title: 'Invalid Password!',
+                    text: "Current password should not be your new password.",
+                    icon: 'warning',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                    enableForm(formID);
+                });
+            }
+        }
+        else{
+            swal({
+                title: 'Invalid Password!',
+                text: "New Password and Confirm New Password must be the same.",
+                icon: 'warning',
+                buttons : {
+                    confirm: {
+                        text : 'Okay',
+                        className : 'btn btn-success'
+                    }
+                }
+            }).then(function(){
+                $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                enableForm(formID);
+            });
+        }
+    }
+    else{
+        swal({
+            title: 'Invalid Password!',
+            text: "Password must be atleast eight(8) to sixteen(16) characters.",
+            icon: 'warning',
+            buttons : {
+                confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                }
+            }
+        }).then(function(){
+            $('#btnValidatePassword').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+            enableForm(formID);
+        });
+    }
+}
+function ValidateOTP(formID){
+    event.preventDefault();
+
+    $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3').addClass('btn btn-primary btn-block my-3 is-loading');
+    disableForm(formID);
+
+    var txtChangePassOTP = $("#txtOTP").val();
+    var txtNewPassword = $("#txtNewPassword").val();
+
+    if(txtChangePassOTP.length == 6){
+        $.ajax({
+            type: "POST",
+            dataType: "html",
+            data: {
+                OTP: txtChangePassOTP,
+                Password: txtNewPassword
+            },
+            url: "../PHPFiles/validateChangePassOTP.php",
+            success: function(dataResult){
+                if(dataResult == "0"){
+                    swal({
+                        title: 'Password Changed Successfully!',
+                        text: "Your password has been changed successfully!",
+                        icon: 'success',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnCloseChangePass').click();
+                    });
+                }
+                else if(dataResult == "1"){
+                    swal({
+                        title: 'Failed to Verify OTP!',
+                        text: "Something went wrong while trying to verify OTP. Data handling failed, please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                        enableForm(formID);
+                    });
+                }
+                else if(dataResult == "2"){
+                    swal({
+                        title: 'Expired OTP!',
+                        text: "The OTP you entered was found expired. Please try again.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                        enableForm(formID);
+                    });
+                }
+                else if(dataResult == "3"){
+                    swal({
+                        title: 'Invalid OTP!',
+                        text: "The OTP you entered is incorrect.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                        enableForm(formID);
+                    });
+                }
+                else if(dataResult == "4"){
+                    swal({
+                        title: 'Failed to Change Password!',
+                        text: "Something went wrong while trying to change your account's password. Please try again later.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                        enableForm(formID);
+                    });
+                }
+                else{
+                    swal({
+                        title: 'Failed to Verify OTP!',
+                        text: "Something went wrong while trying to verify OTP.",
+                        icon: 'error',
+                        buttons : {
+                            confirm: {
+                                text : 'Okay',
+                                className : 'btn btn-success'
+                            }
+                        }
+                    }).then(function(){
+                        $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                        enableForm(formID);
+                    });
+                }
+            },
+            error: function(xhr, status, error){
+                swal({
+                    title: 'Failed to Connect to Server!',
+                    text: "Something went wrong while trying to connect to the server. Please",
+                    icon: 'error',
+                    buttons : {
+                        confirm: {
+                            text : 'Okay',
+                            className : 'btn btn-success'
+                        }
+                    }
+                }).then(function(){
+                    $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+                    enableForm(formID);
+                });
+            }
+        });
+    }
+    else{
+        swal({
+            title: 'Invalid OTP!',
+            text: "The OTP you have entered is considered as invalid. Please make sure that it is from the e-mail you received.",
+            icon: 'error',
+            buttons : {
+                confirm: {
+                    text : 'Okay',
+                    className : 'btn btn-success'
+                }
+            }
+        }).then(function(){
+            $('#btnVerifyOTP').removeClass('btn btn-primary btn-block my-3 is-loading').addClass('btn btn-primary btn-block my-3');
+            enableForm(formID);
+        });
+    }
+}
+
+function toggleCurrentPasswordVisibility() {
+    var passwordField = document.getElementById("txtCurrentPassword");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        $('#btnToggleCurrentPasswordIcon').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+    } 
+    else {
+        passwordField.type = "password";
+        $('#btnToggleCurrentPasswordIcon').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+    }
+}
+function toggleNewPasswordVisibility() {
+    var passwordField = document.getElementById("txtNewPassword");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        $('#btnToggleNewPasswordIcon').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+    } 
+    else {
+        passwordField.type = "password";
+        $('#btnToggleNewPasswordIcon').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+    }
+}
+function toggleConfirmPasswordVisibility() {
+    var passwordField = document.getElementById("txtConfirmNewPassword");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        $('#btnToggleConfirmPasswordIcon').removeClass('fas fa-eye').addClass('fas fa-eye-slash');
+    } 
+    else {
+        passwordField.type = "password";
+        $('#btnToggleConfirmPasswordIcon').removeClass('fas fa-eye-slash').addClass('fas fa-eye');
+    }
+}
