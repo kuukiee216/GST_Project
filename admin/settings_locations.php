@@ -312,17 +312,28 @@
 								<div class="modal-body">
 									<form id="formAddLocations">
 										<div class="form-group px-5">
-											<label for="txtMainApplication">Main Application <span class="text-danger font-weight-bold">*</span></label>
-											<input type="text" class="form-control" name="txtMainApplication" id="txtMainApplication" required>
-										</div>
+											<label for="inputCountry">Country <span class="text-danger font-weight-bold">*</span></label>
+											<select class="form-control" name="inputCountry" id="selectCountry" onchange="loadStates()" required>
+												<option value="" disabled selected>Select a Country</option>
+											</select> 
+											<br />
 
-										<div class="form-group px-5">
-											<label for="txtSubClassification">Sub Classification <span class="text-danger font-weight-bold">*</span></label>
-											<input type="text" class="form-control" name="txtSubClassification" id="txtSubClassification" required>
+											<label for="inputState">State/Province <span class="text-danger font-weight-bold">*</span></label>
+											<select class="form-control" name="inputState" id="selectState" onchange="loadCities()" required>
+												<option value="" disabled selected>Select a State</option>
+											</select>
+											<br />
+
+											<label for="inputCity">City <span class="text-danger font-weight-bold">*</span></label>
+											<input class="form-control" type="text" name="inputCity" id="selectCity">
+											<!-- <select class="form-control" name="inputCity" id="selectCity" required>
+												<option value="" disabled selected>Select a City</option>
+											</select> -->
+											<br />
 										</div>
 
 										<div class="row mx-3 my-3">
-											<button class="btn btn-primary btn-block" id="btnAddLocations" onclick="AddLocations(formAddLocations);">Add Location</button>
+											<button class="btn btn-primary btn-block" id="btnAddLocations" onclick="AddLocation(formAddLocations);">Add Location</button>
 										</div>
 									</form>
 								</div>
@@ -343,97 +354,25 @@
                         <a href="#" onclick="openAddLocationsForm();"class="btn btn-secondary"><i class="fas fa-map-marker-alt"></i> Add Locations</a>
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="table-responsive">
                                             <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="basic-datatables_length">
-                                                            <label>Show 
-                                                            <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select> entries</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div id="basic-datatables_filter" class="dataTables_filter">
-                                                            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot> 
-                                                    <tr>
-                                                        <th rowspan="1" colspan="1">Action</th>
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">You Added Nagoya, Japan</td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">You Added Hiroshima, Japan</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">You Added Nagasaki, Japan</td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">You Added Kyoto, Japan</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </div>
+												<div class="col-sm-12">
+													<table id="tblLocations" class="display table table-striped table-hover" cellspacing="0" width="100%">
+														<thead>
+															<tr>
+																<th>Action</th>
+															</tr>
+														</thead>
+														<tbody>
+															
+														</tbody>
+													</table>
+															</div>
+														</div>
+													</div>
+															</div>
+														</div>
+													</div>
+										</div>
 
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
@@ -513,9 +452,189 @@
 	<script src="../ajax/Admin/AdminSettingsHandler.js"></script>
 
 	<script>
-		$(document).ready(function({
+		$(document).ready(function(){
+			getLocations();
+			loadCountries();
+			$('#tblLocations').DataTable();
+		});
 
-		}));
+		var config = {
+			cUrl: 'https://api.countrystatecity.in/v1/countries',
+			ckey: 'NHhvOEcyWk50N2Vna3VFTE00bFp3MjFKR0ZEOUhkZlg4RTk1MlJlaA=='
+		}
+		
+
+		var countrySelect = document.querySelector('#selectCountry'),
+			stateSelect = document.querySelector('#selectState'),
+			citySelect = document.querySelector('#selectCity')
+
+
+		function loadCountries() {
+
+			let apiEndPoint = config.cUrl
+
+			fetch(apiEndPoint, {headers: {"X-CSCAPI-KEY": config.ckey}})
+			.then(Response => Response.json())
+			.then(data => {
+				// console.log(data);
+
+				data.forEach(country => {
+					const option = document.createElement('option')
+					option.value = country.iso2
+					option.textContent = country.name 
+					countrySelect.appendChild(option)
+				})
+			})
+			.catch(error => console.error('Error loading countries:', error))
+
+			stateSelect.disabled = true
+			citySelect.disabled = true
+			stateSelect.style.pointerEvents = 'none'
+			citySelect.style.pointerEvents = 'none'
+		}
+
+
+		function loadStates() {
+			stateSelect.disabled = false
+			citySelect.disabled = true
+			stateSelect.style.pointerEvents = 'auto'
+			citySelect.style.pointerEvents = 'none'
+
+			const selectedCountryCode = countrySelect.value
+			// console.log(selectedCountryCode);
+			stateSelect.innerHTML = '<option value="">Select State</option>' // for clearing the existing states
+			citySelect.innerHTML = '<option value="">Select City</option>' // Clear existing city options
+
+			fetch(`${config.cUrl}/${selectedCountryCode}/states`, {headers: {"X-CSCAPI-KEY": config.ckey}})
+			.then(response => response.json())
+			.then(data => {
+				// console.log(data);
+
+				data.forEach(state => {
+					const option = document.createElement('option')
+					option.value = state.iso2
+					option.textContent = state.name 
+					stateSelect.appendChild(option)
+				})
+			})
+			.catch(error => console.error('Error loading countries:', error))
+		}
+
+
+		function loadCities() {
+			citySelect.disabled = false
+			citySelect.style.pointerEvents = 'auto'
+
+			// const selectedCountryCode = countrySelect.value
+			// const selectedStateCode = stateSelect.value
+			// // console.log(selectedCountryCode, selectedStateCode);
+
+			// citySelect.innerHTML = '<option value="">Select City</option>' // Clear existing city options
+
+			// fetch(`${config.cUrl}/${selectedCountryCode}/states/${selectedStateCode}/cities`, {headers: {"X-CSCAPI-KEY": config.ckey}})
+			// .then(response => response.json())
+			// .then(data => {
+			// 	// console.log(data);
+
+			// 	data.forEach(city => {
+			// 		const option = document.createElement('option')
+			// 		option.value = city.iso2
+			// 		option.textContent = city.name 
+			// 		citySelect.appendChild(option)
+			// 	})
+			// })
+		}
+
+
+		// document.addEventListener("DOMContentLoaded", function() {
+		// 	fetch("https://restcountries.com/v2/all")
+		// 	.then(response => response.json())
+		// 	.then(data => {
+		// 	const countrySelect = document.getElementById("selectCountry");
+		// 	data.forEach(country => {
+		// 		const option = document.createElement("option");
+		// 		option.text = country.name;
+		// 		option.value = country.alpha2Code;
+		// 		countrySelect.appendChild(option);
+		// 	});
+		// 	})
+		// 	.catch(error => console.error("Error fetching countries:", error));
+		// });
+
+		// // Assuming 'selectElement' is a reference to your <select> element
+		// const selectElement = document.getElementById("selectCountry");
+
+		// var selectedCountry = null;
+		// // Event listener for the change event on the select element
+		// selectElement.addEventListener("change", function() {
+			
+		// 	const countrySelect = document.getElementById("selectCountry");
+		// 	const selectedCountryCode = countrySelect.value;
+		// 	selectedCountry = selectedCountryCode;
+		// 	fetch(`http://api.geonames.org/searchJSON?country=${selectedCountryCode}&featureCode=ADM1&username=shiro216`)
+		// 		.then(response => response.json())
+		// 		.then(data => {
+					
+		// 		const stateSelect = document.getElementById("selectState");
+		// 		stateSelect.innerHTML = ""; // Clear previous options
+		// 		stateSelect.disabled = true; // Disable the dropdown by default
+		// 		console.log(data);
+		// 		if (data.geonames.length > 0) {
+		// 			stateSelect.disabled = false; // Enable dropdown
+		// 			data.geonames.forEach(state => {
+		// 			const option = document.createElement("option");
+		// 			option.text = state.adminName1;
+		// 			stateSelect.appendChild(option);
+		// 			});
+		// 		} else {
+		// 			// If no states available, disable the dropdown
+		// 			stateSelect.disabled = true;
+		// 			const option = document.createElement("option");
+		// 			option.text = "No states/provinces available";
+		// 			stateSelect.appendChild(option);
+		// 		}
+		// 		})
+		// 		.catch(error => console.error("Error fetching states:", error));
+		// });
+
+
+		// // Assuming 'selectElement' is a reference to your <select> element
+		// const selectElement_City = document.getElementById("selectState");
+
+		// // Event listener for the change event on the select element
+		// selectElement_City.addEventListener("change", function() {
+		// 	const stateSelect = document.getElementById("selectState");
+		// 	const selectedProvince = stateSelect.value;
+		// 	console.log(selectedProvince);
+
+		// 	fetch(`http://api.geonames.org/searchJSON?q=${selectedProvince}&country=${selectedCountry}&username=shiro216`)
+		// 		.then(response => response.json())
+		// 		.then(data => {
+		// 			console.log(data);
+		// 			const citySelect = document.getElementById("selectCity");
+		// 			citySelect.innerHTML = ""; // Clear previous options
+		// 			citySelect.disabled = true; // Disable the dropdown by default
+
+		// 			if (data.totalResultsCount > 0) {
+		// 				citySelect.disabled = false; // Enable dropdown
+		// 				// Sort the cities alphabetically
+		// 				const sortedCities = data.geonames.sort((a, b) => a.toponymName.localeCompare(b.toponymName));
+		// 				sortedCities.forEach(city => {
+		// 					const option = document.createElement("option");
+		// 					option.text = city.toponymName;
+		// 					citySelect.appendChild(option);
+		// 				});
+		// 			} else {
+		// 				// If no cities available, disable the dropdown
+		// 				citySelect.disabled = true;
+		// 				const option = document.createElement("option");
+		// 				option.text = "No cities available";
+		// 				citySelect.appendChild(option);
+		// 			}
+		// 		})
+		// 		.catch(error => console.error("Error fetching cities:", error));
+		// });
+		
 	</script>
 
 </body>

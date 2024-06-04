@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../db_config.php';
+require_once '../../Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -10,31 +10,27 @@ $AccountID = $_SESSION['AccountID'];
 $Area = 'Ad Type';
 $Action = 'Add';
 
-echo 'worked';
-
-if ($_SERVER["REQUEST_METHOD"] !== "POST"){
-    exit(); 
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    exit();
 }
 
-if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Discount']) && isset($_POST['Description'])){
+if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Description'])){
 
     $AdType = $_POST['AdType'];
     $Price = $_POST['Price'];
-    $Discount = $_POST['Discount'];
     $Description = $_POST['Description'];
 
-    try{
+    try {
         $connection->beginTransaction();
 
         $sQryAddPromo = 'INSERT INTO tbl_adtype
-                            (AdType, Price, Discount, Description)
+                            (AdType, Price, Description)
                         VALUES
-                            (?,?,?,?)';
+                            (?,?,?)';
         $stmtAddPromo = $connection->prepare($sQryAddPromo);
         $stmtAddPromo->bindValue(1, $AdType, PDO::PARAM_STR);
         $stmtAddPromo->bindValue(2, $Price, PDO::PARAM_STR);
-        $stmtAddPromo->bindValue(3, $Discount, PDO::PARAM_STR);
-        $stmtAddPromo->bindValue(4, $Description, PDO::PARAM_STR);
+        $stmtAddPromo->bindValue(3, $Description, PDO::PARAM_STR);
         $stmtAddPromo->execute();
 
         $sQrySystemLog = "INSERT INTO tbl_systemlog(DateTimeStamp, Action, Area, AccountID) VALUES(?,?,?,?)";
@@ -48,13 +44,10 @@ if(isset($_POST['AdType']) && isset($_POST['Price']) && isset($_POST['Discount']
         $connection->commit();
         echo '1';
 
-    }catch(PDOException $err){
+    } catch (PDOException $err) {
         $connection->rollBack();
-        echo $err; 
+        echo $err;
     }
-}
-else{
+} else {
     echo '3';
 }
-
-?>

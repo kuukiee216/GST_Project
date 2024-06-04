@@ -1,3 +1,59 @@
+<?php
+require_once '../PHPFiles/Essentials/db_config_local.php';
+$clsConnect = new dbConnection();
+$connection = $clsConnect->dbConnect();
+
+$promoCodeApplied = false;
+$discountAmount = 0;
+$adTypePrice = 0;
+$seasonalPrice = 0;
+$Type = 0;
+$seasonalType = 0;
+$taxRate = 0;
+$discount = 0;
+
+// Define prices for different ad types
+$adTypePrice = $_GET['AdType'];
+$seasonalPrice = $_GET['Seasonal'];
+$Type = $_GET['adTypeID'];
+$seasonalType = $_GET['seasonalID'];
+$jobID = $_GET['jobID'];
+$employerID = $_GET['employerID'];
+
+// Fetch the ad type price from the database
+$stmt = $connection->prepare("SELECT AdType FROM tbl_adtype WHERE AdTypeID = :adTypeID");
+$stmt->bindParam(':adTypeID', $Type);
+$stmt->execute();
+$adTypeResult = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($adTypeResult) {
+    $adType = $adTypeResult['AdType'];
+}
+
+// Fetch the tax rate from the database
+$stmt = $connection->query("SELECT VatPercent FROM tbl_vat");
+$vatResult = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($vatResult) {
+    $taxRate = $vatResult['VatPercent'] / 100;
+}
+
+// Fetch discount from tbl_subscription based on $Type and $seasonalType
+$stmt = $connection->prepare("SELECT Discount FROM tbl_subscription WHERE AdTypeID = :adTypeID AND SeasonalID = :seasonalID");
+$stmt->bindParam(':adTypeID', $Type);
+$stmt->bindParam(':seasonalID', $seasonalType);
+$stmt->execute();
+$subscriptionResult = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($subscriptionResult) {
+    $discount = $subscriptionResult['Discount'] / 100;
+}
+
+$basePrice = $adTypePrice ?? 0;
+$tax = $basePrice * $taxRate;
+$discountedPrice = $basePrice * $discount;
+
+$total = $basePrice + $seasonalPrice + $tax - $discountedPrice;
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +104,7 @@
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="container-fluid">
@@ -60,132 +116,84 @@
             </a>
 
             <h2 class="mt-4"><b>Pay Post</b></h2>
-            <h3 class="mt-3">Business Address</h3>
-            <h5 class="text-muted mt-2">To protect candidates and seek from fraud, we verify the business address of
-                all
-                first time hirers .
-                Don’t worry, we only need to do this one.</h5>
-
-            <h5 class="mt-3">Country</h5>
-            <input type="tel" class="form-control" placeholder="">
-
-            <h5 class="mt-3">Address Line</h5>
-            <input type="tel" class="form-control" placeholder="">
-            <h5 class="mt-3">Suburb/Town/City</h5>
-            <input type="tel" class="form-control" placeholder="">
-            <h5 class="mt-3">Postal Code</h5>
-            <input type="tel" class="form-control" placeholder="">
-            <br>
-
-
 
             <hr>
-            <h3 class="mt-5">Apply Promo Code</h3>
+            <h3 class="mt-5"><b>Apply Promo Code</b></h3>
+            <form id="promoCodeForm">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                <input type="search" class="form-control" name="promoCode" id="promoCode" placeholder="Enter promo code">
                 <div class="input-group-prepend">
-                    <button class="btn btn-secondary btn-border" type="button">Apply</button>
+                    <button class="btn btn-secondary btn-border" type="button" id="applyButton">Apply</button>
                 </div>
             </div>
-            <h3 class="mt-5">Order Summary</h3>
+            <input type="text" class="form-control" name="promo-code-container" id="promo-code-container" readonly>
+        </form>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Items</th>
-                        <th scope="col">Cost</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Basic Ad</td>
-                        <td>6250.00</td>
-                    </tr>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td>750.00</td>
-                    </tr>
-                    <tr>
-                        <td>Discounted (Subscription)</td>
-                        <td>500.00</td>
-                    </tr>
-                    <tr>
-                        <td><b>Total (including VAT)<b></td>
-                        <td><b>6,500.00</b></td>
-                    </tr>
-                </tbody>
-            </table>
-            <hr>
-            <h3 class="mt-5">Pay Method</h3>
 
-            <div class="card container">
+            
+            <br>
+            <h3 class="mt-5"><b>Order Summary</b></h3>
+            <table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Items</th>
+            <th scope="col">Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Ad Type</td>
+        <td id="base-price">+$<?php echo number_format($basePrice, 2); ?></td>
+    </tr>
+    <tr>
+        <td>VAT</td>
+        <td id="tax">+<?php echo number_format($tax, 2); ?></td>
+    </tr>
+    <tr>
+        <td>Seasonal</td>
+        <td id="seasonal-price">+$<?php echo number_format($seasonalPrice, 2); ?></td>
+    </tr>
+    <tr>
+        <td>Discounted (Ad Type)</td>
+        <td id="discounted-price">-$<?php echo number_format($discountedPrice, 2); ?></td>
+    </tr>
+    <?php if ($discountAmount > 0): ?>
+    <tr id="promo-discount">
+        <td>Discount (Promo Code)</td>
+        <td id="discount-value">-$<?php echo number_format($discountAmount, 2); ?></td>
+    </tr>
+    <?php endif; ?>
+    <tr>
+        <td><b>Total (including VAT)<b></td>
+        <td id="total-price"><b>$<?php echo number_format($total, 2); ?></b></td>
+    </tr>
 
-                <div class="row cols-3" style="width: 50%;">
+   
+    </tbody>
 
-                    <div class="col">
-                        <img class="card-img-top" src="../assets/img/visa.png" alt="visa">
-                    </div>
+</table>
 
-                    <div class="col">
-                        <img class="card-img-top" src="../assets/img/mastercard.png" alt="visa">
-                    </div>
 
-                    <div class="col">
-                        <img class="card-img-top" src="../assets/img/americanexpress.png" alt="visa">
-                    </div>
 
-                </div>
+<form action="create_checkout_session.php" method="POST">
+    <input type="hidden" name="totalAmount" id="totalAmount" value="<?php echo $total; ?>">
+    <input type="hidden" name="jobID" id="jobID" value="<?php echo $jobID; ?>">
+    <input type="hidden" name="employerID" id="employerID" value="<?php echo $employerID; ?>">
+    <input type="hidden" name="adType" id="adType" value="<?php echo $adType; ?>">
+    <div class="mb-5">
+        <button class="btn btn-danger" type="submit" id="alert_demo_3_3">Proceed to Payment</button>
+        <a href="../recruiter/create_jobadPreview.php?jobID=<?php echo $jobID; ?>&employerID=<?php echo $employerID; ?>&AdType=<?php echo $adTypePrice; ?>&Seasonal=<?php echo $seasonalPrice; ?>&adTypeID=<?php echo $Type; ?>&seasonalID=<?php echo $seasonalType; ?>" class="btn btn-outline-danger">Preview</a>
 
-                <div class="card-body">
-                    <label for="tel">Card Number</label>
-                    <input type="tel" class="form-control" id="tel" placeholder="0000-0000-0000-0000">
-                    <div class="row cols-2 mt-3">
-                        <div class="col">
-                            <label for="EDate">Expire Date</label>
-                            <input type="date" class="form-control" id="EDate">
-                        </div>
-                        <div class="col">
-                            <label for="cvc">CVC</label>
-                            <input type="tel" class="form-control" id="cvc" placeholder="123">
-                        </div>
-                    </div>
-                    <p class="mt-3"><input type="checkbox" id="check"> Save card details for future payments</p>
-                    <p><i class="fas fa-lock"></i> Your payment is secured. Your card details won't be shared with
-                        other
-                        users on this account.</p>
-                </div>
+    </div>
+</form>
 
-                <div class="form-check row cols-3">
-
-                    <label class="form-radio-label col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="" checked="">
-                        <span class="form-radio-sign">Pay by online payment (direct bank transfer)</span>
-                    </label>
-
-                    <label class="form-radio-label ml-3 col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                        <span class="form-radio-sign">Pay by e-wallet</span>
-                    </label>
-
-                    <label class="form-radio-label ml-3 col">
-                        <input class="form-radio-input" type="radio" name="optionsRadios" value="">
-                        <span class="form-radio-sign">Pay by invoice</span>
-                    </label>
-                </div>
-                <p>By continuing you agree to use this purchase in accordance with our advertising<a href="#">terms
-                        of
-                        use.</a></p>
-            </div>
-            <div class="mb-5">
-                <a class="btn btn-danger" type="button" id="alert_demo_3_3">Post My Ad</a>
-                <a href="../recruiter/create_jobadPreview.php" class="btn btn-outline-danger">Preview</a>
-            </div>
         </div>
+    </div>
     </div>
 
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -266,6 +274,85 @@
     <script src="../assets/js/atlantis.min.js"></script>
 
 
+
+
+<script>
+  $(document).ready(function() {
+    $('#applyButton').click(function(event) {
+        event.preventDefault(); // Prevent default form submission behavior
+        var searchQuery = $('#promoCode').val();
+        if (searchQuery) {
+            SearchPromo(searchQuery);
+        }
+    });
+});
+
+function SearchPromo(searchQuery) {
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "../PHPFiles/Recruiter/SearchPromo.php",
+        data: { searchQuery: searchQuery },
+        success: function(data) {
+            if (data.error) {
+                console.log(data.error);
+                $('#promo-code-container').val(data.error); // Display error message
+                return;
+            }
+            var discount = data[0]?.Discount || 0; // Ensure discount is 0 if not found
+            if (discount > 0) {
+                var promo = data[0];
+                $('#promo-code-container').val(`${promo.PromoCode} has a discounted price of ${promo.Discount}`);
+                applyDiscount(discount);
+            } else {
+                $('#promo-code-container').val("No valid promo code found.");
+                removeDiscount();
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log("Error fetching data: " + error);
+        }
+    });
+}
+
+function applyDiscount(discountAmount) {
+    discountAmount = parseFloat(discountAmount) || 0; // Ensure discountAmount is a number
+
+    // Find the row for the promo discount, if it exists
+    var discountRow = $("tr#promo-discount");
+    if (discountRow.length === 0) {
+        // If the row doesn't exist, create it
+        discountRow = $('<tr id="promo-discount"><td>Discount (Promo Code)</td><td id="discount-value"></td></tr>');
+        $("table tbody").append(discountRow);
+    }
+    // Update the discount value
+    $("#discount-value").text('-$' + discountAmount.toFixed(2));
+    calculateTotal(discountAmount);
+
+    // Update the total price
+    var total = calculateTotal(discountAmount);
+    $("td#total-price").text('$' + total.toFixed(2));
+}
+
+function removeDiscount() {
+    // Remove the promo discount row if it exists
+    $("tr#promo-discount").remove();
+    // Recalculate the total without the promo discount
+    var total = calculateTotal(0);
+    $("td#total-price").text('$' + total.toFixed(2));
+}
+
+function calculateTotal(promoDiscount) {
+    var basePrice = parseFloat($("td#base-price").text().replace('$', '')) || 0;
+    var tax = parseFloat($("td#tax").text().replace('+$', '')) || 0;
+    var seasonalPrice = parseFloat($("td#seasonal-price").text().replace('+$', '')) || 0;
+    var adTypeDiscount = parseFloat($("td#discounted-price").text().replace('-$', '')) || 0;
+
+    var total = basePrice + seasonalPrice + tax - adTypeDiscount - promoDiscount;
+    return total;
+}
+
+    </script>
 </body>
 
 </html>

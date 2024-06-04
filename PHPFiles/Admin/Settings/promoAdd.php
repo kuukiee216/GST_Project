@@ -1,6 +1,6 @@
 <?php
     
-require_once '../../db_config.php';
+require_once '../../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -48,8 +48,8 @@ if(isset($_POST['PromoName']) && isset($_POST['PromoCode']) && isset($_POST['Dis
         echo '1';
 
     }catch(PDOException $err){
-        $connection->rollBack();
         echo $err; 
+        $connection->rollBack();
     }
 }
 else{

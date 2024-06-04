@@ -1,6 +1,6 @@
 <?php
 
-require_once '../db_config.php';
+require_once '../../PHPFiles/Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -11,11 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST"){
 
 $DateTime = date('Y-m-d H:i:s');
 $AccountID = 23;
-$Area = 'Job List ';
+$Area = 'Job List';
 $Action = 'Repost Job';
 
 
-if(isset($_POST['JobPostID'])){
+if(isset($_POST['JAobPostID'])){
 
     $JID = $_POST['JobPostID'];
 

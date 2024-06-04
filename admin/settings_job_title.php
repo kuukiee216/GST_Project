@@ -324,12 +324,12 @@
 
 										<div class="form-group px-5">
 											<label for="txtSubClassification">Sub Classification <span class="text-danger font-weight-bold">*</span></label>
-											<select class="form-control" name="lstSubClassifications" id="lstSubClassifications" disabled>
+											<select class="form-control" name="lstSubClassifications" id="lstSubClassifications">
 											</select>
 										</div>
 
 										<div class="row mx-3 my-3">
-											<button class="btn btn-primary btn-block" id="btnAddJobClassification" onclick="addJobClassification(formAddJobClassification);">Add Classification</button>
+											<button class="btn btn-primary btn-block" id="btnAddJobClassification" onclick="submitJobTitle();">Add Classification</button>
 										</div>
 									</form>
 								</div>
@@ -458,14 +458,11 @@
 
 		$(document).ready(function(){
 			$('#tblJobTitles').DataTable();
+
+			getJobTitleList();
+			populateSubClassificationSelect();
 			populateMainClassificationSelect();
-
-			// Function to be triggered when an item is selected
-			$('#lstMainClassifications').on('change', function() {
-					var selectedMain = $(this).val();
-					populateSubClassificationSelect(selectedMain);
-
-			});
+			
 			
 		});
 		

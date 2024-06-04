@@ -1,3 +1,52 @@
+<?php
+require_once '../PHPFiles/Essentials/db_config_local.php';
+$clsConnect = new dbConnection();
+$connection = $clsConnect->dbConnect();
+
+$Type = $_GET['adTypeID'] ?? 0;
+$seasonalType = $_GET['seasonalID'] ?? 0;
+$jobID = $_GET['jobID'] ?? 0;
+$employerID = $_GET['employerID'] ?? 0;
+$adTypePrice = $_GET['AdType'] ?? 0;
+$seasonalPrice = $_GET['Seasonal'] ?? 0;
+// Fetch job details along with company name, summary, and description from the database
+$stmt = $connection->prepare("
+    SELECT 
+        cj.JobTitle, 
+        cj.LogoUrl, 
+        cj.VideoURL, 
+        cj.Summary, 
+        cj.Description, 
+        ci.CompanyName 
+    FROM tbl_companyjob cj
+    JOIN tbl_employerinfo ei ON cj.EmployerID = ei.EmployerID
+    JOIN tbl_companyinfo ci ON ei.CompanyID = ci.CompanyID
+    WHERE cj.JobID = :jobID AND cj.EmployerID = :employerID
+");
+$stmt->bindParam(':jobID', $jobID, PDO::PARAM_INT);
+$stmt->bindParam(':employerID', $employerID, PDO::PARAM_INT);
+$stmt->execute();
+$jobResult = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$jobTitle = $jobResult['JobTitle'] ?? 'Job Title Not Found'; 
+$logoUrl = isset($jobResult['LogoUrl']) ? str_replace('../../', '../', $jobResult['LogoUrl']) : ''; 
+$videoUrl = isset($jobResult['VideoURL']) ? str_replace('../../', '../', $jobResult['VideoURL']) : '';
+$companyName = $jobResult['CompanyName'] ?? 'Company Name Not Found';
+$summary = $jobResult['Summary'] ?? '';
+$description = $jobResult['Description'] ?? '';
+
+// Fetch job questions from the database
+$stmt = $connection->prepare("
+    SELECT q.Question 
+    FROM tbl_jobquestionnaire jq
+    JOIN tbl_questionnaire q ON jq.QuestionnaireID = q.QuestionnaireID
+    WHERE jq.JobID = :jobID
+");
+$stmt->bindParam(':jobID', $jobID, PDO::PARAM_INT);
+$stmt->execute();
+$questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,15 +69,15 @@
         rel="stylesheet">
 
     <title>Create Job Ad: Preview</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/jj_logo.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/jj_logo.png">
 </head>
 
 <body>
     <!-- Japan job posting icon href-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
 
     <div class="container flex justify-content-center mt-5" style="width: 70%;">
-        <a href="/recruiter/create_jobadPAY.php">
+        <a href="../recruiter/create_jobadPAY.php?jobID=<?php echo $jobID; ?>&employerID=<?php echo $employerID; ?>&AdType=<?php echo $adTypePrice; ?>&Seasonal=<?php echo $seasonalPrice; ?>&adTypeID=<?php echo $Type; ?>&seasonalID=<?php echo $seasonalType; ?>">
             <button type="button" class="btn btn-icon btn-round btn-primary">
                 <i class="fa fa-arrow-circle-left"></i>
             </button>
@@ -43,38 +92,38 @@
             <div class="card bg-primary container-fluid d-flex justify-content-center mt-5">
                 <div class="card d-flex justify-content-center m-5 p-5">
                     <div class="card-body">
-                        <img src="/assets/img/cs_logo.png" alt="...">
-                        <h4>Software Engineer</h4>
-                        <p>Global Solution Tecchnology OPC.</p>
+                    <?php if (!empty($logoUrl)) : ?>
+                        <img src="<?php echo $logoUrl; ?>" alt="Logo" height="80" width="80">
+                        <?php endif; ?>
+                        <h4><?php echo $jobTitle; ?></h4>
+                        <p><?php echo $companyName; ?></p>
                         <p><i class="fas fa-map-marker-alt"></i> Malate, Manila</p>
                         <p><i class="fas fa-money-bill"></i> Full-Time</p>
                         <p class="text-muted">Posted Just Now</p>
                         <a href="#" class="btn btn-danger">Quick Apply</a>
                         <a href="#" class="btn btn-outline-danger">Save</a>
 
-                        <div class="mt-4 flex justify-content">Software development is the process of designing,
-                            creating, testing, and maintaining
-                            computer programs and applications. It involves coding, debugging, and deploying software to
-                            fulfill specific user needs or business requirements. Software developers use various
-                            programming
-                            languages, frameworks, and tools to build solutions ranging from mobile apps and web
-                            applications
-                            to enterprise software and operating systems.
+                        <div class="mt-4 flex justify-content">
+                            <p><?php echo nl2br(htmlspecialchars($description)); ?></p>
+
+                            <p><?php echo nl2br(htmlspecialchars($summary)); ?></p>
                         </div>
 
                         <h6 class="mt-5">Employer Questions</h6>
                         <p>Your application will include the following questions:</p>
                         <ul>
-                            <li>
-                                What do you consider to be your greatest strength, and how does it contribute to your
-                                work?
-                            </li>
-
-                            <li>
-                                Describe a time when you faced failure or setbacks at work and how you overcame them.
-                            </li>
+                            <?php foreach ($questions as $question) : ?>
+                            <li><?php echo htmlspecialchars($question['Question']); ?></li>
+                            <?php endforeach; ?>
                         </ul>
+                            <!-- Display video if available -->
+                            <?php if (!empty($videoUrl)) : ?>
+                                <video controls width="600" height="400">
+                                    <source src="<?php echo $videoUrl; ?>" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
 
+                                                    <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -84,7 +133,7 @@
 
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

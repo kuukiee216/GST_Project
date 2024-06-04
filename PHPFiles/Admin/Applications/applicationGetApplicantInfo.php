@@ -1,5 +1,5 @@
 <?php
-require_once '../../db_config.php';
+require_once '../../Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -19,14 +19,19 @@ if(isset($_POST['ApplicationID'])){
                                     ai.MiddleName,
                                     ai.EmailAddress,
                                     ai.Phone,
-                                    loc.City,
-                                    loc.Country
+                                    ci.CityName,
+                                    pr.ProvinceName,
+                                    co.CountryName
                                 FROM
                                     tbl_application as app
                                 LEFT JOIN
                                     tbl_applicantinfo as ai ON ai.ApplicantID = app.ApplicantID
                                 LEFT JOIN
-                                    tbl_location as loc ON loc.LocationID = ai.LocationID
+                                    tbl_city as ci ON ci.CityID = ai.CityID
+                                LEFT JOIN
+                                    tbl_province as pr ON pr.ProvinceID = ai.ProvinceID
+                                LEFT JOIN
+                                    tbl_country as co ON co.CountryID = ai.CountryID    
                                 WHERE 
                                     app.ApplicationID = ?";
 
@@ -49,7 +54,7 @@ if(isset($_POST['ApplicationID'])){
 
             $dataResultArray['ApplicantName'] = $ApplicantName;
             $dataResultArray['EmailAddress'] = $rowApplicantInfo['EmailAddress'];
-            $dataResultArray['Location'] = $rowApplicantInfo['City']. ', '. $rowApplicantInfo['Country'];
+            $dataResultArray['Location'] = $rowApplicantInfo['CityName'] . ", " . $rowApplicantInfo['ProvinceName'] . " " . $rowApplicantInfo['CountryName'];
             $dataResultArray['Phone'] = $rowApplicantInfo['Phone'];
 
             $jsonDataResult = json_encode($dataResultArray);
@@ -61,7 +66,7 @@ if(isset($_POST['ApplicationID'])){
 
 
     }catch(PDOException $err){
-        echo '2';
+        echo $err;
     }
 
 }else{

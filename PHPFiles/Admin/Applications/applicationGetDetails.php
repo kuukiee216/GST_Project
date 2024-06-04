@@ -1,5 +1,5 @@
 <?php
-require_once '../../db_config.php';
+require_once '../../Essentials/db_config_local.php';
 $clsConnect = new dbConnection();
 $connection = $clsConnect->dbConnect();
 
@@ -8,16 +8,16 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST"){
 }
 
 if(isset($_POST['ApplicationID'])){
-    echo 'worked';
     $dataResultArray = array();
     $AppID = $_POST['ApplicationID'];
     
     try{
         $sQryGetApplicationDetails = "SELECT
+                                    app.Status,
                                     cj.JobTitle,
-                                    loc.City,
-                                    loc.Country,
                                     ci.CompanyName,
+                                    ct.CityName,
+                                    co.CountryName,
                                     js.Minimum,
                                     js.Maximum
                                 FROM
@@ -25,9 +25,13 @@ if(isset($_POST['ApplicationID'])){
                                 LEFT JOIN
                                     tbl_jobposting as jp ON jp.JobPostingID = app.JobPostingID
                                 LEFT JOIN
-                                    tbl_companyjob as cj ON cj.JobID = jp.JobID
+                                    tbl_joblocation as jl ON jl.JobPostingID = jp.JobPostingID
                                 LEFT JOIN
-                                    tbl_location as loc ON loc.LocationID = cj.LocationID
+                                    tbl_country as co ON co.CountryID = jl.CountryID
+                                LEFT JOIN
+                                    tbl_city as ct ON ct.CityID = jl.CityID 
+                                LEFT JOIN
+                                    tbl_companyjob as cj ON cj.JobID = jp.JobID
                                 LEFT JOIN
                                     tbl_employerinfo as ei ON ei.EmployerID = cj.EmployerID
                                 LEFT JOIN
@@ -43,8 +47,9 @@ if(isset($_POST['ApplicationID'])){
         if($stmtGetApplicationDetails->rowCount() == 1){
             $rowApplicationDetails = $stmtGetApplicationDetails->fetch(PDO::FETCH_ASSOC);
 
+            $dataResultArray['Status'] = $rowApplicationDetails['Status'];
             $dataResultArray['JobTitle'] = $rowApplicationDetails['JobTitle'];
-            $dataResultArray['Location'] = $rowApplicationDetails['City'] . ', ' . $rowApplicationDetails['Country'];
+            $dataResultArray['Location'] = $rowApplicationDetails['CityName'] . ", " . $rowApplicationDetails['CountryName'];
             $dataResultArray['CompanyName'] = $rowApplicationDetails['CompanyName'];
             $dataResultArray['Salary'] = $rowApplicationDetails['Minimum']. ' - ' . $rowApplicationDetails['Maximum'];
 
@@ -55,7 +60,7 @@ if(isset($_POST['ApplicationID'])){
         }
 
     }catch(PDOException $err){
-        echo '2';
+        echo $err;
     }
 
 }else{

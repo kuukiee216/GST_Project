@@ -48,7 +48,7 @@
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="container pt-5">
@@ -111,7 +111,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save email</button>
+                                            <button type="button" class="btn btn-primary" onclick="ChangeEmployerProfile('editForm');" id="btnChangeEmployerProfile" type="submit">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-primary" onclick="ChangeCompanyProfile('companyEditForm');" id="btnChangeCompanyProfile" type="submit">Save</button>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +266,7 @@
     </div>
 
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -349,8 +349,17 @@
     <script src="../ajax/Recruiter/ProfileHandler.js"></script>
 
     <script src="../ajax/Recruiter/ChangePassHandler.js"></script>
+    <script src="../ajax/Recruiter/ChangeCompanyProfile.js"></script>
+    <script src="../ajax/Recruiter/ChangeEmployerProfile.js"></script>
+
     <script>
     $(document).ready(function() {
+        $('#btnChangeCompanyProfile').click(function() {
+            ChangeCompanyProfile('companyEditForm');
+        });
+        $('#btnChangeEmployerProfile').click(function() {
+            ChangeEmployerProfile('editForm');
+        });
         $('#btnChangePass').click(function() {
             ChangePass('changePassForm');
         });

@@ -7,21 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport'>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../assets/css/atlantis.css">
-    <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Road+Rage&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-
     <!-- CSS Files -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/atlantis.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="../CSS-RECRUITER/register_account.css" rel="stylesheet">
 
     <!-- Fonts and icons -->
@@ -49,12 +38,11 @@
 
 <body>
     <!--Navbar Header-->
-    <?php include('../PHPFiles/recruiter_header.php')?>
+    <?php include '../PHPFiles/recruiter_header.php'?>
     <!--End Navbar-->
 
     <div class="container-fluid">
-        <div class="container justify-content-center mt-5" style="width: 50%;">
-
+        <div class="container flex justify-content-center mt-5" style="width: 50%;">
             <div class="progress-card">
                 <div class="progress-status">
                     <a href="../recruiter/create_jobad3.php">
@@ -67,171 +55,207 @@
                 <div class="progress" style="height: 6px;">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 100%" aria-valuenow="0"
                         aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title=""
-                        data-original-title="100%"></div>
+                        data-original-title="50%"></div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="container">
-                    <h2 class="mt-3"><b>Manage Candidate Applications </b><span class="text-muted">(optional)
-                        </span>
-                    </h2>
-                    <div class="row mt-3">
-                        <h5><b>Questions for Candidates</b></h5>
-                    </div>
-                    <p>Include up to 8 easy-to-answer questions in your job ad.
-                        When reviewing candidates, you will be able to easily filter
-                        candidates who match your preferred answers.
-                    </p>
-
-                    <p class="text-muted">1/8 Questions Selected</p>
-
-                    <div class="input-icon">
-                        <span class="input-icon-addon">
-                            <i class="fa fa-search"></i>
-                        </span>
-                        <input type="tel" class="form-control" placeholder="Find a Question">
-                    </div>
-
-                    <h4 class="mt-3"><b>Recommended questions</b></h4>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-check row">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <h5 class="form-check-sign">What is your expected salary?
-                                        I will accept this range:</h5>
-                                </label>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="row row-col-3">
-
-                                    <div class="col">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-border dropdown-toggle" type="button"
-                                                data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">Minimum</button>
-                                            <div class="dropdown-menu" x-placement="bottom-start"
-                                                style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                <a class="dropdown-item" href="#">test</a>
-                                                <a class="dropdown-item" href="#">test2</a>
-                                                <a class="dropdown-item" href="#">test3</a>
-                                                <a class="dropdown-item" href="#">test4</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col text-center m-2">
-                                        To
-                                    </div>
-
-                                    <div class="col">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-border dropdown-toggle" type="button"
-                                                data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">Maximum</button>
-                                            <div class="dropdown-menu" x-placement="bottom-start"
-                                                style="position: absolute; transform: translate3d(70px, 44px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                <a class="dropdown-item" href="#">test</a>
-                                                <a class="dropdown-item" href="#">test2</a>
-                                                <a class="dropdown-item" href="#">test3</a>
-                                                <a class="dropdown-item" href="#">test4</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="container-fluid row">
-                        <div class="form-check row" id="question-container">
-
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">Which of the programming languanges are you experienced
-                                    in?</h5>
-                            </label>
-
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">Which of the following Relational Database Management
-                                    System
-                                    (RDBMS)
-                                    are you experienced with?</h5>
-                            </label>
-
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">Which of the following front-end development libraries
-                                    and
-                                    frameworks are you proficient in?</h5>
-                            </label>
-
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">Have you worked in a role which requires a sound
-                                    understanding
-                                    of the software development lifecycle?</h5>
-                            </label>
-
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">Do you have experience working within a scrum agile
-                                    team?
-                                </h5>
-                            </label>
-
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">Do you have experience with Test Driven Development
-                                    (TDD)?
-                                </h5>
-                            </label>
-
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <h5 class="form-check-sign">Which of the following languages are you fluent in?</h5>
-                            </label>
-
-
-                            <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Enter new question text here"
-                                    id="new-question-text">
-                                <button class="btn btn-outline-secondary" type="button" id="add-question">Add
-                                    Question</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div>
-                        <div>
-                            <span class="input-icon-addon">
-                                <i class="fa fa-info-circle"></i>
-                            </span>
-                            Your question and answers can't be changed after you post your job ad.
-                        </div>
-
-                        <h4 class="mt-5">Internal Job Reference <span class="text-muted">(optional)
-                            </span>
-                        </h4>
-                        <input type="tel" class="form-control" placeholder="">
-                    </div>
-                    <div class="form-group mt-5 mb-5">
-                        <a href="../recruiter/create_jobadPAY.php" class="btn btn-danger" type="button">Continue</a>
-                    </div>
-                </div>
-
             </div>
         </div>
+
+        <h2 class="container d-flex justify-content-center"><b>Select an Ad Type</b></h2>
+        <form id="basicPlan">
+            <div class="row justify-content-center align-items-center mb-5">
+                <div class="col-md-3 pl-md-0 pr-md-0">
+                    <div class="card-pricing2 card-primary" id="basicCard">
+                        <div class="pricing-header">
+                            <h3 class="fw-bold">Basic</h3>
+                            <span class="sub-title">Including VAT</span>
+                        </div>
+                        <div class="price-value">
+                            <div class="value">
+                                <span class="currency">$</span>
+                                <span class="amount">124.<span>20</span></span>
+                                <span class="month">/month</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-content">
+                            <li>30 days listing</li>
+                            <li>Good visibility to candidates</li>
+                            <li>Get candidates fast</li>
+                            <li>Credit to access our talent candidates</li>
+                            <li>Include your company logo</li>
+                        </ul>
+                        <button class="btn btn-primary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button"
+                            name="adType" value="2" data-value="2">Select</button>
+
+
+                    </div>
+                </div>
+                <div class="col-md-3 pr-md-0">
+                    <div class="card-pricing2 card-secondary" id="premiumCard">
+                        <div class="pricing-header">
+                            <h3 class="fw-bold">Premium</h3>
+                            <span class="sub-title">Including VAT</span>
+                        </div>
+                        <div class="price-value">
+                            <div class="value">
+                                <span class="currency">$</span>
+                                <span class="amount">180.<span>98</span></span>
+                                <span class="month">/month</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-content">
+                            <li>30 days listing</li>
+                            <li>Good visibility to candidates</li>
+                            <li>Get candidates fast</li>
+                            <li>Credit to access our talent candidates</li>
+                            <li>Include your company logo</li>
+                        </ul>
+                        <div class="row justify-content-center">
+                            <button class="btn btn-link" type="button" id="seeMoreBtn">
+                                See More <i class="fas fa-chevron-down"></i>
+                            </button>
+
+                        </div>
+                        <div id="additionalDetails" class="collapse">
+                            <ul class="additional-list pricing-content">
+                                <li>Access to analytics and reporting</li>
+                                <li>Add company image to promote your brand</li>
+                                <li>Include 3 key selling points to attract candidates</li>
+                                <li>Priority listing in search</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-secondary btn-border btn-lg w-75 fw-bold mb-3 btn-select" type="button"
+                            name="adType" value="1" data-value="1">Select</button>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br>
+        <br>
+
+
+        <form id="seasonalPlan">
+            <h2 class="container d-flex justify-content-center"><b>Seasonal Ad Type</b></h2>
+            <div class="container-fluid" style="width: 50%;">
+                <div class="row">
+                    <div class="col">
+                        <p class="mt-3">Pay upfront and get a discount on ads</p>
+                        <p class="mb-5">Choose an Ad budget and use your balance to post ad jobs</p>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center align-items-center mb-1">
+                    <div class="col-md-4 pl-md-0">
+                        <div class="card card-pricing">
+                            <div class="card-header">
+                                <h4 class="card-title">Occasional</h4>
+                                <span class="sub-title">2-3 ads over 6 months</span>
+                                <div class="card-price">
+                                    <span class="price">$17,920</span>
+                                    <span class="text">/mo</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="specification-list">
+                                    <li><span class="name-specification">4% off Basic ads</span></li>
+                                    <li><span class="name-specification">4% off Branded ads</span></li>
+                                    <li><span class="name-specification">Post any ad type</span></li>
+                                    <li><span class="name-specification">Discount apply for 6 months, even after your
+                                            balance is used up</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block btn-selected" type="button" name="adType"
+                                    value="1" data-value="1"><b>Select</b></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pl-md-0 pr-md-0">
+                        <div class="card card-pricing card-pricing-focus card-primary">
+                            <div class="card-header">
+                                <h4 class="card-title">Regular</h4>
+                                <span class="sub-title">2-3 ads over 6 months</span>
+                                <div class="card-price">
+                                    <span class="price">$28,000</span>
+                                    <span class="text">/mo</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="specification-list">
+                                    <li><span class="name-specification">10% off Basic ads</span></li>
+                                    <li><span class="name-specification">10% off Branded ads</span></li>
+                                    <li><span class="name-specification">3% off Premium ads</span></li>
+                                    <li><span class="name-specification">Post any ad type</span></li>
+                                    <li><span class="name-specification">Discount apply for 12 months, even after your
+                                            balance is used up</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-light btn-block btn-selected" type="button" name="adType"
+                                    value="3" data-value="3"><b>Select</b></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 pr-md-0">
+                        <div class="card card-pricing">
+                            <div class="card-header">
+                                <h4 class="card-title">Frequent</h4>
+                                <span class="sub-title">2-3 ads over 6 months</span>
+                                <div class="card-price">
+                                    <span class="price">$52,640</span>
+                                    <span class="text">/mo</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="specification-list">
+                                    <li><span class="name-specification">20% off Basic ads</span></li>
+                                    <li><span class="name-specification">20% off Branded ads</span></li>
+                                    <li><span class="name-specification">10% off Premium ads</span></li>
+                                    <li><span class="name-specification">Post any ad type</span></li>
+                                    <li><span class="name-specification">Discount apply for 12 months, even after your
+                                            balance is used up</span></li>
+                                </ul>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary btn-block btn-selected" type="button" name="adType"
+                                    value="2" data-value="2"><b>Select</b></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" card container-fluid justify-content-center">
+                        <div class="card-body">
+                            Ad prices may vary based on a number of factors including the supply of and demand for,
+                            candidates for the role being advertised. Prices may change in response to these factors
+                            changing.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container justify-content-center form-group mt-3 mb-5">
+                        <button id="continueButton" class="btn btn-danger" type="submit">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+
+
 
     </div>
 
 
+    </div>
+
     <!--bottom navbar-->
-    <?php include('../PHPFiles/recruiter_footer.php')?>
+    <?php include '../PHPFiles/recruiter_footer.php'?>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -241,7 +265,7 @@
         integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
+    <!-- <script>
     function test() {
         var variablename = $('#Div-filter').attr('class'); //variable name (id or class)
 
@@ -251,8 +275,7 @@
             $('#Div-filter').removeClass('d-none d-sm-none');
         }
     }
-    </script>
-
+    </script> -->
 
     <!-- Option 1: Bootstrap scripts -->
     <script src="../.../assets/js/atlantis.js"></script>
@@ -285,7 +308,6 @@
     <!-- jQuery Scrollbar -->
     <script src="../assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
-
     <!-- Chart JS -->
     <script src="../assets/js/plugin/chart.js/chart.min.js"></script>
 
@@ -310,29 +332,70 @@
 
     <!-- Atlantis JS -->
     <script src="../assets/js/atlantis.min.js"></script>
+    <script src="../ajax/Recruiter/GetAdValue.js"></script>
 
-
-    <!-- jQuery for easy DOM manipulation -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Bootstrap Bundle includes Popper for dropdowns, popovers, and tooltips -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#add-question').click(function() {
-            var questionText = $('#new-question-text')
-                .val(); // Get the text from the input field
-            if (questionText.trim() !== '') { // Check if the input is not just whitespace
-                var newQuestionHtml = `
-                <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="">
-                    <h5 class="form-check-sign">${questionText}</h5>
-                </label>
-            `;
-                $('#question-container').prepend(newQuestionHtml);
-                $('#new-question-text').val(
-                    ''); // Clear the input field after adding the question
+        $('#continueButton').click(function(e) {
+            e.preventDefault();
+            console.log("click");
+            AddAdType('basicPlan');
+            AddSeasonalType('seasonalPlan');
+        });
+
+
+    });
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to handle selection logic
+        function handleSelection(buttons, selectedClass) {
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove 'selected' class from all buttons
+                    buttons.forEach(btn => {
+                        btn.classList.remove(selectedClass);
+                    });
+                    // Add 'selected' class to the clicked button
+                    this.classList.add(selectedClass);
+
+                    // Console log the selected value
+                    console.log('Selected value:', this.getAttribute('data-value'));
+                });
+            });
+        }
+
+        // Handle selection for btn-select class
+        const selectButtons = document.querySelectorAll('.btn-select');
+        handleSelection(selectButtons, 'selected');
+
+        // Handle selection for btn-selected class
+        const selectedButtons = document.querySelectorAll('.btn-selected');
+        handleSelection(selectedButtons, 'selected');
+
+        // Handle selection for card-pricing2 class
+        const cards = document.querySelectorAll('.card-pricing2');
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove 'selected' class from all other cards
+                cards.forEach(c => c.classList.remove('selected'));
+
+                // Add 'selected' class to this card
+                this.classList.add('selected');
+            });
+        });
+
+        // Handle the "See More" button functionality
+        const seeMoreBtn = document.getElementById("seeMoreBtn");
+        const additionalDetails = document.getElementById("additionalDetails");
+
+        seeMoreBtn.addEventListener("click", function() {
+            const isShown = additionalDetails.classList.contains("show");
+            additionalDetails.classList.toggle("show");
+            if (isShown) {
+                this.innerHTML = 'See More <i class="fas fa-chevron-down"></i>';
             } else {
-                alert('Please enter a question text.'); // Alert if input field is empty
+                this.innerHTML = 'See Less <i class="fas fa-chevron-up"></i>';
             }
         });
     });
@@ -340,7 +403,221 @@
 
 
 
+    <script>
+    $(document).ready(function() {
+        // Add click event listener to buttons with class .btn-select
+        $('.btn-select').click(function() {
+            // Remove .card-selected from all cards
+            $('.card-pricing').removeClass('card-selected');
+            // Add .card-selected to the parent card of the clicked button
+            $(this).closest('.card-pricing').addClass('card-selected');
+        });
+    });
+    </script>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.btn-selected').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.card-pricing').forEach(card => {
+                    card.classList.remove('card-selected');
+                    card.querySelector('.btn').classList.remove('btn-selected');
+                });
+
+                this.closest('.card-pricing').classList.add('card-selected');
+            });
+        });
+    });
+    </script>
+
+
+
+
+
+
+
+
+    <style>
+    /* Add this CSS to your existing styles */
+    :root {
+        --btn-primary-color: #007bff !important;
+        --btn-secondary-color: #6861CE !important;
+        --btn-selected-primary-color: #007bff !important;
+        --btn-selected-secondary-color: #6861CE !important;
+    }
+
+    .btn-select {
+        transition: background-color 0.3s !important;
+    }
+
+    .btn-selected {
+        transition: background-color 0.3s, color 0.3s, border-color 0.3s !important;
+    }
+
+    .btn-selected:hover {
+        background-color: var(--btn-selected-primary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-primary-color) !important;
+    }
+
+    /* Selected state */
+    .btn-selected.selected {
+        background-color: var(--btn-selected-primary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-primary-color) !important;
+    }
+
+    /* Adjust hover and selected states for secondary buttons if needed */
+    .btn-selected-secondary:hover {
+        background-color: var(--btn-selected-secondary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-secondary-color) !important;
+    }
+
+    .btn-selected-secondary.selected {
+        background-color: var(--btn-selected-secondary-color) !important;
+        color: white !important;
+        border-color: var(--btn-selected-secondary-color) !important;
+    }
+
+    .btn-select:hover {
+        background-color: var(--btn-primary-color) !important;
+        color: white !important;
+        border-color: #007bff !important;
+    }
+
+    .btn-select.selected {
+        background-color: var(--btn-primary-color) !important;
+        color: white !important;
+        border-color: #007bff !important;
+    }
+
+    .btn-secondary:hover {
+        background-color: var(--btn-secondary-color) !important;
+        color: white !important;
+        border-color: #6861CE !important;
+    }
+
+    .btn-secondary.selected {
+        background-color: var(--btn-secondary-color) !important;
+        color: white !important;
+        border-color: #6861CE !important;
+    }
+
+    /* Add this CSS to your existing styles */
+    .card-pricing2:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+        /* Example shadow effect */
+        transform: translateY(-10px) !important;
+        /* Example of lifting the card on hover */
+    }
+
+    .card-pricing2.selected {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3) !important;
+        /* Example shadow effect for selected card */
+        transform: translateY(0) !important;
+        /* Reset transform for selected card */
+    }
+
+    .additional-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .additional-list li {
+        display: none !important;
+        /* Initially hide additional list items */
+    }
+
+    .collapse.show .additional-list li {
+        display: block !important;
+        /* Show additional list items when the collapse is shown */
+    }
+
+    .additional-list.pricing-content {
+
+        padding-top: 10px;
+        /* Adjust this value as necessary */
+        margin-bottom: 20px;
+        /* Adjust if you also want to lessen the space below the list */
+    }
+
+    #additionalDetails {
+        display: none;
+        /* Hide by default */
+    }
+
+    #additionalDetails.show {
+        display: block;
+        /* Show when class 'show' is added */
+    }
+
+
+    /*  */
+
+    .card-pricing {
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card-pricing:not(.card-selected):hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-selected {
+        transform: none !important;
+        box-shadow: none !important;
+        border: 2px solid lightblue;
+    }
+
+    .btn-selected:hover {
+        background-color: lightblue !important;
+        border-color: lightblue !important;
+        color: white !important;
+        /* Ensure text color remains white on hover */
+    }
+
+    .btn:hover {
+        background-color: lightblue;
+        border-color: lightblue;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Add this CSS to your existing styles */
+    /* .btn-select {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .btn-select:hover {
+    background-color: #6c757d;
+    color: white;
+    border-color: #6c757d;
+    }
+
+    .btn-select.selected {
+    background-color: #6c757d !important;
+    color: white !important;
+    border-color: #6c757d !important;
+    } */
+    </style>
 
 </body>
 

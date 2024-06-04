@@ -379,7 +379,7 @@ ALTER TABLE `tbl_documents`
 ALTER TABLE `tbl_employerinfo`
   ADD PRIMARY KEY (`EmployerID`);
 
---
+--  
 -- Indexes for table `tbl_jobclassification`
 --
 ALTER TABLE `tbl_jobclassification`

@@ -1,14 +1,3 @@
-<?php
-  SESSION_START();
-
-  date_default_timezone_set('Asia/Manila');
-  $currentDateTime = time();
-
-  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
-      header ("Location: ../PHPFiles/Applicant/logout.php");
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -182,11 +171,11 @@
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">My Profile</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="settings_system_logs.php">System Logs</a>
+										<a class="dropdown-item" href="/admin/settings_system_logs.html">System Logs</a>
 										<div class="dropdown-divider"></div>
 										<a class="dropdown-item" href="#">Change Admin Preferences</a>
 										<div class="dropdown-divider"></div>
-										<a class="dropdown-item" href="../PHPFiles/Applicant/logout.php">Logout</a>
+										<a class="dropdown-item" href="#">Logout</a>
 									</li>
 								</div><div class="scroll-element scroll-x"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div><div class="scroll-element scroll-y"><div class="scroll-element_outer"><div class="scroll-element_size"></div><div class="scroll-element_track"></div><div class="scroll-bar ui-draggable ui-draggable-handle"></div></div></div></div>
 							</ul>
@@ -240,13 +229,13 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="applicant_list.php">
+							<a href="applicant_list.html">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="application.php">
+							<a href="application.html">
 								<i class="far fa-file"></i>
 								<p>Applications</p>
 							</a>
@@ -260,27 +249,27 @@
 							<div class="collapse" id="submenu">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="settings_job_classification.php">
+										<a href="settings_job_classification.html">
 											<span class="sub-item">Job Classification Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_job_title.php">
+										<a href="settings_job_title.html">
 											<span class="sub-item">Job Title Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_locations.php">
+										<a href="settings_locations.html">
 											<span class="sub-item">Locations Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_posting_fee.php">
+										<a href="settings_posting_fee.html">
 											<span class="sub-item">Posting Fee Settings</span>
 										</a>
 									</li>
 									<li>
-										<a href="settings_system_logs.php">
+										<a href="settings_system_logs.html">
 											<span class="sub-item">System Logs Settings</span>
 										</a>
 									</li>
@@ -316,126 +305,28 @@
 												<div class="table-responsive">
 													<div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
 														<div class="row">
-															<div class="col-sm-12 col-md-6">
-																<div class="dataTables_length" id="basic-datatables_length">
-																	<label>Show 
-																	<select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-																		<option value="10">10</option>
-																		<option value="25">25</option>
-																		<option value="50">50</option>
-																		<option value="100">100</option>
-																	</select> entries</label>
-																</div>
-															</div>
-															<div class="col-sm-12 col-md-6">
-																<div id="basic-datatables_filter" class="dataTables_filter">
-																	<label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-																	</label>
-																</div>
+															<div class="col-sm-12">
+																<table id="tblSystemLogs" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
+																	<thead>
+																		<tr>
+																			<th>Log ID</th>
+																			<th>Time Stamp</th>
+																			<th>Action</th>
+																			<th>Area</th>
+																			<th>Account ID</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		
+																	</tbody>
+																</table>
 															</div>
 														</div>
-														<div class="row">
-															<div class="col-sm-12">
-															
-																<table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-														<thead>
-															<tr role="row">
-																<th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">Date and Time</th>
-																<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Actions</th>
-																<th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Area</th>
-															</tr>
-														</thead>
-													</table>
-												</div>
-											</div>
-										</div>
-												</div>
-											</div>
-										</div>
 
-										<div class="accordion accordion-secondary">
-											<div class="card">
-												<div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-													
-													<div class="span-title">
-														Lorem Ipsum #1
-													</div>
-													<div class="span-mode"></div>
-												</div>
-										
-												<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-													</div>
-												</div>
-											</div>
-											<div class="card">
-												<div class="card-header collapsed" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-													
-													<div class="span-title">
-														Lorem Ipsum #2
-													</div>
-													<div class="span-mode"></div>
-												</div>
-												<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-													</div>
-												</div>
-											</div>
-											<div class="card">
-												<div class="card-header collapsed" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-													
-													<div class="span-title">
-														Lorem Ipsum #3
-													</div>
-													<div class="span-mode"></div>
-												</div>
-												<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-													<div class="card-body">
-														Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-													</div>
+										</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-								</div>
-                    </div>
       
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
@@ -510,5 +401,90 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
+
+    <!-- Data Retrieval ng System Logs -->
+	<script>
+		$(document).ready(function(){
+			$('#tblSystemLogs').DataTable();
+			fillsystemlogs();
+		});
+
+		function fillsystemlogs(){
+			$.ajax({
+				type: 'GET',
+				url: '../PHPFiles/Admin/Dashboardsettingsystemlogs.php',
+				datatype: 'html',
+				success: function(response){
+					console.log(response);
+					if(response == '1'){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve Total Employers!',
+							message: 'Something went wrong while retrieving saved total employers. Data handling failed, please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+					else if(response == '2'){
+						$.notify({
+							// options
+							icon: 'flaticon-error',
+							title: 'Failed to Retrieve Total Employers!',
+							message: 'Something went wrong while retrieving total employers. Please try again later.'
+						},{
+							// settings
+							type: 'danger'
+						});
+					}
+					else if(response == '3'){
+						$.notify({
+							// options
+							icon: 'flaticon-exclamation',
+							title: 'No Registered Employers Found!',
+							message: 'Currently, there is no registered employers. Please try and check again later.'
+						},{
+							// settings
+							type: 'info'
+						});
+					}
+					else{
+						var current_Table = "#tblSystemLogs";
+						var decodedResponse = JSON.parse(response);
+						
+						if($.fn.DataTable.isDataTable(current_Table)){
+							$(current_Table).DataTable().destroy();
+						}
+
+						$(current_Table).DataTable({
+							pageLength: 10,
+							data: decodedResponse,
+							columns: [
+								{ data: 'LogID' },
+								{ data: 'DateTimeStamp' },
+								{ data: 'Action' },
+								{ data: 'Area' },
+								{ data: 'AccountID' }
+							]
+						});
+
+					}
+				},
+				error: function(){
+					$.notify({
+						// options
+						icon: 'flaticon-error',
+						title: 'Failed to Connect to Server!',
+						message: 'Something went wrong while connecting to server. Please try again later.'
+					},{
+						// settings
+						type: 'danger'
+					});
+				}
+			});
+		}
+	</script>
+
 </body>
 </html>

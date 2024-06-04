@@ -323,17 +323,51 @@
 										</div>
 
 										<div class="form-group px-5">
-											<label for="txtAdDiscount">Discount% <span class="text-danger font-weight-bold">*</span></label>
-											<input type="text" class="form-control" name="txtAdDiscount" id="txtAdDiscount" required>
-										</div>
-
-										<div class="form-group px-5">
 											<label for="txtAdDescriptions">Descriptions <span class="text-danger font-weight-bold">*</span></label>
 											<input type="text" class="form-control" name="txtAdDescription" id="txtAdDescription" required>
 										</div>
 										
 										<div class="row mx-3 my-3">
 											<button class="btn btn-primary btn-block" id="btnAddAdTypes" onclick="addAdType(formAddAdType);">Add Ad Type</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="modalAddSeasonal" tabindex="-1" role="dialog" aria-labelledby="modalAddSeasonal" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3 class="modal-title">Add Seasonal</h3>
+									<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseSeasonal">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<button type="button" class="close" onclick="closeSeasonal();">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form id="formAddSeasonal">
+										<div class="form-group px-5">
+											<label for="txtSeasonalName">Seasonal Name <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtSeasonalName" id="txtSeasonalName" required>
+										</div>
+
+										<div class="form-group px-5">
+											<label for="txtSeasonalPrice">Price <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtSeasonalPrice" id="txtSeasonalPrice" required>
+										</div>
+
+										<div class="form-group px-5">
+											<label for="txtSeasonalDescriptions">Descriptions <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtSeasonalDescription" id="txtSeasonalDescription" required>
+										</div>
+										
+										<div class="row mx-3 my-3">
+											<button class="btn btn-primary btn-block" id="btnAddSeasonal" onclick="addSeasonal(formAddSeasonal);">Add Seasonal</button>
 										</div>
 									</form>
 								</div>
@@ -385,6 +419,73 @@
 						</div>
 					</div>
 
+		<!-- Modal -->
+		<div class="modal fade" id="modalVAT" tabindex="-1" role="dialog" aria-labelledby="modalVAT" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3 class="modal-title">Change VAT</h3>
+									<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseVAT">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<button type="button" class="close" onclick="closeVAT();">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form id="formUpdateVAT">
+										<div class="form-group px-5">
+											<label for="txtVAT">VAT: <span class="text-danger font-weight-bold">*</span></label>
+											<input type="text" class="form-control" name="txtVAT" id="txtVAT" required>
+										</div>
+
+										<div class="row mx-3 my-3">
+											<button class="btn btn-primary btn-block" type="button"id="btnUpdateVAT" onclick="updateVAT(formUpdateVAT);">Update VAT</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="modalViewPostingFee" tabindex="-1" role="dialog" aria-labelledby="modalViewPostingFee" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title"><span id="postingTitle">Job Posting</span></h3>
+								<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnClosePostingFeeView">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<button type="button" class="close" onclick="closePostingFeeView();">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="container">
+									<div class="row">
+										<div class="col-8">
+											<label for="employerName">Price: <span class="text-danger font-weight-bold"></span></label>
+											<h5><span id="postingPrice">PHP 500.00</span> <span class="text-danger font-weight-bold"></span></h5>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col">
+											<br />
+											<h3 id="lbMainClassification">Description <span class="text-danger font-weight-bold"></span></h3>
+												<p id="postingDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+													magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+													 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+													Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
 
         <div class="main-panel">
 			<div class="content">
@@ -395,58 +496,85 @@
                 </div>
 				
                
-                    <div class="container-fluid flex justify-content-center">
-                        <h2>VAT</h2>
-                        <div class="card">
+				<div class="container-fluid flex justify-content-center">
+                        <a id="btnAddPostingFee" href="#" class="btn btn-secondary" onclick="openPostingFeeForm()"> Add Classification</a>
+                            <div class="card">
+									<div class="card-header">
+											<ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+											<li class="nav-item">
+												<a class="nav-link active" id="btnShowActive" onclick="changeTableActive('AdType');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Ad Type</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Seasonal');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Seasonal Ad Type</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Promo');" data-toggle="pill" href="#pills-3-nobd" role="tab" aria-controls="pills-3-nobd" aria-selected="false">Promo Codes</a>
+											</li>
+											<li class="nav-item ml-auto order-1">
+												<a class="nav-link" id="btnShowVAT" onclick="showVAT();" data-toggle="pill" aria-selected="false">VAT</a>
+											</li>
+										</ul>
+									</div>
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col">4%</div>
-                                    <a href="#" style="text-decoration: underline;" class="col text-center">Edit</a>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
+                                        <div class="table-responsive">
+                                            <table id="tblAdType" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Ad Type</th>
+                                                        <th>Price</th>
+														<th>Description</th>
+														<th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
+                                        <div class="table-responsive">
+                                            <table id="tblSeasonal" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+														<th>Seasonal</th>
+                                                        <th>Price</th>
+														<th>Description</th>
+														<th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+									<div class="tab-pane fade show" id="pills-3-nobd" role="tabpanel" aria-labelledby="pills-3-tab-nobd">
+                                        <div class="table-responsive">
+                                            <table id="tblPromo" class="display table table-striped table-hover" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Promo Name</th>
+                                                        <th>Promo Code</th>
+														<th>Discount</th>
+														<th>Description</th>
+														<th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <h2 class="pt-5">Ad Types</h2>
-                        <a href="#" onclick="openAdTypes();" class="btn btn-secondary">Add Ad Type</a>
-                        <div class="card">
-                            <div class="card-body">
-							<table id="tblAdTypes" class="display table table-striped table-hover" cellspacing="0" width="100%">
-									<thead>
-										<tr>
-											<th>Ad Type</th>
-											<th>Price</th>
-											<th>Discount%</th>
-											<th>Descriptions</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										
-									</tbody>
-								</table>
-                            </div>
-                        </div>
-
-                        <h2 class="pt-5">Promo Code</h2>
-                        <a href="#" onclick="openPromoCode();" class="btn btn-secondary">Add Promo Code</a>
-                        <div class="card">
-                            <div class="card-body">
-							<table id="tblPromoCodes" class="display table table-striped table-hover" cellspacing="0" width="100%">
-									<thead>
-										<tr>
-											<th>Name of Promo Code</th>
-											<th>Promo Code</th>
-											<th>Discount% Off</th>
-											<th>Descriptions</th>
-											<th>Actions</th>
-										</tr>
-									</thead>
-									<tbody>
-										
-									</tbody>
-								</table>
-                            </div>
-                        </div>
+                                </div>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
 
                 <footer class="footer bg-danger text-white">
@@ -528,14 +656,54 @@
 
 	<script>
 
-		$(document).ready(function(){
-			fillAdTypeList();
-			fillPromoCodeList();
+		activeTable = 1;
 
-			$('#tblAdTypes').DataTable();
-			$('#tblPromoCodes').DataTable();
+		$(document).ready(function(){
+		
+			changeTableActive('AdType');
+
+			fillPromoCodeList();
+			fillAdTypeList();
+			fillSeasonalList()
+
+			// $('#tblAdTypes').DataTable();
+			// $('#tblPromoCodes').DataTable();
 		});
 
+
+		function changeTableActive(status){
+			switch(status){
+				case 'AdType':
+					activeTable = 1;
+					$('#btnAddPostingFee').text('Add Ad Type');
+					break;
+				case 'Seasonal':
+					activeTable = 2;
+					$('#btnAddPostingFee').text('Add Seasonal');
+					break;
+				case 'Promo':
+					activeTable = 3;
+					$('#btnAddPostingFee').text('Add Promo Code');
+					break;
+			}
+
+		}
+		
+		function openPostingFeeForm() {
+			switch(activeTable){
+				case 1:
+					openAdTypes();
+					break;
+				case 2:
+					openSeasonal();
+					break;
+				case 3:
+					openPromoCode();
+					break;
+			}
+			
+		}
+		
 	</script>
 
 </body>

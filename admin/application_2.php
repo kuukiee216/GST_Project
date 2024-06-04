@@ -296,6 +296,31 @@
 		</div>
 		<!-- End Sidebar -->
 
+		<!-- Modal -->
+		<div class="modal fade" id="modalCoverLetter" tabindex="-1" role="dialog" aria-labelledby="modalCoverLetter" aria-hidden="true">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h3 class="modal-title">Change CoverLetter</h3>
+									<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseCoverLetter">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<button type="button" class="close" onclick="closeCoverLetter();">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form id="formCoverLetter">
+										<div class="form-group px-5">
+											<label for="txtCoverLetter">CoverLetter: <span class="text-danger font-weight-bold">*</span></label>
+											<p id="txtCoverLetter" class="text-wrap"></p>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+
         <div class="main-panel">
 			<div class="content">
                 <div class="card mt-5 bg-success-gradient">
@@ -357,10 +382,10 @@
                             <div class="card card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4 style="text-decoration: underline;">MANALE_RESUME.pdf</h4>
+                                        <h4 id = "documentName"style="text-decoration: underline;">MANALE_RESUME.pdf</h4>
                                     </div>
                                     <div class="col">
-                                        <button class="btn btn-secondary">View</button>
+                                        <button id = "btnViewDocument"class="btn btn-secondary">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -369,10 +394,10 @@
                             <div class="card card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4>Applicant wrote a cover letter for this application.</h4>
+                                        <h4 id="lbCoverLetterTitle">Applicant wrote a cover letter for this application.</h4>
                                     </div>
                                     <div class="col">
-                                        <button class="btn btn-secondary">View</button>
+                                        <button id="btnViewCoverLetter" class="btn btn-secondary">View</button>
                                     </div>
                                 </div>
                             </div>
@@ -381,18 +406,13 @@
                             <div class="card card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h4>Applicant answered 5 out of 5 questions.</h4>
+                                        <h4>Applicant answered <span id="answersCount"></span> out of <span id="questionsCount"></span> questions.</h4>
                                         <hr>
                                         <div type="button" data-toggle="collapse" data-target="#test2" aria-expanded="false" aria-controls="test2">
                                             <i class="fas fa-angle-down"></i>
                                         </div>
                                         <div class="collapse" id="test2">
-                                            <ul>
-                                                <li>test1</li>
-                                                <li>test2</li>
-                                                <li>test3</li>
-                                                <li>test4</li>
-                                                <li>test5</li>
+                                            <ul id="holderQA">
                                             </ul>
                                         </div>
                                     </div>
@@ -400,8 +420,8 @@
                             </div>
 
                             <div class="-fluid d-flex justify-content-end mb-5">
-                                <button class="btn btn-success">Approved</button>
-                                <button class="btn btn-danger">Reject</button>
+                                <button id="btnApplicationApprove" onclick="approveApplication()" class="btn btn-success">Approved</button>
+                                <button id="btnApplicationReject" onclick="rejectApplication()" class="btn btn-danger">Reject</button>
                             </div>
                     </div>
                         
@@ -486,6 +506,15 @@
 
 		$(document).ready(function(){
 			getApplicationContents();
+
+			$("#btnViewCoverLetter").click(function(){
+				showCoverLetter();
+			});
+
+			$("#btnViewDocument").click(function(){
+				showApplicantResume();
+			});
+
 		});
 
 	</script>

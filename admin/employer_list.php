@@ -292,149 +292,192 @@
                         <h1 class="text-dark"> EMPLOYER LIST</h1>
                     </div>
                 </div>
-				
-               
-                    <div class="container-fluid flex justify-content-center">
-                        <a href="#" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Add Emploer Account</a>
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div class="dataTables_length" id="basic-datatables_length">
-                                                            <label>Show 
-                                                            <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                                <option value="10">10</option>
-                                                                <option value="25">25</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                            </select> entries</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-6">
-                                                        <div id="basic-datatables_filter" class="dataTables_filter">
-                                                            <label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables">
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.837px;">#</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 261.05px;">Company Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.025px;">Representative's Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 46.9375px;">Email</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 112.8px;">Status</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Registration Date</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 106.95px;">Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th rowspan="1" colspan="1">#</th>
-                                                        <th rowspan="1" colspan="1">Company Name</th>
-                                                        <th rowspan="1" colspan="1">Representative's Name</th>
-                                                        <th rowspan="1" colspan="1">Email</th>
-                                                        <th rowspan="1" colspan="1">Status</th>
-                                                        <th rowspan="1" colspan="1">Registration Date</th>
-                                                        <th rowspan="1" colspan="1">Action</th>
+	<div class="container-fluid flex justify-content-center">
+		<a href="#" id="btnAddEmployerCompany" onclick="showAddModal();" class="btn btn-secondary"><i class="fas fa-user-plus"></i> Add <span id="btnName">Employer Account</span> </a>
+		<div class="card">
+				<div class="card-header">
+					<ul class="nav nav-pills nav-secondary nav-pills-no-bd mb-3" id="pills-tab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="btnShowActive" onclick="changeTableActive('Employers');" data-toggle="pill" href="#pills-1-nobd" role="tab" aria-controls="pills-1-nobd" aria-selected="true">Employers List</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="btnShowInactive" onclick="changeTableActive('Companies');" data-toggle="pill" href="#pills-2-nobd" role="tab" aria-controls="pills-2-nobd" aria-selected="false">Companies List</a>
+						</li>
+					</ul>
+				</div>
+			<div class="card-body">
+				<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="pills-1-nobd" role="tabpanel" aria-labelledby="pills-1-tab-nobd">
+						<div class="table-responsive">
+							<table id="tblEmployers" class="display table table-striped table-hover" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>Company Name</th>
+										<th>Representative's Name</th>
+										<th>Email</th>
+										<th>Status</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane fade show" id="pills-2-nobd" role="tabpanel" aria-labelledby="pills-2-tab-nobd">
+						<div class="table-responsive">
+							<table id="tblCompanies" class="display table table-striped table-hover" cellspacing="0" width="100%">
+								<thead>
+									<tr>
+										<th>Company Name</th>
+										<th>Contact Number</th>
+										<th>Company Location</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                                                    </tr>
-                                                </tfoot>
-                                                <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">1</td>
-                                                        <td>CompanyA</td>
-                                                        <td>Genesis</td>
-                                                        <td>email here</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">2</td>
-                                                        <td>CompanyB</td>
-                                                        <td>Ron</td>
-                                                        <td>email here</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td class="sorting_1">3</td>
-                                                        <td>CompanyC</td>
-                                                        <td>Myles</td>
-                                                        <td>email here</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2008/11/28</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td class="sorting_1">4</td>
-                                                        <td>CompanyD</td>
-                                                        <td>Bert</td>
-                                                        <td>email here</td>
-                                                        <td><span class="badge badge-success">Active</span></td>
-                                                        <td>2009/10/09</td>
-                                                        <td><button class="btn-secondary"><i class="far fa-eye"></i></button>
-                                                            <button class="btn-danger"><i class="far fa-trash-alt"></i></button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
-                                            <div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate">
-                                                <ul class="pagination">
-                                                    <li class="paginate_button page-item previous disabled" id="basic-datatables_previous">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item active">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item ">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item next" id="basic-datatables_next">
-                                                        <a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </div>
-                        
+<!-- Modal for Adding Employer -->
+<div class="modal fade" id="addEmployerModal" tabindex="-1" aria-labelledby="addEmployerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addEmployerModalLabel">Add Employer Account</h5>
+				<button type="button" class="close d-none d-sm-none" data-dismiss="modal" aria-label="Close" id="btnCloseAddEmployer">
+					<span aria-hidden="true">&times;</span>
+				</button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeAddEmployer();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-employer-form">
+					<div class="row" id="divFormCompanyInfo">
+						<div class="col-12">
+							<h5>Company Details</h5>
+							<div class="form-group" style="background-color: #F7F7F7">
+								<label for="txtCompanyName">Company Name</label>
+								<input type="text" class="form-control" id="txtCompanyName" required>
+								<label for="txtCompanyEmail">Company Email</label>
+								<input type="email" class="form-control" id="txtCompanyEmail" required>
+								<label for="txtCompanyContact">Company Contact Number</label>
+								<input type="tel" class="form-control" id="txtCompanyContact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+								<label for="txtCompanyWebsite">Company Website Url</label>
+								<input type="text" class="form-control" id="txtCompanyWebsite" required>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+										<label for="selectCountry">Country</label>
+										<select class="form-control" id="selectCountry">
+											<option value=""></option>
+										</select>	
+									</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+										<label for="selectState">State</label>
+										<select class="form-control" id="selectState">
+											<option value=""></option>
+										</select>	
+									</div>
+							</div>
+
+							<div class="col-12">
+								<div class="form-group">
+										<label for="selectCity">City</label>
+										<select class="form-control" id="selectCity">
+											<option value=""></option>
+										</select>	
+									</div>
+							</div>
+						</div>
+					</div>
+					<br />
+						<br />
+					
+					<div class="row row-cols-3" id="divFormEmployerInfo" style="background-color: #F7F7F7">
+					<h5 class="mx-auto mt-1">Company Representative Details</h5>
+						<div class="col-12">
+							<div class="form-group">
+									<label for="selectCompany">Company Associated</label>
+									<select class="form-control" id="selectCompany">
+										<option value=""></option>
+									</select>	
+								</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="email">First Name</label>
+								<input type="email" class="form-control" id="txtEmployerFname" required>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="email">Middle Name</label>
+								<input type="email" class="form-control" id="txtEmployerMname" required>
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="email">Last Name</label>
+								<input type="email" class="form-control" id="txtEmployerLname" required>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" class="form-control" id="txtEmployerEmail" required>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form-group">
+								<label for="email">Contact Number</label>
+								<input type="tel" class="form-control" id="txtEmployerContact" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+							</div>
+						</div>
+					</div>
+
+					<br />
+
+					<button type="button" class="btn btn-primary" id="btnSubmitAddCompany" onclick="submitAddCompany();">Add Company</button>
+                    <button type="button" class="btn btn-primary" id="btnSubmitAddEmployer" onclick="submitAddEmployer();">Add Employer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+				<!-- Modal for Viewing Employer -->
+				<div class="modal fade" id="viewEmployerModal" tabindex="-1" aria-labelledby="viewEmployerModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="viewEmployerModalLabel">View Employer Account</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<p><strong>Company Name:</strong> <span id="view-company-name"></span></p>
+								<p><strong>Representative's Name:</strong> <span id="view-rep-name"></span></p>
+								<p><strong>Email:</strong> <span id="view-email"></span></p>
+								<p><strong>Status:</strong> <span id="view-status"></span></p>
+								<p><strong>Registration Date:</strong> <span id="view-reg-date"></span></p>
+							</div>
+						</div>
+					</div>
+				</div>
                 <footer class="footer bg-danger text-white">
                     <div class="container-fluid">
                         <nav class="pull-left">
@@ -508,5 +551,158 @@
 
 	<!-- Atlantis JS -->
 	<script src="../assets/js/atlantis.min.js"></script>
+	
+	<script src="../ajax/Admin/AdminEmployerListHandler.js"></script>
+
+	<!-- Add Employer Account -->
+	<script>
+		var currentList = 1;
+
+		$(document).ready(function() {
+			$('#tblCompanies').DataTable();
+			$('#tblEmployers').DataTable();
+
+			changeTableActive('Employers');
+			fillCurrentList(currentList);
+
+			populateCompanies();
+			populateCountry();
+
+			$('#selectCountry').on('change', function() {
+                var selectedCountry = $(this).val();
+                console.log('Selected country ID:', selectedCountry);
+				
+				$('#selectState').empty();
+				populateState(selectedCountry);
+            });
+
+			$('#selectState').on('change', function() {
+				console.log('test');
+                var selectedProvince = $(this).val();
+                console.log('Selected Province ID:', selectedProvince);
+				
+				$('#selectCity').empty();
+				populateCity(selectedProvince);
+            });
+		});
+
+		function populateCountry(){	
+			$.ajax({
+					type: "POST",
+					dataType: "json", 
+					url: "../PHPFiles/Admin/EmployerList/modalPopulateCountry.php",
+					success: function(data) {
+						console.log(data);
+						var $selectCountry = $('#selectCountry');
+						$selectCountry.empty();
+						if (Array.isArray(data) && data.length > 0) {
+							$.each(data, function(index, value) {
+								$selectCountry.append('<option value="' + value.CountryID + '">' + value.CountryName + '</option>');
+							});
+							$selectCountry.val("");
+						} else {
+							$selectCountry.append('<option value="">No Countries available</option>');
+						}
+					},
+					error: function() {
+						alert('Error retrieving data.');
+					}
+				});
+		}
+
+		function populateState(country){
+			$.ajax({
+				type: "POST",
+				dataType: "json", 
+				data: {
+					CountryID: country
+				},
+				url: "../PHPFiles/Admin/EmployerList/modalPopulateState.php",
+				success: function(data) {
+					console.log(data);
+					var $selectProvince = $('#selectState');
+					$selectProvince.empty();
+					$('#selectCity').empty();
+					if (Array.isArray(data) && data.length > 0) {
+						$.each(data, function(index, value) {
+							$selectProvince.append('<option value="' + value.ProvinceID + '">' + value.ProvinceName + '</option>');
+						});
+						$selectProvince.val("");
+					} else {
+						$selectProvince.append('<option value="">No Province available</option>');
+					}
+				},
+				error: function() {
+					alert('Error retrieving data.');
+				}
+			});
+		}
+
+		function populateCity(province){
+			console.log('test');
+			$.ajax({
+				type: "POST",
+				dataType: "json", 
+				data: {
+					ProvinceID: province
+				},
+				url: "../PHPFiles/Admin/EmployerList/modalPopulateCity.php",
+				success: function(data) {
+					console.log(data);
+					var $selectCity = $('#selectCity');
+					$selectCity.empty(); 
+					if (Array.isArray(data) && data.length > 0) {
+						$.each(data, function(index, value) {
+							$selectCity.append('<option value="' + value.CityID + '">' + value.CityName + '</option>');
+						});
+					} else {
+						$selectProvince.append('<option value="">No City available</option>');
+					}
+				},
+				error: function() {
+					alert('Error retrieving data.');
+				}
+			});
+		}
+
+		function populateCompanies(){
+			$.ajax({
+					type: "POST",
+					dataType: "json", 
+					url: "../PHPFiles/Admin/EmployerList/modalPopulateCompanies.php",
+					success: function(data) {
+						var $selectCompany = $('#selectCompany');
+						$selectCompany.empty();
+						if (Array.isArray(data) && data.length > 0) {
+							$.each(data, function(index, value) {
+								$selectCompany.append('<option value="' + value.CompanyID + '">' + value.CompanyName + '</option>');
+							});
+						} else {
+							$selectCompany.append('<option value="">No Companies available</option>');
+						}
+					},
+					error: function() {
+						alert('Error retrieving data.');
+					}
+				});
+		}
+
+		function changeTableActive(currentTab){
+			switch(currentTab){
+				case 'Employers':
+					currentList = 1;
+					changeInterface('Add Employer', 'Employers');
+					break;
+				case 'Companies':
+					currentList = 2;
+					changeInterface('Add Company', 'Companies');
+					break;
+			}
+
+			fillCurrentList(currentList);
+		}	
+
+
+	</script>
 </body>
 </html>

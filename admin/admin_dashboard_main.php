@@ -1,12 +1,12 @@
 <?php
-  SESSION_START();
+SESSION_START();
 
-  date_default_timezone_set('Asia/Manila');
-  $currentDateTime = time();
+date_default_timezone_set('Asia/Manila');
+$currentDateTime = time();
 
-  if(!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])){
-      header ("Location: ../PHPFiles/Applicant/logout.php");
-  }
+if (!(isset($_SESSION['AccountID']) && $_SESSION['Role'] == 1 && $currentDateTime < $_SESSION['expire'])) {
+    header("Location: ../PHPFiles/Applicant/logout.php");
+}
 ?>
 
 
@@ -19,7 +19,7 @@
     <!-- CSS Files -->
 	<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../assets/css/atlantis.min.css">
-    
+
 
     <!-- Fonts and icons -->
 	<script src="../assets/js/plugin/webfont/webfont.min.js"></script>
@@ -41,7 +41,7 @@
         <div class="main-header">
 			<!-- Logo Header -->
 			<div class="logo-header bg-danger">
-				
+
 				<a href="admin_dashboard_main.php" class="logo">
 					<img src="../assets/img/JapanJobs.png" alt="navbar brand" class="navbar-brand">
 				</a>
@@ -98,7 +98,7 @@
 													<span class="block">
 														New user registered
 													</span>
-													<span class="time">5 minutes ago</span> 
+													<span class="time">5 minutes ago</span>
 												</div>
 											</a>
 										</div>
@@ -199,7 +199,7 @@
         <!-- End Navbar -->
 
         <!-- Sidebar -->
-		<div class="sidebar sidebar-style-2">			
+		<div class="sidebar sidebar-style-2">
 			<div class="sidebar-wrapper scrollbar scrollbar-inner">
 				<div class="sidebar-content">
 					<div class="user">
@@ -241,7 +241,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="applicant_list.php">	
+							<a href="applicant_list.php">
 								<i class="fas fa-user-friends"></i>
 								<p>Applicant List</p>
 							</a>
@@ -289,7 +289,7 @@
 							</div>
 						</li>
 						<li class="mx-3 mt-3">
-							<a href="../PHPFiles/Applicant/logout.php" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a> 
+							<a href="../PHPFiles/Applicant/logout.php" class="btn btn-danger btn-block"><span class="btn-label"></span>Logout</a>
 						</li>
 					</ul>
 				</div>
@@ -384,7 +384,7 @@
                                     <div class="col-7 col-stats">
                                         <div class="numbers">
                                             <p class="card-category">Total Registered Employers</p>
-                                            <h4 id="lblTotalRegisteredEmployers" class="card-title">30</h4>
+                                            <h4 id="lblTotalRegisteredEmployers" class="card-title"></h4>
                                         </div>
                                     </div>
                                 </div>
@@ -497,7 +497,7 @@
                         </nav>
                         <div class="ml-auto">
                             © 2024 JAPAN JOBS.All rights reserved by Japan Jobs
-                        </div>				
+                        </div>
                     </div>
                 </footer>
 		    </div>
