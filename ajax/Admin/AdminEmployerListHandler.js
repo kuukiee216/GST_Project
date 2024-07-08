@@ -47,7 +47,6 @@ function fillCurrentList(currentList){
                         columns: [
                             { data: 'CompanyName' },
                             { data: 'ContactNumber1' },
-                            { data: 'Location' },
                             { data: 'Action' }
                         ]
                     });

@@ -32,7 +32,7 @@ if(isset($_POST['ApplicationID'])){
         $stmtUpdateApplicationStatus->bindValue(1, $AID, PDO::PARAM_INT);
         $stmtUpdateApplicationStatus->execute(); 
 
-        $sQrySystemLog = "INSERT INTO tbl_systemlog(DateTimeStamp, Action, Area, AccountID) VALUES(?,?,?,?)";
+        $sQrySystemLog = "INSERT INTO tbl_systemlog(DateTimeStamp, Action, Target, AccountID) VALUES(?,?,?,?)";
         $stmtSystemLog = $connection->prepare($sQrySystemLog);
         $stmtSystemLog->bindValue(1, $DateTime, PDO::PARAM_STR);
         $stmtSystemLog->bindValue(2, $Action, PDO::PARAM_STR);
@@ -44,8 +44,8 @@ if(isset($_POST['ApplicationID'])){
         echo '1';
 
     }catch(PDOException $err){
-        $connection-rollback();
-        echo '2';
+        $connection->rollback();
+        echo "2";
     }
 
 

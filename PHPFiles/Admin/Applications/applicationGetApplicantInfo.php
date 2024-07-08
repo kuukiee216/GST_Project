@@ -18,7 +18,7 @@ if(isset($_POST['ApplicationID'])){
                                     ai.LastName,
                                     ai.MiddleName,
                                     ai.EmailAddress,
-                                    ai.Phone,
+                                    ai.ContactNumber,
                                     ci.CityName,
                                     pr.ProvinceName,
                                     co.CountryName
@@ -27,11 +27,13 @@ if(isset($_POST['ApplicationID'])){
                                 LEFT JOIN
                                     tbl_applicantinfo as ai ON ai.ApplicantID = app.ApplicantID
                                 LEFT JOIN
-                                    tbl_city as ci ON ci.CityID = ai.CityID
+                                    tbl_applicantlocation as al ON al.ApplicantLocationID = ai.ApplicantLocationID 
                                 LEFT JOIN
-                                    tbl_province as pr ON pr.ProvinceID = ai.ProvinceID
+                                    tbl_city as ci ON ci.CityID = al.CityID
                                 LEFT JOIN
-                                    tbl_country as co ON co.CountryID = ai.CountryID    
+                                    tbl_province as pr ON pr.ProvinceID = al.ProvinceID
+                                LEFT JOIN
+                                    tbl_country as co ON co.CountryID = al.CountryID    
                                 WHERE 
                                     app.ApplicationID = ?";
 
@@ -55,7 +57,7 @@ if(isset($_POST['ApplicationID'])){
             $dataResultArray['ApplicantName'] = $ApplicantName;
             $dataResultArray['EmailAddress'] = $rowApplicantInfo['EmailAddress'];
             $dataResultArray['Location'] = $rowApplicantInfo['CityName'] . ", " . $rowApplicantInfo['ProvinceName'] . " " . $rowApplicantInfo['CountryName'];
-            $dataResultArray['Phone'] = $rowApplicantInfo['Phone'];
+            $dataResultArray['Phone'] = $rowApplicantInfo['ContactNumber'];
 
             $jsonDataResult = json_encode($dataResultArray);
             echo $jsonDataResult;

@@ -76,16 +76,9 @@ if(isset($_POST['ActiveTable'])){
             $sQryGetCompanyList = "SELECT   
                                         ci.CompanyID,
                                         ci.CompanyName, 
-                                        ci.ContactNumber1,
-                                        CONCAT(cou.CountryName, ', ', city.CityName, ' ', pro.ProvinceName) AS Location
+                                        ci.ContactNumber1
                                 FROM
-                                    tbl_companyinfo as ci
-                                INNER JOIN
-                                    tbl_country as cou ON cou.CountryID = ci.country
-                                INNER JOIN
-                                    tbl_province as pro ON pro.ProvinceID = ci.state
-                                INNER JOIN
-                                    tbl_city as city ON city.CityID = ci.city";
+                                    tbl_companyinfo as ci";
             $stmtGetCompanyList = $connection->prepare($sQryGetCompanyList);
             $stmtGetCompanyList->execute();
 
@@ -94,7 +87,6 @@ if(isset($_POST['ActiveTable'])){
                     $rowData = array();
                     $rowData['CompanyName'] = $row['CompanyName'];
                     $rowData['ContactNumber1'] = $row['ContactNumber1'];
-                    $rowData['Location'] = $row['Location'];
                     $rowData['Action'] = mapActionButtons($activeTable, $row['CompanyID']);
 
                     $dataResultArray[] = $rowData;
